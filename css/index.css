@@ -1,16 +1,29 @@
+:root {
+    --header-height: 9rem;
+    --news-height: 18rem;
+
+    --content-even-bg-color: #F5F5F5;
+    --content-odd-bg-h1-color: #EFEFEF;
+
+    --bg-h1-font-size: 4.5rem;
+}
+
 header {
     height: 9rem;
     background: linear-gradient(#4C834C, #264226);
     display: grid;
-    grid-template-columns: auto auto;
-    column-gap: 4rem;
+    grid-template-columns: auto 4rem auto 1rem auto;
+    grid-template-areas: "title . date . detail";
     padding: 0 4rem;
+    align-content: center;
     align-items: center;
     justify-content: center;
     color: #fff;
+    font-weight: bold;
 }
 
 header > .title {
+    grid-area: title;
     display: grid;
     grid-template-columns: auto auto;
     grid-template-rows: 1.6rem 3.8rem;
@@ -44,22 +57,23 @@ header > .title > .name {
     line-height: 3.8rem;
     font-weight: bold;
 }
-
-header > .info {
+/*
+header > info {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     font-weight: bold;
     height: 5rem;
-}
+}*/
 
-header > .info > .date {
+header > .date {
+    grid-area: date;
     width: 7rem;
     height: 4.4rem;
     position: relative;
 }
 
-header > .info > .date > .month {
+header > .date > .month {
     font-size: 1.4rem;
     line-height: 1.4rem;
     position: absolute;
@@ -67,7 +81,7 @@ header > .info > .date > .month {
     left: 0;
 }
 
-header > .info > .date > .month::after {
+header > .date > .month::after {
     content: "/";
     font-size: 1.6rem;
     line-height: 1.6rem;
@@ -76,7 +90,7 @@ header > .info > .date > .month::after {
     left: 1.7rem;
 }
 
-header > .info > .date > .day {
+header > .date > .day {
     position: absolute;
     font-size: 2.8rem;
     line-height: 2.8rem;
@@ -84,7 +98,7 @@ header > .info > .date > .day {
     left: 2.8rem;
 }
 
-header > .info > .date > .weekday {
+header > .date > .weekday {
     display: block;
     position: absolute;
     text-align: center;
@@ -98,19 +112,92 @@ header > .info > .date > .weekday {
     color: var(--theme-color);
 }
 
-header > .info > .detail {
+header > .detail {
+    grid-area: detail;
     font-size: 1.4rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-header > .info > .detail > div {
-    padding-left: 3rem;
+header > .detail > div {
+    padding-left: 2rem;
 }
 
 @media screen and (max-width: 1900px) {
-    header > .info > .detail {
-        display: none;
+    header {
+        grid-template-areas:
+        "title . date date date"
+        "detail detail detail detail detail";
     }
+
+    header > .detail {
+        flex-direction: row;
+    }
+
+    header > .date {
+        justify-self: end;
+    }
+}
+
+#key-visual {
+    position: relative;
+    height: calc(100vh - var(--header-height) - var(--news-height));
+}
+
+#key-visual::before {
+    position: relative;
+    display: block;
+    content: "";
+    background-color: #555;
+    opacity: 0.4;
+    z-index: 30;
+    width: 100%;
+    height: 100%;
+}
+
+#news {
+    height: var(--news-height);
+}
+
+h1 {
+    font-size: 2rem;
+    margin: 0;
+    padding: 1.5rem 0;
+    text-align: center;
+}
+
+#content > div {
+    position: relative;
+}
+
+#content > div:nth-child(2n+1) {
+    
+}
+
+#content > div:nth-child(2n) {
+    background-color: var(--content-even-bg-color);
+}
+
+#content > div:nth-child(2n+1) > div.bg-h1 {
+    color: var(--content-odd-bg-h1-color);
+    left: 1rem;
+    transform-origin: left top;
+    transform: rotate(-90deg) translateX(-100%);
+}
+
+#content > div:nth-child(2n) > div.bg-h1 {
+    color: #fff;
+    right: 1rem;
+    transform-origin: right top;
+    transform: rotate(-90deg) translateY(-100%);
+}
+
+div.bg-h1 {
+    display: inline-block;
+    position: absolute;
+    top: calc(1rem + 1.5rem);
+
+    font-size: var(--bg-h1-font-size);
+    font-weight: bold;
 }
