@@ -1,0 +1,24 @@
+[
+    {
+        "id": "important",
+        "color": "#DD4141",
+        "name": "重要"
+    },
+    {
+        "id": "visitor",
+        "color": "#24633B",
+        "name": "ご来場の皆様へ",
+        "name-sp": "来場者"
+    },
+    {
+        "id": "contestant",
+        "color": "#24633B",
+        "name": "出場者の皆様へ",
+        "name-sp": "出場者"
+    },
+    {
+        "id": "others",
+        "color": "#3C3C3C",
+        "name": "その他"
+    }
+]
