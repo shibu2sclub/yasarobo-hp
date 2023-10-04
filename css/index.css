@@ -1,0 +1,110 @@
+header {
+    height: 9rem;
+    background: linear-gradient(#4C834C, #264226);
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 4rem;
+    padding: 0 4rem;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+}
+
+header > .title {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    grid-template-rows: 1.6rem 3.8rem;
+    grid-template-areas:
+    "year format"
+    "name name";
+}
+
+header > .title > .year {
+    grid-area: year;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+header > .title > .format {
+    text-align: center;
+    grid-area: format;
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+    height: 1.6rem;
+    font-weight: bold;
+    background-color: #fff;
+    color: var(--theme-color);
+}
+
+header > .title > .name {
+    grid-area: name;
+    font-size: 3rem;
+    line-height: 3.8rem;
+    font-weight: bold;
+}
+
+header > .info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-weight: bold;
+    height: 5rem;
+}
+
+header > .info > .date {
+    width: 6rem;
+    height: 4.8rem;
+    position: relative;
+}
+
+header > .info > .date > .month {
+    font-size: 1.6rem;
+    line-height: 1.6rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+header > .info > .date > .month::after {
+    content: "/";
+    font-size: 1.8rem;
+    line-height: 1.8rem;
+    position: absolute;
+    top: 1.2rem;
+    left: 1.9rem;
+}
+
+header > .info > .date > .day {
+    position: absolute;
+    font-size: 3rem;
+    line-height: 3rem;
+    bottom: 0;
+    left: 3rem;
+}
+
+header > .info > .date > .weekday {
+    display: block;
+    position: absolute;
+    text-align: center;
+    bottom: 0.25rem;
+    left: 5.5rem;
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: #fff;
+    color: var(--theme-color);
+}
+
+header > .info > .detail {
+    font-size: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+header > .info > .detail > div {
+    padding-left: 3rem;
+}

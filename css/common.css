@@ -1,0 +1,144 @@
+/* 共通設定 */
+:root {
+    --bg-color: #fdfdfd;
+    --font-color: #222;
+    --nav-bar-bg-color: #333;
+    --nav-bar-btn-bg-color: #3C3C3C;
+    --theme-color: #3C6D3C;
+
+    --nav-width: calc(420px - (1920px - 100vw) / 720 * 80);
+    
+    --nav-head-height: 5rem;
+    --nav-menu-btn-height: 3.2rem;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    font-size: 130%;
+}
+
+@media screen and (min-width: 2000px) {html {
+        font-size: 160%;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    html {
+        font-size: 100%;
+    }
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: "Yu Gothic", "游ゴシック", "YuGothic", "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+    color: var(--font-color);
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+}
+
+/* nav-bar: PC:サイドバー・タブレット/スマホ:ヘッダー */
+/* PC */
+#all-wrapper {
+    display: grid;
+    grid-template-columns: var(--nav-width) auto;
+    grid-template-areas:
+    "nav-head container"
+    "nav-menu container"
+    "nav-menu footer";
+}
+
+nav {
+    background-color: var(--nav-bar-bg-color);
+    color: #fff;
+    position: fixed;
+}
+
+#nav-head {
+    grid-area: nav-head;
+    height: var(--nav-head-height);
+    top: 0;
+    width: var(--nav-width);
+    z-index: 10000;
+}
+
+#nav-bar-title {
+    font-weight: bold;
+    padding: 0.8rem 0.5rem;
+}
+
+#nav-bar-title > .year {
+    font-size: 1rem;
+    line-height: 1.2rem;
+}
+
+#nav-bar-title > .name {
+    font-size: 1.9rem;
+    line-height: 2.2rem;
+}
+
+#nav-menu {
+    grid-area: nav-menu;
+    height: calc(100% - var(--nav-head-height));
+    bottom: 0;
+    width: var(--nav-width);
+    z-index: 100;
+    font-size: 1.2rem;
+}
+
+#nav-menu > ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#nav-menu > ul > li {
+    display: block;
+    height: var(--nav-menu-btn-height);
+    background-color: var(--nav-bar-btn-bg-color);
+    border-bottom: 2px solid var(--nav-bar-bg-color);
+    line-height: var(--nav-menu-btn-height);
+    padding-left: 3rem;
+}
+
+#container {
+    grid-area: container;
+}
+
+/* スマホ */
+@media screen and (max-width: 1200px) {
+    #all-wrapper {
+    }
+}
+
+/* footer */
+footer {
+    position: relative;
+    grid-area: footer;
+    padding: 0.5rem 4rem;
+    text-align: center;
+    font-size: 0.65rem;
+}
+
+footer .line {
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: var(--nav-bar-bg-color);
+}
+
+#sns {
+    padding: 0.5rem 0;
+}
+
+#sns > .icons {
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 0 1.5rem;
+}
+
+#copyright {
+    margin: 0.25rem 0;
+}

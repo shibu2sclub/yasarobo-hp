@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta viewport="width=device-width,initial-scale=1">
     <title>やさしいロボコン - 全自動で動くロボットのコンテスト</title>
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/index.css">
@@ -20,7 +21,7 @@
                 <!--<li>出場申し込み</li>
                 <li>観覧予約</li>
                 <li>競技記録</li>-->
-                <!--<li>過去大会</li>-->
+                <!--<li>過去大会情報</li>-->
                 <li>アクセス</li>
             </ul>
         </nav>
@@ -31,13 +32,13 @@
                     <div class = "name">やさしいロボコン</div>
                     <div class = "format">要観覧予約</div>
                 </div>
-                <div class = "detail">
-                    <div>
-                        <div>12</div>
-                        <div>3</div>
-                        <div>日</div>
+                <div class = "info">
+                    <div class = "date">
+                        <span class = "month">12</span>
+                        <span class = "day">3</span>
+                        <span class = "weekday">日</span>
                     </div>
-                    <div>
+                    <div class = "detail">
                         <div class = "time">11:00 ~ 16:00</div>
                         <div class = "place">渋谷教育学園渋谷中学高等学校 理科室2</div>
                     </div>
@@ -124,11 +125,12 @@
             </div>
 
             <footer>
-                <!--<div id = "sns">
-                    <div>Official SNS</div>
-                    <div>icons</div>
-                </div>-->
-                <div>Copyright © 2023- 渋谷教育学園渋谷中学高等学校 理科部ロボコン班 All Rights Reserved.</div>
+                <div class = "line"><!-- ロゴ入れられるように --></div>
+                <div id = "sns">
+                    <p>Official SNS</p>
+                    <div class = "icons">icons</div>
+                </div>
+                <p id = "copyright">Copyright © 2023 渋谷教育学園渋谷中学高等学校 理科部ロボコン班 All Rights Reserved.</p>
             </footer>
         </div>
     </div>
