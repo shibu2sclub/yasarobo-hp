@@ -14,6 +14,18 @@
     }
 }*/
 
+a.btn-simple {
+    display: inline-block;
+    background-color: var(--theme-color);
+    padding: 0 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    border-radius: 1.25rem;
+}
+
 header {
     height: var(--header-height);
     background: linear-gradient(#4C834C, #264226);
@@ -210,7 +222,7 @@ header > .detail > div {
 h1 {
     font-size: 1.7rem;
     margin: 0;
-    padding: 1.5rem 0;
+    padding: 2rem 0;
     text-align: center;
 }
 
@@ -224,16 +236,26 @@ h2 {
     position: relative;
 }
 
+#content > div:not(#news) {
+    padding-bottom: 2.5rem;
+}
+
 #content > div:nth-child(2n+1) {
     background-color: var(--bg-color);
-    padding-left: 150px;
-    padding-right: 100px;
+}
+
+#content > div:nth-child(2n+1) > div.article {
+    padding-left: 8.5rem;
+    padding-right: 3.5rem;
 }
 
 #content > div:nth-child(2n) {
     background-color: var(--content-even-bg-color);
-    padding-left: 80px;
-    padding-right: 170px;
+}
+
+#content > div:nth-child(2n) > div.article {
+    padding-left: 4.5rem;
+    padding-right: 7.5rem;
 }
 
 #content > div:nth-child(2n+1) > div.bg-h1 {
@@ -272,5 +294,37 @@ h2 {
 }
 
 #news > h1 {
-    padding-bottom: 0.5rem;
+    padding: 1.25rem 0 0.75rem;
+}
+
+
+
+
+
+
+
+
+#access-wrapper {
+    display: flex;
+}
+
+#access-wrapper > .text-container {
+    width: 24rem;
+}
+
+#access-wrapper > .text-container > div.place {
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+#access-wrapper > .text-container > p.address {
+    margin-top: 0.25rem;
+}
+
+#access-wrapper > .text-container > p.station > span {
+    font-weight: bold;
+}
+
+#access-wrapper > .map-container {
+    flex: 1;
 }
