@@ -124,13 +124,19 @@ nav {
 @media screen and (max-width: 900px) {
     #all-wrapper {
         grid-template-columns: auto;
+        grid-template-rows: var(--nav-head-height) auto auto;
         grid-template-areas:
-        "container"
+        "nav-head"
         "container"
         "footer";
     }
 
-    nav {
+    #nav-head {
+        width: 100%;
+        position: fixed;
+    }
+
+    #nav-menu {
         display: none;
     }
 }
