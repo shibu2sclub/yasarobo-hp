@@ -161,11 +161,11 @@ header > .detail > div::before {
 }
 
 header > .detail > div.time::before {
-    background: url(img/time.svg) 0% 50% no-repeat;
+    background: url(/img/time.svg) 0% 50% no-repeat;
 }
 
 header > .detail > div.place::before {
-    background: url(img/place.svg) 0% 50% no-repeat;
+    background: url(/img/place.svg) 0% 50% no-repeat;
 }
 
 @media screen and (max-width: 1900px) {
