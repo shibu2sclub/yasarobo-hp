@@ -103,6 +103,12 @@ nav {
     padding-left: 3rem;
 }
 
+#nav-menu > ul > li > a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+}
+
 #container {
     grid-area: container;
 }
