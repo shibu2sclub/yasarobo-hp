@@ -5,6 +5,7 @@
     --nav-bar-bg-color: #333;
     --nav-bar-btn-bg-color: #3C3C3C;
     --theme-color: #3C6D3C;
+    --theme-color-bright: #518451;
 
     --nav-width: calc(420px - (1920px - 100vw) / 720 * 80);
     

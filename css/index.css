@@ -25,6 +25,11 @@ a.btn-simple {
     height: 2.5rem;
     line-height: 2.5rem;
     border-radius: 1.25rem;
+    transition: background-color .25s ease-in-out;
+}
+
+a.btn-simple:hover {
+    background-color: var(--theme-color-bright);
 }
 
 header {
