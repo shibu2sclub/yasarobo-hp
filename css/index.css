@@ -142,10 +142,30 @@ header > .detail {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 0 2rem;
 }
 
 header > .detail > div {
-    padding-left: 2rem;
+    padding-left: 1.8rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+header > .detail > div::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 1.3rem;
+    height: 1.3rem;
+}
+
+header > .detail > div.time::before {
+    background: url(/img/time.svg) 0% 50% no-repeat;
+}
+
+header > .detail > div.place::before {
+    background: url(/img/place.svg) 0% 50% no-repeat;
 }
 
 @media screen and (max-width: 1900px) {
@@ -207,7 +227,7 @@ header > .detail > div {
     min-width: 110vw;
     min-height: calc(110vw * 9 / 16);
     left: -10vw;
-    top: -15vh;
+    top: calc(var(--key-visual-height) / 2 - calc(110vw * 9 / 16 / 2));
     border: none;
 }
 

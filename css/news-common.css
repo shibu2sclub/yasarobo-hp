@@ -68,7 +68,9 @@
 }
 
 #news-list > .news-item > .title {
-    font-size: 1.2rem;
+    flex: 1;
+    font-size: 1.1rem;
+    overflow-wrap: break-word;
     transition: 0.3s ease-out letter-spacing;
 }
 
