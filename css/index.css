@@ -1,6 +1,7 @@
 :root {
     --header-height: 7.5rem;
     --news-height: 20rem;
+    --key-visual-height: calc(100vh - var(--header-height) - var(--news-height));
 
     --content-even-bg-color: #F5F5F5;
     --content-odd-bg-h1-color: #EFEFEF;
@@ -178,7 +179,8 @@ header > .detail > div {
 
 #key-visual {
     position: relative;
-    height: calc(100vh - var(--header-height) - var(--news-height));
+    height: var(--key-visual-height);
+    width: 100%;
     overflow: hidden;
 }
 
@@ -197,10 +199,10 @@ header > .detail > div {
 
 #key-visual-player {
     position: absolute;
-    min-width: 100vw;
-    min-height: 100vh;
-    left: -7.5vw;
-    top: 0px;
+    min-width: 110vw;
+    min-height: calc(110vw * 9 / 16);
+    left: -10vw;
+    top: -15vh;
     border: none;
 }
 
@@ -297,12 +299,9 @@ h2 {
     padding: 1.25rem 0 0.75rem;
 }
 
-
-
-
-
-
-
+#about p {
+    line-height: 1.8rem;
+}
 
 #access-wrapper {
     display: flex;
