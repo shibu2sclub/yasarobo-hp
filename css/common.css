@@ -31,6 +31,12 @@ html {
     }
 }
 
+@media screen and (max-width: 550px) {
+    html {
+        font-size: 90%;
+    }
+}
+
 body {
     background-color: var(--bg-color);
     font-family: "Yu Gothic", "游ゴシック", "YuGothic", "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
@@ -114,8 +120,8 @@ nav {
     grid-area: container;
 }
 
-/* スマホ */
-@media screen and (max-width: 550px) {
+/* 縦持ちタブレット・スマホ */
+@media screen and (max-width: 900px) {
     #all-wrapper {
         grid-template-columns: auto;
         grid-template-areas:
@@ -134,7 +140,6 @@ footer {
     position: relative;
     grid-area: footer;
     padding: 0.5rem 4rem;
-    text-align: center;
     font-size: 0.65rem;
 }
 
@@ -157,17 +162,55 @@ footer .footer-container {
 }
 
 #sns > .icons {
-    padding: 0.5rem 0;
     display: flex;
     justify-content: center;
     gap: 0 1.5rem;
 }
 
-#sns > .icons img {
+#sns > .icons > a {
+    display: block;
     width: 1.5rem;
     height: 1.5rem;
 }
 
+#sns > .icons > a > img {
+    width: 100%;
+    height: 100%;
+}
+
 #copyright {
+    text-align: right;
     margin: 0.25rem 0;
+}
+
+#copyright > span {
+    display: inline-block;
+    margin-left: 0.4rem;
+}
+
+@media screen and (max-width: 1200px) {
+    footer {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    footer .footer-container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    footer .footer-container {
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    #copyright {
+        text-align: center;
+    }
+
+    #copyright > span {
+        margin-left: 0;
+    }
 }

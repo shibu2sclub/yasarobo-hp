@@ -317,7 +317,7 @@ h2 {
     z-index: 5;
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 900px) {
     #content > div > div.bg-h1 {
         opacity: 0.5;
     }
@@ -326,12 +326,8 @@ h2 {
         transform: none;
     }
 
-    #content > div > div.article {
-        padding: 0;
-    }
-
-    #about {
-        min-height: 100rem;
+    #content > div:nth-child(n) > div.article {
+        padding: 0 2rem;
     }
 }
 
