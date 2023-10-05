@@ -305,6 +305,7 @@ h2 {
 
 #access-wrapper {
     display: flex;
+    justify-content: space-between;
 }
 
 #access-wrapper > .text-container {
@@ -326,4 +327,14 @@ h2 {
 
 #access-wrapper > .map-container {
     flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#access-wrapper > .map-container > iframe {
+    /*width: 600px;
+    height: 450px;*/
+    width: 100%;
+    height: 100%;
+    border: none;
 }
