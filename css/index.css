@@ -1,6 +1,6 @@
 :root {
     --header-height: 7.5rem;
-    --news-height: 15rem;
+    --news-height: 20rem;
 
     --content-even-bg-color: #F5F5F5;
     --content-odd-bg-h1-color: #EFEFEF;
@@ -8,11 +8,11 @@
     --bg-h1-font-size: 4.5rem;
 }
 
-@media screen and (max-width: 2500px) {
+/*@media screen and (max-width: 2500px) {
     :root {
         --news-height: 20rem;
     }
-}
+}*/
 
 header {
     height: var(--header-height);
@@ -50,7 +50,7 @@ header > .title > .upper > .year {
 header > .title > .upper > .format {
     text-align: center;
     font-size: 1.2rem;
-    line-height: 1.4rem;
+    line-height: 1.6rem;
     height: 1.6rem;
     font-weight: bold;
     background-color: #fff;
@@ -269,4 +269,8 @@ h2 {
 
 #news-list-container-index {
 
+}
+
+#news > h1 {
+    padding-bottom: 0.5rem;
 }
