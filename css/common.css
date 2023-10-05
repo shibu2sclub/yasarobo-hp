@@ -18,6 +18,12 @@ html {
     font-size: 130%;
 }
 
+@media screen and (max-width: 2500px) {
+    html {
+        font-size: 110%;
+    }
+}
+
 @media screen and (max-width: 1200px) {
     html {
         font-size: 100%;
@@ -60,7 +66,7 @@ nav {
 
 #nav-bar-title {
     font-weight: bold;
-    padding: 0.8rem 0.5rem;
+    padding: 0.8rem 1rem;
 }
 
 #nav-bar-title > .year {
@@ -79,7 +85,7 @@ nav {
     bottom: 0;
     width: var(--nav-width);
     z-index: 100;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 #nav-menu > ul {
