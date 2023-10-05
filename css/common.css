@@ -115,7 +115,7 @@ nav {
 }
 
 /* スマホ */
-@media screen and (max-width: 5500px) {
+@media screen and (max-width: 550px) {
     #all-wrapper {
         grid-template-columns: auto;
         grid-template-areas:
