@@ -7,14 +7,12 @@
     {
         "id": "visitor",
         "color": "#24633B",
-        "name": "ご来場の皆様へ",
-        "name-sp": "来場者"
+        "name": "来場者"
     },
     {
         "id": "contestant",
         "color": "#24633B",
-        "name": "出場者の皆様へ",
-        "name-sp": "出場者"
+        "name": "出場者"
     },
     {
         "id": "others",
