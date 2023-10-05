@@ -214,16 +214,26 @@ h1 {
     text-align: center;
 }
 
+h2 {
+    font-size: 1.3rem;
+    margin: 0;
+    padding: 1.2rem 0;
+}
+
 #content > div {
     position: relative;
 }
 
 #content > div:nth-child(2n+1) {
     background-color: var(--bg-color);
+    padding-left: 150px;
+    padding-right: 100px;
 }
 
 #content > div:nth-child(2n) {
     background-color: var(--content-even-bg-color);
+    padding-left: 80px;
+    padding-right: 170px;
 }
 
 #content > div:nth-child(2n+1) > div.bg-h1 {
@@ -255,4 +265,8 @@ h1 {
 #content > div > :not(div.bg-h1) {
     position: relative;
     z-index: 5;
+}
+
+#news-list-container-index {
+
 }

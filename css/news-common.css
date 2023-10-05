@@ -1,0 +1,13 @@
+:root {
+    --border-line-color: #707070;
+}
+
+#news-list {
+    display: flex;
+    flex-direction: column;
+}
+
+#news-list > .news-item {
+    height: 3.5rem;
+    border-bottom: 1px solid var(--border-line-color);
+}
