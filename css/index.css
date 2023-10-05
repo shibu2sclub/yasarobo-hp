@@ -141,46 +141,55 @@ header > .date > .weekday {
 
 header > .detail {
     grid-area: detail;
-    font-size: 1.4rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 0 2rem;
+    gap: 0 1rem;
+    padding: 0.25rem 0;
 }
 
 header > .detail > div {
-    padding-left: 1.8rem;
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    padding: 0.4rem 0;
+    padding-left: 2.1rem;
     position: relative;
-    display: flex;
-    align-items: center;
 }
 
 header > .detail > div::before {
     content: '';
     position: absolute;
     left: 0;
-    width: 1.3rem;
-    height: 1.3rem;
+    top: 50%;
+    transform: translateY(-50%);
+
+    background-repeat: no-repeat;
+    background-position: 0% 50%;
+    background-size: 90%;
+
+    width: 1.6rem;
+    height: 1.6rem;
 }
 
 header > .detail > div.time::before {
-    background: url(/img/time.svg) 0% 50% no-repeat;
+    background-image: url(/img/time.svg);
 }
 
 header > .detail > div.place::before {
-    background: url(/img/place.svg) 0% 50% no-repeat;
+    background-image: url(/img/place.svg);
 }
 
 @media screen and (max-width: 1900px) {
     header {
-        grid-template-columns: auto auto;
+        grid-template-columns: auto 3rem auto;
         grid-template-areas:
-        "title date"
-        "detail detail";
+        "title . date"
+        "detail detail detail";
     }
 
     header > .detail {
         flex-direction: row;
+        padding: 0;
     }
 
     header > .date {
@@ -198,8 +207,15 @@ header > .detail > div.place::before {
         line-height: 3rem;
     }
 
-    header > .detail {
-        font-size: 1.1rem;
+    header > .detail > div {
+        font-size: 0.9rem;
+        line-height: 1.4rem;
+        padding-left: 1.75rem;
+    }
+
+    header > .detail > div::before {
+        width: 1.4rem;
+        height: 1.4rem;
     }
 }
 
