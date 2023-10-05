@@ -363,7 +363,12 @@ h2 {
     }
 }
 
-@media screen and (max-width: 900px) {#content > div > div.bg-h1:not(.mb-rotate) {
+@media screen and (max-width: 900px) {
+    #content > div:nth-child(n) > div.article {
+        padding: 0 1rem;
+    }
+
+    #content > div > div.bg-h1:not(.mb-rotate) {
         transform: none;
     }
 
