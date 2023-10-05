@@ -53,8 +53,7 @@ body {
     grid-template-columns: var(--nav-width) auto;
     grid-template-areas:
     "nav-head container"
-    "nav-menu container"
-    "nav-menu footer";
+    "nav-menu container";
 }
 
 nav {
@@ -124,11 +123,10 @@ nav {
 @media screen and (max-width: 900px) {
     #all-wrapper {
         grid-template-columns: auto;
-        grid-template-rows: var(--nav-head-height) auto auto;
+        grid-template-rows: var(--nav-head-height) auto;
         grid-template-areas:
         "nav-head"
-        "container"
-        "footer";
+        "container";
     }
 
     #nav-head {
@@ -144,7 +142,6 @@ nav {
 /* footer */
 footer {
     position: relative;
-    grid-area: footer;
     padding: 0.5rem 4rem;
     font-size: 0.65rem;
 }
