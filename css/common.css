@@ -40,7 +40,7 @@ body {
     font-weight: 500;
 }
 
-/* nav-bar: PC:サイドバー・タブレット/スマホ:ヘッダー */
+/* nav-bar: PC・タブレット:サイドバー・スマホ:ヘッダー */
 /* PC */
 #all-wrapper {
     display: grid;
@@ -115,8 +115,17 @@ nav {
 }
 
 /* スマホ */
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 5500px) {
     #all-wrapper {
+        grid-template-columns: auto;
+        grid-template-areas:
+        "container"
+        "container"
+        "footer";
+    }
+
+    nav {
+        display: none;
     }
 }
 

@@ -276,13 +276,13 @@ h2 {
     padding-right: 3.5rem;
 }
 
-#content > div:nth-child(2n) {
-    background-color: var(--content-even-bg-color);
-}
-
 #content > div:nth-child(2n) > div.article {
     padding-left: 4.5rem;
     padding-right: 7.5rem;
+}
+
+#content > div:nth-child(2n) {
+    background-color: var(--content-even-bg-color);
 }
 
 #content > div:nth-child(2n+1) > div.bg-h1 {
@@ -309,11 +309,30 @@ h2 {
     cursor: default;
     pointer-events: none;
     z-index: 0;
+    white-space: nowrap;
 }
 
 #content > div > :not(div.bg-h1) {
     position: relative;
     z-index: 5;
+}
+
+@media screen and (max-width: 550px) {
+    #content > div > div.bg-h1 {
+        opacity: 0.5;
+    }
+
+    #content > div > div.bg-h1:not(.mb-rotate) {
+        transform: none;
+    }
+
+    #content > div > div.article {
+        padding: 0;
+    }
+
+    #about {
+        min-height: 100rem;
+    }
 }
 
 #news-list-container-index {
@@ -334,7 +353,7 @@ h2 {
 }
 
 #access-wrapper > .text-container {
-    width: 24rem;
+    min-width: 20rem;
 }
 
 #access-wrapper > .text-container > div.place {
@@ -362,4 +381,21 @@ h2 {
     width: 100%;
     height: 100%;
     border: none;
+}
+
+@media screen and (max-width: 1200px) {
+    #access-wrapper {
+        flex-direction: column;
+    }
+
+    #access-wrapper > .text-container {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    #access-wrapper > .map-container {
+        width: 100%;
+        height: 25rem;
+        flex: auto;
+    }
 }
