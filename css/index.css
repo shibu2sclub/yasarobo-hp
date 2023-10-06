@@ -23,23 +23,6 @@
     flex-direction: column;
 }
 
-a.btn-simple {
-    display: inline-block;
-    background-color: var(--theme-color);
-    padding: 0 1.5rem;
-    font-weight: bold;
-    color: #fff;
-    text-decoration: none;
-    height: 2.5rem;
-    line-height: 2.5rem;
-    border-radius: 1.25rem;
-    transition: background-color .25s ease-in-out;
-}
-
-a.btn-simple:hover {
-    background-color: var(--theme-color-bright);
-}
-
 header {
     height: var(--header-height);
     background: linear-gradient(#4C834C, #264226);
