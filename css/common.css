@@ -245,20 +245,21 @@ footer .footer-container {
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
     position: relative;
-    height: 2.2rem;
-    line-height: 2.2rem;
-    padding-left: 1rem;
+    height: 1.76rem;
+    line-height: 1.76rem;
+    padding-left: 0.7rem;
 }
 
 .logo > .year {
     position: absolute;
     top: 0;
-    left: 0.8rem;
-    font-size: calc(2.2rem / 3);
+    left: 0.64rem;
+    font-size: calc(1.76rem / 3);
     transform-origin: 50% 50%;
-    transform: rotate(-90deg) translateY(-1.2rem);
+    transform: rotate(-90deg) translateY(-0.96rem);
 }
 
 .logo > .name {
-    font-size: 2rem;
+    font-size: 1.6rem;
+    font-weight: 900;
 }
