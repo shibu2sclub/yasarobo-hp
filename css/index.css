@@ -313,7 +313,14 @@ h1 {
 h2 {
     font-size: 1.3rem;
     margin: 0;
-    padding: 1.2rem 0;
+    padding: 0.8rem 0;
+    margin-top: 2rem;
+}
+
+/* 3にしたのはあきらめただけ */
+#about > div.article:nth-child(3) > h2 {
+    margin-top: 0;
+    padding-top: 0;
 }
 
 #content > div {
@@ -448,7 +455,8 @@ h2 {
         margin-top: 0;
     }
 
-    #about div.about-wrapper > div:nth-child(1) > h2:nth-child(1) {
+    #about > div.article:nth-child(1) > h2 {
+        margin-top: 0;
         padding-top: 0;
     }
 
