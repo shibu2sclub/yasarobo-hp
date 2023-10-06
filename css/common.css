@@ -3,6 +3,7 @@
     --bg-color: #fff;
     --font-color: #222;
     --nav-bar-bg-color: #333;
+    --nav-bar-bg-hover-color: #373737;
     --nav-bar-btn-bg-color: #3C3C3C;
     --theme-color: #3C6D3C;
     --theme-color-bright: #518451;
@@ -79,6 +80,19 @@ nav {
 }
 
 #nav-bar-title {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    height: 100%;
+    
+    transition: background-color .25s ease-in-out;
+}
+
+#nav-bar-title:hover {
+    background-color: var(--nav-bar-btn-bg-color);
+}
+
+#nav-bar-title > div {
     height: 100%;
     padding: 0 1rem;
     display: flex;
