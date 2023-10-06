@@ -75,10 +75,10 @@
     }
 
     #news-list > .news-item:hover::after {
-        width: 100%;
+        width: 0;
     }
     
     #news-list > .news-item:hover > .title {
-        letter-spacing: 0.04rem;
+        letter-spacing: 0;
     }    
 }
