@@ -59,10 +59,11 @@ const generateLogo = generateNavMenu.then((obj) => {
     });
 });
 
-const smoothScroll = generateLogo.then((obj) => {
+const navMenuLinkUpdate = generateLogo.then((obj) => {
     return new Promise ((resolve, reject) => {
         // Select all links with hashes
         const links = document.querySelectorAll('a[href^="/#"]');
+        const topLinks = document.querySelectorAll('a[href="/#top"]');
 
         // Check if the current path is root（rootでのみリンクのページ内スクロール遷移が存在）
         if (location.pathname == '/') {
@@ -91,6 +92,11 @@ const smoothScroll = generateLogo.then((obj) => {
                         behavior: 'smooth'
                     });
                 });
+            });
+        }
+        else {
+            topLinks.forEach(link => {
+                link.setAttribute('href', '/');
             });
         }
         resolve();

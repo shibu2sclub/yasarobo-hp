@@ -384,3 +384,22 @@ label.menu-three-bar-btn:has(> input[type=checkbox]:checked) > span:nth-of-type(
 label.menu-three-bar-btn:has(> input[type=checkbox]:checked) > span:nth-of-type(3) {
     transform: skewY(-45deg) translateY(50%);
 }
+
+
+
+#content {
+    padding: 0 4rem;
+}
+
+h1 {
+    font-size: 1.7rem;
+    margin: 0;
+    padding: 2rem 0;
+}
+
+h2 {
+    font-size: 1.3rem;
+    margin: 0;
+    padding: 0.8rem 0;
+    margin-top: 2rem;
+}

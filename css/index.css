@@ -308,23 +308,17 @@ header > .detail > div.place::before {
 }
 
 h1 {
-    font-size: 1.7rem;
-    margin: 0;
-    padding: 2rem 0;
     text-align: center;
-}
-
-h2 {
-    font-size: 1.3rem;
-    margin: 0;
-    padding: 0.8rem 0;
-    margin-top: 2rem;
 }
 
 /* 3にしたのはあきらめただけ */
 #about > div.article:nth-child(3) > h2 {
     margin-top: 0;
     padding-top: 0;
+}
+
+#content {
+    padding: 0;
 }
 
 #content > div {

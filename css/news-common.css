@@ -82,7 +82,7 @@
     transition: 0.3s ease-out;
 }
 
-/*#news-list > .news-item:hover::after {
+#news-list > .news-item:hover::after {
     width: 100%;
 }
 
@@ -93,7 +93,7 @@
 #news-list > .news-item:hover::before {
     height: 1rem;
     transition: 0.3s ease-out 0.25s;
-}*/
+}
 
 @media screen and (max-width: 900px) {
     #news-list > .news-item > .tag {
