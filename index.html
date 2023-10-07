@@ -11,10 +11,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700;900&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/news-common.css">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/common.css?date=202310070039">
+    <link rel="stylesheet" href="css/news-common.css?date=202310070039">
+    <link rel="stylesheet" href="css/index.css?date=202310070039">
 
     
 
@@ -45,19 +46,21 @@
 <body>
     <div id = "all-wrapper">
         <nav id = "nav-head">
-            <div id = "nav-bar-title">
-                <div class = "logo">
-                    <div class = "year">2023</div>
-                    <div class = "name">YasaRobo</div>
+            <a href = "#top" id = "nav-bar-title">
+                <div>
+                    <div class = "logo">
+                        <div class = "year">2023</div>
+                        <div class = "name">YasaRobo</div>
+                    </div>
                 </div>
-            </div>
+            </a>
         </nav>
         <nav id = "nav-menu">
             <ul>
                 <li><a href = "#about">やさしいロボコンとは</a></li>
-                <!--<li>出場申し込み</li>
-                <li>観覧予約</li>
-                <li>競技記録</li>-->
+                <li><a href = "#detail">開催要項</a></li>
+                <li><a href = "#application">出場・観覧申し込み</a></li>
+                <!--<li>競技記録</li>-->
                 <!--<li>過去大会情報</li>-->
                 <li><a href = "#access">アクセス</a></li>
             </ul>
@@ -77,16 +80,16 @@
                     <span class = "weekday">日</span>
                 </div>
                 <div class = "detail">
-                    <div class = "time">11:00 ~ 16:00</div>
-                    <div class = "place">渋谷教育学園渋谷中学高等学校 理科室2</div>
+                    <div class = "time">11:00 ~ 15:00</div>
+                    <div class = "place">渋谷教育学園渋谷中学高等学校 理科室3</div>
                 </div>
             </header>
             
             <div id = "key-visual">
                 <!-- YouTube or スライドショー -->
-                <iframe id = "key-visual-player" src="https://www.youtube.com/embed/cW514x4bg20?si=C_KkbHkAyLTeIPM_&controls=0&autoplay=1&mute=1&loop=1&playlist=cW514x4bg20" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe id = "key-visual-player" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 <div id = "key-visual-img-slideshow">
-                    <img src = "img/index-slideshow/mako-robo.webp">
+                    <img src = "img/index-slideshow/dikefalos.webp">
                 </div>
             </div>
 
@@ -126,12 +129,55 @@
                     <div class = "bg-h1 mb-rotate">Robot Contest</div>
                     
                     <div class = "article">
+                        <h2>開催の目的</h2>
                         <div class = "about-wrapper">
                             <div class = "text-container">
-                                <h2>全自動で動くロボットのコンテスト</h2>
                                 <p>
-                                    やさしいロボコンには3つのコースがありますが<br>
-                                    どのコースにおいても
+                                    知能ロボコンを知っていますか？<br>
+                                    毎年6月頃に宮城県仙台市で行われる、全自動で動く自律ロボットのコンテストです。
+                                </p>
+                                <p>
+                                    <a href = "https://www.inrof.org" class = "btn-simple" target = "_blank">知能ロボコンHP</a>
+                                </p>
+                                <p>
+                                    この知能ロボコンの特徴は、<span style="font-weight: bold;">「Festival（お祭り）」</span>だということ。<br>
+                                    勝ち負けだけのロボコンじゃない。<br>
+                                    技術やアイデアを持ち寄って、みんなで楽しむ。
+                                </p>
+                                <p>
+                                    私たち渋渋理科部では、
+                                </p>
+                                <p style = "padding-left: 1rem;">
+                                    知能ロボコンの<span style = "font-weight: bold;">会場の雰囲気</span>を伝えたい<br>
+                                    知能ロボコンに<span style = "font-weight: bold;">出てみたい、実際に見てみたい</span>、という人を増やしたい
+                                </p>
+                                <p>
+                                    と思っており、知能ロボコンの魅力を伝えるべく<br>
+                                    この冬に<span style = "font-weight: bold;">「やさしいロボコン」</span>の開催を計画しています。
+                                </p>
+                            </div>
+                            <div class = "img-container">
+                                <img src = "img/about/octo-kun.webp">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class = "article">
+                        <h2>全自動で動くロボットの<span style = "font-weight: bold;">「やさしい」</span>コンテスト</h2>
+                        <div class = "about-wrapper">
+                            <div class = "text-container">
+                                <p>
+                                    やさしいロボコンには3つのコースがあります。
+                                </p>
+                                <p>
+                                    知能ロボコンとほぼ同じルールの、「チャレンジャーズコース」「マスターズコース」と、<br>
+                                    初めての人にもやさしい、「やさしいコース」です。
+                                </p>
+                                <p>
+                                    <a href = "https://drive.google.com/file/d/1f8vbpx1p_VoEAQCKo9FgvEAp0db_YkO-/view?usp=drive_link" class = "btn-simple" target = "_blank">ルール・開催要項（原案・PDF）</a>
+                                </p>
+                                <p>
+                                    細かいルールは異なるものの、どのコースにおいても
                                 </p>
                                 <p style = "font-weight: bold">
                                     「競技中にロボットを操縦できない」<br>
@@ -142,25 +188,79 @@
                                 </p>
                                 <p>
                                     競技が始まったら<br>
-                                    出場者もまた最前列の観客と同じ。
+                                    出場者もまた最前列の観客と同じ。<br>
+                                    見てるだけ。ハラハラするだけ。
                                 </p>
                                 <p>
-                                    技術力よりも<br>
-                                    製作での試行錯誤が強く表れるロボコンです。
-                                </p>
-                                <p><br>
-                                    詳しい情報は以下のPDFファイルをご覧ください。
+                                    技術力もそうですが、<br>
+                                    製作でどれだけ試行錯誤をしたかが<br>
+                                    強く結果に表れるロボコンです。
                                 </p>
                                 <p>
-                                    情報は後ほどホームページにも追加していきます。<br>
-                                    お楽しみに！
+                                    「やさしいロボコン」はオープン大会です。<br>
+                                    もともと校内大会で始めたものですが、お祭りはみんなで楽しまないと。<br>
+                                    賞品とかはないですが、「知能ロボコンの半年前に完成させた」という達成感と自信は、お土産になるかと思います。<br>
+                                    ぜひ参戦してみませんか？
                                 </p>
-                                <a href = "static/やさしいロボコンルール原案20231003.pdf" class = "btn-simple" target = "_blank">ルール・開催要項（PDF）</a>
+                                <p>
+                                    見学・観覧も大歓迎です！<br>
+                                    初心者の方から経験者の方まで、ぜひいらしてください！<br>
+                                    スタッフや参加者たちと、ロボコンについて熱く語りあえる場を提供できたらと考えています。
+                                </p>
+                                
                             </div>
                             <div class = "img-container">
                                 <img src = "img/about/2022yasarobo-2.jpg">
                             </div>
                         </div>
+                    </div>
+                </div>
+                
+                <div id = "detail">
+                    <h1>開催要項</h1>
+                    <!--<div class = "bg-h1">Event Detail</div>-->
+                    <div class = "bg-h1">Detail</div>
+
+                    <div class = "article">
+                        <h2>開催日時</h2>
+                        <p>
+                            2023年12月3日（日）
+                        </p>
+                        <p>
+                            午前中はロボット調整の時間とし、11時頃にロボコン開始、15時頃までには終了する予定です。<br>
+                            なおこの予定は変更されることもあります。決まり次第HPにてご連絡いたします。
+                        </p>
+                        <h2>開催会場</h2>
+                        <p>
+                            渋谷教育学園渋谷中学高等学校<br>
+                            6階 理科室3
+                        </p>
+                        <h2>運営<!--・協力-->団体</h2>
+                        <p>
+                            <span style = "font-weight: bold;">主催</span><br>
+                            渋谷教育学園渋谷中学高等学校 理科部ロボコン班
+                        </p>
+                    </div>
+                </div>
+                
+                <div id = "application">
+                    <h1>出場・観覧申し込み</h1>
+                    <div class = "bg-h1">Application</div>
+                    <div class = "article">
+                        <p>
+                            出場・観覧共に事前の申し込みをお願いしております。<br>
+                            以下の<span style = "font-weight: bold;">フォームにご回答</span>ください。
+                        </p>
+                        <p>
+                            締め切りは<span style = "font-weight: bold;">12/2（土）</span>とさせていただきますが、<span style = "font-weight: bold;">当日朝でもできる限り対応</span>させていただきます。
+                        </p>
+                        <p>
+                            締め切り後の申し込みの際は、フォームにご回答の上で、フォーム内の連絡先にもメールでご一報をお願いいたします。
+                        </p>
+                        <p>
+                            出場者の方は、参戦するコースは当日まで変更可能です。フォーム内の連絡先にメールでご連絡ください。
+                        </p>
+                        <a href = "https://docs.google.com/forms/d/e/1FAIpQLSf28C5YxIRAJD5YD7IZg72FgWr0uQ51BIPtFDg9RkCdIzKvgw/viewform?usp=sf_link" class = "btn-simple" target="_blank">出場・観覧フォーム</a>
                     </div>
                 </div>
                 
@@ -173,7 +273,7 @@
                             <div class = "text-container">
                                 <div class = "place">
                                     渋谷教育学園渋谷中学高等学校<br>
-                                    6階 理科室2
+                                    6階 理科室3
                                 </div>
                                 <p class = "address">
                                     〒150-0002<br>
@@ -203,7 +303,12 @@
             </div>
 
             <footer>
-                <div class = "line"><!-- ロゴ入れられるように --></div>
+                <div class = "line">
+                    <div class = "logo">
+                        <div class = "year">2023</div>
+                        <div class = "name">YasaRobo</div>
+                    </div>
+                </div>
                 <div class = "footer-container">
                     <div id = "sns">
                         <div class = "icons">
@@ -216,6 +321,6 @@
             </footer>
         </div>
     </div>
-    <script src="js/index.js"></script>
+    <script src="js/index.js?date=202310070039"></script>
 </body>
 </html>
