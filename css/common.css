@@ -154,6 +154,7 @@ nav {
     #nav-head {
         width: 100%;
         position: fixed;
+        transition: background-color .25s ease-in-out;
     }
 
     
@@ -169,6 +170,11 @@ nav {
     
     #nav-head > label.menu-three-bar-btn {
         display: block;
+        margin-right: 1rem;
+    }
+
+    #nav-head:not(.scrolled) {
+        background-color: transparent;
     }
 
     #all-wrapper:has(label.menu-three-bar-btn > input[type=checkbox]:checked) #nav-menu {
@@ -330,12 +336,11 @@ a.btn-simple:hover {
 }
 
 label.menu-three-bar-btn {
-    width: 2rem;
-    height: 2rem;
+    width: 1.8rem;
+    height: 1.8rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 1rem;
 }
 
 label.menu-three-bar-btn >  input[type=checkbox] {
@@ -377,9 +382,9 @@ label.menu-three-bar-btn:has(> input[type=checkbox]:checked) > span:nth-of-type(
 }
 
 label.menu-three-bar-btn:has(> input[type=checkbox]:checked) > span:nth-of-type(2) {
-    transform: skewY(45deg);
+    transform: skewY(45deg) translateY(-50%);
 }
 
 label.menu-three-bar-btn:has(> input[type=checkbox]:checked) > span:nth-of-type(3) {
-    transform: skewY(-45deg);
+    transform: skewY(-45deg) translateY(50%);
 }
