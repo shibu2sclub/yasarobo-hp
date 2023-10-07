@@ -61,6 +61,8 @@ body {
     grid-template-areas:
     "nav-head container"
     "nav-menu container";
+    position: relative;
+    overflow-x: hidden;
 }
 
 nav {
@@ -77,6 +79,7 @@ nav {
     z-index: 10000;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 #nav-bar-title {
@@ -133,6 +136,11 @@ nav {
     grid-area: container;
 }
 
+
+#nav-head > label.menu-three-bar-btn {
+    display: none;
+}
+
 /* 縦持ちタブレット・スマホ */
 @media screen and (max-width: 900px) {
     #all-wrapper {
@@ -148,8 +156,25 @@ nav {
         position: fixed;
     }
 
+    
     #nav-menu {
-        display: none;
+        position: fixed;
+        right: 0;
+        transition: .25s ease-in-out;
+        visibility: collapse;
+        opacity: 0;
+        transform: translateX(100%);
+        z-index: 20000;
+    }
+    
+    #nav-head > label.menu-three-bar-btn {
+        display: block;
+    }
+
+    #all-wrapper:has(label.menu-three-bar-btn > input[type=checkbox]:checked) #nav-menu {
+        transform: translateY(0);
+        visibility: visible;
+        opacity: 1;
     }
 }
 
@@ -302,4 +327,59 @@ a.btn-simple:hover {
 .logo > .name {
     font-size: 1.6rem;
     font-weight: 900;
+}
+
+label.menu-three-bar-btn {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+}
+
+label.menu-three-bar-btn >  input[type=checkbox] {
+    display: none; /* チェックボックスを非表示にする */
+}
+
+label.menu-three-bar-btn {
+    position: relative;
+}
+
+label.menu-three-bar-btn > span {
+    position: absolute;
+    left: 0;
+    display: inline-block;
+    transition: .25s ease-in-out;
+    content: "";
+    height: 0.1rem;
+    width: 100%;
+    background-color: #fff;
+    transform-origin: left center;
+    transform: none;
+    opacity: 1;
+}
+
+label.menu-three-bar-btn > span:nth-of-type(1) {
+    top: 50%;
+}
+
+label.menu-three-bar-btn > span:nth-of-type(2) {
+    top: 0;
+}
+
+label.menu-three-bar-btn > span:nth-of-type(3) {
+    bottom: 0;
+}
+
+label.menu-three-bar-btn:has(> input[type=checkbox]:checked) > span:nth-of-type(1) {
+    opacity: 0;
+}
+
+label.menu-three-bar-btn:has(> input[type=checkbox]:checked) > span:nth-of-type(2) {
+    transform: skewY(45deg);
+}
+
+label.menu-three-bar-btn:has(> input[type=checkbox]:checked) > span:nth-of-type(3) {
+    transform: skewY(-45deg);
 }

@@ -16,13 +16,11 @@ links.forEach(link => {
 
         // Calculate the distance to scroll
         // If the nav header is fixed, we need to subtract its height from the distance to scroll
-        const positionToScroll = (targetElement != null ? window.scrollY + targetElement.getBoundingClientRect().top : 0) - (navHeaderElement.style.position === 'fixed' ? navHeaderElement.offsetHeight : 0);
-
-        console.log(positionToScroll);
+        const positionToScroll = (targetElement != null ? window.scrollY + targetElement.getBoundingClientRect().top : 0) - (getComputedStyle(navHeaderElement).position == 'fixed' ? navHeaderElement.offsetHeight : 0);
 
         // Scroll smoothly to the target element
         window.scrollTo({
-            top: positionToScroll,
+            top: positionToScroll >= 0 ? positionToScroll : 0,
             behavior: 'smooth'
         });
     });
