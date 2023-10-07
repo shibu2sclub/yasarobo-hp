@@ -4,9 +4,6 @@
     --key-visual-height: calc(100vh - var(--header-height) - var(--news-height));
 
     --content-even-bg-color: #F5F5F5;
-    --content-odd-bg-h1-color: #EFEFEF;
-
-    --bg-h1-font-size: 4.5rem;
 }
 
 @media screen and (max-width: 900px) {
@@ -347,36 +344,16 @@ h1 {
     background-color: var(--content-even-bg-color);
 }
 
-#content > div:nth-child(2n+1) > div.bg-h1 {
-    color: var(--content-odd-bg-h1-color);
-    left: 1rem;
-    transform-origin: left top;
-    transform: rotate(-90deg) translateX(-100%);
-}
-
 #content > div:nth-child(2n) > div.bg-h1 {
     color: #fff;
+    left: auto;
     right: 1rem;
     transform-origin: right top;
     transform: rotate(-90deg) translateY(-100%);
 }
 
 #content > div > div.bg-h1 {
-    display: inline-block;
-    position: absolute;
-    top: calc(1rem + 1.5rem);
-
-    font-size: var(--bg-h1-font-size);
-    font-weight: bold;
-    cursor: default;
-    pointer-events: none;
-    z-index: 0;
-    white-space: nowrap;
-}
-
-#content > div > :not(div.bg-h1) {
-    position: relative;
-    z-index: 5;
+    opacity: 1;
 }
 
 @media screen and (max-width: 1200px) {

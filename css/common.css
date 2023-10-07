@@ -12,6 +12,9 @@
     
     --nav-head-height: 3rem;
     --nav-menu-btn-height: 3.2rem;
+
+    --bg-h1-font-size: 4.5rem;
+    --bg-h1-color: #EFEFEF;
 }
 
 html {
@@ -388,7 +391,8 @@ label.menu-three-bar-btn:has(> input[type=checkbox]:checked) > span:nth-of-type(
 
 
 #content {
-    padding: 0 4rem;
+    padding: 0 5rem;
+    position: relative;
 }
 
 h1 {
@@ -402,4 +406,67 @@ h2 {
     margin: 0;
     padding: 0.8rem 0;
     margin-top: 2rem;
+}
+
+#content > div > :not(div.bg-h1) {
+    position: relative;
+    z-index: 5;
+}
+
+div.bg-h1 {
+    display: inline-block;
+    position: absolute;
+    top: calc(1rem + 1.5rem);
+
+    font-size: var(--bg-h1-font-size);
+    font-weight: bold;
+    cursor: default;
+    pointer-events: none;
+    z-index: 0;
+    white-space: nowrap;
+
+    color: var(--bg-h1-color);
+
+    left: 1rem;
+    transform-origin: left top;
+    transform: rotate(-90deg) translateX(-100%);
+
+    opacity: 0.5;
+}
+
+ul.topic-path {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+ul.topic-path > li {
+    display: inline-block;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+ul.topic-path > li:not(:last-child)::after {
+    content: "";
+    display: inline-block;
+    width: 0.3rem;
+    height: 0.3rem;
+    border: calc(0.3rem / 6) solid;
+    border-color: var(--font-color) var(--font-color) transparent transparent;
+    transform: rotate(45deg);
+    margin: 0 0.8rem;
+}
+
+ul.topic-path > li > a {
+    text-decoration: none;
+    color: var(--font-color);
+    transition: 0.25s ease-in-out;
+}
+
+ul.topic-path > li > a:hover {
+    color: var(--theme-color);
 }
