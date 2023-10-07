@@ -173,10 +173,6 @@ nav {
         margin-right: 1rem;
     }
 
-    #nav-head:not(.scrolled) {
-        background-color: transparent;
-    }
-
     #all-wrapper:has(label.menu-three-bar-btn > input[type=checkbox]:checked) #nav-menu {
         transform: translateY(0);
         visibility: visible;

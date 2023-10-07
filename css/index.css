@@ -283,6 +283,10 @@ header > .detail > div.place::before {
         flex-direction: column;
     }
 
+    #nav-head:not(.scrolled) {
+        background-color: transparent;
+    }
+
     header {
         order: 0;
         padding: 0 0.5rem;
