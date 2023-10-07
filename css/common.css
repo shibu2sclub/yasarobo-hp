@@ -446,6 +446,18 @@ h2 {
     position: relative;
 }
 
+@media screen and (max-width: 1200px) {
+    #content {
+        padding: 0 4rem;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    #content {
+        padding: 0 2rem;
+    }
+}
+
 #content > div {
     padding-bottom: 3rem;
 }
