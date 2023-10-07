@@ -5,6 +5,7 @@
     --nav-bar-bg-color: #333;
     --nav-bar-bg-hover-color: #373737;
     --nav-bar-btn-bg-color: #3C3C3C;
+    --nav-bar-btn-bg-hover-color: #444;
     --theme-color: #3C6D3C;
     --theme-color-bright: #518451;
 
@@ -127,12 +128,17 @@ nav {
     border-bottom: 2px solid var(--nav-bar-bg-color);
     line-height: var(--nav-menu-btn-height);
     padding-left: 3rem;
+    transition: background-color .25s ease-in-out;
 }
 
 #nav-menu > ul > li > a {
     color: #fff;
     text-decoration: none;
     display: block;
+}
+
+#nav-menu > ul > li:hover {
+    background-color: var(--nav-bar-btn-bg-hover-color);
 }
 
 #container {
@@ -311,6 +317,38 @@ a.btn-simple:hover {
     background-color: var(--theme-color-bright);
 }
 
+a.internal-link {
+    display: inline-block;
+    color: var(--font-color);
+    font-weight: bold;
+    text-decoration: none;
+    transition: color .25s ease-in-out;
+    display: flex;
+    align-items: center;
+}
+
+a.internal-link::after {
+    content: "";
+    margin-left: 0.3rem;
+    margin-right: 0.5rem;
+    width: 0.4rem;
+    height: 0.4rem;
+    border: calc(0.4rem / 6) solid;
+    border-color: var(--font-color) var(--font-color) transparent transparent;
+    transform: rotate(45deg) translateY(-0.1rem);
+    transition: 0.15s ease-out;
+}
+
+a.internal-link:hover {
+    color: var(--theme-color);
+}
+
+a.internal-link:hover::after {
+    margin-left: 0.55rem;
+    margin-right: 0.25rem;
+    border-color: var(--theme-color) var(--theme-color) transparent transparent;
+}
+
 .logo {
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
@@ -390,11 +428,6 @@ label.menu-three-bar-btn:has(> input[type=checkbox]:checked) > span:nth-of-type(
 
 
 
-#content {
-    padding: 0 5rem;
-    position: relative;
-}
-
 h1 {
     font-size: 1.7rem;
     margin: 0;
@@ -405,7 +438,25 @@ h2 {
     font-size: 1.3rem;
     margin: 0;
     padding: 0.8rem 0;
-    margin-top: 2rem;
+    /*margin-top: 2rem;*/
+}
+
+#content {
+    padding: 0 5rem;
+    position: relative;
+}
+
+#content > div {
+    padding-bottom: 3rem;
+}
+
+div.article {
+    padding-top: 2rem;
+}
+
+div.article > :first-child {
+    padding-top: 0;
+    margin-top: 0;
 }
 
 #content > div > :not(div.bg-h1) {

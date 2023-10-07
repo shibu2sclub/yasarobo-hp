@@ -322,8 +322,22 @@ h1 {
     position: relative;
 }
 
-#content > div:not(#news) {
-    padding-bottom: 2.5rem;
+#content > #news {
+    padding-bottom: 0;
+}
+
+#content > #news > div.article {
+    padding-top: 0;
+}
+
+#news-list-container-index {
+    display: flex;
+    flex-direction: column;
+}
+
+#news-list-container-index > a.internal-link {
+    margin-top: 0.5rem;
+    align-self: self-end;
 }
 
 #content > div:nth-child(2n+1) {

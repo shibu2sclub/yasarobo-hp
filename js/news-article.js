@@ -11,7 +11,7 @@ function getParam(name, url) {
 // First, let's fetch the news data from the JSON file
 fetch('/data/news-tag-setting.json')
     .then(response => response.json())
-    .then(settingData => {
+    .then(labelSettingData => {
         fetch('/data/news.json')
             .then(response => response.json())
             .then(data => {
@@ -23,33 +23,16 @@ fetch('/data/news-tag-setting.json')
                 const newsArticleElement = document.createElement('div');
                 newsArticleElement.classList.add('article');
 
-                const titleElement = document.createElement('h2');
-                titleElement.classList.add('title');
-                titleElement.textContent = newsItem.title;
-                newsArticleElement.appendChild(titleElement);
-                
-                const dateElement = document.createElement('div');
-                dateElement.classList.add('date');
-                dateElement.textContent = newsItem.date;
-                newsArticleElement.appendChild(dateElement);
-
-                const labelContainerElement = document.createElement('div');
-                labelContainerElement.classList.add('tag');
-                newsItem.label.forEach(label => {
-                    const labelElement = document.createElement('div');
-
-                    const labelSetting = settingData.find(({ id }) => id === label);
-
-                    labelElement.textContent = labelSetting.name;
-                    labelElement.style.backgroundColor = labelSetting.color;
-                    labelContainerElement.appendChild(labelElement);
-                });
-                newsArticleElement.appendChild(labelContainerElement);
+                const newsTitleElement = generateNewsListItem(newsItem, labelSettingData);
+                newsTitleElement.firstElementChild.removeAttribute('href'); // Remove link: タイトル用なのでリンク不要
+                newsArticleElement.appendChild(newsTitleElement);
 
                 newsItem.article.forEach(paragraph => {
                     const paragraphElement = document.createElement('p');
-                    paragraphElement.innerHTML = paragraph;
-                    newsArticleElement.appendChild(paragraphElement);    
+                    const budouxElement = document.createElement('budoux-ja');
+                    budouxElement.innerHTML = paragraph;
+                    paragraphElement.appendChild(budouxElement);
+                    newsArticleElement.appendChild(paragraphElement);
                 })
                 
 
