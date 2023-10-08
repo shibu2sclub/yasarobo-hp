@@ -75,7 +75,7 @@
     height: 0.4rem;
     border: calc(0.4rem / 6) solid;
     border-color: var(--font-color) var(--font-color) transparent transparent;
-    transform: rotate(45deg) translateY(-0.1rem);
+    transform: rotate(45deg);
     transition: 0.15s ease-out;
     opacity: 1;
 }
