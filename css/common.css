@@ -11,7 +11,7 @@
 
     --nav-width: calc(420px - (1920px - 100vw) / 720 * 80);
     
-    --nav-head-height: 3rem;
+    --nav-head-height: 3.5rem;
     --nav-menu-btn-height: 3.2rem;
 
     --bg-h1-font-size: 4.5rem;
@@ -202,6 +202,7 @@ nav {
     
     #nav-head > label.menu-three-bar-btn {
         display: block;
+        display: flex;
         margin-right: 1rem;
     }
 
@@ -401,22 +402,26 @@ a.internal-link:hover::after {
 }
 
 label.menu-three-bar-btn {
+    position: relative;
     width: 1.8rem;
-    height: 1.8rem;
+
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
-label.menu-three-bar-btn >  input[type=checkbox] {
+label.menu-three-bar-btn > input[type=checkbox] {
     display: none; /* チェックボックスを非表示にする */
 }
 
-label.menu-three-bar-btn {
+label.menu-three-bar-btn > div.bars {
+    width: 1.8rem;
+    height: 1.8rem;
     position: relative;
 }
 
-label.menu-three-bar-btn > span {
+label.menu-three-bar-btn > div.bars > span {
     position: absolute;
     left: 0;
     display: inline-block;
@@ -430,27 +435,55 @@ label.menu-three-bar-btn > span {
     opacity: 1;
 }
 
-label.menu-three-bar-btn > span:nth-of-type(1) {
+label.menu-three-bar-btn > div.bars > span:nth-of-type(1) {
     top: 50%;
 }
 
-label.menu-three-bar-btn > span:nth-of-type(2) {
+label.menu-three-bar-btn > div.bars > span:nth-of-type(2) {
     top: 0;
 }
 
-label.menu-three-bar-btn > span:nth-of-type(3) {
+label.menu-three-bar-btn > div.bars > span:nth-of-type(3) {
     bottom: 0;
 }
 
-label.menu-three-bar-btn:has(> input[type=checkbox]:checked) > span:nth-of-type(1) {
+label.menu-three-bar-btn > div.caption {
+    width: 100%;
+    display: inline-block;
+    margin-top: 0.4rem;
+    font-size: 0.5rem;
+    line-height: 0.5rem;
+    height: 0.5rem;
+    text-align: center;
+    position: relative;
+}
+
+label.menu-three-bar-btn > div.caption > span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: .25s ease-in-out;
+}
+
+label.menu-three-bar-btn > div.caption > span:nth-child(1), label.menu-three-bar-btn:has(> input[type=checkbox]:checked) > div.caption > span:nth-child(2) {
+    visibility: visible;
+    opacity: 1;
+}
+
+label.menu-three-bar-btn > div.caption > span:nth-child(2), label.menu-three-bar-btn:has(> input[type=checkbox]:checked) > div.caption > span:nth-child(1) {
+    visibility: collapse;
     opacity: 0;
 }
 
-label.menu-three-bar-btn:has(> input[type=checkbox]:checked) > span:nth-of-type(2) {
+label.menu-three-bar-btn:has(> input[type=checkbox]:checked) > div.bars > span:nth-of-type(1) {
+    opacity: 0;
+}
+
+label.menu-three-bar-btn:has(> input[type=checkbox]:checked) > div.bars > span:nth-of-type(2) {
     transform: skewY(45deg) translateY(-50%);
 }
 
-label.menu-three-bar-btn:has(> input[type=checkbox]:checked) > span:nth-of-type(3) {
+label.menu-three-bar-btn:has(> input[type=checkbox]:checked) > div.bars > span:nth-of-type(3) {
     transform: skewY(-45deg) translateY(50%);
 }
 
