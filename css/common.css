@@ -80,7 +80,7 @@ nav {
     height: var(--nav-head-height);
     top: 0;
     width: var(--nav-width);
-    z-index: 10000;
+    z-index: 30000;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -166,6 +166,10 @@ nav {
         transition: background-color .25s ease-in-out;
     }
 
+    #nav-bar-title:hover {
+        background-color: var(--nav-bar-bg-color);
+    }
+
     
     #nav-menu {
         position: fixed;
@@ -175,7 +179,26 @@ nav {
         opacity: 0;
         transform: translateX(100%);
         z-index: 20000;
+        padding-top: var(--nav-head-height);
     }
+
+    #nav-menu > ul > li:hover {
+        background-color: var(--nav-bar-btn-bg-color);
+    }
+
+    /*#nav-menu::before {
+        position: fixed;
+        content: "";
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: .25s ease-in-out;
+        visibility: collapse;
+        opacity: 0;
+        z-index: 5000;
+    }*/
     
     #nav-head > label.menu-three-bar-btn {
         display: block;
@@ -187,6 +210,11 @@ nav {
         visibility: visible;
         opacity: 1;
     }
+
+    /*#all-wrapper:has(label.menu-three-bar-btn > input[type=checkbox]:checked) #nav-menu::before {
+        visibility: visible;
+        opacity: 1;
+    }*/
 }
 
 /* footer */
