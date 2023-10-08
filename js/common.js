@@ -65,6 +65,9 @@ const navMenuLinkUpdate = generateLogo.then((obj) => {
         const links = document.querySelectorAll('a[href^="/#"]');
         const topLinks = document.querySelectorAll('a[href="/#top"]');
 
+        const navHeadElement = document.getElementById('nav-head');
+        const navHeadChkBoxElement = navHeadElement.getElementsByTagName('input')[0];
+
         // Check if the current path is root（rootでのみリンクのページ内スクロール遷移が存在）
         if (location.pathname == '/') {
             // Loop through each link and add a click event listener
@@ -85,6 +88,8 @@ const navMenuLinkUpdate = generateLogo.then((obj) => {
                     // If the nav header is fixed, we need to subtract its height from the distance to scroll
                     console.log(getComputedStyle(navMenuElement).zIndex);
                     const positionToScroll = (targetElement != null ? window.scrollY + targetElement.getBoundingClientRect().top : 0) - (getComputedStyle(navMenuElement).zIndex == 20000 ? navHeaderElement.offsetHeight : 0);
+
+                    navHeadChkBoxElement.checked = false;
 
                     // Scroll smoothly to the target element
                     window.scrollTo({
