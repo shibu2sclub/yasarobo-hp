@@ -459,6 +459,8 @@ label.menu-three-bar-btn > div.caption {
 }
 
 label.menu-three-bar-btn > div.caption > span {
+    display: inline-block;
+    width: 100%;
     position: absolute;
     top: 0;
     left: 0;
