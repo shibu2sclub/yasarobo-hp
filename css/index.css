@@ -255,17 +255,27 @@ header > .detail > div.place::before {
     }
 }
 
-#key-visual-img-slideshow > img {
+#key-visual-img-slideshow > img.show {
+    display: block;
     animation: slideshow-move 7s;
 }
 
-#key-visual-img-slideshow > img.next {
+#key-visual-img-slideshow > img.show.next {
     z-index: 2;
-    animation: slideshow-fadeIn 1s;
+    animation: slideshow-fadeIn 1s ease-in-out;
 }
 
-#key-visual-img-slideshow > img.hide {
+#key-visual-img-slideshow > span {
+    position: absolute;
+    z-index: 3;
+    opacity: 0;
     visibility: collapse;
+    transition: 1s ease-in-out;
+}
+
+#key-visual-img-slideshow > span.show {
+    opacity: 1;
+    visibility: visible;
 }
 
 @media screen and (max-width: 1900px) {
