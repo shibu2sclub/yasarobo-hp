@@ -231,27 +231,27 @@ header > .detail > div.place::before {
     height: 120%;
     object-fit: cover;
     transform: translateX(-50%) translateY(-50%);
-    z-index: 1;
+    z-index: 2;
     visibility: visible;
 }
 
 @keyframes slideshow-move {
     0% {
-        transform: translateX(-55%);
+        transform: translateX(-60%);
     }
     
     100% {
-        transform: translateX(-45%);
+        transform: translateX(-40%);
     }
 }
 
-@keyframes slideshow-fadeIn {
+@keyframes slideshow-fadeOut {
     0% {
-        opacity: 0;
+        opacity: 1;
     }
     
     100% {
-        opacity: 1;
+        opacity: 0;
     }
 }
 
@@ -260,9 +260,9 @@ header > .detail > div.place::before {
     animation: slideshow-move 7s;
 }
 
-#key-visual-img-slideshow > img.show.next {
-    z-index: 2;
-    animation: slideshow-fadeIn 1s ease-in-out;
+#key-visual-img-slideshow > img.show.after {
+    z-index: 1;
+    animation: slideshow-fadeOut 1s ease-in-out;
 }
 
 #key-visual-img-slideshow > span {
