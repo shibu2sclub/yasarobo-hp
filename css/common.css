@@ -352,35 +352,45 @@ a.internal-link, a.external-link {
     font-weight: bold;
     text-decoration: none;
     transition: .25s ease-in-out;
-    display: flex;
-    align-items: center;
+    position: relative;
+    padding-right: 1.2rem;
+    border-bottom: var(--font-color) 1px solid;
 }
 
-a.internal-link::after {
+a.external-link {
+    padding-left: 1.6rem;
+}
+
+a.internal-link::after, a.external-link:after {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    right: 0.3rem;
     content: "";
-    margin-left: 0.3rem;
-    margin-right: 0.5rem;
     width: 0.4rem;
     height: 0.4rem;
     border: calc(0.4rem / 6) solid;
     border-color: var(--font-color) var(--font-color) transparent transparent;
-    transform: rotate(45deg);
+    transform: rotate(45deg) translateX(-35.36%) translateY(-35.36%);
     transition: 0.15s ease-out;
 }
 
 a.internal-link:hover, a.external-link:hover {
     color: var(--theme-color);
+    border-bottom: var(--theme-color) 1px solid;
 }
 
-a.internal-link:hover::after {
-    margin-left: 0.55rem;
-    margin-right: 0.25rem;
+a.internal-link:hover::after, a.external-link:hover::after {
+    right: 0.1rem;
     border-color: var(--theme-color) var(--theme-color) transparent transparent;
 }
 
 a.external-link::before {
     content: "";
-    margin-right: 0.3rem;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 0;
     width: 1.2rem;
     height: 1.2rem;
     background-image: url("/img/link-icon/external-link.svg");
@@ -388,6 +398,7 @@ a.external-link::before {
     background-repeat: no-repeat;
     background-position: 0% 50%;
     background-size: 90%;
+    transform: translateY(-50%);
 }
 
 .logo {
