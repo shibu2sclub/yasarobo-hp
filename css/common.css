@@ -346,12 +346,12 @@ a.btn-simple:hover {
     background-color: var(--theme-color-bright);
 }
 
-a.internal-link {
+a.internal-link, a.external-link {
     display: inline-block;
     color: var(--font-color);
     font-weight: bold;
     text-decoration: none;
-    transition: color .25s ease-in-out;
+    transition: .25s ease-in-out;
     display: flex;
     align-items: center;
 }
@@ -368,7 +368,7 @@ a.internal-link::after {
     transition: 0.15s ease-out;
 }
 
-a.internal-link:hover {
+a.internal-link:hover, a.external-link:hover {
     color: var(--theme-color);
 }
 
@@ -376,6 +376,18 @@ a.internal-link:hover::after {
     margin-left: 0.55rem;
     margin-right: 0.25rem;
     border-color: var(--theme-color) var(--theme-color) transparent transparent;
+}
+
+a.external-link::before {
+    content: "";
+    margin-right: 0.3rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    background-image: url("/img/link-icon/external-link.svg");
+
+    background-repeat: no-repeat;
+    background-position: 0% 50%;
+    background-size: 90%;
 }
 
 .logo {
