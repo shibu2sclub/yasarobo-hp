@@ -1,16 +1,3 @@
-const keyVisualVideoElement = document.getElementById('key-visual-player');
-window.addEventListener('load', videoPlayerSwitch);
-window.addEventListener('resize', videoPlayerSwitch);
-
-function videoPlayerSwitch() {
-    if (keyVisualVideoElement.style.display == "none") {
-        keyVisualVideoElement.setAttribute('src', '');
-    }
-    else {
-        keyVisualVideoElement.setAttribute('src', 'https://www.youtube.com/embed/cW514x4bg20?start=93&si=C_KkbHkAyLTeIPM_&controls=0&autoplay=1&mute=1&loop=1&playlist=cW514x4bg20');
-    }
-}
-
 const keyVisualElement = document.getElementById('key-visual');
 window.addEventListener('load', navHeaderBGColorSwitch);
 window.addEventListener('scroll', navHeaderBGColorSwitch);
@@ -41,7 +28,8 @@ const generateSlideshow = new Promise((resolve, reject) => {
         .then(() => {
             const slideshowImgElementsArray = Array.from(slideshowElement.getElementsByTagName('img'));
             const slideshowCaptionElementsArray = Array.from(slideshowElement.getElementsByTagName('span'));
-            let currentImage = 0;
+            let currentImage = -1;
+
             function changeImg() {
                 currentImage += 1
                 if (currentImage >= slideshowImgElementsArray.length) {
@@ -55,10 +43,11 @@ const generateSlideshow = new Promise((resolve, reject) => {
                 setTimeout(() => {
                     slideshowImgElementsArray[nextImage].classList.add('show');
                     slideshowImgElementsArray[currentImage].classList.add('after');
-                    slideshowCaptionElementsArray[currentImage].classList.add('show');
-                    slideshowCaptionElementsArray[lastImage].classList.remove('show');
+                    slideshowCaptionElementsArray[nextImage].classList.add('show');
+                    slideshowCaptionElementsArray[currentImage].classList.remove('show');
                 }, 6000);
             }
+
             changeImg();    // 初回
             setInterval(() => {
                 changeImg();
@@ -68,4 +57,32 @@ const generateSlideshow = new Promise((resolve, reject) => {
             resolve();
         })
         .catch(error => console.error(error));
+});
+
+function videoPlayerSwitch(e) {
+    const videoViewElement = document.getElementById('key-visual-player');
+    if (videoViewElement.style.display == "none" || videoViewElement.classList.contains('disabled')) {
+        videoViewElement.setAttribute('src', '');
+    }
+    else {
+        videoViewElement.setAttribute('src', this.url);
+    }
+}
+
+const generateVideoView = generateSlideshow.then(() => {
+    return new Promise((resolve, reject) => {
+        const videoViewElement = document.getElementById('key-visual-player');
+        // fetch index-video.json and put the url into the videoViewElement
+        fetch('/data/index-video.json')
+            .then(response => response.json())
+            .then(data => {
+                const url = 'https://www.youtube.com/embed/' + data.id + '?start=' + data.start + '&si=C_KkbHkAyLTeIPM_&controls=0&autoplay=1&mute=1&loop=1&playlist=' + data.id
+                if (data["video-enabled"] == false) videoViewElement.classList.add('disabled');
+
+                window.addEventListener('load', {url: url, handleEvent: videoPlayerSwitch});
+                window.addEventListener('resize', {url: url, handleEvent: videoPlayerSwitch});
+                resolve();
+            })
+            .catch(error => console.error(error));
+    });
 });

@@ -1,7 +1,9 @@
 {
+    "video-enabled": true,
     "id": "cW514x4bg20",
     "center": {
         "x": 50,
         "y": 50
-    }
+    },
+    "start": 93
 }
