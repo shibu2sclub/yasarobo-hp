@@ -41,21 +41,30 @@ const generateSlideshow = new Promise((resolve, reject) => {
         .then(() => {
             const slideshowImgElementsArray = Array.from(slideshowElement.getElementsByTagName('img'));
             const slideshowCaptionElementsArray = Array.from(slideshowElement.getElementsByTagName('span'));
-            let currentImage = 0
-            setInterval(() => {
+            let currentImage = 0;
+            function changeImg() {
                 currentImage += 1
                 if (currentImage >= slideshowImgElementsArray.length) {
                     currentImage = 0
                 }
-                slideshowImgElementsArray[currentImage - 1 >= 0 ? currentImage - 1 : slideshowImgElementsArray.length - 1].classList.remove('show');
-                slideshowImgElementsArray[currentImage].classList.remove('after');
-                slideshowImgElementsArray[currentImage].classList.add('show');
-                setTimeout(6000);
-                slideshowImgElementsArray[currentImage + 1 <= slideshowImgElementsArray.length - 1 ? currentImage + 1 : 0].classList.add('show');
-                slideshowImgElementsArray[currentImage + 1 <= slideshowImgElementsArray.length - 1 ? currentImage + 1 : 0].classList.add('after');
+                lastImage = currentImage - 1 >= 0 ? currentImage - 1 : slideshowImgElementsArray.length - 1;
+                nextImage = currentImage + 1 <= slideshowImgElementsArray.length - 1 ? currentImage + 1 : 0;
+                slideshowImgElementsArray[lastImage].classList.remove('show');
+                slideshowImgElementsArray[lastImage].classList.remove('after');
+                slideshowImgElementsArray[currentImage].classList.add('show');  // 最初のスライド画像用
+                setTimeout(() => {
+                    slideshowImgElementsArray[nextImage].classList.add('show');
+                    slideshowImgElementsArray[currentImage].classList.add('after');
+                    slideshowCaptionElementsArray[currentImage].classList.add('show');
+                    slideshowCaptionElementsArray[lastImage].classList.remove('show');
+                }, 6000);
+            }
+            changeImg();    // 初回
+            setInterval(() => {
+                changeImg();
             }, 7000)
         })
-        .then(data => {
+        .then(() => {
             resolve();
         })
         .catch(error => console.error(error));

@@ -231,46 +231,54 @@ header > .detail > div.place::before {
     height: 120%;
     object-fit: cover;
     transform: translateX(-50%) translateY(-50%);
-    z-index: 2;
-    visibility: visible;
+    z-index: 1;
+    visibility: collapse;
+    opacity: 0;
 }
 
 @keyframes slideshow-move {
     0% {
-        transform: translateX(-60%);
+        transform: translateX(-60%) translateY(-50%);
     }
     
     100% {
-        transform: translateX(-40%);
+        transform: translateX(-42.5%) translateY(-50%);
     }
 }
 
 @keyframes slideshow-fadeOut {
     0% {
         opacity: 1;
+        transform: translateX(-42.5%) translateY(-50%);
     }
     
     100% {
         opacity: 0;
+        transform: translateX(-40%) translateY(-50%);
     }
 }
 
 #key-visual-img-slideshow > img.show {
-    display: block;
-    animation: slideshow-move 7s;
+    visibility: visible;
+    opacity: 1;
+    animation: slideshow-move 7s linear;
 }
 
 #key-visual-img-slideshow > img.show.after {
-    z-index: 1;
+    z-index: 2;
     animation: slideshow-fadeOut 1s ease-in-out;
 }
 
 #key-visual-img-slideshow > span {
     position: absolute;
-    z-index: 3;
+    z-index: 31;
     opacity: 0;
     visibility: collapse;
     transition: 1s ease-in-out;
+    bottom: 0.3rem;
+    right: 0.3rem;
+    color: #fff;
+    letter-spacing: 0.1rem;
 }
 
 #key-visual-img-slideshow > span.show {
