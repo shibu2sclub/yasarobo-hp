@@ -67,13 +67,15 @@ const generateSlideshow = setNavHeaderBGColorSwitcher.then(() => {
     });
 });
 
-function videoPlayerSwitch(e) {
+let youTubeUrl = '';
+
+function videoPlayerSwitch() {
     const videoViewElement = document.getElementById('key-visual-player');
     if (videoViewElement.style.display == "none" || videoViewElement.classList.contains('disabled')) {
         videoViewElement.setAttribute('src', '');
     }
     else {
-        videoViewElement.setAttribute('src', this.url);
+        videoViewElement.setAttribute('src', youTubeUrl);
     }
 }
 
@@ -84,11 +86,12 @@ const generateVideoView = generateSlideshow.then(() => {
         fetch('/data/index-video.json')
             .then(response => response.json())
             .then(data => {
-                const url = 'https://www.youtube.com/embed/' + data.id + '?start=' + data.start + '&si=C_KkbHkAyLTeIPM_&controls=0&autoplay=1&mute=1&loop=1&playlist=' + data.id
+                youTubeUrl = 'https://www.youtube.com/embed/' + data.id + '?start=' + data.start + '&si=C_KkbHkAyLTeIPM_&controls=0&autoplay=1&mute=1&loop=1&playlist=' + data.id
                 if (data["video-enabled"] == false) videoViewElement.classList.add('disabled');
 
-                window.addEventListener('load', {url: url, handleEvent: videoPlayerSwitch});
-                window.addEventListener('resize', {url: url, handleEvent: videoPlayerSwitch});
+                videoPlayerSwitch();
+                // window.addEventListener('load', videoPlayerSwitch);
+                window.addEventListener('resize', videoPlayerSwitch);
                 resolve();
             })
             .catch(error => console.error(error));
