@@ -1,69 +1,74 @@
-const setNavHeaderBGColorSwitcher = new Promise((resolve, reject) => {
-    function navHeaderBGColorSwitch() {
-        if (keyVisualElement.getBoundingClientRect().bottom < 100) {
-            document.getElementById('nav-head').classList.add('scrolled');
+/* common.jsのPromiseから引き続き */
+const setNavHeaderBGColorSwitcher = navBGOverlayUpdate.then(() => {
+    return new Promise((resolve, reject) => {
+        function navHeaderBGColorSwitch() {
+            if (keyVisualElement.getBoundingClientRect().bottom < 100) {
+                document.getElementById('nav-head').classList.add('scrolled');
+            }
+            else {
+                document.getElementById('nav-head').classList.remove('scrolled');
+            }
         }
-        else {
-            document.getElementById('nav-head').classList.remove('scrolled');
-        }
-    }
 
-    const keyVisualElement = document.getElementById('key-visual');
-    window.addEventListener('load', navHeaderBGColorSwitch);
-    window.addEventListener('scroll', navHeaderBGColorSwitch);
-    resolve();
+        const keyVisualElement = document.getElementById('key-visual');
+        window.addEventListener('load', navHeaderBGColorSwitch);
+        window.addEventListener('scroll', navHeaderBGColorSwitch);
+        resolve();
+    });
 });
 
 const slideshowElement = document.getElementById('key-visual-img-slideshow');
-const generateSlideshow = new Promise((resolve, reject) => {
-    fetch('/data/index-slideshow.json')
-        .then(response => response.json())
-        .then(data => {
-            data.forEach(element => {
-                const imgElement = document.createElement('img');
-                imgElement.setAttribute('src', element.img);
-                const captionElement = document.createElement('span');
-                if (element.caption != undefined) captionElement.innerHTML = element.caption;
-                slideshowElement.appendChild(imgElement);
-                slideshowElement.appendChild(captionElement);
-            });
-        })
-        .then(() => {
-            const slideshowImgElementsArray = Array.from(slideshowElement.getElementsByTagName('img'));
-            const slideshowCaptionElementsArray = Array.from(slideshowElement.getElementsByTagName('span'));
-            let currentImage = -1;
+const generateSlideshow = setNavHeaderBGColorSwitcher.then(() => {
+    return new Promise((resolve, reject) => {
+        fetch('/data/index-slideshow.json')
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(element => {
+                    const imgElement = document.createElement('img');
+                    imgElement.setAttribute('src', element.img);
+                    const captionElement = document.createElement('span');
+                    if (element.caption != undefined) captionElement.innerHTML = element.caption;
+                    slideshowElement.appendChild(imgElement);
+                    slideshowElement.appendChild(captionElement);
+                });
+            })
+            .then(() => {
+                const slideshowImgElementsArray = Array.from(slideshowElement.getElementsByTagName('img'));
+                const slideshowCaptionElementsArray = Array.from(slideshowElement.getElementsByTagName('span'));
+                let currentImage = -1;
 
-            function changeImg() {
-                currentImage += 1
-                if (currentImage >= slideshowImgElementsArray.length) {
-                    currentImage = 0
+                function changeImg() {
+                    currentImage += 1
+                    if (currentImage >= slideshowImgElementsArray.length) {
+                        currentImage = 0
+                    }
+                    lastImage = currentImage - 1 >= 0 ? currentImage - 1 : slideshowImgElementsArray.length - 1;
+                    nextImage = currentImage + 1 <= slideshowImgElementsArray.length - 1 ? currentImage + 1 : 0;
+                    slideshowImgElementsArray[lastImage].classList.remove('show');
+                    slideshowImgElementsArray[lastImage].classList.remove('after');
+                    setTimeout(() => {
+                        slideshowImgElementsArray[nextImage].classList.add('show');
+                        slideshowImgElementsArray[currentImage].classList.add('after');
+                        slideshowCaptionElementsArray[nextImage].classList.add('show');
+                        slideshowCaptionElementsArray[currentImage].classList.remove('show');
+                    }, 6000);
                 }
-                lastImage = currentImage - 1 >= 0 ? currentImage - 1 : slideshowImgElementsArray.length - 1;
-                nextImage = currentImage + 1 <= slideshowImgElementsArray.length - 1 ? currentImage + 1 : 0;
-                slideshowImgElementsArray[lastImage].classList.remove('show');
-                slideshowImgElementsArray[lastImage].classList.remove('after');
-                setTimeout(() => {
-                    slideshowImgElementsArray[nextImage].classList.add('show');
-                    slideshowImgElementsArray[currentImage].classList.add('after');
-                    slideshowCaptionElementsArray[nextImage].classList.add('show');
-                    slideshowCaptionElementsArray[currentImage].classList.remove('show');
-                }, 6000);
-            }
 
-            slideshowImgElementsArray[0].classList.add('show');
-            slideshowCaptionElementsArray[0].classList.add('show');
-            setTimeout(() => {
-                currentImage = -1;
-                changeImg();
-                setInterval(() => {
+                slideshowImgElementsArray[0].classList.add('show');
+                slideshowCaptionElementsArray[0].classList.add('show');
+                setTimeout(() => {
+                    currentImage = -1;
                     changeImg();
-                }, 7000)
-            }, 1000);
-        })
-        .then(() => {
-            resolve();
-        })
-        .catch(error => console.error(error));
+                    setInterval(() => {
+                        changeImg();
+                    }, 7000)
+                }, 1000);
+            })
+            .then(() => {
+                resolve();
+            })
+            .catch(error => console.error(error));
+    });
 });
 
 function videoPlayerSwitch(e) {
@@ -96,12 +101,6 @@ const generateVideoView = generateSlideshow.then(() => {
 
 const adjustScrollHeight = generateVideoView.then(() => {
     new Promise((resolve, reject) => {
-        while (document.getElementById("nav-head") == null) {
-            setTimeout(() => {
-                // console.log("waiting for generating elements...");
-            }, 5);
-        }
-        // console.log("generating elements finished");
         const navHeadElement = document.getElementById("nav-head");
         const navMenuElement = document.getElementById("nav-menu");
         if (location.hash != "") {
