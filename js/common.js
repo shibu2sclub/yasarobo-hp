@@ -1,41 +1,49 @@
-const footerElement = document.getElementsByTagName('footer')[0];
+const allWrapperElement = document.getElementById('all-wrapper');
+const containerElement = document.getElementById('container');
+
+const footerElement = document.createElement('footer');
 // Generate the common footer in the "footerElement". The footer html is in /component/footer.html.
 const generateFooter = new Promise ((resolve, reject) => {
     fetch('/component/footer.html')
         .then(response => response.text())
         .then(data => {
             footerElement.innerHTML = data;
+            containerElement.appendChild(footerElement);
         })
-        .then(data => {
+        .then(() => {
             resolve();
         })
         .catch(error => console.error(error));
 });
 
-const navHeadElement = document.getElementById('nav-head');
+const navHeadElement = document.createElement('nav');
 const generateNavHead = generateFooter.then((obj) => {
     return new Promise ((resolve, reject) => {
+        navHeadElement.setAttribute('id', 'nav-head');
         fetch('/component/nav-head.html')
             .then(response => response.text())
             .then(data => {
                 navHeadElement.innerHTML = data;
+                allWrapperElement.insertBefore(navHeadElement, containerElement);
             })
-            .then(data => {
+            .then(() => {
                 resolve();
             })
             .catch(error => console.error(error));
     });
 });
 
-const navMenuElement = document.getElementById('nav-menu');
+const navMenuElement = document.createElement('nav');
 const generateNavMenu = generateNavHead.then((obj) => {
     return new Promise ((resolve, reject) => {
+        navMenuElement.setAttribute('id', 'nav-menu');
         fetch('/component/nav-menu.html')
             .then(response => response.text())
             .then(data => {
                 navMenuElement.innerHTML = data;
+                allWrapperElement.insertBefore(navMenuElement, containerElement);
             })
-            .then(data => {
+            .then(() => {
                 resolve();
             })
             .catch(error => console.error(error));
@@ -52,7 +60,7 @@ const generateLogo = generateNavMenu.then((obj) => {
                     logoElement.innerHTML = data;
                 })
             })
-            .then(data => {
+            .then(() => {
                 resolve();
             })
             .catch(error => console.error(error));
