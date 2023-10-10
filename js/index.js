@@ -1,15 +1,18 @@
-const keyVisualElement = document.getElementById('key-visual');
-window.addEventListener('load', navHeaderBGColorSwitch);
-window.addEventListener('scroll', navHeaderBGColorSwitch);
+const setNavHeaderBGColorSwitcher = new Promise((resolve, reject) => {
+    function navHeaderBGColorSwitch() {
+        if (keyVisualElement.getBoundingClientRect().bottom < 100) {
+            document.getElementById('nav-head').classList.add('scrolled');
+        }
+        else {
+            document.getElementById('nav-head').classList.remove('scrolled');
+        }
+    }
 
-function navHeaderBGColorSwitch() {
-    if (keyVisualElement.getBoundingClientRect().bottom < 100) {
-        document.getElementById('nav-head').classList.add('scrolled');
-    }
-    else {
-        document.getElementById('nav-head').classList.remove('scrolled');
-    }
-}
+    const keyVisualElement = document.getElementById('key-visual');
+    window.addEventListener('load', navHeaderBGColorSwitch);
+    window.addEventListener('scroll', navHeaderBGColorSwitch);
+    resolve();
+});
 
 const slideshowElement = document.getElementById('key-visual-img-slideshow');
 const generateSlideshow = new Promise((resolve, reject) => {
@@ -84,5 +87,29 @@ const generateVideoView = generateSlideshow.then(() => {
                 resolve();
             })
             .catch(error => console.error(error));
+    });
+});
+
+const adjustScrollHeight = generateVideoView.then(() => {
+    new Promise((resolve, reject) => {
+        while (document.getElementById("nav-head") == null) {
+            setTimeout(() => {
+                // console.log("waiting for generating elements...");
+            }, 5);
+        }
+        // console.log("generating elements finished");
+        const navHeadElement = document.getElementById("nav-head");
+        const navMenuElement = document.getElementById("nav-menu");
+        if (location.hash != "") {
+            if (getComputedStyle(navMenuElement).zIndex == 20000) {
+                // console.log("scrolling to the target element");
+                window.scrollBy({
+                    top: -navHeadElement.offsetHeight,
+                    behavior: "instant"
+                })
+            }
+            history.replaceState('','','/');
+        }
+        resolve();
     });
 });
