@@ -23,7 +23,7 @@ const generateSlideshow = new Promise((resolve, reject) => {
                 const imgElement = document.createElement('img');
                 imgElement.setAttribute('src', element.img);
                 const captionElement = document.createElement('span');
-                captionElement.innerHTML = element.caption;
+                if (element.caption != undefined) captionElement.innerHTML = element.caption;
                 slideshowElement.appendChild(imgElement);
                 slideshowElement.appendChild(captionElement);
             });
