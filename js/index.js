@@ -42,7 +42,6 @@ const generateSlideshow = new Promise((resolve, reject) => {
                 nextImage = currentImage + 1 <= slideshowImgElementsArray.length - 1 ? currentImage + 1 : 0;
                 slideshowImgElementsArray[lastImage].classList.remove('show');
                 slideshowImgElementsArray[lastImage].classList.remove('after');
-                slideshowImgElementsArray[currentImage].classList.add('show');  // 最初のスライド画像用
                 setTimeout(() => {
                     slideshowImgElementsArray[nextImage].classList.add('show');
                     slideshowImgElementsArray[currentImage].classList.add('after');
@@ -51,10 +50,15 @@ const generateSlideshow = new Promise((resolve, reject) => {
                 }, 6000);
             }
 
-            changeImg();    // 初回
-            setInterval(() => {
+            slideshowImgElementsArray[0].classList.add('show');
+            slideshowCaptionElementsArray[0].classList.add('show');
+            setTimeout(() => {
+                currentImage = -1;
                 changeImg();
-            }, 7000)
+                setInterval(() => {
+                    changeImg();
+                }, 7000)
+            }, 1000);
         })
         .then(() => {
             resolve();
