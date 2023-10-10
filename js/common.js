@@ -50,7 +50,16 @@ const generateNavMenu = generateNavHead.then((obj) => {
     });
 });
 
-const generateLogo = generateNavMenu.then((obj) => {
+const navBGOverlayElement = document.createElement('div');
+const generateNavBGOverlay = generateNavMenu.then((obj) => {
+    return new Promise ((resolve, reject) => {
+        navBGOverlayElement.setAttribute('id', 'nav-bg-overlay');
+        allWrapperElement.insertBefore(navBGOverlayElement, containerElement);
+        resolve();
+    });
+});
+
+const generateLogo = generateNavBGOverlay.then((obj) => {
     return new Promise ((resolve, reject) => {
         fetch('/component/logo.html')
             .then(response => response.text())
@@ -69,12 +78,10 @@ const generateLogo = generateNavMenu.then((obj) => {
 
 const navMenuLinkUpdate = generateLogo.then((obj) => {
     return new Promise ((resolve, reject) => {
+        const navHeadChkBoxElement = navHeadElement.getElementsByTagName('input')[0];
         // Select all links with hashes
         const links = document.querySelectorAll('a[href^="/#"]');
         const topLinks = document.querySelectorAll('a[href="/#top"]');
-
-        const navHeadElement = document.getElementById('nav-head');
-        const navHeadChkBoxElement = navHeadElement.getElementsByTagName('input')[0];
 
         // Check if the current path is root（rootでのみリンクのページ内スクロール遷移が存在）
         if (location.pathname == '/') {
@@ -112,6 +119,16 @@ const navMenuLinkUpdate = generateLogo.then((obj) => {
                 link.setAttribute('href', '/');
             });
         }
+        resolve();
+    });
+});
+
+const navBGOverlayUpdate = navMenuLinkUpdate.then((obj) => {
+    return new Promise ((resolve, reject) => {
+        const navHeadChkBoxElement = navHeadElement.getElementsByTagName('input')[0];
+        navBGOverlayElement.addEventListener('click', function(e) {
+            navHeadChkBoxElement.checked = false;
+        });
         resolve();
     });
 });
