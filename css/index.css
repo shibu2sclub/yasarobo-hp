@@ -242,17 +242,10 @@ header > .detail > div.place::before {
 
 @keyframes slideshow-move {
     0% {
-        opacity: 1;
         transform: translateX(-55%) translateY(-50%);
-    }
-    
-    87.5% {
-        opacity: 1;
-        transform: translateX(-46.25%) translateY(-50%);
     }
 
     100% {
-        opacity: 0;
         transform: translateX(-45%) translateY(-50%);
     }
 }
@@ -261,10 +254,12 @@ header > .detail > div.place::before {
     visibility: visible;
     opacity: 1;
     animation: slideshow-move 8s linear;
+    transition: opacity 1s ease-in-out;
 }
 
 #key-visual-img-slideshow > img.show.after {
     z-index: 2;
+    opacity: 0;
 }
 
 #key-visual-img-slideshow > span {

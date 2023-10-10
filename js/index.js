@@ -46,6 +46,7 @@ const generateSlideshow = setNavHeaderBGColorSwitcher.then(() => {
                     nextImage = currentImage + 1 <= slideshowImgElementsArray.length - 1 ? currentImage + 1 : 0;
                     slideshowImgElementsArray[lastImage].classList.remove('show');
                     slideshowImgElementsArray[lastImage].classList.remove('after');
+                    slideshowImgElementsArray[currentImage].classList.add('show');  // 初回の画像表示用
                     setTimeout(() => {
                         slideshowImgElementsArray[nextImage].classList.add('show');
                         slideshowImgElementsArray[currentImage].classList.add('after');
@@ -54,15 +55,10 @@ const generateSlideshow = setNavHeaderBGColorSwitcher.then(() => {
                     }, 6000);
                 }
 
-                slideshowImgElementsArray[0].classList.add('show');
-                slideshowCaptionElementsArray[0].classList.add('show');
-                setTimeout(() => {
-                    currentImage = -1;
+                changeImg();
+                setInterval(() => {
                     changeImg();
-                    setInterval(() => {
-                        changeImg();
-                    }, 7000)
-                }, 1000);
+                }, 7000)
             })
             .then(() => {
                 resolve();
