@@ -101,7 +101,7 @@ const navMenuLinkUpdate = generateLogo.then((obj) => {
 
                     // Calculate the distance to scroll
                     // If the nav header is fixed, we need to subtract its height from the distance to scroll
-                    console.log(getComputedStyle(navMenuElement).zIndex);
+                    // console.log(getComputedStyle(navMenuElement).zIndex);
                     const positionToScroll = (targetElement != null ? window.scrollY + targetElement.getBoundingClientRect().top : 0) - (getComputedStyle(navMenuElement).zIndex == 20000 ? navHeaderElement.offsetHeight : 0);
 
                     navHeadChkBoxElement.checked = false;
