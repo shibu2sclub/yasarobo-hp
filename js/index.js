@@ -72,10 +72,10 @@ let youTubeUrl = '';
 function videoPlayerSwitch() {
     const videoViewElement = document.getElementById('key-visual-player');
     if (videoViewElement.style.display == "none" || videoViewElement.classList.contains('disabled')) {
-        videoViewElement.setAttribute('src', '');
+        if (videoViewElement.getAttribute('src') != '') videoViewElement.setAttribute('src', '');
     }
     else {
-        videoViewElement.setAttribute('src', youTubeUrl);
+        if (videoViewElement.getAttribute('src') == '') videoViewElement.setAttribute('src', youTubeUrl);
     }
 }
 
