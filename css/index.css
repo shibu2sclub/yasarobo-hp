@@ -389,12 +389,15 @@ h1 {
 
 h1 > span {
     display: inline-block;
+    font-size: 1.7rem;
+    line-height: 2.2rem;
 }
 
 h1 > span:nth-child(2) {
     font-family: 'Roboto', sans-serif;
     font-weight: 900;
     font-size: 1.2rem;
+    line-height: 1.3rem;
     position: relative;
     display: flex;
     justify-content: center;
