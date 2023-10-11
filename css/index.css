@@ -242,11 +242,11 @@ header > .detail > div.place::before {
 
 @keyframes slideshow-move {
     0% {
-        transform: translateX(-55%) translateY(-50%);
+        transform: translateX(-50%) translateX(-1.5rem) translateY(-50%);
     }
 
     100% {
-        transform: translateX(-45%) translateY(-50%);
+        transform: translateX(-50%) translateX(1.5rem) translateY(-50%);
     }
 }
 
