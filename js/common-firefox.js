@@ -13,30 +13,42 @@ function isFirefox() {
 const navMenuSupportFireFox = navBGOverlayUpdate.then((obj) => {
     return new Promise ((resolve, reject) => {
         if (isFirefox()) {
-            // load common-firefox.css
-            const linkElement = document.createElement('link');
-            linkElement.setAttribute('rel', 'stylesheet');
-            linkElement.setAttribute('href', '/css/common-firefox.css');
-            document.head.appendChild(linkElement);
-
+            console.log("Firefox detected.")
             // nav-menu関連のクラス全てでチェックボックス変化で動作、チェックありでクラス追加
             const navHeadChkBoxElement = navHeadElement.getElementsByTagName('input')[0];
-            const navMenuElement = document.getElementById('nav-menu');
-            const navBGOverlayElement = document.getElementById('nav-bg-overlay');
-            const navHeadElement = document.getElementById('nav-head');
-            
+
             navHeadChkBoxElement.addEventListener('change', () => {
                 if (navHeadChkBoxElement.checked) {
-                    navMenuElement.classList.add('open');
-                    navBGOverlayElement.classList.add('open');
-                    navHeadElement.classList.add('open');
+                    navMenuElement.classList.add('open-firefox');
+                    navBGOverlayElement.classList.add('open-firefox');
+                    navHeadElement.classList.add('open-firefox');
                 }
                 else {
-                    navMenuElement.classList.remove('open');
-                    navBGOverlayElement.classList.remove('open');
-                    navHeadElement.classList.remove('open');
+                    navMenuElement.classList.remove('open-firefox');
+                    navBGOverlayElement.classList.remove('open-firefox');
+                    navHeadElement.classList.remove('open-firefox');
                 }
             });
+
+            navBGOverlayElement.addEventListener('click', () => {
+                navHeadChkBoxElement.checked = false;
+                navMenuElement.classList.remove('open-firefox');
+                navBGOverlayElement.classList.remove('open-firefox');
+                navHeadElement.classList.remove('open-firefox');
+            });
+
+            const links = document.querySelectorAll('a[href^="/#"]');
+            if (location.pathname == '/') {
+                Array.from(links).forEach(element => {
+                    element.addEventListener('click', () => {
+                        navHeadChkBoxElement.checked = false;
+                        console.log("test")
+                        navMenuElement.classList.remove('open-firefox');
+                        navBGOverlayElement.classList.remove('open-firefox');
+                        navHeadElement.classList.remove('open-firefox');
+                    });
+                });
+            }
 
             resolve();
         }
