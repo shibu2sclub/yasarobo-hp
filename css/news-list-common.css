@@ -28,7 +28,7 @@
     text-decoration: none;
 }
 
-.news-item:not(:has(a)), .news-item > a {
+.news-item, .news-item > a {
     display: flex;
     align-items: center;
 }
@@ -68,7 +68,7 @@
     justify-content: space-between;
 }
 
-#news-list > .news-item:has(a) > a .title::after {
+#news-list > .news-item > a .title::after {
     content: "";
     margin-right: 0.25rem;
     width: 0.4rem;
@@ -80,7 +80,7 @@
     opacity: 1;
 }
 
-#news-list > .news-item:has(a):hover > a .title::after {
+#news-list > .news-item:hover > a .title::after {
     opacity: 0;
     margin-right: 0;
 }
