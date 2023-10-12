@@ -1,6 +1,7 @@
 :root {
     --header-height: 8rem;
     --news-height: 21rem;
+    --key-visual-height: calc(100vh - var(--header-height) - var(--news-height));
     --key-visual-height: calc(100svh - var(--header-height) - var(--news-height));
 
     --content-even-bg-color: #F5F5F5;
