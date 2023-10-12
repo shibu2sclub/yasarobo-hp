@@ -49,6 +49,12 @@ html {
     }
 }
 
+@media screen and (max-width: 374px) {
+    html {
+        font-size: 3.5vw;
+    }
+}
+
 body {
     background-color: var(--bg-color);
     font-family: "Yu Gothic", "游ゴシック", "YuGothic", "游ゴシック体", "ヒラギノ角ゴ Pro W3", 'Noto Sans JP', "メイリオ", sans-serif;
