@@ -51,7 +51,7 @@ html {
 
 body {
     background-color: var(--bg-color);
-    font-family: "Yu Gothic", "游ゴシック", "YuGothic", "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+    font-family: "Yu Gothic", "游ゴシック", "YuGothic", "游ゴシック体", "ヒラギノ角ゴ Pro W3", 'Noto Sans JP', "メイリオ", sans-serif;
     color: var(--font-color);
     margin: 0;
     padding: 0;
