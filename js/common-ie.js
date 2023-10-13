@@ -7,9 +7,11 @@
 // Return: true or false
 
 function isIE() {
+    console.log(navigator.userAgent);
     return navigator.userAgent.indexOf("MSIE") > 0;
 }
 
 if (isIE()) {
+    console.log("IE is not supported.");
     location.href = "/not-supported/";
 }
