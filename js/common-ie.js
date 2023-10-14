@@ -11,5 +11,6 @@ function isIE() {
 }
 
 if (isIE()) {
+    console.log("IE is not supported.");
     location.href = "/not-supported/";
 }
