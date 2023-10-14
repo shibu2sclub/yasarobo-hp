@@ -6,13 +6,9 @@
 // Judge the browser is firefox or not.
 // Return: true or false
 
-function isFirefox() {
-    return navigator.userAgent.indexOf("Firefox") > 0;
-}
-
 const navMenuSupportFireFox = navBGOverlayUpdate.then((obj) => {
     return new Promise ((resolve, reject) => {
-        if (isFirefox()) {
+        if (judgeBrowser() == "Firefox") {
             console.log("Firefox detected.")
             // nav-menu関連のクラス全てでチェックボックス変化で動作、チェックありでクラス追加
             const navHeadChkBoxElement = navHeadElement.getElementsByTagName('input')[0];
