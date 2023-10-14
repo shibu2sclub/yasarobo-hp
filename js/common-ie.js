@@ -7,7 +7,7 @@
 // Return: true or false
 
 function isIE() {
-    return navigator.userAgent.indexOf("MSIE") > 0;
+    return (navigator.userAgent.indexOf("MSIE") > 0 || ua.indexOf("Trident") > 0);
 }
 
 if (isIE()) {
