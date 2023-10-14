@@ -7,7 +7,6 @@
 // Return: true or false
 
 function isIE() {
-    console.log(navigator.userAgent);
     return navigator.userAgent.indexOf("MSIE") > 0;
 }
 
