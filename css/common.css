@@ -134,7 +134,6 @@ nav {
     background-color: var(--nav-bar-btn-bg-color);
     border-bottom: 2px solid var(--nav-bar-bg-color);
     line-height: var(--nav-menu-btn-height);
-    padding-left: 3rem;
     transition: background-color .25s ease-in-out;
 }
 
@@ -142,6 +141,42 @@ nav {
     color: #fff;
     text-decoration: none;
     display: block;
+    padding-left: 4rem;
+    position: relative;
+}
+
+#nav-menu > ul > li > a::before {
+    position: absolute;
+    top: 50%;
+    left: 1.5rem;
+    content: "";
+    width: 1.5rem;
+    height: 1.5rem;
+    background-repeat: no-repeat;
+    background-position: 0% 50%;
+    background-size: 90%;
+    transform: translateY(-50%);
+    filter: brightness(10);
+}
+
+#nav-menu > ul > li > a.about::before {
+    background-image: url("/img/index-h1-icon/about.svg");
+}
+
+#nav-menu > ul > li > a.detail::before {
+    background-image: url("/img/index-h1-icon/detail.svg");
+}
+
+#nav-menu > ul > li > a.application::before {
+    background-image: url("/img/index-h1-icon/application.svg");
+}
+
+#nav-menu > ul > li > a.access::before {
+    background-image: url("/img/index-h1-icon/access.svg");
+}
+
+#nav-menu > ul > li > a.external::before {
+    background-image: url("/img/link-icon/external-link.svg");
 }
 
 #nav-menu > ul > li:hover {
