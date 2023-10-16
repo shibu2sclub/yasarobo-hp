@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700;900&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="/css/common.css?date=202310141259">
+    <link rel="stylesheet" href="/css/common.css?date=202310141324">
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GRK3HK0DWZ"></script>
@@ -33,13 +33,16 @@
                 <div id = "not-supported">
                     <h1>対応ブラウザについて</h1>
                     <div class = "bg-h1">System Requirements</div>
-                    <p style = "font-weight: bold;">お使いのブラウザは、当ホームページではサポートしておりません。</p>
+                    <p id = "description" style = "font-weight: bold;">お使いのブラウザは、当ホームページではサポートしておりません。</p>
                     <p>やさしいロボコンの公式ホームページは、以下のブラウザでの閲覧を推奨しています。</p>
                     <ul>
                         <li>Google Chrome</li>
                         <li>Microsoft Edge</li>
-                        <!--<li>Mozilla Firefox</li>-->
                         <li>Apple Safari</li>
+                    </ul>
+                    <p>また、以下のブラウザでも、一部表示に差異が生じる可能性はありますが動作を確認しております。</p>
+                    <ul>
+                        <li>Mozilla Firefox</li>
                     </ul>
                     <p>上記のブラウザ以外では、コンテンツが正しく表示されない場合があります。</p>
                     <p>Internet Explorerにつきましては、Microsoft社のサポート終了を鑑みて、当ホームページでは対応しておりません。また、今後も対応の予定はございません。</p>
@@ -49,11 +52,9 @@
             </div>
         </div>
     </div>
-    <script src="/js/common.js?date=202310141259"></script>
-    <script src="/js/common-firefox.js?date=202310141259"></script>
+    <script src="/js/judgeBrowser.js"></script>
+    <script src="/js/common.js?date=202310141324"></script>
+    <script src="/js/common-firefox.js?date=202310141324"></script>
     <script src="https://unpkg.com/budoux/bundle/budoux-ja.min.js"></script>
-    <script>
-        console.log(navigator.userAgent);
-    </script>
 </body>
 </html>

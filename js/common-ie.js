@@ -6,11 +6,7 @@
 // Judge the browser is IE or not.
 // Return: true or false
 
-function isIE() {
-    return (navigator.userAgent.indexOf("MSIE") > 0 || userAgent.indexOf("Trident") > 0);
-}
-
-if (isIE()) {
+if (judgeBrowser() == "IE") {
     console.log("IE is not supported.");
     location.href = "/not-supported/";
 }
