@@ -9,7 +9,7 @@ function getParam(name, url) {
 }
 
 // First, let's fetch the news data from the JSON file
-fetch('/data/news-tag-setting.json')
+fetch('/data/news-label-setting.json')
     .then(response => response.json())
     .then(labelSettingData => {
         fetch('/data/news.json')
