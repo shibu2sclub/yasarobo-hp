@@ -126,7 +126,55 @@ const headerDataRewrite = generateVideoView.then(() => {
     });
 });
 
-const generateAccess = headerDataRewrite.then(() => {
+const generateDetail = headerDataRewrite.then(() => {
+    return new Promise((resolve, reject) => {
+        const detailElement = document.getElementById('detail');
+        fetch(`/data/${siteYear}/information.json`)
+            .then(response => response.json())
+            .then(infoData => {
+                const date = infoData.date.split('.');
+                const dateObj = new Date(date[0], date[1] - 1, date[2]);
+
+                detailElement.getElementsByClassName("time")[0].innerHTML = `${dateObj.getFullYear()}年${dateObj.getMonth() + 1}月${dateObj.getDate()}日（${'日月火水木金土'[dateObj.getDay()]}）<br>${infoData.time}`;
+
+                const timeDetailElement = detailElement.getElementsByClassName("time-detail")[0];
+                if (infoData.timeDetail == undefined) {
+                    timeDetailElement.style.display = "none";
+                }
+                else {
+                    timeDetailElement.innerHTML = `<budoux-ja>${infoData.timeDetail}</budoux-ja>`;
+                }
+
+                detailElement.getElementsByClassName("place")[0].innerHTML = `${infoData.place.name}<br>${infoData.place.name2}`;
+
+                const organizerList = detailElement.getElementsByClassName("organizer-list")[0];
+                infoData.organizer.forEach(element => {
+                    const organizerItem = document.createElement('li');
+                    const organizerLink = document.createElement('a');
+
+                    if (element.link != undefined) {
+                        organizerLink.innerText = element.name;
+                        organizerLink.setAttribute('href', element.link);
+                        organizerLink.classList.add('external-link');
+                        organizerItem.appendChild(organizerLink);
+                    }
+                    else {
+                        organizerItem.innerText = element.name;
+                    }
+                    organizerList.appendChild(organizerItem);
+                });
+
+                const inquiryElement = detailElement.getElementsByClassName("inquiry")[0];
+                inquiryElement.innerHTML = `${infoData.inquiry.name}<br><a href = "${infoData.inquiry.link}" class="external-link">${infoData.inquiry.linkName}</a>`;
+            })
+            .then(() => {
+                resolve();
+            })
+            .catch(error => console.error(error));
+    });
+});
+
+const generateAccess = generateDetail.then(() => {
     return new Promise((resolve, reject) => {
         // fetch access.html and insert it into the DOM "#access-wrapper"
         const accessWrapperElement = document.getElementById('access-wrapper');
