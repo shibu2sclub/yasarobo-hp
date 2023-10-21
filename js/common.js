@@ -58,6 +58,16 @@ const generateNavMenu = generateNavHead.then((obj) => {
             .then(data => {
                 navMenuElement.innerHTML = data;
                 allWrapperElement.insertBefore(navMenuElement, containerElement);
+                // fetch common.json
+                fetch('/data/common.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        const recordBtnElement = document.getElementById('record');
+                        if (!data.showRecord) {
+                            recordBtnElement.style.display = 'none';
+                        }
+                    })
+                    .catch(error => console.error(error));
             })
             .then(() => {
                 resolve();

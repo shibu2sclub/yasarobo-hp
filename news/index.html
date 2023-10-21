@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="/css/common.css?date=202310211440">
     <link rel="stylesheet" href="/css/news-list-common.css?date=202310211440">
     <link rel="stylesheet" href="/css/news-list.css?date=202310211440">
+    <link rel="stylesheet" href="/css/topic-path-load-year.css?date=202310211440">
 
     
 
@@ -50,11 +51,16 @@
         <div id = "container">
             <div id = "content">
                 <div id = "news">
-                    <h1>お知らせ一覧</h1>
+                    <h1><span>お知らせ</span><span>News</span></h1>
                     <div class = "bg-h1">News</div>
-                    <ul class = "topic-path">
+                    <ul class = "topic-path latest-contest">
                         <li><a href = "/">トップ</a></li>
-                        <li><a href = "/news/">お知らせ一覧</a></li>
+                        <li><a href = "/news/">お知らせ</a></li>
+                    </ul>
+                    <ul class = "topic-path past-contests">
+                        <li><a href = "/">トップ</a></li>
+                        <li><a href = "/past">過去大会情報</a></li>
+                        <li><a href = "/news/?y=2023" class = "linksAffectYear">お知らせ</a></li>
                     </ul>
                     <div class = "article">
                         <div id = "news-list" start = "0" end = "9"></div>
@@ -63,12 +69,14 @@
             </div>
         </div>
     </div>
-    <script src="/js/judgeBrowser.js"></script>
+    <script src="/js/judgeBrowser.js?date=202310211440"></script>
+    <script src="/js/get-param.js?date=202310211440"></script>
     <script src="/js/common.js?date=202310211440"></script>
     <script src="/js/common-ie.js?date=202310211440"></script>
     <script src="/js/common-firefox.js?date=202310211440"></script>
     <script src="/js/news-common.js?date=202310211440"></script>
     <script src="/js/news-list.js?date=202310211440"></script>
+    <script src="/js/topic-path-load-year.js?date=202310211440"></script>
     <script src="https://unpkg.com/budoux/bundle/budoux-ja.min.js"></script>
 </body>
 </html>

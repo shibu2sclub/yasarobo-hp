@@ -576,6 +576,62 @@ h1 {
     font-size: 1.7rem;
     margin: 0;
     padding: 2rem 0;
+
+    display: flex;
+    flex-direction: column;
+}
+
+h1 > span {
+    display: inline-block;
+    font-size: 1.7rem;
+    line-height: 2.2rem;
+}
+
+h1 > span:nth-child(2) {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    font-size: 1.2rem;
+    line-height: 1.3rem;
+    position: relative;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+h1 > span:nth-child(2)::before {
+    content: "";
+    display: block;
+    width: 1.4rem;
+    height: 1.4rem;
+    margin-right: 0.5rem;
+    background-position: 50% 50%;
+    background-size: 90% 90%;
+    background-repeat: no-repeat;
+}
+
+h1 > span:nth-child(2):first-letter {
+    color: var(--theme-color);
+    font-size: 1.5rem;
+}
+
+#news h1 > span:nth-child(2)::before {
+    background-image: url(/img/index-h1-icon/news.svg);
+}
+
+#about h1 > span:nth-child(2)::before {
+    background-image: url(/img/index-h1-icon/about.svg);
+}
+
+#detail h1 > span:nth-child(2)::before {
+    background-image: url(/img/index-h1-icon/detail.svg);
+}
+
+#application h1 > span:nth-child(2)::before {
+    background-image: url(/img/index-h1-icon/application.svg);
+}
+
+#access h1 > span:nth-child(2)::before {
+    background-image: url(/img/index-h1-icon/access.svg);
 }
 
 h2 {

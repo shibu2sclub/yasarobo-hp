@@ -1,4 +1,7 @@
 {
     "year": 2023,
-    "showResult": false
+    "showRecord": false,
+    "pastYears": [
+        2023
+    ]
 }
