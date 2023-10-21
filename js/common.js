@@ -2,18 +2,34 @@ const allWrapperElement = document.getElementById('all-wrapper');
 const containerElement = document.getElementById('container');
 
 const footerElement = document.createElement('footer');
-// Generate the common footer in the "footerElement". The footer html is in /component/footer.html.
-const generateFooter = new Promise ((resolve, reject) => {
-    fetch('/component/footer.html')
-        .then(response => response.text())
+
+let siteYear = '';
+
+const loadSiteYear = new Promise ((resolve, reject) => {
+    fetch('/data/common.json')
+        .then(response => response.json())
         .then(data => {
-            footerElement.innerHTML = data;
-            containerElement.appendChild(footerElement);
+            siteYear = data.year;
         })
         .then(() => {
             resolve();
-        })
-        .catch(error => console.error(error));
+        });
+});
+
+// Generate the common footer in the "footerElement". The footer html is in /component/footer.html.
+const generateFooter = loadSiteYear.then((obj) => {
+    return new Promise ((resolve, reject) => {
+        fetch('/component/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                footerElement.innerHTML = data;
+                containerElement.appendChild(footerElement);
+            })
+            .then(() => {
+                resolve();
+            })
+            .catch(error => console.error(error));
+    });
 });
 
 const navHeadElement = document.createElement('nav');
