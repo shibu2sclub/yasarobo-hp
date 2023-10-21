@@ -98,8 +98,135 @@ const generateVideoView = generateSlideshow.then(() => {
     });
 });
 
-const adjustScrollHeight = generateVideoView.then(() => {
-    new Promise((resolve, reject) => {
+const headerDataRewrite = generateVideoView.then(() => {
+    return new Promise((resolve, reject) => {
+        fetch(`/data/${siteYear}/information.json`)
+            .then(response => response.json())
+            .then(infoData => {
+                const date = infoData.date.split('.');
+                const dateObj = new Date(date[0], date[1] - 1, date[2]);
+                const headerElement = document.getElementsByTagName('header')[0];
+
+                const titleYear = headerElement.getElementsByClassName('title')[0].getElementsByClassName('upper')[0].getElementsByClassName('year')[0];
+                titleYear.innerHTML = siteYear;
+
+                const dateElement = headerElement.getElementsByClassName('date')[0];
+                dateElement.getElementsByClassName('month')[0].innerHTML = dateObj.getMonth() + 1;
+                dateElement.getElementsByClassName('day')[0].innerHTML = dateObj.getDate();
+                dateElement.getElementsByClassName('weekday')[0].innerHTML = '日月火水木金土'[dateObj.getDay()];
+
+                const detailElement = headerElement.getElementsByClassName('detail')[0];
+                detailElement.getElementsByClassName('time')[0].innerHTML = infoData.time;
+                detailElement.getElementsByClassName('place')[0].innerHTML = infoData.place.name;
+            })
+            .then(() => {
+                resolve();
+            })
+            .catch(error => console.error(error));
+    });
+});
+
+const generateDetail = headerDataRewrite.then(() => {
+    return new Promise((resolve, reject) => {
+        const detailElement = document.getElementById('detail');
+        fetch(`/data/${siteYear}/information.json`)
+            .then(response => response.json())
+            .then(infoData => {
+                const date = infoData.date.split('.');
+                const dateObj = new Date(date[0], date[1] - 1, date[2]);
+
+                detailElement.getElementsByClassName("time")[0].innerHTML = `${dateObj.getFullYear()}年${dateObj.getMonth() + 1}月${dateObj.getDate()}日（${'日月火水木金土'[dateObj.getDay()]}）<br>${infoData.time}`;
+
+                const timeDetailElement = detailElement.getElementsByClassName("time-detail")[0];
+                if (infoData.timeDetail == undefined) {
+                    timeDetailElement.style.display = "none";
+                }
+                else {
+                    timeDetailElement.innerHTML = `<budoux-ja>${infoData.timeDetail}</budoux-ja>`;
+                }
+
+                detailElement.getElementsByClassName("place")[0].innerHTML = `${infoData.place.name}<br>${infoData.place.name2}`;
+
+                const organizerList = detailElement.getElementsByClassName("organizer-list")[0];
+                infoData.organizer.forEach(element => {
+                    const organizerItem = document.createElement('li');
+                    const organizerLink = document.createElement('a');
+
+                    if (element.link != undefined) {
+                        organizerLink.innerText = element.name;
+                        organizerLink.setAttribute('href', element.link);
+                        organizerLink.classList.add('external-link');
+                        organizerItem.appendChild(organizerLink);
+                    }
+                    else {
+                        organizerItem.innerText = element.name;
+                    }
+                    organizerList.appendChild(organizerItem);
+                });
+
+                const inquiryElement = detailElement.getElementsByClassName("inquiry")[0];
+                inquiryElement.innerHTML = `${infoData.inquiry.name}<br><a href = "${infoData.inquiry.link}" class="external-link">${infoData.inquiry.linkName}</a>`;
+            })
+            .then(() => {
+                resolve();
+            })
+            .catch(error => console.error(error));
+    });
+});
+
+const generateAccess = generateDetail.then(() => {
+    return new Promise((resolve, reject) => {
+        // fetch access.html and insert it into the DOM "#access-wrapper"
+        const accessWrapperElement = document.getElementById('access-wrapper');
+        fetch(`/data/${siteYear}/information.json`)
+            .then(response => response.json())
+            .then(infoData => {
+                fetch('/component/access.html')
+                .then(response => response.text())
+                .then(accessHTML => {
+                    accessWrapperElement.innerHTML = accessHTML;
+
+                    const textContainer = accessWrapperElement.getElementsByClassName('text-container')[0];
+                    textContainer.innerHTML = '';
+
+                    const placeName = document.createElement('div');
+                    placeName.classList.add('place');
+                    placeName.innerHTML = `${infoData.place.name}<br>${infoData.place.name2}`;
+                    textContainer.appendChild(placeName);
+
+                    const placeAddress = document.createElement('p');
+                    placeAddress.classList.add('address');
+                    placeAddress.innerHTML = `〒${infoData.place.postCode}<br>${infoData.place.address}`;
+                    textContainer.appendChild(placeAddress);
+
+                    infoData.place.transportation.forEach(element => {
+                        const transportation = document.createElement('p');
+                        transportation.classList.add('station');
+
+                        const place = document.createElement('span');
+                        place.innerText = element.place;
+                        transportation.appendChild(place);
+
+                        element.detail.forEach(detail => {
+                            transportation.innerHTML += `<br>${detail}`;
+                        });
+                        textContainer.appendChild(transportation);
+                    });
+
+                    const mapContainer = accessWrapperElement.getElementsByClassName('map-container')[0];
+                    const mapFrame = mapContainer.getElementsByTagName('iframe')[0];
+                    mapFrame.setAttribute('src', infoData.place.googleMap);
+                })
+                .then(() => {
+                    resolve();
+                })
+            })
+            .catch(error => console.error(error));
+    });
+});
+
+const adjustScrollHeight = generateAccess.then(() => {
+    return new Promise((resolve, reject) => {
         const navHeadElement = document.getElementById("nav-head");
         const navMenuElement = document.getElementById("nav-menu");
         if (location.hash != "") {
