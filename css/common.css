@@ -585,6 +585,10 @@ h2 {
     /*margin-top: 2rem;*/
 }
 
+h3 {
+    margin-bottom: 0.5rem;
+}
+
 #content {
     padding: 0 5rem;
     position: relative;
@@ -676,4 +680,10 @@ ul.topic-path > li > a {
 
 ul.topic-path > li > a:hover {
     color: var(--theme-color);
+}
+
+
+ul.organizer-list {
+    list-style: none;
+    padding-left: 0;
 }

@@ -101,15 +101,72 @@ yearは非常に広範な範囲で用いているため、この場で影響範�
 ### information.json
 大会の開催情報。トップページ~~とトップページ含む全ての「アクセス」~~ において用いている。
 
+```json:information.json
+{
+    "date": "2023.12.3",
+    "time": "11:00 ~ 15:00",
+    "timeDetail": "午前中はロボット調整の時間とし、ロボコンの競技は11時頃に開始、15時頃までには終了する予定です。<br>なおこの予定は変更されることもあります。決まり次第HPにてご連絡いたします。",
+    "place": {
+        "name": "渋谷教育学園渋谷中学高等学校",
+        "name2": "6階 理科室3",
+        "postCode": "150-0002",
+        "address": "東京都渋谷区渋谷1-21-18",
+        "transportation": [
+            {
+                "place": "渋谷駅からお越しの方",
+                "detail": [
+                    "東急・東京メトロ B1出口から徒歩7分",
+                    "JR ハチ公改札口・南改札口から徒歩15分",
+                    "京王井の頭線 中央口から徒歩20分"
+                ]
+            },
+            {
+                "place": "明治神宮前＜原宿＞駅からお越しの方",
+                "detail": [
+                    "東京メトロ 4番・7番出口から徒歩15分"
+                ]
+            },
+            {
+                "place": "原宿駅からお越しの方",
+                "detail": [
+                    "JR山手線 東口から徒歩25分"
+                ]
+            }
+        ],
+        "googleMap": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.539293618878!2d139.7005870762712!3d35.66372083093489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ca6441b7da1%3A0x322d8cd231d2a237!2z5riL6LC35pWZ6IKy5a2m5ZyS5riL6LC35Lit5a2m5qCh44O76auY562J5a2m5qCh!5e0!3m2!1sja!2sjp!4v1696476210042!5m2!1sja!2sjp"
+    },
+    "organizer": [
+        {
+            "name": "渋谷教育学園渋谷中学高等学校 理科部ロボコン班",
+            "link": "https://shibu2rikabu.mystrikingly.com/"
+        }
+    ],
+    "inquiry": {
+        "name": "渋谷教育学園渋谷中学高等学校 理科部ロボコン班 やさしいロボコン担当",
+        "linkName": "yasarobo@googlegroups.com",
+        "link": "mailto:yasarobo@googlegroups.com"
+    }
+}
+```
+
 * date: 開催日。記法は```yyyy.mm.dd```で、一桁の場合も基本0はつけないで良い。
+* time: 開催時刻。
+* （任意）timeDetail: 開催時刻に関する詳細情報。
 * place: 開催場所。
     * name: 開催施設の名前。
     * name2: 部屋の名前。
-    * postcode: 郵便番号。ハイフンは入れる。
+    * postCode: 郵便番号。ハイフンは入れる。
     * address: 住所。
     * transportation: 公共交通機関によるアクセス方法を配列で記載。そのまま表示される。
         * place: 特定の駅
         * detail: 各社からの出口、所要時間を配列で記載。そのまま表示される。
+* organizer: 主催者の一覧。複数の主催者を配列で記載。
+    * name: 主催者名
+    * （任意）link: 主催者のURL
+* inquiry: お問い合わせ
+    * name: お問い合わせ先の名前
+    * linkName: お問い合わせ先のリンク名。メールアドレスかリンク先の名前を記載する。
+    * link: お問い合わせ先のURL（メールアドレスなら```mailto:```をつけること）
 
 ### news.json
 ニュース記事のJSONファイル。
