@@ -9,8 +9,18 @@ const judgeYearPastOrLatest = navBGOverlayUpdate.then(() => {
                 // 過去大会
                 if (pageYearParam != null && pageYearParam != siteYear) {
                     topicPathListPastElement.style.display = 'flex';
-                    const linksAffectYear = topicPathListPastElement.getElementsByClassName("linksAffectYear")[0];
+                    const linksAffectYear = topicPathListPastElement.getElementsByClassName("news-link-affect-year")[0];
                     linksAffectYear.setAttribute('href', `/news/?y=${pageYearParam}`);
+
+                    const newsAddYearArray = Array.from(document.getElementsByClassName("news-add-year"));
+                    newsAddYearArray.forEach(newsAddYear => {
+                        newsAddYear.innerText += `（${pageYearParam}年度）`;
+                    });
+
+                    const newsAddYearEnArray = Array.from(document.getElementsByClassName("news-add-year-en"));
+                    newsAddYearEnArray.forEach(newsAddYearEn => {
+                        newsAddYearEn.innerText += ` (${pageYearParam})`;
+                    });
                 }
                 // 最新大会
                 else {

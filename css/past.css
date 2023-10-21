@@ -1,8 +1,11 @@
 ul.links-list {
     list-style: none;
     padding: 0;
+
+    display: flex;
 }
 
 ul.links-list > li {
     margin: 0.4rem 0;
+    margin-right: 3rem;
 }

@@ -1,0 +1,45 @@
+{
+    "date": "2022.11.5",
+    "time": "ダミーデータ",
+    "timeDetail": "午前中はロボット調整の時間とし、ロボコンの競技は11時頃に開始、15時頃までには終了する予定です。<br>なおこの予定は変更されることもあります。決まり次第HPにてご連絡いたします。",
+    "place": {
+        "name": "渋谷教育学園渋谷中学高等学校",
+        "name2": "6階 理科室3",
+        "postCode": "150-0002",
+        "address": "東京都渋谷区渋谷1-21-18",
+        "transportation": [
+            {
+                "place": "渋谷駅からお越しの方",
+                "detail": [
+                    "東急・東京メトロ B1出口から徒歩7分",
+                    "JR ハチ公改札口・南改札口から徒歩15分",
+                    "京王井の頭線 中央口から徒歩20分"
+                ]
+            },
+            {
+                "place": "明治神宮前＜原宿＞駅からお越しの方",
+                "detail": [
+                    "東京メトロ 4番・7番出口から徒歩15分"
+                ]
+            },
+            {
+                "place": "原宿駅からお越しの方",
+                "detail": [
+                    "JR山手線 東口から徒歩25分"
+                ]
+            }
+        ],
+        "googleMap": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.539293618878!2d139.7005870762712!3d35.66372083093489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ca6441b7da1%3A0x322d8cd231d2a237!2z5riL6LC35pWZ6IKy5a2m5ZyS5riL6LC35Lit5a2m5qCh44O76auY562J5a2m5qCh!5e0!3m2!1sja!2sjp!4v1696476210042!5m2!1sja!2sjp"
+    },
+    "organizer": [
+        {
+            "name": "渋谷教育学園渋谷中学高等学校 理科部ロボコン班",
+            "link": "https://shibu2rikabu.mystrikingly.com/"
+        }
+    ],
+    "inquiry": {
+        "name": "渋谷教育学園渋谷中学高等学校 理科部ロボコン班 やさしいロボコン担当",
+        "linkName": "yasarobo@googlegroups.com",
+        "link": "mailto:yasarobo@googlegroups.com"
+    }
+}

@@ -1,10 +1,12 @@
-function generateNewsListItem(newsItem, labelSettingData) {
+function generateNewsListItem(newsItem, labelSettingData, year = siteYear) {
+    if (year == null) year = siteYear;
+
     const newsItemElement = document.createElement('div');
     newsItemElement.classList.add('news-item');
     
     const newsItemAnchorElement = document.createElement('a');
     if (newsItem.article != undefined) {
-        newsItemAnchorElement.href = "/news/article/?id=" + String(newsItem.id);
+        newsItemAnchorElement.href = `/news/article/?y=${year}&id=${newsItem.id}`;
         newsItemElement.appendChild(newsItemAnchorElement);
     }
 
