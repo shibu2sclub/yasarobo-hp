@@ -93,6 +93,7 @@ const generateLogo = generateNavBGOverlay.then((obj) => {
                 const logoElements = document.getElementsByClassName('logo');
                 Array.from(logoElements).forEach(logoElement => {
                     logoElement.innerHTML = data;
+                    logoElement.getElementsByClassName("year")[0].innerText = siteYear;
                 })
             })
             .then(() => {
