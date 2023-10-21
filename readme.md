@@ -13,11 +13,13 @@ GitHub Pagesの独自ドメイン機能とsclub.devのDNS設定。自前のサ�
 
 ```json:common.json
 {
-    "year": 2023
+    "year": 2023,
+    "showResult": false
 }
 ```
 
 * year: トップページに掲載されている=最新のコンテストの開催年度。（第〇回大会のような大会のカウントとしての数値、1月～3月の場合は開催当日の年月日とは相違が生じる。）
+* showResult: 競技結果を表示するかの設定。競技結果が出たら表示（true）に切り替え。
 
 ### news-label-setting.json
 ニュースに付与するラベルの設定。
