@@ -216,3 +216,27 @@ yearは非常に広範な範囲で用いているため、この場で影響範�
 * label: 記事のラベル（カテゴリ）。複数配置も可能な記法としているが基本的に一つにするように（対応していない）。ラベルの種類は```news-tag-setting.json```で設定する。
 * date: 日付。そのまま表示される。仕様上はどのような文字列でも問題ないが、デザインにおいて基本的には```yyyy.mm.dd```表記を想定しているため、一桁の場合は先頭に0を入れることを推奨。
 * article: 記事本文。1段落ごとに1項目で配列とする。
+
+### record-setting.json
+競技記録のデータ体裁に関する設定。
+
+```json:record-setting.json
+{
+    "type": "detailed"
+}
+```
+
+* type: ```simple```、```default```、```detailed```
+    * simple: 集計結果の得点のみ。
+    * default: ボールや缶の取得状況、色を含んだデータ。```simple```に加えて得点の内訳が表示される。
+    * detailed: ```default```のデータを順番まで競技中の時間経過に沿って入力したもの。```default```に加えて得点順が表示される。
+
+### record.json
+競技記録。```{}```でロボット1組。
+
+#### typeがsimpleの場合
+```json:record.json
+
+```
+
+#### typeがdefaultまたはdetailedの場合

@@ -1,10 +1,58 @@
 [
     {
         "id": "C01",
-        "name": "オクト君",
+        "name": "くらげ君",
+        "team": "しぶしぶ「寿」",
+        "belonging": "渋渋理科部",
         "result": {
-            "1st": "",
-            "2nd": ""
+            "1st": {
+                "contest": [
+                    "T",
+                    "R",
+                    "r",
+                    "b",
+                    "B",
+                    "Y",
+                    "Y",
+                    "Y",
+                    "y",
+                    "R",
+                    "R",
+                    "r",
+                    "B",
+                    "B",
+                    "b"
+                ],
+                "remainTime": "1:20:15" 
+            }
+        }
+    },
+    {
+        "id": "C04",
+        "name": "mako-robo Surprising VIIctory",
+        "team": "しぶしぶ「射」",
+        "belonging": "渋谷中高理科部",
+        "result": {
+            "1st":{
+                "contest": [
+                    "T",
+                    "R",
+                    "Y",
+                    "y",
+                    "R",
+                    "R",
+                    "R",
+                    "B",
+                    "B",
+                    "b",
+                    "r",
+                    "b",
+                    "b",
+                    "y",
+                    "y"
+                ],
+                "remainTime": "1:56:34"
+            }
         }
     }
 ]
