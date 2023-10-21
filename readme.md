@@ -234,9 +234,88 @@ yearは非常に広範な範囲で用いているため、この場で影響範�
 ### record.json
 競技記録。```{}```でロボット1組。
 
-#### typeがsimpleの場合
+#### typeがdefaultまたはdetailedの場合
 ```json:record.json
-
+[
+    {
+        "id": "C01",
+        "name": "くらげ君",
+        "team": "しぶしぶ「寿」",
+        "belonging": "渋渋理科部",
+        "result": {
+            "1st": {
+                "contest": [
+                    "TBYrrr",
+                    "TRRBBYYYYRRRBBB"
+                ],
+                "remainTime": "1:20:15" 
+            }
+        }
+    },
+    {
+        "id": "C04",
+        "name": "mako-robo Surprising VIIctory",
+        "team": "しぶしぶ「射」",
+        "belonging": "渋谷中高理科部",
+        "result": {
+            "1st":{
+                "contest": [
+                    "TRYYRRRYBBBRBByy"
+                ],
+                "remainTime": "1:56:34"
+            }
+        }
+    }
+]
 ```
 
-#### typeがdefaultまたはdetailedの場合
+* ID: ゼッケン番号。1文字目でコース認識。
+    * C: チャレンジャーズ
+    * M: マスターズ
+    * Y: やさしい
+* name: ロボット名
+* team: チーム名
+* （任意）belonging: 所属
+* result: 結果
+    * 1st: 1回目
+    * 1st: 2回目
+        * contest: 競技点情報。以下のルールに沿って文字を羅列。```detailed```の場合は時間順に書くこと。リトライごとに1個ずつの文字列。最後の文字列が最後の試技なので最終結果。
+            * R, Y, B: 赤、黄、青ボール（色正解）
+            * r, y, b: 赤、黄、青ボール（色不正解）
+            * S: **S**teel（マスターズ）スチール缶（色正解）
+            * s: **s**teel（マスターズ）スチール缶（色不正解）
+            * A: **A**luminium（マスターズ）アルミ缶（色正解）
+            * a: **a**luminium（マスターズ）アルミ缶（色不正解）
+            * W, w: **W**ater bottle（マスターズ）ウォーターボトル成功
+            * M, m: **M**ama ball（やさしい）左エリア用ママボール（色関係なし）
+            * S, s: **S**ponge ball（やさしい）右エリア用スポンジボール（色関係なし）
+            * M, m: **M**asters return bonus（マスターズ）リターンボーナス
+            * O, o: **O**riginality bonus（やさしい）オリジナリティボーナス（必ず先頭に表記）
+        * remainTime: 残り時間。```mm:ss:xx```のように書く。0はなくても補うが、基本的に分以外は一桁の場合先頭に0を付けることが望ましい。
+        * （任意）judge: 審査点
+
+#### typeがsimpleの場合
+```json:record.json
+[
+    {
+        "id": "C01",
+        "name": "くらげ君",
+        "team": "しぶしぶ「寿」",
+        "belonging": "渋渋理科部",
+        "result": {
+            "1st": {
+                "contest": {
+                    "score": 50,
+                    "retry": 1
+                },
+                "remainTime": "1:20:15" 
+            }
+        }
+    }
+]
+```
+
+異なる部分のみ記載する。
+* contest: 競技点情報
+    * score: 競技点（数値）
+    * retry: リトライ回数
