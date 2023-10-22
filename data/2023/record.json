@@ -15,6 +15,20 @@
         }
     },
     {
+        "id": "C02",
+        "name": "dikefalos",
+        "team": "しぶしぶ「燭」",
+        "belonging": "渋谷中高理科部",
+        "result": {
+            "1st":{
+                "contest": [
+                    "TRYYRYBBBRBByyRR"
+                ],
+                "remainTime": "2:02:11"
+            }
+        }
+    },
+    {
         "id": "C04",
         "name": "mako-robo Surprising VIIctory",
         "team": "しぶしぶ「射」",
