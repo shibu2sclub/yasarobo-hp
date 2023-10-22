@@ -223,7 +223,33 @@ yearは非常に広範な範囲で用いているため、この場で影響範�
 ```json:record-setting.json
 {
     "type": "detailed",
-    "releaseAward": false
+    "scoreList":[
+        {
+            "name": "1・2回目<br>ベスト点",
+            "id": "12best",
+            "calculateType": "max",
+            "list": [
+                "1st",
+                "2nd"
+            ],
+            "order": 1,
+            "priority": 1
+        },
+        {
+            "name": "1回目",
+            "id": "1st",
+            "time": "5:00:00",
+            "order": 2,
+            "priority": 2
+        },
+        {
+            "name": "2回目",
+            "id": "2nd",
+            "time": "5:00:00",
+            "order": 3,
+            "priority": 3
+        }
+    ]
 }
 ```
 
@@ -231,6 +257,50 @@ yearは非常に広範な範囲で用いているため、この場で影響範�
     * simple: 集計結果の得点のみ。
     * default: ボールや缶の取得状況、色を含んだデータ。```simple```に加えて得点の内訳が表示される。
     * detailed: ```default```のデータを順番まで競技中の時間経過に沿って入力したもの。```default```に加えて得点順が表示される。
+* contestSetting: 競技に関する設定
+    * name: 名前
+    * id: 管理用ID
+    * （実際の競技）time: 競技時間
+    * （算出点）calculateType: 算出方法。
+        * max: 最大値。この場合は最大値となった競技に網掛けがつく。
+        * sum: 合計値
+    * order: 表示順序
+    * priority: 得点優先順位。1に設定されたものが最優先で、最優秀賞などの算出、最初の表示での順番に用いられる。1で順序がつけられない場合は2へ（基本的には予選敗退などで順位がついていない場合を想定、得点が同点の場合はまず競技時間で並べ替えを行う）。
+
+#### 知能ロボットコンテストのルールでの設定
+```json:record-setting.json
+{
+    "type": "detailed",
+    "scoreList":[
+        {
+            "name": "1次予選",
+            "id": "1st",
+            "time": "5:00:00",
+            "order": 1,
+            "priority": 4
+        },
+        {
+            "name": "敗者復活戦",
+            "id": "revival",
+            "time": "5:00:00",
+            "order": 2,
+            "priority": 3
+        },{
+            "name": "2次予選",
+            "id": "2nd",
+            "time": "5:00:00",
+            "order": 3,
+            "priority": 2
+        },{
+            "name": "決勝",
+            "id": "final",
+            "time": "10:00:00",
+            "order": 4,
+            "priority": 1
+        }
+    ]
+}
+```
 
 ### record.json
 競技記録。```{}```でロボット1組。

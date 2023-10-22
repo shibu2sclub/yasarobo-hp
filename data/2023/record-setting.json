@@ -1,3 +1,30 @@
 {
-    "type": "detailed"
+    "type": "detailed",
+    "scoreList":[
+        {
+            "name": "1・2回目<br>ベスト点",
+            "id": "12best",
+            "calculateType": "best",
+            "list": [
+                "1st",
+                "2nd"
+            ],
+            "order": 1,
+            "priority": 1
+        },
+        {
+            "name": "1回目",
+            "id": "1st",
+            "time": "5:00:00",
+            "order": 2,
+            "priority": 2
+        },
+        {
+            "name": "2回目",
+            "id": "2nd",
+            "time": "5:00:00",
+            "order": 3,
+            "priority": 3
+        }
+    ]
 }
