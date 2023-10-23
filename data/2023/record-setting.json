@@ -253,7 +253,7 @@
                 },
                 {
                     "id": "O",
-                    "calcType": "add",
+                    "bonusType": "add",
                     "value": 1,
                     "targetID": [
                         "R",

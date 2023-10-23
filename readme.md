@@ -535,10 +535,10 @@ yearは非常に広範な範囲で用いているため、この場で影響範�
         * id: 得点文字列
         * name: 得点の名前
         * value: 得点やボーナスポイントの数値
-        * （任意）calcType: ボーナスポイントなどの算出タイプ
+        * （任意）bonusType: ボーナスポイントなどの算出タイプ
             * add: ```targetID```で指定した得点1回ずつに対して加算
             * multiple: ```targetID```で指定した得点1回ずつに対して積算
-        * （calcType指定時のみ）targetType: ```add```, ```multiple```を行う得点ID
+        * （bonusType指定時のみ）targetType: ```add```, ```multiple```を行う得点ID
         * ui: UI設定
             * shape: 形状
                 * circle: 円
