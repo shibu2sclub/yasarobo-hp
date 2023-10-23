@@ -4,67 +4,256 @@
         {
             "name": "チャレンジャーズコース",
             "id": "C",
-            "point": {
-                "R": 3,
-                "Y": 3,
-                "B": 3,
-                "r": 1,
-                "y": 1,
-                "b": 1,
-                "T": 5
-            },
-            "pointName": {
-                "R": "赤色ボール（色正解）",
-                "Y": "黄色ボール（色正解）",
-                "B": "青色ボール（色正解）",
-                "r": "赤色ボール（色不正解）",
-                "y": "黄色ボール（色不正解）",
-                "b": "青色ボール（色不正解）",
-                "T": "自由ボール"
-            }
+            "point": [
+                {
+                    "id": "R",
+                    "name": "赤色ボール（色正解）",
+                    "value": 3,
+                    "ui": {
+                        "shape": "circle",
+                        "bgColor": "red"
+                    }
+                },
+                {
+                    "id": "Y",
+                    "name": "黄色ボール（色正解）",
+                    "value": 3,
+                    "ui": {
+                        "shape": "circle",
+                        "bgColor": "yellow"
+                    }
+                },
+                {
+                    "id": "B",
+                    "name": "青色ボール（色正解）",
+                    "value": 3,
+                    "ui": {
+                        "shape": "circle",
+                        "bgColor": "blue"
+                    }
+                },
+                {
+                    "id": "r",
+                    "name": "赤色ボール（色不正解）",
+                    "value": 1,
+                    "ui": {
+                        "shape": "circle",
+                        "borderColor": "red"
+                    }
+                },
+                {
+                    "id": "y",
+                    "name": "黄色ボール（色不正解）",
+                    "value": 1,
+                    "ui": {
+                        "shape": "circle",
+                        "borderColor": "yellow"
+                    }
+                },
+                {
+                    "id": "b",
+                    "name": "青色ボール（色不正解）",
+                    "value": 1,
+                    "ui": {
+                        "shape": "circle",
+                        "borderColor": "blue"
+                    }
+                },
+                {
+                    "id": "T",
+                    "name": "自由ボール",
+                    "value": 5,
+                    "ui": {
+                        "shape": "diamond",
+                        "borderColor": "yellow"
+                    }
+                }
+            ]
         },
         {
             "name": "マスターズコース",
             "id": "M",
-            "point": {
-                "R": 4,
-                "B": 4,
-                "r": 1,
-                "b": 1,
-                "T": 5,
-                "S": 6,
-                "s": 1,
-                "A": 10,
-                "a": 1,
-                "W": 15,
-                "w": 0,
-                "M": 10
-            },
-            "pointName": {
-                "R": "赤色ボール（色正解）",
-                "B": "青色ボール（色正解）",
-                "r": "赤色ボール（色不正解）",
-                "b": "青色ボール（色不正解）",
-                "T": "自由ボール"
-            }
+            "point": [
+                {
+                    "id": "R",
+                    "name": "赤色ボール（色正解）",
+                    "value": 4,
+                    "ui": {
+                        "shape": "circle",
+                        "bgColor": "red"
+                    }
+                },
+                {
+                    "id": "B",
+                    "name": "青色ボール（色正解）",
+                    "value": 4,
+                    "ui": {
+                        "shape": "circle",
+                        "bgColor": "blue"
+                    }
+                },
+                {
+                    "id": "r",
+                    "name": "赤色ボール（色不正解）",
+                    "value": 1,
+                    "ui": {
+                        "shape": "circle",
+                        "borderColor": "red"
+                    }
+                },
+                {
+                    "id": "b",
+                    "name": "青色ボール（色不正解）",
+                    "value": 1,
+                    "ui": {
+                        "shape": "circle",
+                        "borderColor": "blue"
+                    }
+                },
+                {
+                    "id": "S",
+                    "name": "スチール缶（色正解）",
+                    "value": 6,
+                    "ui": {
+                        "shape": "rectangleNarrow",
+                        "bgColor": "yellow"
+                    }
+                },
+                {
+                    "id": "s",
+                    "name": "スチール缶（色不正解）",
+                    "value": 1,
+                    "ui": {
+                        "shape": "rectangleNarrow",
+                        "borderColor": "yellow"
+                    }
+                },
+                {
+                    "id": "A",
+                    "name": "アルミ缶（色正解）",
+                    "value": 10,
+                    "ui": {
+                        "shape": "rectangleWide",
+                        "bgColor": "yellow"
+                    }
+                },
+                {
+                    "id": "a",
+                    "name": "アルミ缶（色不正解）",
+                    "value": 1,
+                    "ui": {
+                        "shape": "rectangleWide",
+                        "borderColor": "yellow"
+                    }
+                },
+                {
+                    "id": "T",
+                    "name": "自由ボール",
+                    "value": 5,
+                    "ui": {
+                        "shape": "diamond",
+                        "borderColor": "yellow"
+                    }
+                },
+                {
+                    "id": "W",
+                    "name": "ウォーターボトル",
+                    "value": 10,
+                    "ui": {
+                        "shape": "triangle",
+                        "borderColor": "purple"
+                    }
+                },
+                {
+                    "id": "M",
+                    "name": "リターンボーナス",
+                    "value": 10,
+                    "ui": {
+                        "shape": "star",
+                        "bgColor": "orange"
+                    }
+                }
+            ]
         },
         {
             "name": "やさしいコース",
             "id": "Y",
-            "point": {
-                "R": 6,
-                "Y": 6,
-                "B": 6,
-                "r": 2,
-                "y": 2,
-                "b": 2,
-                "M": 1,
-                "S": 4
-            },
-            "bonusRule": [
+            "point": [
+                {
+                    "id": "R",
+                    "name": "右側赤色ゴムボール（色正解）",
+                    "value": 3,
+                    "ui": {
+                        "shape": "circle",
+                        "bgColor": "red"
+                    }
+                },
+                {
+                    "id": "Y",
+                    "name": "右側黄色ゴムボール（色正解）",
+                    "value": 3,
+                    "ui": {
+                        "shape": "circle",
+                        "bgColor": "yellow"
+                    }
+                },
+                {
+                    "id": "B",
+                    "name": "右側青色ゴムボール（色正解）",
+                    "value": 3,
+                    "ui": {
+                        "shape": "circle",
+                        "bgColor": "blue"
+                    }
+                },
+                {
+                    "id": "r",
+                    "name": "右側赤色ゴムボール（色不正解）",
+                    "value": 1,
+                    "ui": {
+                        "shape": "circle",
+                        "borderColor": "red"
+                    }
+                },
+                {
+                    "id": "y",
+                    "name": "右側黄色ゴムボール（色不正解）",
+                    "value": 1,
+                    "ui": {
+                        "shape": "circle",
+                        "borderColor": "yellow"
+                    }
+                },
+                {
+                    "id": "b",
+                    "name": "右側青色ゴムボール（色不正解）",
+                    "value": 1,
+                    "ui": {
+                        "shape": "circle",
+                        "borderColor": "blue"
+                    }
+                },
+                {
+                    "id": "M",
+                    "name": "左側ゴムボール",
+                    "value": 1,
+                    "ui": {
+                        "shape": "circle",
+                        "bgColor": "purple"
+                    }
+                },
+                {
+                    "id": "S",
+                    "name": "右側スポンジボール",
+                    "value": 4,
+                    "ui": {
+                        "shape": "circle",
+                        "borderColor": "purple"
+                    }
+                },
                 {
                     "id": "O",
-                    "type": "add",
+                    "calcType": "add",
                     "value": 1,
                     "targetID": [
                         "R",
@@ -74,10 +263,12 @@
                         "y",
                         "b",
                         "M",
-                        "m",
-                        "S",
-                        "s"
-                    ]
+                        "S"
+                    ],
+                    "ui": {
+                        "shape": "star",
+                        "borderColor": "green"
+                    }
                 }
             ]
         }
