@@ -5,7 +5,9 @@ function OnButtonClick() {
     const pointBoxElement = document.getElementById('point-box');
     const debugMessageElement = document.getElementById('debug-message');
 
-    const settings = fetch('/data/2023/record-setting.json')
+    let pageYear = checkYearParam();
+
+    fetch(`/data/${pageYear}/record-setting.json`)
         .then(response => response.json())
         .then(data => {
             const result = calculateScore(data.courseList, robotIDElement.value, pointStringElement.value, true);

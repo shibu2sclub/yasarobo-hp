@@ -159,3 +159,11 @@ const navBGOverlayUpdate = navMenuLinkUpdate.then((obj) => {
         resolve();
     });
 });
+
+function checkYearParam() {
+    let pageYear = getParam('y');
+    if (pageYear == null) {
+        pageYear = siteYear;
+    }
+    return pageYear;
+}
