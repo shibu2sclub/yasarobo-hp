@@ -537,8 +537,8 @@ yearは非常に広範な範囲で用いているため、この場で影響範�
         * value: 得点やボーナスポイントの数値
         * （任意）bonusType: ボーナスポイントなどの算出タイプ
             * add: ```targetID```で指定した得点1回ずつに対して加算
-            * multiple: ```targetID```で指定した得点1回ずつに対して積算
-        * （bonusType指定時のみ）targetType: ```add```, ```multiple```を行う得点ID
+            * multiply: ```targetID```で指定した得点1回ずつに対して積算
+        * （bonusType指定時のみ）targetType: ```add```, ```multiply```を行う得点ID
         * ui: UI設定
             * shape: 形状
                 * circle: 円
