@@ -52,6 +52,18 @@
                         <p>
                             データの入力形式に沿って作成された「得点文字列」を入力すると、得点を計算します。
                         </p>
+                        <h2>入力欄</h2>
+                        <div>
+                            <div>得点文字列</div>
+                            <input id = "point-string" /><br />
+                            <div>ゼッケン番号</div>
+                            <input id = "robot-id" /><br />
+                            <input type="button" value="算出" onclick="OnButtonClick();"/><br />
+                        </div>
+                        <h2>得点計算結果</h2>
+                        <p id = "point-box"></p>
+                        <h2>デバッグメッセージ</h2>
+                        <budoux-ja><p id = "debug-message"></p></budoux-ja>
                     </div>
                 </div>
             </div>
@@ -62,7 +74,8 @@
     <script src="/js/common.js?date=202310212139"></script>
     <script src="/js/common-ie.js?date=202310212139"></script>
     <script src="/js/common-firefox.js?date=202310212139"></script>
-    <script src="/js/record-list.js?date=202310212139"></script>
+    <script src="/js/record-common.js?date=202310212139"></script>
+    <script src="/js/record-tool.js?date=202310212139"></script>
     <script src="/js/topic-path-load-year.js?date=202310212139"></script>
     <script src="https://unpkg.com/budoux/bundle/budoux-ja.min.js"></script>
 </body>
