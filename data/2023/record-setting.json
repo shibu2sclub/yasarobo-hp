@@ -181,7 +181,7 @@
                 {
                     "id": "W",
                     "name": "ウォーターボトル",
-                    "value": 10,
+                    "value": 15,
                     "ui": {
                         "shape": "triangle",
                         "borderColor": "purple"
