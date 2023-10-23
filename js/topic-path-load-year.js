@@ -18,7 +18,7 @@ const judgeYearPastOrLatest = navBGOverlayUpdate.then(() => {
             });
 
             const addYearEnArray = Array.from(document.getElementsByClassName("add-year-en"));
-            addYearEnArray.forEach(adYearEn => {
+            addYearEnArray.forEach(addYearEn => {
                 addYearEn.innerText += ` (${pageYearParam})`;
             });
         }
