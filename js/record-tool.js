@@ -10,12 +10,11 @@ function OnButtonClick() {
     fetch(`/data/${pageYear}/record-setting.json`)
         .then(response => response.json())
         .then(data => {
-            const result = calculateScore(data.courseList, robotIDElement.value, pointStringElement.value, true);
+            const result = calculateScore(data, robotIDElement.value, pointStringElement.value, true);
             pointBoxElement.innerText = result[0];
             debugMessageElement.innerHTML = "";
             result[1].forEach(message => {
                 debugMessageElement.innerHTML += message + "<br>";
             });
         });
-    
 }

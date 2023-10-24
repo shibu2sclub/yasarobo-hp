@@ -1,7 +1,9 @@
-/* setting: 連想配列でrecord-setting.json内のcourseListを全コース分そのまま。 */
+/* setting: 連想配列でrecord-setting.jsonをそのまま。 */
 /* robotID: ゼッケン番号。コース判定もこれで行う。 */
 /* pointString: 得点の文字列。配列ではなく各試技1回の文字列単体を。 */
 function calculateScore(settings, robotID, pointString, debugMode = false) {
+    settings = settings.courseList;
+    
     // 対象の設定の読み込み
     let courseSetting = {};
     let result = 0;
@@ -114,7 +116,7 @@ function calculateScore(settings, robotID, pointString, debugMode = false) {
     else return result;
 }
 
-/* setting: 連想配列でrecord-setting.json内のcourseListを全コース分そのまま。 */
+/* setting: 連想配列でrecord-setting.jsonをそのまま。 */
 /* recordJSON: record.jsをそのまま */
 /* courseID: コースを指定 */
 function generateRobotListWithPoint(settings, recordJSON, courseID) {
@@ -125,27 +127,32 @@ function generateRobotListWithPoint(settings, recordJSON, courseID) {
 
         // コースがあっているときのみ
         if (robotID.charAt(0) == courseID) {
-            resultList.keys.forEach(key => {
+            Object.keys(resultList).forEach(key => {
                 const pointStringsArray = resultList[key].contest;
                 const pointString = pointStringsArray[pointStringsArray.length - 1];
                 const point = calculateScore(settings, robotID, pointString);
 
                 record.result[key].contestPoint = point;
+                if (record.result[key].judgePoint != undefined) record.result[key].sumPoint = point + record.result[key].judgePoint;
+                else record.result[key].sumPoint = point;
             });
         }
         
         robotList.push(record);
     });
+    return robotList;
 }
 
+// issue: 1条件のみでソートしている、2ndなどの条件に対応したい
+/* robotList: ロボットリスト。事前にgenerateRobotListWithPointを通す必要がある。 */
+/* sortKey: 仮対応、sortを行う試技のキーを指定 */
+// issue: ソートについて1条件のみ対応
 function sortRobotList(robotList, sortKey) {
+    console.log(robotList)
     robotList.sort((a, b) => {
-        if (a.result[sortKey].judgePoint == undefined && b.result[sortKey].judgePoint == undefined) {
-            a.result[sortKey].judgePoint = 0;
-            b.result[sortKey].judgePoint = 0;
-        }
-        if (a.result[sortKey].contestPoint > b.result[sortKey].contestPoint) return -1;
-        else if (a.result[sortKey].contestPoint < b.result[sortKey].contestPoint) return 1;
+        if (a.result[sortKey].sumPoint > b.result[sortKey].sumPoint) return -1;
+        else if (a.result[sortKey].sumPoint < b.result[sortKey].sumPoint) return 1;
         else return 0;
     });
+    return robotList;
 }

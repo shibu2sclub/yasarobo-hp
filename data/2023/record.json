@@ -15,7 +15,21 @@
         }
     },
     {
-        "id": "C02",
+        "id": "C04",
+        "name": "mako-robo Surprising VIIctory",
+        "team": "しぶしぶ「射」",
+        "belonging": "渋谷中高理科部",
+        "result": {
+            "1st":{
+                "contest": [
+                    "TRYYRRRYBBBByy"
+                ],
+                "remainTime": "1:56:34"
+            }
+        }
+    },
+    {
+        "id": "C06",
         "name": "dikefalos",
         "team": "しぶしぶ「燭」",
         "belonging": "渋谷中高理科部",
@@ -25,20 +39,6 @@
                     "TRYYRYBBBRBByyRR"
                 ],
                 "remainTime": "2:02:11"
-            }
-        }
-    },
-    {
-        "id": "C04",
-        "name": "mako-robo Surprising VIIctory",
-        "team": "しぶしぶ「射」",
-        "belonging": "渋谷中高理科部",
-        "result": {
-            "1st":{
-                "contest": [
-                    "TRYYRRRYBBBRBByy"
-                ],
-                "remainTime": "1:56:34"
             }
         }
     }
