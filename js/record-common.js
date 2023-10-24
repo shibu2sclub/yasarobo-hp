@@ -83,14 +83,14 @@ function calculateScore(settings, robotID, pointString, debugMode = false) {
                             debugTextArray.push("Applied Bonus Rule: " + enabledBonusRule.id);
                             console.log(debugTextArray[debugTextArray.length - 1]);
                         }
-                        if (enabledBonusRule.bonusRule == "add") {
+                        if (enabledBonusRule.bonusType == "add") {
                             addPoint += enabledBonusRule.value;
                             if (debugMode) {
                                 debugTextArray.push("Bonus: Added " + enabledBonusRule.value + " point(s). pointString: " + enabledBonusRule.id);
                                 console.log(debugTextArray[debugTextArray.length - 1]);
                             }
                         }
-                        else if (enabledBonusRule.bonusRule == "multiply") {
+                        else if (enabledBonusRule.bonusType == "multiply") {
                             addPoint *= enabledBonusRule.value;
                             if (debugMode) {
                                 debugTextArray.push("Bonus: Multiplied " + enabledBonusRule.value + ". pointString: " + enabledBonusRule.id);
