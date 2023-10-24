@@ -11,7 +11,7 @@ const generateRecordList = generateNavBGOverlay.then(() => {
                         const courseID = courseRule.id;
 
                         const courseRobotList = generateRobotListWithPoint(recordSetting, recordJSON, courseID);
-                        const sortedCourseRobotList = sortRobotList(courseRobotList, "1st");    // issue: 1stのみでソートしている、評点計算がされていない
+                        const sortedCourseRobotList = sortRobotList(courseRobotList, "12best");    // issue: 1条件のみでソートしている
 
                         const recordListElement = document.getElementById('record-list');
                         const courseElement = document.createElement('div');
@@ -32,7 +32,7 @@ const generateRecordList = generateNavBGOverlay.then(() => {
                             robotElement.appendChild(robotNameElement);
                             const robotPointElement = document.createElement('p');
                             robotPointElement.setAttribute('class', 'robot-point');
-                            robotPointElement.innerText = robot.result["1st"].sumPoint;
+                            robotPointElement.innerText = robot.result["12best"].sumPoint;
                             robotElement.appendChild(robotPointElement);
                             courseListElement.appendChild(robotElement);
                         });

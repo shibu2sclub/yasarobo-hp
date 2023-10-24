@@ -11,6 +11,12 @@
                     "TRRBBYYYYRRRBBB"
                 ],
                 "remainTime": "1:20:15" 
+            },
+            "2nd": {
+                "contest": [
+                    "TRRBBYYYYRRRBBBy"
+                ],
+                "remainTime": "1:10:38" 
             }
         }
     },
@@ -25,6 +31,12 @@
                     "TRYYRRRYBBBByy"
                 ],
                 "remainTime": "1:56:34"
+            },
+            "2nd":{
+                "contest": [
+                    "TRYYRRRBByy"
+                ],
+                "remainTime": "1:55:32"
             }
         }
     },
@@ -39,6 +51,12 @@
                     "TRYYRYBBBRBByyRR"
                 ],
                 "remainTime": "2:02:11"
+            },
+            "2nd":{
+                "contest": [
+                    "TRYYRYBBBRBByyrR"
+                ],
+                "remainTime": "1:55:41"
             }
         }
     }
