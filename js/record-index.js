@@ -23,7 +23,9 @@ const generateRecordList = generateNavBGOverlay.then(() => {
                         courseElement.appendChild(courseTitleElement);
                         const courseListElement = document.createElement('ul');
                         courseListElement.setAttribute('class', 'course-list');
-                        sortedCourseRobotList.forEach(robot => {
+
+                        for (let i = 0; (i < 3 && i < sortedCourseRobotList.length); i++) {
+                            const robot = sortedCourseRobotList[i];
                             const robotElement = document.createElement('li');
                             robotElement.setAttribute('class', 'robot');
                             const robotNameElement = document.createElement('h3');
@@ -35,8 +37,15 @@ const generateRecordList = generateNavBGOverlay.then(() => {
                             robotPointElement.innerText = robot.result["12best"].sumPoint;
                             robotElement.appendChild(robotPointElement);
                             courseListElement.appendChild(robotElement);
-                        });
+                        }
                         courseElement.appendChild(courseListElement);
+
+                        const courseMoreElement = document.createElement('a');
+                        courseMoreElement.setAttribute('class', 'course-more');
+                        courseMoreElement.setAttribute('href', `/record/ranking/?y=${pageYear}&c=${courseID}`);
+                        courseMoreElement.innerText = "もっと見る";
+                        courseElement.appendChild(courseMoreElement);
+
                         recordListElement.appendChild(courseElement);
                     });
                 })
