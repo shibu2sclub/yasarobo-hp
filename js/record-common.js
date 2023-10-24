@@ -136,9 +136,8 @@ function generateRobotListWithPoint(settings, recordJSON, courseID) {
                 if (record.result[key].judgePoint != undefined) record.result[key].sumPoint = point + record.result[key].judgePoint;
                 else record.result[key].sumPoint = point;
             });
+            robotList.push(record);
         }
-        
-        robotList.push(record);
     });
     return robotList;
 }
@@ -148,7 +147,6 @@ function generateRobotListWithPoint(settings, recordJSON, courseID) {
 /* sortKey: 仮対応、sortを行う試技のキーを指定 */
 // issue: ソートについて1条件のみ対応
 function sortRobotList(robotList, sortKey) {
-    console.log(robotList)
     robotList.sort((a, b) => {
         if (a.result[sortKey].sumPoint > b.result[sortKey].sumPoint) return -1;
         else if (a.result[sortKey].sumPoint < b.result[sortKey].sumPoint) return 1;
