@@ -312,7 +312,7 @@
     ],
     "scoreList":[
         {
-            "name": "1・2回目<br>ベスト点",
+            "name": "ベスト点",
             "id": "12best",
             "calculateType": "best",
             "list": [

@@ -11,7 +11,7 @@ function calculateScore(settings, robotID, pointString, debugMode = false) {
     let debugTextArray = [];
 
     if (debugMode) {
-        debugTextArray.push("Start judging course. robotID: " + robotID);
+        debugTextArray.push("Judging course. robotID: " + robotID);
         console.log(debugTextArray[debugTextArray.length - 1]);
     }
     settings.forEach(setting => {
@@ -23,7 +23,7 @@ function calculateScore(settings, robotID, pointString, debugMode = false) {
     if (debugMode) {
         debugTextArray.push("Course: " + courseSetting.name);
         console.log(debugTextArray[debugTextArray.length - 1]);
-        debugTextArray.push("Start loading bonus rule.");
+        debugTextArray.push("Loading bonus rule.");
         console.log(debugTextArray[debugTextArray.length - 1]);
     }
 
