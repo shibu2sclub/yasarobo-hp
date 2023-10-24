@@ -312,7 +312,7 @@
     ],
     "scoreList":[
         {
-            "name": "ベスト点",
+            "name": "ベストスコア",
             "id": "12best",
             "calculateType": "best",
             "list": [
