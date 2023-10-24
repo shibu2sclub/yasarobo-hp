@@ -113,3 +113,39 @@ function calculateScore(settings, robotID, pointString, debugMode = false) {
     if (debugMode) return [result, debugTextArray];
     else return result;
 }
+
+/* setting: 連想配列でrecord-setting.json内のcourseListを全コース分そのまま。 */
+/* recordJSON: record.jsをそのまま */
+/* courseID: コースを指定 */
+function generateRobotListWithPoint(settings, recordJSON, courseID) {
+    let robotList = [];
+    recordJSON.forEach(record => {
+        const robotID = record.id;
+        const resultList = record.result;
+
+        // コースがあっているときのみ
+        if (robotID.charAt(0) == courseID) {
+            resultList.keys.forEach(key => {
+                const pointStringsArray = resultList[key].contest;
+                const pointString = pointStringsArray[pointStringsArray.length - 1];
+                const point = calculateScore(settings, robotID, pointString);
+
+                record.result[key].contestPoint = point;
+            });
+        }
+        
+        robotList.push(record);
+    });
+}
+
+function sortRobotList(robotList, sortKey) {
+    robotList.sort((a, b) => {
+        if (a.result[sortKey].judgePoint == undefined && b.result[sortKey].judgePoint == undefined) {
+            a.result[sortKey].judgePoint = 0;
+            b.result[sortKey].judgePoint = 0;
+        }
+        if (a.result[sortKey].contestPoint > b.result[sortKey].contestPoint) return -1;
+        else if (a.result[sortKey].contestPoint < b.result[sortKey].contestPoint) return 1;
+        else return 0;
+    });
+}
