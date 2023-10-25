@@ -182,11 +182,29 @@ function sortRobotList(robotList, sortKey) {
     return robotList;
 }
 
-const urlCheckAddYear = new Promise((resolve, reject) => {
-    if (getParam("y") == null) {
-        const pageYear = checkYearParam();
-        console.log(pageYear)
-        const paramString = `?y=${pageYear}`;
-        history.replaceState('', '', paramString);
-    }
+const recordUrlCheckAddYear = loadSiteYear.then(() => {
+    new Promise((resolve, reject) => {
+        const paramY = getParam("y");
+        if (paramY == null) {
+            const pageYear = checkYearParam();
+            console.log(pageYear)
+            const paramString = `?y=${pageYear}`;
+            history.replaceState('', '', paramString);
+        }
+        // 最新年以外は過去年のリストと比較して正しい年かを確認、だめなら404へ
+        else {
+            // fetch common.json and compare paramY with pastYears list in common.json
+            // if paramY is not in pastYears list, redirect to error page
+            fetch("/data/common.json")
+                .then(response => response.json())
+                .then(commonJSON => {
+                    const pastYears = commonJSON.pastYears;
+                    if (pastYears.indexOf(Number(paramY)) == -1) {
+                        location.href = "/404/";
+                    }
+                })
+                .catch(error => console.error(error));
+        }
+        resolve();
+    });
 });

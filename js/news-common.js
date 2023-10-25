@@ -37,3 +37,24 @@ function generateNewsListItem(newsItem, labelSettingData, year = siteYear) {
 
     return newsItemElement;
 }
+
+const newsUrlCheckAddYear = loadSiteYear.then(() => {
+    return new Promise((resolve, reject) => {
+        const paramY = getParam("y");
+
+        // 最新年以外は過去年のリストと比較して正しい年かを確認、だめなら404へ
+        if (paramY != null && paramY != siteYear) {
+            // fetch common.json and compare paramY with pastYears list in common.json
+            // if paramY is not in pastYears list, redirect to error page
+            fetch("/data/common.json")
+                .then(response => response.json())
+                .then(commonJSON => {
+                    const pastYears = commonJSON.pastYears;
+                    if (pastYears.indexOf(Number(paramY)) == -1) {
+                        location.href = "/404/";
+                    }
+                })
+                .catch(error => console.error(error));
+        }
+    });
+});

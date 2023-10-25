@@ -35,16 +35,9 @@ function getParam(name, url) {
 function checkYearParam() {
     let pageYear = getParam('y');
     if (pageYear == null) {
-        fetch('/data/common.json')
-            .then(response => response.json())
-            .then(data => {
-                pageYear = data.year;
-                console.log(pageYear)
-                return pageYear;
-            })
-            .catch(error => console.error(error));
+        pageYear = siteYear;
     }
-    else return pageYear;
+    return pageYear;
 }
 
 const allWrapperElement = document.getElementById('all-wrapper');
