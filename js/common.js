@@ -109,6 +109,10 @@ const generateNavMenu = generateNavHead.then((obj) => {
                         if (!data.showRecord) {
                             recordBtnElement.style.display = 'none';
                         }
+                        const pastBtnElement = document.getElementById('past');
+                        if (data.pastYears == undefined || data.pastYears.length == 0) {
+                            pastBtnElement.style.display = 'none';
+                        }
                     })
                     .catch(error => console.error(error));
             })
