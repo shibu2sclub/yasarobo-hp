@@ -181,3 +181,12 @@ function sortRobotList(robotList, sortKey) {
     });
     return robotList;
 }
+
+const urlCheckAddYear = new Promise((resolve, reject) => {
+    if (getParam("y") == null) {
+        const pageYear = checkYearParam();
+        console.log(pageYear)
+        const paramString = `?y=${pageYear}`;
+        history.replaceState('', '', paramString);
+    }
+});

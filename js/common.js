@@ -32,6 +32,21 @@ function getParam(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
+function checkYearParam() {
+    let pageYear = getParam('y');
+    if (pageYear == null) {
+        fetch('/data/common.json')
+            .then(response => response.json())
+            .then(data => {
+                pageYear = data.year;
+                console.log(pageYear)
+                return pageYear;
+            })
+            .catch(error => console.error(error));
+    }
+    else return pageYear;
+}
+
 const allWrapperElement = document.getElementById('all-wrapper');
 const containerElement = document.getElementById('container');
 
@@ -47,7 +62,8 @@ const loadSiteYear = new Promise ((resolve, reject) => {
         })
         .then(() => {
             resolve();
-        });
+        })
+        .catch(error => console.error(error));
 });
 
 // Generate the common footer in the "footerElement". The footer html is in /component/footer.html.
@@ -193,14 +209,6 @@ const navBGOverlayUpdate = navMenuLinkUpdate.then((obj) => {
         resolve();
     });
 });
-
-function checkYearParam() {
-    let pageYear = getParam('y');
-    if (pageYear == null) {
-        pageYear = siteYear;
-    }
-    return pageYear;
-}
 
 const judgeYearPastOrLatest = navBGOverlayUpdate.then(() => {
     return new Promise ((resolve, reject) => {
