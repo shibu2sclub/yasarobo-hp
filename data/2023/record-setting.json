@@ -1,4 +1,6 @@
 {
+    "showRecord": true,
+    "showAward": false,
     "type": "detailed",
     "courseList": [
         {

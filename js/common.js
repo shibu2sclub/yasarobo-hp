@@ -106,9 +106,19 @@ const generateNavMenu = generateNavHead.then((obj) => {
                     .then(response => response.json())
                     .then(data => {
                         const recordBtnElement = document.getElementById('record');
-                        if (!data.showRecord) {
-                            recordBtnElement.style.display = 'none';
-                        }
+                        // その年のrecord-setting.jsonが存在しないorするが表示しない設定の場合は非表示
+                        fetch(`/data/${siteYear}/record-setting.json`)
+                            .then(response => response.json())
+                            .then(recordSettingJSON => {
+                                if (!recordSettingJSON.showRecord) {
+                                    recordBtnElement.style.display = 'none';
+                                }
+                            })
+                            .catch(error => {
+                                console.error(error)
+                                recordBtnElement.style.display = 'none';
+                            });
+                        
                         const pastBtnElement = document.getElementById('past');
                         if (data.pastYears == undefined || data.pastYears.length == 0) {
                             pastBtnElement.style.display = 'none';

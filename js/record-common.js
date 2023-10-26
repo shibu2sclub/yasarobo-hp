@@ -265,7 +265,8 @@ const generateRecordHeadMenu = generateNavBGOverlay.then(() => {
                 const recordHeadMenuListElement = document.createElement('ul');
                 recordHeadMenuListElement.classList.add('record-head-menu');
                 
-                recordHeadMenuListElement.innerHTML = `<li><a href = "/record/?y=${pageYear}">受賞者</a></li>`;
+                // 受賞者ページがある場合は受賞者ページへのリンクを追加
+                if (recordSetting.showAward) recordHeadMenuListElement.innerHTML = `<li><a href = "/record/?y=${pageYear}">受賞者</a></li>`;
                 recordSetting.courseList.forEach(courseData => {
                     const courseElement = document.createElement('li');
                     const courseLinkElement = document.createElement('a');

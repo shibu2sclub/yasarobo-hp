@@ -14,7 +14,6 @@ GitHub Pagesの独自ドメイン機能とsclub.devのDNS設定。自前のサ�
 ```json:common.json
 {
     "year": 2023,
-    "showRecord": false,
     "pastYears": [
         2021,
         2022
@@ -23,7 +22,6 @@ GitHub Pagesの独自ドメイン機能とsclub.devのDNS設定。自前のサ�
 ```
 
 * year: トップページに掲載されている=最新のコンテストの開催年度。（第〇回大会のような大会のカウントとしての数値、1月～3月の場合は開催当日の年月日とは相違が生じる。）
-* showRecord: 競技記録・ロボット一覧を表示するかの設定。表示できる状態となったら```true```に。
 * pastYears: 過去大会の年度リスト。これがない場合はメニューに過去大会情報は表示しない。
 
 ### news-label-setting.json
@@ -222,6 +220,8 @@ yearは非常に広範な範囲で用いているため、この場で影響範�
 
 ```json:record-setting.json
 {
+    "showRecord": true,
+    "showAward": true,
     "type": "detailed",
     "courseList": [
         {
@@ -561,6 +561,8 @@ yearは非常に広範な範囲で用いているため、この場で影響範�
 }
 ```
 
+* showRecord: 全体のナビメニューに競技記録・ロボット一覧を表示するかの設定。表示できる状態となったら```true```に。なお、このファイル自体存在しない時は```false```扱いとなる。
+* showAward: 受賞者リストを表示するかどうか。
 * type: ```simple```、```default```、```detailed```
     * simple: 集計結果の得点のみ。
     * default: ボールや缶の取得状況、色を含んだデータ。```simple```に加えて得点の内訳が表示される。
@@ -597,6 +599,8 @@ yearは非常に広範な範囲で用いているため、この場で影響範�
 #### 知能ロボットコンテストのルールでの設定
 ```json:record-setting.json
 {
+    "showRecord": true,
+    "showAward": true,
     "type": "detailed",
     "courseList":[
         {
