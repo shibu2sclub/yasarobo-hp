@@ -232,7 +232,7 @@ const adjustScrollHeight = generateAccess.then(() => {
         if (location.hash != "") {
             // Accessのgenerateが終わらないうちにスクロールすると、Accessの高さ分だけずれるので、再度スクロール動作をJSで強制的に実行する。
             const targetElement = document.getElementById(location.hash.substring(1));
-            const positionToScroll = (targetElement != null ? window.scrollY + targetElement.getBoundingClientRect().top : 0) - (getComputedStyle(navMenuElement).zIndex == 20000 ? navHeaderElement.offsetHeight : 0);
+            const positionToScroll = (targetElement != null ? window.scrollY + targetElement.getBoundingClientRect().top : 0) - (getComputedStyle(navMenuElement).zIndex == 20000 ? navHeadElement.offsetHeight : 0);
             // Scroll smoothly to the target element
             window.scrollTo({
                 top: positionToScroll >= 0 ? positionToScroll : 0,
