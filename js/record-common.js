@@ -183,6 +183,26 @@ function generateRobotListWithPoint(settings, recordJSON, courseID) {
                         record.result[scoreSetting.id].contestTime = maxPointContestTime;
                         if (maxPointJudgePoint != undefined) record.result[scoreSetting.id].judgePoint = maxPointJudgePoint;
                     }
+                    else if (calculateType == "sum") {
+                        // リスト内での合計点算出
+                        let sumPoint = 0, sumPointContestPoint = 0, sumPointJudgePoint = 0, sumPointContestTime = ""; // 合計点が最大の時の各得点
+                        scoreSetting.list.forEach(calcScoreID => {
+                            if (record.result[calcScoreID] == undefined) console.error("Error: Score of " + calcScoreID + " is not defined. robotID: " + robotID);
+                            else {
+                                const point = record.result[calcScoreID].sumPoint;
+                                sumPoint += point;
+                                sumPointContestPoint += record.result[calcScoreID].contestPoint;
+                                //sumPointContestTime = record.result[calcScoreID].contestTime;
+                                if (record.result[calcScoreID].judgePoint != undefined) sumPointJudgePoint += record.result[calcScoreID].judgePoint;
+                                else sumPointJudgePoint = undefined;
+                            }
+                        });
+                        record.result[scoreSetting.id] = {};
+                        record.result[scoreSetting.id].sumPoint = sumPoint;
+                        record.result[scoreSetting.id].contestPoint = sumPointContestPoint;
+                        //record.result[scoreSetting.id].contestTime = sumPointContestTime;
+                        if (sumPointJudgePoint != undefined) record.result[scoreSetting.id].judgePoint = sumPointJudgePoint;
+                    }
                 }
             });
             robotList.push(record);
