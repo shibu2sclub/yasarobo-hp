@@ -45,7 +45,7 @@
     height: 1px;
     bottom: -3px;
     left: 0;
-    background-color: var(--theme-color);
+    background-color: var(--font-color);
     transition: .25s ease-in-out;
 }
 
@@ -53,6 +53,10 @@
     color: var(--theme-color);
 }
 
-#record-head-menu > ul > li > a:hover::after {
+#record-head-menu > ul > li > a:hover::after, #record-head-menu > ul > li.active > a::after {
     width: 100%;
+}
+
+#record-head-menu > ul > li > a:hover::after {
+    background-color: var(--theme-color);
 }
