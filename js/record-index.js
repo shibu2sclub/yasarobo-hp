@@ -21,12 +21,12 @@ const generateRecordList = generateNavBGOverlay.then(() => {
                         courseTitleElement.classList.add('course-title');
                         courseTitleElement.innerText = courseRule.name;
                         courseElement.appendChild(courseTitleElement);
-                        const courseListElement = document.createElement('ul');
-                        courseListElement.classList.add('course-list');
+                        const courseRobotListElement = document.createElement('div');
+                        courseRobotListElement.classList.add('course-robot-list-container');
 
-                        for (let i = 0; (i < 3 && i < sortedCourseRobotList.length); i++) {
+                        for (let i = 0; (i < 2 && i < sortedCourseRobotList.length); i++) {
                             const robot = sortedCourseRobotList[i];
-                            const robotElement = document.createElement('li');
+                            const robotElement = document.createElement('div');
                             robotElement.classList.add('robot');
                             const robotLinkElement = document.createElement('a');
                             robotLinkElement.classList.add('robot-link');
@@ -40,17 +40,15 @@ const generateRecordList = generateNavBGOverlay.then(() => {
                             robotPointElement.innerText = robot.result["12best"].sumPoint;
                             robotLinkElement.appendChild(robotPointElement);
                             robotElement.appendChild(robotLinkElement);
-                            courseListElement.appendChild(robotElement);
+                            courseRobotListElement.appendChild(robotElement);
                         }
-                        courseElement.appendChild(courseListElement);
-
                         const courseMoreElement = document.createElement('a');
                         courseMoreElement.classList.add('course-more');
                         courseMoreElement.classList.add('internal-link');
                         courseMoreElement.setAttribute('href', `/record/ranking/?y=${pageYear}&c=${courseID}`);
                         courseMoreElement.innerText = "もっと見る";
-                        courseElement.appendChild(courseMoreElement);
-
+                        courseRobotListElement.appendChild(courseMoreElement);
+                        courseElement.appendChild(courseRobotListElement);
                         recordListElement.appendChild(courseElement);
                     });
                 })

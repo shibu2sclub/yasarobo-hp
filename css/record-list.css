@@ -1,0 +1,12 @@
+#record-list div.course {
+    padding-bottom: 2rem;
+}
+
+#record-list div.course:nth-child(2n) {
+    background-color: var(--light-gray-bg);
+}
+
+ul.course-robot-list {
+    padding: 0;
+    list-style: none;
+}

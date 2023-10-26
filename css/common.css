@@ -9,6 +9,8 @@
     --theme-color: #3C6D3C;
     --theme-color-bright: #518451;
 
+    --light-gray-bg: #F5F5F5;
+
     --nav-width: calc(420px - (1920px - 100vw) / 720 * 80);
     
     --nav-head-height: 3.5rem;
@@ -645,21 +647,26 @@ h3 {
     margin-bottom: 0.5rem;
 }
 
-#content {
-    padding: 0 5rem;
-    position: relative;
+:root {
+    --padding-x: 5rem;
 }
 
+
 @media screen and (max-width: 1200px) {
-    #content {
-        padding: 0 4rem;
+    :root {
+        --padding-x: 4rem;
     }
 }
 
 @media screen and (max-width: 900px) {
-    #content {
-        padding: 0 2rem;
+    :root {
+        --padding-x: 2rem;
     }
+}
+
+#content {
+    padding: 0 var(--padding-x);
+    position: relative;
 }
 
 #content > div {

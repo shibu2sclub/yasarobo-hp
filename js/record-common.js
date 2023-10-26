@@ -207,3 +207,46 @@ const recordUrlCheckAddYear = loadSiteYear.then(() => {
         resolve();
     });
 });
+
+const generateRecordHeadMenu = generateNavBGOverlay.then(() => {
+    return new Promise((resolve, reject) => {
+        const pageYear = checkYearParam();
+        fetch(`/data/${pageYear}/record-setting.json`)
+            .then(response => response.json())
+            .then(recordSetting => {
+                const recordHeadMenuElement = document.getElementById('record-head-menu');
+                const recordHeadMenuListElement = document.createElement('ul');
+                recordHeadMenuListElement.classList.add('record-head-menu');
+                
+                recordHeadMenuListElement.innerHTML = `<li><a href = "/record/?y=${pageYear}">受賞者</a></li>`;
+                recordSetting.courseList.forEach(courseData => {
+                    const courseElement = document.createElement('li');
+                    const courseLinkElement = document.createElement('a');
+                    //courseLinkElement.classList.add('internal-link');
+                    courseLinkElement.setAttribute('href', `/record/ranking/?y=${pageYear}&c=${courseData.id}`);
+                    courseLinkElement.innerText = courseData.name;
+                    courseElement.appendChild(courseLinkElement);
+                    recordHeadMenuListElement.appendChild(courseElement);
+                });
+
+                // 開いているページに関係するliを太字にする
+                recordHeadMenuListElement.querySelectorAll('li').forEach(liElement => {
+                    const aElement = liElement.querySelector('a');
+
+                    const currentURLCParam = getParam('c');
+                    if ((location.pathname == '/record/' || location.pathname == '/record/index.html') && aElement.getAttribute('href') == `/record/?y=${pageYear}`) {
+                        liElement.classList.add('active');
+                    }
+                    else if (currentURLCParam != null && aElement.getAttribute('href') == `/record/ranking/?y=${pageYear}&c=${currentURLCParam}`) {
+                        liElement.classList.add('active');
+                    }
+                });
+
+                recordHeadMenuElement.appendChild(recordHeadMenuListElement);
+            })
+            .then(() => {
+                resolve();
+            })
+            .catch(error => console.error(error));
+    });
+});

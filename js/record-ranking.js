@@ -15,7 +15,7 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                             const courseRobotList = generateRobotListWithPoint(recordSetting, recordJSON, courseID);
                             const sortedCourseRobotList = sortRobotList(courseRobotList, "12best");    // issue: 1条件のみでソートしている
 
-                            const recordListElement = document.getElementById('record-list');
+                            const recordRankingElement = document.getElementById('record-ranking');
                             const courseElement = document.createElement('div');
                             courseElement.classList.add('course');
                             courseElement.id = courseID;
@@ -40,7 +40,7 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                                 courseListElement.appendChild(robotElement);
                             });
                             courseElement.appendChild(courseListElement);
-                            recordListElement.appendChild(courseElement);
+                            recordRankingElement.appendChild(courseElement);
                         }
                     });
                 })
