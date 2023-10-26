@@ -21,21 +21,25 @@ const generateRecordList = generateNavBGOverlay.then(() => {
                     robotNameElement = document.createElement('span');
                     robotNameElement.classList.add('robot-name');
                     robotNameElement.innerText = robot.name;
+                    robotLinkElement.appendChild(robotNameElement);
+                    robotLinkElement.innerHTML += "<br>";
                     contestPointElement = document.createElement('span');
                     contestPointElement.classList.add('contest-point');
                     contestPointElement.innerText = `競技点：${priorityResult.sumPoint}点`;
-                    judgePointElement = document.createElement('span');
-                    judgePointElement.classList.add('judge-point');
-                    if (priorityResult.judgePoint != undefined) judgePointElement.innerText = `審査点：${priorityResult.judgePoint}点`;
-                    remainTimeElement = document.createElement('span');
-                    remainTimeElement.classList.add('remain-time');
-                    if (priorityResult.remainTime != undefined) remainTimeElement.innerText = `競技時間：${priorityResult.remainTime.split(':')[0]}分${priorityResult.remainTime.split(':')[1]}秒${priorityResult.remainTime.split(':')[2]}`;
-                    robotLinkElement.appendChild(robotNameElement);
-                    robotLinkElement.innerHTML += "<br>";
                     robotLinkElement.appendChild(contestPointElement);
-                    robotLinkElement.appendChild(judgePointElement);
-                    robotLinkElement.appendChild(remainTimeElement);
-                
+                    if (priorityResult.judgePoint != undefined) {
+                        const judgePointElement = document.createElement('span');
+                        judgePointElement.classList.add('judge-point');
+                        judgePointElement.innerText = `審査点：${priorityResult.judgePoint}点`;
+                        robotLinkElement.appendChild(judgePointElement);
+                    }
+                    // 審査点がない場合のみ表示する（表示場所の都合）
+                    else if (priorityResult.contestTime != undefined) {
+                        const remainTimeElement = document.createElement('span');
+                        remainTimeElement.classList.add('remain-time');
+                        remainTimeElement.innerText = `競技時間：${timeConvertStringToJPString(priorityResult.contestTime)}`;
+                        robotLinkElement.appendChild(remainTimeElement);
+                    }
                     robotElement.appendChild(robotLinkElement);
                     return robotElement;
                 }
@@ -117,9 +121,11 @@ const generateRecordList = generateNavBGOverlay.then(() => {
                                         const awardDescH3Element = document.createElement('h3');
                                         awardDescH3Element.innerText = "授賞理由";
                                         awardElement.appendChild(awardDescH3Element);
+                                        const awardDescBudouxElement = document.createElement('budoux-ja');
                                         const awardDescElement = document.createElement('p');
                                         awardDescElement.innerText = award.desc;
-                                        awardElement.appendChild(awardDescElement);
+                                        awardDescBudouxElement.appendChild(awardDescElement);
+                                        awardElement.appendChild(awardDescBudouxElement);
                                     }
 
                                     recordListElement.appendChild(awardElement);

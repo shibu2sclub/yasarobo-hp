@@ -116,6 +116,18 @@ function calculateScore(settings, robotID, pointString, debugMode = false) {
     else return result;
 }
 
+function timeConvertStringToMsec(timeString) {
+    return Number(timeString.split(':')[0]) * 60 * 1000 + Number(timeString.split(':')[1]) * 1000 + Number(timeString.split(':')[2]) * 10;
+}
+
+function timeConvertStringToJPString(timeString) {
+    return Number(timeString.split(':')[0]) + "分" + Number(timeString.split(':')[1]) + "秒" + timeString.split(':')[2];
+}
+
+function timeConvertMsecToString(msec) {
+    return `${String(Math.floor(msec / 60000)).padStart(2, "0")}:${String(Math.floor(msec % 60000 / 1000)).padStart(2, "0")}:${String(Math.floor(msec % 1000 / 10)).padStart(2, "0")}`;
+}
+
 /* setting: 連想配列でrecord-setting.jsonをそのまま。 */
 /* recordJSON: record.jsをそのまま */
 /* courseID: 1文字ならコースを指定、3文字（2文字以上）ならゼッケン番号を指定 */
@@ -128,13 +140,21 @@ function generateRobotListWithPoint(settings, recordJSON, courseID) {
         // コースがあっているときのみ or ゼッケン番号があっているときのみ
         if ((courseID.length == 1 && robotID.charAt(0) == courseID) || (courseID.length > 1 && robotID == courseID)) {
             Object.keys(resultList).forEach(key => {
-                const pointStringsArray = resultList[key].contest;
+                const contestResult = resultList[key];
+                const pointStringsArray = contestResult.contest;
                 const pointString = pointStringsArray[pointStringsArray.length - 1];
                 const point = calculateScore(settings, robotID, pointString);
 
                 record.result[key].contestPoint = point;
                 if (record.result[key].judgePoint != undefined) record.result[key].sumPoint = point + record.result[key].judgePoint;
                 else record.result[key].sumPoint = point;
+
+                const scoreSetting = settings.scoreList.filter(scoreSettings => scoreSettings.id == key)[0];
+                const scoreRuleTimeMsec = timeConvertStringToMsec(scoreSetting.time);
+                const scoreRemainTimeMsec = timeConvertStringToMsec(contestResult.remainTime);
+
+                const scoreContestTimeMsec = scoreRuleTimeMsec - scoreRemainTimeMsec;
+                record.result[key].contestTime = timeConvertMsecToString(scoreContestTimeMsec);
             });
 
             // 算出点がある場合は、算出点を計算
@@ -143,7 +163,7 @@ function generateRobotListWithPoint(settings, recordJSON, courseID) {
                     const calculateType = scoreSetting.calculateType;
                     if (calculateType == "best") {
                         // リスト内での最高点算出
-                        let maxPoint = 0, maxPointContestPoint = 0, maxPointJudgePoint = 0; // 合計点が最大の時の各得点
+                        let maxPoint = 0, maxPointContestPoint = 0, maxPointJudgePoint = 0, maxPountContestTime = ""; // 合計点が最大の時の各得点
                         scoreSetting.list.forEach(calcScoreID => {
                             if (record.result[calcScoreID] == undefined) console.error("Error: Score of " + calcScoreID + " is not defined. robotID: " + robotID);
                             else {
@@ -151,6 +171,7 @@ function generateRobotListWithPoint(settings, recordJSON, courseID) {
                                 if (point > maxPoint) {
                                     maxPoint = point;
                                     maxPointContestPoint = record.result[calcScoreID].contestPoint;
+                                    maxPointContestTime = record.result[calcScoreID].contestTime;
                                     if (record.result[calcScoreID].judgePoint != undefined) maxPointJudgePoint = record.result[calcScoreID].judgePoint;
                                     else maxPointJudgePoint = undefined;
                                 }
@@ -159,6 +180,7 @@ function generateRobotListWithPoint(settings, recordJSON, courseID) {
                         record.result[scoreSetting.id] = {};
                         record.result[scoreSetting.id].sumPoint = maxPoint;
                         record.result[scoreSetting.id].contestPoint = maxPointContestPoint;
+                        record.result[scoreSetting.id].contestTime = maxPointContestTime;
                         if (maxPointJudgePoint != undefined) record.result[scoreSetting.id].judgePoint = maxPointJudgePoint;
                     }
                 }
@@ -233,11 +255,13 @@ const generateRecordHeadMenu = generateNavBGOverlay.then(() => {
                 recordHeadMenuListElement.querySelectorAll('li').forEach(liElement => {
                     const aElement = liElement.querySelector('a');
 
-                    const currentURLCParam = getParam('c');
+                    let currentURLCourseParam = null;
+                    if (getParam('c') != null) currentURLCourseParam = getParam('c')
+                    else if (getParam('r') != null) currentURLCourseParam = getParam('r').charAt(0);
                     if ((location.pathname == '/record/' || location.pathname == '/record/index.html') && aElement.getAttribute('href') == `/record/?y=${pageYear}`) {
                         liElement.classList.add('active');
                     }
-                    else if (currentURLCParam != null && aElement.getAttribute('href') == `/record/ranking/?y=${pageYear}&c=${currentURLCParam}`) {
+                    else if ((currentURLCourseParam != null && aElement.getAttribute('href') == `/record/ranking/?y=${pageYear}&c=${currentURLCourseParam}`)) {
                         liElement.classList.add('active');
                     }
                 });

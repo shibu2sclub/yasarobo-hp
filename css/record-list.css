@@ -47,5 +47,5 @@ div.robot > a.robot-link:hover::after {
 }
 
 div.robot > a.robot-link > span {
-    padding-right: 1.5rem;
+    margin-right: 0.8rem;
 }
