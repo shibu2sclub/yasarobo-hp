@@ -17,23 +17,24 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
 
                             const recordListElement = document.getElementById('record-list');
                             const courseElement = document.createElement('div');
-                            courseElement.setAttribute('class', 'course');
-                            courseElement.setAttribute('id', courseID);
+                            courseElement.classList.add('course');
+                            courseElement.id = courseID;
                             const courseTitleElement = document.createElement('h2');
-                            courseTitleElement.setAttribute('class', 'course-title');
+                            courseTitleElement.classList.add('course-title');
                             courseTitleElement.innerText = courseRule.name;
                             courseElement.appendChild(courseTitleElement);
                             const courseListElement = document.createElement('ul');
-                            courseListElement.setAttribute('class', 'course-list');
+                            courseListElement.classList.add('course-list');
+
                             sortedCourseRobotList.forEach(robot => {
                                 const robotElement = document.createElement('li');
-                                robotElement.setAttribute('class', 'robot');
+                                robotElement.classList.add('robot');
                                 const robotNameElement = document.createElement('h3');
-                                robotNameElement.setAttribute('class', 'robot-name');
+                                robotNameElement.classList.add('robot-name');
                                 robotNameElement.innerText = robot.name;
                                 robotElement.appendChild(robotNameElement);
                                 const robotPointElement = document.createElement('p');
-                                robotPointElement.setAttribute('class', 'robot-point');
+                                robotPointElement.classList.add('robot-point');
                                 robotPointElement.innerText = robot.result["12best"].sumPoint;
                                 robotElement.appendChild(robotPointElement);
                                 courseListElement.appendChild(robotElement);
