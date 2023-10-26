@@ -22,6 +22,10 @@ const generateRecordList = generateNavBGOverlay.then(() => {
                     
                     // 優先度が最も高い競技のデータを表示
                     const priorityResult = robot.result[priorityOrderedScoreIDList[0]];
+                    const robotIDElement = document.createElement('div');
+                    robotIDElement.classList.add('robot-id');
+                    robotIDElement.innerText = robot.id;
+                    robotLinkElement.appendChild(robotIDElement);
                     const robotNameElement = document.createElement('div');
                     robotNameElement.classList.add('robot-name');
                     robotNameElement.innerText = robot.name;

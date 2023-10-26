@@ -60,6 +60,10 @@ div.robot > a.robot-link span {
     margin-right: 0.8rem;
 }
 
+div.robot > a.robot-link > div.robot-id {
+    font-size: 0.8rem;
+}
+
 div.robot > a.robot-link > div.robot-name {
     font-size: 1.2rem;
 }
