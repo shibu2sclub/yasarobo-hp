@@ -40,11 +40,11 @@ const generateRecordList = generateNavBGOverlay.then(() => {
                     return robotElement;
                 }
 
+                let recordListWithPoint = [];   // 全コースのリスト
 
                 fetch(`/data/${pageYear}/record.json`)
                     .then(response => response.json())
                     .then(recordJSON => {
-                        
                         const recordListElement = document.getElementById('record-list');
 
                         const priorityRuleDescElement = document.createElement('p');
@@ -53,13 +53,12 @@ const generateRecordList = generateNavBGOverlay.then(() => {
 
                         recordSetting.courseList.forEach(courseRule => {
                             const courseID = courseRule.id;
-
                             const courseRobotList = generateRobotListWithPoint(recordSetting, recordJSON, courseID);
+                            recordListWithPoint = recordListWithPoint.concat(courseRobotList);    // 全コースのリストを作成
                             const sortedCourseRobotList = sortRobotList(courseRobotList, priorityOrderedScoreIDList[0]);    // issue: 1条件のみでソートしている
 
                             const courseElement = document.createElement('div');
                             courseElement.classList.add('course');
-                            // courseElement.id = courseID;
                             const courseTitleElement = document.createElement('h2');
                             courseTitleElement.classList.add('course-title');
                             courseTitleElement.innerText = courseRule.name;
@@ -88,6 +87,45 @@ const generateRecordList = generateNavBGOverlay.then(() => {
                             courseElement.appendChild(courseRobotListElement);
                             recordListElement.appendChild(courseElement);
                         });
+
+                        fetch(`/data/${pageYear}/record-award.json`)
+                            .then(response => response.json())
+                            .then(recordAwardJSON => {
+                                recordAwardJSON.award.forEach(award => {
+                                    const awardElement = document.createElement('div');
+                                    awardElement.classList.add('course');
+                                    const awardTitleElement = document.createElement('h2');
+                                    awardTitleElement.classList.add('course-title');
+                                    awardTitleElement.innerText = award.name;
+                                    awardElement.appendChild(awardTitleElement);
+                                    const awardRobotListElement = document.createElement('div');
+                                    awardRobotListElement.classList.add('course-robot-list-container');
+
+                                    // filter recordListWithPoint by award.id == recordListWithPoint each element's id
+                                    const awardRobotList = recordListWithPoint.filter(robot => robot.id == award.id);
+
+                                    const robotListElement = document.createElement('div');
+                                    
+                                    robotListElement.classList.add('robot-list');
+                                    awardRobotList.forEach(robot => {
+                                        robotListElement.appendChild(generateRobotItem(robot));
+                                    });
+                                    awardRobotListElement.appendChild(robotListElement);
+                                    awardElement.appendChild(awardRobotListElement);
+
+                                    if (award.desc != undefined) {
+                                        const awardDescH3Element = document.createElement('h3');
+                                        awardDescH3Element.innerText = "授賞理由";
+                                        awardElement.appendChild(awardDescH3Element);
+                                        const awardDescElement = document.createElement('p');
+                                        awardDescElement.innerText = award.desc;
+                                        awardElement.appendChild(awardDescElement);
+                                    }
+
+                                    recordListElement.appendChild(awardElement);
+                                });
+                            })
+                            .catch(error => console.error(error));
                     })
                     .then(() => {
                         resolve();
