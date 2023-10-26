@@ -118,15 +118,15 @@ function calculateScore(settings, robotID, pointString, debugMode = false) {
 
 /* setting: 連想配列でrecord-setting.jsonをそのまま。 */
 /* recordJSON: record.jsをそのまま */
-/* courseID: コースを指定 */
+/* courseID: 1文字ならコースを指定、3文字（2文字以上）ならゼッケン番号を指定 */
 function generateRobotListWithPoint(settings, recordJSON, courseID) {
     let robotList = [];
     recordJSON.forEach(record => {
         const robotID = record.id;
         const resultList = record.result;
 
-        // コースがあっているときのみ
-        if (robotID.charAt(0) == courseID) {
+        // コースがあっているときのみ or ゼッケン番号があっているときのみ
+        if ((courseID.length == 1 && robotID.charAt(0) == courseID) || (courseID.length > 1 && robotID == courseID)) {
             Object.keys(resultList).forEach(key => {
                 const pointStringsArray = resultList[key].contest;
                 const pointString = pointStringsArray[pointStringsArray.length - 1];

@@ -28,14 +28,18 @@ const generateRecordList = generateNavBGOverlay.then(() => {
                             const robot = sortedCourseRobotList[i];
                             const robotElement = document.createElement('li');
                             robotElement.classList.add('robot');
+                            const robotLinkElement = document.createElement('a');
+                            robotLinkElement.classList.add('robot-link');
+                            robotLinkElement.setAttribute('href', `/record/detail/?y=${pageYear}&r=${robot.id}`);
                             const robotNameElement = document.createElement('h3');
                             robotNameElement.classList.add('robot-name');
                             robotNameElement.innerText = robot.name;
-                            robotElement.appendChild(robotNameElement);
+                            robotLinkElement.appendChild(robotNameElement);
                             const robotPointElement = document.createElement('p');
                             robotPointElement.classList.add('robot-point');
                             robotPointElement.innerText = robot.result["12best"].sumPoint;
-                            robotElement.appendChild(robotPointElement);
+                            robotLinkElement.appendChild(robotPointElement);
+                            robotElement.appendChild(robotLinkElement);
                             courseListElement.appendChild(robotElement);
                         }
                         courseElement.appendChild(courseListElement);
