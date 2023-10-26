@@ -56,6 +56,10 @@ div.robot > a.robot-link:hover::after {
     border-color: var(--theme-color) var(--theme-color) transparent transparent;
 }
 
-div.robot > a.robot-link > span {
+div.robot > a.robot-link span {
     margin-right: 0.8rem;
+}
+
+div.robot > a.robot-link > div.robot-name {
+    font-size: 1.2rem;
 }

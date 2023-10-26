@@ -18,28 +18,39 @@ const generateRecordList = generateNavBGOverlay.then(() => {
                     
                     // 優先度が最も高い競技のデータを表示
                     const priorityResult = robot.result[priorityOrderedScoreIDList[0]];
-                    robotNameElement = document.createElement('span');
+                    const robotNameElement = document.createElement('div');
                     robotNameElement.classList.add('robot-name');
                     robotNameElement.innerText = robot.name;
                     robotLinkElement.appendChild(robotNameElement);
-                    robotLinkElement.innerHTML += "<br>";
-                    contestPointElement = document.createElement('span');
+                    const robotTeamNameElement = document.createElement('div');
+                    robotTeamNameElement.classList.add('robot-team-name');
+                    robotTeamNameElement.innerText = robot.team;
+                    robotLinkElement.appendChild(robotTeamNameElement);
+                    if (robot.belonging != undefined && robot.belonging != "") {
+                        const robotBelongingNameElement = document.createElement('div');
+                        robotBelongingNameElement.classList.add('robot-belonging-name');
+                        robotBelongingNameElement.innerText = robot.belonging;
+                        robotLinkElement.appendChild(robotBelongingNameElement);
+                    }
+                    const robotDetailRecordElement = document.createElement('div');
+                    const contestPointElement = document.createElement('span');
                     contestPointElement.classList.add('contest-point');
                     contestPointElement.innerText = `競技点：${priorityResult.sumPoint}点`;
-                    robotLinkElement.appendChild(contestPointElement);
+                    robotDetailRecordElement.appendChild(contestPointElement);
                     if (priorityResult.judgePoint != undefined) {
                         const judgePointElement = document.createElement('span');
                         judgePointElement.classList.add('judge-point');
                         judgePointElement.innerText = `審査点：${priorityResult.judgePoint}点`;
-                        robotLinkElement.appendChild(judgePointElement);
+                        robotDetailRecordElement.appendChild(judgePointElement);
                     }
                     // 審査点がない場合のみ表示する（表示場所の都合）
                     else if (priorityResult.contestTime != undefined) {
                         const remainTimeElement = document.createElement('span');
                         remainTimeElement.classList.add('remain-time');
                         remainTimeElement.innerText = `競技時間：${timeConvertStringToJPString(priorityResult.contestTime)}`;
-                        robotLinkElement.appendChild(remainTimeElement);
+                        robotDetailRecordElement.appendChild(remainTimeElement);
                     }
+                    robotLinkElement.appendChild(robotDetailRecordElement)
                     robotElement.appendChild(robotLinkElement);
                     return robotElement;
                 }
