@@ -2,11 +2,50 @@
     padding-bottom: 2rem;
 }
 
-#record-list div.course:nth-child(2n) {
+#record-list div.course:nth-child(2n-1) {
     background-color: var(--light-gray-bg);
 }
 
-ul.course-robot-list {
-    padding: 0;
-    list-style: none;
+div.robot {
+    max-width: 20rem;
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+}
+
+div.robot > a.robot-link {
+    display: block;
+    text-decoration: none;
+    color: var(--font-color);
+    border-bottom: 1px solid var(--font-color);
+    position: relative;
+    transition: 0.25s ease-out;
+}
+
+div.robot > a.robot-link::after {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    right: 0.3rem;
+    content: "";
+    width: 0.4rem;
+    height: 0.4rem;
+    border: calc(0.4rem / 6) solid;
+    border-color: var(--font-color) var(--font-color) transparent transparent;
+    transform: rotate(45deg) translateX(-35.36%) translateY(-35.36%);
+    transition: 0.25s ease-out;
+}
+
+div.robot > a.robot-link:hover {
+    color: var(--theme-color);
+    border-bottom: var(--theme-color) 1px solid;
+    letter-spacing: 0.02rem;
+}
+
+div.robot > a.robot-link:hover::after {
+    right: 0.1rem;
+    border-color: var(--theme-color) var(--theme-color) transparent transparent;
+}
+
+div.robot > a.robot-link > span {
+    padding-right: 1.5rem;
 }

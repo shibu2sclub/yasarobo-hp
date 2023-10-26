@@ -34,4 +34,25 @@
 #record-head-menu > ul > li > a {
     color: var(--font-color);
     text-decoration: none;
+    transition: .25s ease-in-out;
+    position: relative;
+}
+
+#record-head-menu > ul > li > a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -3px;
+    left: 0;
+    background-color: var(--theme-color);
+    transition: .25s ease-in-out;
+}
+
+#record-head-menu > ul > li > a:hover {
+    color: var(--theme-color);
+}
+
+#record-head-menu > ul > li > a:hover::after {
+    width: 100%;
 }
