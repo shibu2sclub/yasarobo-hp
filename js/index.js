@@ -236,7 +236,7 @@ const adjustScrollHeight = generateAccess.then(() => {
             // Scroll smoothly to the target element
             window.scrollTo({
                 top: positionToScroll >= 0 ? positionToScroll : 0,
-                behavior: 'smooth'
+                behavior: 'instant'
             });
             history.replaceState('','','/');
         }
