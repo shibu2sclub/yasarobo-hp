@@ -65,8 +65,13 @@ function calculateScore(settings, robotID, pointString, debugMode = false) {
     for (let i = 0; i < pointString.length; i++) {
         let addPoint = 0;
         const pointSetting = courseSetting.point.filter((pointSettingBuff) => pointSettingBuff.id == pointString.charAt(i))[0];
-
-        if (pointSetting.bonusType == undefined) {
+        if (pointSetting == undefined) {
+            if (debugMode) {
+                debugTextArray.push("Error: Point setting of " + pointString.charAt(i) + " is not defined. robotID: " + robotID);
+                console.error(debugTextArray[debugTextArray.length - 1]);
+            }
+        }
+        else if (pointSetting.bonusType == undefined) {
             addPoint = pointSetting.value;
         
             if (debugMode) {
