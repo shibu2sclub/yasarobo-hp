@@ -69,19 +69,21 @@ const generateRecordList = generateNavBGOverlay.then(() => {
                             courseElement.appendChild(courseTitleElement);
                             const courseRobotListElement = document.createElement('div');
                             courseRobotListElement.classList.add('course-robot-list-container');
+                            const robotListElement = document.createElement('div');
+                            robotListElement.classList.add('robot-list');
 
                             for (let i = 0; (i < 2 && i < sortedCourseRobotList.length); i++) {
+                                const robotContainerElement = document.createElement('div');
+                                robotContainerElement.classList.add('robot-container');
                                 const awardTitleElement = document.createElement('h3');
                                 if (i == 0) awardTitleElement.innerText = "最優秀賞";
                                 else if (i == 1) awardTitleElement.innerText = "優秀賞";
 
-                                const robotListElement = document.createElement('div');
-                                robotListElement.classList.add('robot-list');
-
-                                courseRobotListElement.appendChild(awardTitleElement);
-                                robotListElement.appendChild(generateRobotItem(sortedCourseRobotList[i]));
-                                courseRobotListElement.appendChild(robotListElement);
+                                robotContainerElement.appendChild(awardTitleElement);
+                                robotContainerElement.appendChild(generateRobotItem(sortedCourseRobotList[i]));
+                                robotListElement.appendChild(robotContainerElement);
                             }
+                            courseRobotListElement.appendChild(robotListElement);
                             const courseMoreElement = document.createElement('a');
                             courseMoreElement.classList.add('course-more');
                             courseMoreElement.classList.add('internal-link');

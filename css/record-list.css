@@ -6,8 +6,18 @@
     background-color: var(--light-gray-bg);
 }
 
+div.robot-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+div.robot-container {
+    margin-right: 2rem;
+}
+
 div.robot {
-    max-width: 20rem;
+    width: 20rem;
     padding: 1rem 0;
     margin-bottom: 1rem;
 }
