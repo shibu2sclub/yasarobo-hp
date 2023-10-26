@@ -230,15 +230,36 @@ const adjustScrollHeight = generateAccess.then(() => {
         const navHeadElement = document.getElementById("nav-head");
         const navMenuElement = document.getElementById("nav-menu");
         if (location.hash != "") {
-            if (getComputedStyle(navMenuElement).zIndex == 20000) {
-                // console.log("scrolling to the target element");
-                window.scrollBy({
-                    top: -navHeadElement.offsetHeight,
-                    behavior: "instant"
-                })
-            }
+            // Accessのgenerateが終わらないうちにスクロールすると、Accessの高さ分だけずれるので、再度スクロール動作をJSで強制的に実行する。
+            const targetElement = document.getElementById(location.hash.substring(1));
+            const positionToScroll = (targetElement != null ? window.scrollY + targetElement.getBoundingClientRect().top : 0) - (getComputedStyle(navMenuElement).zIndex == 20000 ? navHeaderElement.offsetHeight : 0);
+            // Scroll smoothly to the target element
+            window.scrollTo({
+                top: positionToScroll >= 0 ? positionToScroll : 0,
+                behavior: 'instant'
+            });
             history.replaceState('','','/');
         }
+        resolve();
+    });
+});
+
+const showLoadingScreenLogo = generateLogo.then(() => {
+    return new Promise((resolve, reject) => {
+        const loadingScreenElement = document.getElementById('loading-screen');
+        const loadingScreenLogoElement = loadingScreenElement.getElementsByClassName('logo')[0];
+        loadingScreenLogoElement.classList.add('show');
+        resolve();
+    });
+});
+
+const removeLoadingScreen = adjustScrollHeight.then(() => {
+    return new Promise((resolve, reject) => {
+        const loadingScreenElement = document.getElementById('loading-screen');
+        loadingScreenElement.classList.add('loaded');
+        setTimeout(() => {
+            loadingScreenElement.style.display = "none";
+        }, 1000);
         resolve();
     });
 });
