@@ -9,7 +9,7 @@ const generateRecordList = generateNavBGOverlay.then(() => {
                     // 最初のコースのランキング（競技順序に自動遷移）
                     location.href = `/record/ranking/?y=${pageYear}&c=${recordSetting.courseList[0].id}`;
                 }
-                const priorityScoreSetting = recordSetting.scoreList.filter(score => score.priority == 1)[0];   // もっとも優先度の高いスコア
+                const priorityScoreSetting = recordSetting.scoreList.filter(score => score.priority == 1)[0];   // もっとも優先度の高いスコアの設定情報
                 function generateRobotItem(robot) {
                     const robotElement = document.createElement('div');
                     robotElement.classList.add('robot');
