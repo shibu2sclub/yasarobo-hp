@@ -9,10 +9,7 @@ const generateRecordList = generateNavBGOverlay.then(() => {
                     // 最初のコースのランキング（競技順序に自動遷移）
                     location.href = `/record/ranking/?y=${pageYear}&c=${recordSetting.courseList[0].id}`;
                 }
-                // 優先度の高い順に試技をソート
-                const priorityOrderedScoreList = recordSetting.scoreList.sort((a, b) => a.priority - b.priority);
-                const priorityOrderedScoreIDList = priorityOrderedScoreList.map(score => score.id);
-
+                const priorityScoreSetting = recordSetting.scoreList.filter(score => score.priority == 1)[0];   // もっとも優先度の高いスコア
                 function generateRobotItem(robot) {
                     const robotElement = document.createElement('div');
                     robotElement.classList.add('robot');
@@ -21,7 +18,7 @@ const generateRecordList = generateNavBGOverlay.then(() => {
                     robotLinkElement.setAttribute('href', `/record/detail/?y=${pageYear}&r=${robot.id}`);
                     
                     // 優先度が最も高い競技のデータを表示
-                    const priorityResult = robot.result[priorityOrderedScoreIDList[0]];
+                    const priorityResult = robot.result[priorityScoreSetting.id];
                     const robotIDElement = document.createElement('div');
                     robotIDElement.classList.add('robot-id');
                     robotIDElement.innerText = robot.id;
@@ -75,14 +72,14 @@ const generateRecordList = generateNavBGOverlay.then(() => {
                                     const recordListElement = document.getElementById('record-list');
 
                                     const priorityRuleDescElement = document.createElement('p');
-                                    priorityRuleDescElement.innerText = `競技点は最終順位の決定に用いた「${priorityOrderedScoreList[0].name}」の結果を表示しています。`;
+                                    priorityRuleDescElement.innerText = `競技点は最終順位の決定に用いた「${priorityScoreSetting.name}」の結果を表示しています。`;
                                     recordListElement.appendChild(priorityRuleDescElement);
 
                                     recordSetting.courseList.forEach(courseRule => {
                                         const courseID = courseRule.id;
                                         const courseRobotList = generateRobotListWithPoint(recordSetting, recordJSON, courseID);
                                         recordListWithPoint = recordListWithPoint.concat(courseRobotList);    // 全コースのリストを作成
-                                        const sortedCourseRobotList = sortRobotList(courseRobotList, priorityOrderedScoreIDList[0]);    // issue: 1条件のみでソートしている
+                                        const sortedCourseRobotList = sortRobotList(recordSetting, courseRobotList);
 
                                         const courseElement = document.createElement('div');
                                         courseElement.classList.add('course');

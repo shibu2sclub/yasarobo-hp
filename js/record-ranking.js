@@ -13,7 +13,7 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                         // paramで指定されたコースか
                         if (courseID == getParam("c")) {
                             const courseRobotList = generateRobotListWithPoint(recordSetting, recordJSON, courseID);
-                            const sortedCourseRobotList = sortRobotList(courseRobotList, "12best");    // issue: 1条件のみでソートしている
+                            const sortedCourseRobotList = sortRobotList(recordSetting, courseRobotList);    // issue: 1条件のみでソートしている
 
                             const recordRankingElement = document.getElementById('record-ranking');
                             const courseElement = document.createElement('div');
