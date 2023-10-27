@@ -1,3 +1,56 @@
+function generateTableElement(robotList, scoreRuleID) {
+    const recordRankingTableElement = document.createElement("table");
+    recordRankingTableElement.id = scoreRuleID;
+    recordRankingTableElement.innerHTML = `
+        <thead>
+            <tr>
+                <th class = "order">走順</th>
+                <th class = "robot-id">番号</th>
+                <th class = "robot-name">ロボット名</th>
+                <th class = "team-name">チーム名</th>
+                <th class = "belonging-name">所属</th>
+                <th class = "sum-point">得点</th>
+                <th class = "contest-point">競技点</th>
+                <th class = "judge-point">審査点</th>
+                <th class = "contest-time">競技時間</th>
+                <th class = "remark">備考</th>
+            </tr>
+        </thead>
+    `;
+    recordRankingTableBodyElement = document.createElement("tbody");
+    
+    robotList.forEach(robot => {
+        const rowElement = document.createElement("tr");
+        rowElement.innerHTML = `
+            <td class = "order">${robot.order}</td>
+            <td class = "robot-id">${robot.id}</td>
+            <td class = "robot-name">${robot.name}</td>
+            <td class = "team-name">${robot.team}</td>
+            <td class = "belonging-name">${robot.belonging}</td>
+            <td class = "sum-point">${robot.result[scoreRuleID].sumPoint}</td>
+            <td class = "contest-point">${robot.result[scoreRuleID].contestPoint}</td>
+            <td class = "judge-point">${robot.result[scoreRuleID].judgePoint}</td>
+            <td class = "contest-time">${robot.result[scoreRuleID].contestTime}</td>
+            <td class = "remark">${robot.remark ? robot.remark != undefined : ""}</td>
+        `;
+        recordRankingTableBodyElement.appendChild(rowElement);
+    });
+    recordRankingTableElement.appendChild(recordRankingTableBodyElement);
+    
+    if (robotList[0].result[scoreRuleID].order == undefined) {
+        Array.from(recordRankingTableElement.getElementsByClassName("order")).forEach(judgePointElement => judgePointElement.style.display = "none");
+    }
+    if (robotList[0].result[scoreRuleID].judgePoint == undefined) {
+        Array.from(recordRankingTableElement.getElementsByClassName("contest-point")).forEach(judgePointElement => judgePointElement.style.display = "none");
+        Array.from(recordRankingTableElement.getElementsByClassName("judge-point")).forEach(judgePointElement => judgePointElement.style.display = "none");
+    }
+    if (robotList[0].result[scoreRuleID].contestTime == undefined) {
+        Array.from(recordRankingTableElement.getElementsByClassName("contest-time")).forEach(judgePointElement => judgePointElement.style.display = "none");
+    }
+
+    return recordRankingTableElement;
+}
+
 const generateRecordRanking = generateNavBGOverlay.then(() => {
     return new Promise((resolve, reject) => {
         const pageYear = checkYearParam();
@@ -13,34 +66,28 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                         // paramで指定されたコースか
                         if (courseID == getParam("c")) {
                             const courseRobotList = generateRobotListWithPoint(recordSetting, recordJSON, courseID);
-                            const sortedCourseRobotList = sortRobotList(recordSetting, courseRobotList);    // issue: 1条件のみでソートしている
 
-                            const recordRankingElement = document.getElementById('record-ranking');
-                            const courseElement = document.createElement('div');
-                            courseElement.classList.add('course');
-                            courseElement.id = courseID;
-                            const courseTitleElement = document.createElement('h2');
-                            courseTitleElement.classList.add('course-title');
-                            courseTitleElement.innerText = courseRule.name;
-                            courseElement.appendChild(courseTitleElement);
-                            const courseListElement = document.createElement('ul');
-                            courseListElement.classList.add('course-list');
+                            const h2CourseNameElement = document.getElementById("h2-course-name");
+                            h2CourseNameElement.innerText = courseRule.name;
 
-                            sortedCourseRobotList.forEach(robot => {
-                                const robotElement = document.createElement('li');
-                                robotElement.classList.add('robot');
-                                const robotNameElement = document.createElement('h3');
-                                robotNameElement.classList.add('robot-name');
-                                robotNameElement.innerText = robot.name;
-                                robotElement.appendChild(robotNameElement);
-                                const robotPointElement = document.createElement('p');
-                                robotPointElement.classList.add('robot-point');
-                                robotPointElement.innerText = robot.result["12best"].sumPoint;
-                                robotElement.appendChild(robotPointElement);
-                                courseListElement.appendChild(robotElement);
+                            const recordRankingSelectMenuElement = document.getElementById("record-ranking-select-menu");
+                            const recordRankingTablesElement = document.getElementById("record-ranking-tables");
+                            recordSetting.scoreList.forEach(scoreRule => {
+                                const sortedCourseRobotList = sortRobotList(recordSetting, courseRobotList, scoreRule.id);    // issue: 1条件のみでソートしている
+
+                                const recordRankingBtn = document.createElement("li");
+                                recordRankingBtn.setAttribute("target-score", scoreRule.id);
+                                if (scoreRule.id == recordSetting.scoreList[0].id) recordRankingBtn.classList.add("active");
+                                const recordRankingBtnA = document.createElement("a");
+                                recordRankingBtnA.setAttribute("href", "#");
+                                recordRankingBtnA.innerText = scoreRule.name;
+                                recordRankingBtn.appendChild(recordRankingBtnA);
+                                recordRankingSelectMenuElement.appendChild(recordRankingBtn);
+
+                                const recordRankingTableBodyElement = generateTableElement(sortedCourseRobotList, scoreRule.id);
+                                if (scoreRule.id == recordSetting.scoreList[0].id) recordRankingTableBodyElement.classList.add("active");
+                                recordRankingTablesElement.appendChild(recordRankingTableBodyElement);
                             });
-                            courseElement.appendChild(courseListElement);
-                            recordRankingElement.appendChild(courseElement);
                         }
                     });
                 })
@@ -69,6 +116,10 @@ const addToggleContestEvent = generateRecordRanking.then(() => {
                 if (!targetRankingTableElement.classList.contains("active")) {
                     activeRankingTableElement.classList.remove("active");
                     targetRankingTableElement.classList.add("active");
+                    recordRankingSelectMenuButtonElementArray.forEach(buttonBuff => {   
+                        buttonBuff.classList.remove("active");
+                    });
+                    button.classList.add("active");
                 }
             });
         });

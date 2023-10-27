@@ -15,12 +15,14 @@
     list-style: none;
     display: flex;
     align-items: center;
-    padding: 0.5rem var(--padding-x);
+    padding: 0 var(--padding-x);
     background-color: var(--light-gray-bg);
+    flex-wrap: wrap;
 }
 
 #record-head-menu > ul > li {
-    padding: 0 1rem;
+    padding: 0.5rem 0;
+    padding-right: 2rem;
 }
 
 #record-head-menu > ul > li.active {

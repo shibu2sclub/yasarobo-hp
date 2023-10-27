@@ -220,12 +220,14 @@ function generateRobotListWithPoint(settings, recordJSON, courseID) {
 /* robotList: ロボットリスト。事前にgenerateRobotListWithPointを通す必要がある。 */
 /* sortKey: 仮対応、sortを行う試技のキーを指定 */
 // issue: ソートについて1条件のみ対応
-function sortRobotList(settings, robotList) {
+function sortRobotList(settings, robotList, sortKey) {
     // 優先度の高い順に試技をソート
-    const priorityOrderedScoreList = settings.scoreList.sort((a, b) => a.priority - b.priority);
-    const priorityOrderedScoreIDList = priorityOrderedScoreList.map(score => score.id);
+    if (sortKey == undefined) {
+        const priorityOrderedScoreList = settings.scoreList.sort((a, b) => a.priority - b.priority);
+        const priorityOrderedScoreIDList = priorityOrderedScoreList.map(score => score.id);
 
-    const sortKey = priorityOrderedScoreIDList[0];
+        sortKey = priorityOrderedScoreIDList[0];
+    }
     robotList.sort((a, b) => {
         if (a.result[sortKey].sumPoint > b.result[sortKey].sumPoint) return -1;
         else if (a.result[sortKey].sumPoint < b.result[sortKey].sumPoint) return 1;
