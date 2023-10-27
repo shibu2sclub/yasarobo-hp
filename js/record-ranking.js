@@ -52,3 +52,25 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
             .catch(error => console.error(error));
     });
 });
+
+const addToggleContestEvent = generateRecordRanking.then(() => {
+    return new Promise((resolve, reject) => {
+        const recordRankingSelectMenuElement = document.getElementById("record-ranking-select-menu");
+        const recordRankingSelectMenuButtonElementArray = Array.from(recordRankingSelectMenuElement.getElementsByTagName("li"));
+        recordRankingSelectMenuButtonElementArray.forEach(button => {
+            button.addEventListener("click", function(e) {
+                e.preventDefault();
+
+                const targetScoreID = button.getAttribute("target-score");
+                const rankingTablesElement = document.getElementById("record-ranking-tables");
+                const targetRankingTableElement = document.getElementById(targetScoreID);
+                const activeRankingTableElement = rankingTablesElement.getElementsByClassName("active")[0];
+
+                if (!targetRankingTableElement.classList.contains("active")) {
+                    activeRankingTableElement.classList.remove("active");
+                    targetRankingTableElement.classList.add("active");
+                }
+            });
+        });
+    });
+});
