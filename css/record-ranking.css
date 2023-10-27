@@ -1,0 +1,62 @@
+ul#record-ranking-select-menu {
+    display: block;
+    padding: 0;
+    list-style: none;
+    display: flex;
+}
+
+ul#record-ranking-select-menu > li {
+    /*min-width: 7rem;*/
+    margin-right: 2rem;
+}
+
+ul#record-ranking-select-menu > li.active {
+    font-weight: bold;
+}
+
+ul#record-ranking-select-menu > li > a {
+    position: relative;
+    padding-right: 1.5rem;
+}
+
+ul#record-ranking-select-menu > li > a::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -3px;
+    left: 0;
+    background-color: var(--font-color);
+    transition: .25s ease-in-out;
+}
+
+ul#record-ranking-select-menu > li > a:hover::before, ul#record-ranking-select-menu > li.active > a::before {
+    width: 100%;
+}
+
+ul#record-ranking-select-menu > li > a:hover::before {
+    background-color: var(--theme-color);
+}
+
+ul#record-ranking-select-menu > li > a:hover {
+    color: var(--theme-color);
+}
+
+ul#record-ranking-select-menu > li > a::after {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    right: 0.3rem;
+    content: "";
+    width: 0.4rem;
+    height: 0.4rem;
+    border: calc(0.4rem / 6) solid;
+    border-color: var(--font-color) var(--font-color) transparent transparent;
+    transform: rotate(45deg) translateX(-35.36%) translateY(-35.36%);
+    transition: 0.15s ease-out;
+}
+
+ul#record-ranking-select-menu > li > a:hover::after {
+    right: 0.15rem;
+    border-color: var(--theme-color) var(--theme-color) transparent transparent;
+}
