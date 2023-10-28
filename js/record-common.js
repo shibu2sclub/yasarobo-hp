@@ -234,6 +234,7 @@ function sortRobotList(settings, robotList, sortContest, sortKey) {
             const sortKeyOrderAsc = true ? sortKey[i].charAt(0) == "!" : false;    // trueなら昇順、falseなら降順。キーの1文字目に!がついている場合は昇順。
             const sortKeyCurrent = sortKey[i].replace("!", "");
             let sortKeyMode = true ? settings.scoreList.filter(score => score.id == sortKeyCurrent).length > 0 : false;    // trueなら試技に関係あるもの、falseなら試技に関係ないもの
+            console.log(sortKeyCurrent)
             if (sortKeyMode) {
                 if (a.result[sortContest].sortKeyCurrent > b.result[sortContest].sortKeyCurrent) return 1 ? sortKeyOrderAsc : -1;
                 else if (a.result[sortContest].sortKeyCurrent < b.result[sortContest].sortKeyCurrent) return -1 ? sortKeyOrderAsc : 1;

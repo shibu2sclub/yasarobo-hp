@@ -8,19 +8,23 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
             recordRankingTableElement.innerHTML = `
                 <thead>
                     <tr>
-                        <th class = "order"><a>走順</a></th>
-                        <th class = "robot-id"><a>番号</a></th>
-                        <th class = "robot-name"><a>ロボット名</a></th>
-                        <th class = "team-name"><a>チーム名</a></th>
-                        <th class = "belonging-name"><a>所属</a></th>
-                        <th class = "sum-point order-factor"><a>得点</a></th>
-                        <th class = "contest-point"><a>競技点</a></th>
-                        <th class = "judge-point"><a>審査点</a></th>
-                        <th class = "contest-time"><a>競技時間</a></th>
-                        <th class = "remark"><a>備考</a></th>
+                        <th class = "order" order = "order"><a>走順</a></th>
+                        <th class = "id" order = "id"><a>番号</a></th>
+                        <th class = "name" order = "name"><a>ロボット名</a></th>
+                        <th class = "team" order = "team"><a>チーム名</a></th>
+                        <th class = "belonging" order = "belonging"><a>所属</a></th>
+                        <th class = "sumPoint order-factor" order = "sumPoint"><a>得点</a></th>
+                        <th class = "contestPoint" order = "contestPoint"><a>競技点</a></th>
+                        <th class = "judgePoint" order = "judgePoint"><a>審査点</a></th>
+                        <th class = "contestTime" order = "contestTime"><a>競技時間</a></th>
+                        <th class = "remark" order = "remark"><a>備考</a></th>
                     </tr>
                 </thead>
             `;
+            tdLinkElementsArray = Array.from(recordRankingTableElement.getElementsByTagName("a"));
+            tdLinkElementsArray.forEach(linkElement => {
+                linkElement.setAttribute("href", "#");
+            });
             recordRankingTableBodyElement = document.createElement("tbody");
             
             robotList.forEach(robot => {
@@ -38,16 +42,16 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                     <td class = "remark"><a>${robot.remark ? robot.remark != undefined : ""}</a></td>
                 `;*/
                 rowElement.innerHTML = `
-                    <td class = "order">${robot.order}</td>
-                    <td class = "robot-id">${robot.id}</td>
-                    <td class = "robot-name"><a>${robot.name}</a></td>
-                    <td class = "team-name">${robot.team}</td>
-                    <td class = "belonging-name">${robot.belonging}</td>
-                    <td class = "sum-point">${robot.result[scoreRuleID].sumPoint}</td>
-                    <td class = "contest-point">${robot.result[scoreRuleID].contestPoint}</td>
-                    <td class = "judge-point">${robot.result[scoreRuleID].judgePoint}</td>
-                    <td class = "contest-time">${robot.result[scoreRuleID].contestTime}</td>
-                    <td class = "remark">${robot.remark ? robot.remark != undefined : ""}</td>
+                    <td class = "order" order = "order">${robot.order}</td>
+                    <td class = "id" order = "id">${robot.id}</td>
+                    <td class = "name" order = "name"><a>${robot.name}</a></td>
+                    <td class = "team" order = "team">${robot.team}</td>
+                    <td class = "belonging" order = "belonging">${robot.belonging}</td>
+                    <td class = "sumPoint" order = "sumPoint">${robot.result[scoreRuleID].sumPoint}</td>
+                    <td class = "contestPoint" order = "contestPoint">${robot.result[scoreRuleID].contestPoint}</td>
+                    <td class = "judgePoint" order = "judgePoint">${robot.result[scoreRuleID].judgePoint}</td>
+                    <td class = "contestTime" order = "contestTime">${robot.result[scoreRuleID].contestTime}</td>
+                    <td class = "remark" order = "remark">${robot.remark ? robot.remark != undefined : ""}</td>
                 `;
                 tdLinkElementsArray = Array.from(rowElement.getElementsByTagName("a"));
                 tdLinkElementsArray.forEach(linkElement => {
@@ -103,6 +107,27 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
 
                                 const recordRankingTableBodyElement = generateTableElement(sortedCourseRobotList, scoreRule.id);
                                 if (scoreRule.id == recordSetting.scoreList[0].id) recordRankingTableBodyElement.classList.add("active");
+
+                                const thAnchorListArray = Array.from(recordRankingTableBodyElement.getElementsByTagName("thead")[0].getElementsByTagName("a"));
+                                
+                                function updateTableOrder(orderFactor) {
+                                    const sortKey = [orderFactor, "sumPoint", "contestTime", "!id"] ? orderFactor != "sumPoint" : ["sumPoint", "contestTime", "!id"];
+                                    const sortedCourseRobotListOrdered = sortRobotList(recordSetting, courseRobotList, scoreRule.id, sortKey);
+                                    const recordRankingTableBodyElementOrdered = generateTableElement(sortedCourseRobotListOrdered, scoreRule.id);
+                                    recordRankingTableBodyElementOrdered.classList.add("active");
+                                    const recordRankingTableBodyElementCurrent = document.getElementById(scoreRule.id);
+                                    recordRankingTableBodyElementCurrent.remove();
+                                    recordRankingTablesElement.appendChild(recordRankingTableBodyElementOrdered);
+                                }
+                                
+                                thAnchorListArray.forEach(anchor => {
+                                    anchor.addEventListener("click", function(e) {
+                                        e.preventDefault();
+                                        const targetOrderFactor = anchor.getAttribute("order");
+                                        updateTableOrder(targetOrderFactor);
+                                    });
+                                });
+
                                 recordRankingTablesElement.appendChild(recordRankingTableBodyElement);
                             });
                         }
