@@ -233,17 +233,22 @@ function sortRobotList(settings, robotList, sortContest, sortKey) {
         for (let i = 0; i < sortKey.length; i++) {
             const sortKeyOrderAsc = true ? sortKey[i].charAt(0) == "!" : false;    // trueなら昇順、falseなら降順。キーの1文字目に!がついている場合は昇順。
             const sortKeyCurrent = sortKey[i].replace("!", "");
-            let sortKeyMode = true ? settings.scoreList.filter(score => score.id == sortKeyCurrent).length > 0 : false;    // trueなら試技に関係あるもの、falseなら試技に関係ないもの
-            console.log(sortKeyCurrent)
+            const sortKeyMode = true ? ["sumPoint", "contestPoint", "judgePoint", "contestTime"].filter(sortKeyContestAffect => sortKeyContestAffect == sortKeyCurrent).length > 0 : false;    // trueなら試技に関係あるもの、falseなら試技に関係ないもの
             if (sortKeyMode) {
-                if (a.result[sortContest].sortKeyCurrent > b.result[sortContest].sortKeyCurrent) return 1 ? sortKeyOrderAsc : -1;
-                else if (a.result[sortContest].sortKeyCurrent < b.result[sortContest].sortKeyCurrent) return -1 ? sortKeyOrderAsc : 1;
+                if (a.result[sortContest][sortKeyCurrent] > b.result[sortContest][sortKeyCurrent]) {
+                    if (sortKeyOrderAsc) return 1;
+                    else return -1;
+                }
+                else if (a.result[sortContest][sortKeyCurrent] < b.result[sortContest][sortKeyCurrent]) {
+                    if (sortKeyOrderAsc) return -1;
+                    else return 1;
+                }
             }
             else {
-                if (a.result.sortKeyCurrent > b.result.sortKeyCurrent) return 1 ? sortKeyOrderAsc : -1;
-                else if (a.result.sortKeyCurrent < b.result.sortKeyCurrent) return -1 ? sortKeyOrderAsc : 1;
+                if (a.result[sortKeyCurrent] > b.result[sortKeyCurrent]) return 1 ? sortKeyOrderAsc : -1;
+                else if (a.result[sortKeyCurrent] < b.result[sortKeyCurrent]) return -1 ? sortKeyOrderAsc : 1;
             }
-            if (i == sortContest.length - 1) return 0;
+            if (i == (sortKey.length - 1)) return 0;
         }
     });
     return robotList;
