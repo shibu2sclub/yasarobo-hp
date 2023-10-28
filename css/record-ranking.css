@@ -113,6 +113,16 @@ ul#record-ranking-select-menu > li > a:hover::after {
     border: 1px solid var(--font-color);
 }
 
+#record-ranking-tables > table th > a, #record-ranking-tables > table td > a {
+    display: block;
+    /*text-decoration: none;*/
+    color: var(--font-color);
+}
+
+#record-ranking-tables > table th > a:hover, #record-ranking-tables > table td > a:hover {
+    color: var(--theme-color);
+}
+
 #record-ranking-tables > table td.order {
     width: calc(2.5 * var(--record-ranking-tables-font-size));
 }
