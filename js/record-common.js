@@ -218,20 +218,32 @@ function generateRobotListWithPoint(settings, recordJSON, courseID) {
 
 // issue: 1条件のみでソートしている、2ndなどの条件に対応したい
 /* robotList: ロボットリスト。事前にgenerateRobotListWithPointを通す必要がある。 */
-/* sortKey: 仮対応、sortを行う試技のキーを指定 */
-// issue: ソートについて1条件のみ対応
-function sortRobotList(settings, robotList, sortKey) {
+/* sortContest: sortを行う試技のキーを指定。1つだけ。 */
+/* sortKey: sortを行う項目名。順番に配列。対象はゼッケン番号などの試技に関係ないものと、競技点など試技に関係あるものの両方。 */
+function sortRobotList(settings, robotList, sortContest, sortKey) {
     // 優先度の高い順に試技をソート
-    if (sortKey == undefined) {
+    if (sortContest == undefined) {
         const priorityOrderedScoreList = settings.scoreList.sort((a, b) => a.priority - b.priority);
         const priorityOrderedScoreIDList = priorityOrderedScoreList.map(score => score.id);
 
-        sortKey = priorityOrderedScoreIDList[0];
+        sortContest = [priorityOrderedScoreIDList[0]];
+        sortKey = ["sumPoint", "contestTime"];
     }
     robotList.sort((a, b) => {
-        if (a.result[sortKey].sumPoint > b.result[sortKey].sumPoint) return -1;
-        else if (a.result[sortKey].sumPoint < b.result[sortKey].sumPoint) return 1;
-        else return 0;
+        for (let i = 0; i < sortKey.length; i++) {
+            const sortKeyOrderAsc = true ? sortKey[i].charAt(0) == "!" : false;    // trueなら昇順、falseなら降順。キーの1文字目に!がついている場合は昇順。
+            const sortKeyCurrent = sortKey[i].replace("!", "");
+            let sortKeyMode = true ? settings.scoreList.filter(score => score.id == sortKeyCurrent).length > 0 : false;    // trueなら試技に関係あるもの、falseなら試技に関係ないもの
+            if (sortKeyMode) {
+                if (a.result[sortContest].sortKeyCurrent > b.result[sortContest].sortKeyCurrent) return 1 ? sortKeyOrderAsc : -1;
+                else if (a.result[sortContest].sortKeyCurrent < b.result[sortContest].sortKeyCurrent) return -1 ? sortKeyOrderAsc : 1;
+            }
+            else {
+                if (a.result.sortKeyCurrent > b.result.sortKeyCurrent) return 1 ? sortKeyOrderAsc : -1;
+                else if (a.result.sortKeyCurrent < b.result.sortKeyCurrent) return -1 ? sortKeyOrderAsc : 1;
+            }
+            if (i == sortContest.length - 1) return 0;
+        }
     });
     return robotList;
 }

@@ -90,7 +90,7 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                             const recordRankingSelectMenuElement = document.getElementById("record-ranking-select-menu");
                             const recordRankingTablesElement = document.getElementById("record-ranking-tables");
                             recordSetting.scoreList.forEach(scoreRule => {
-                                const sortedCourseRobotList = sortRobotList(recordSetting, courseRobotList, scoreRule.id);    // issue: 1条件のみでソートしている
+                                const sortedCourseRobotList = sortRobotList(recordSetting, courseRobotList, scoreRule.id, ["sumPoint", "contestTime", "!id"]);    // issue: 1条件のみでソートしている
 
                                 const recordRankingBtn = document.createElement("li");
                                 recordRankingBtn.setAttribute("target-score", scoreRule.id);
