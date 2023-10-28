@@ -119,6 +119,10 @@ ul#record-ranking-select-menu > li > a:hover::after {
     color: var(--font-color);
 }
 
+#record-ranking-tables > table th.order-factor {
+    font-weight: bold;
+}
+
 #record-ranking-tables > table th > a:hover, #record-ranking-tables > table td > a:hover {
     color: var(--theme-color);
 }

@@ -13,7 +13,7 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                         <th class = "robot-name"><a>ロボット名</a></th>
                         <th class = "team-name"><a>チーム名</a></th>
                         <th class = "belonging-name"><a>所属</a></th>
-                        <th class = "sum-point"><a>得点</a></th>
+                        <th class = "sum-point order-factor"><a>得点</a></th>
                         <th class = "contest-point"><a>競技点</a></th>
                         <th class = "judge-point"><a>審査点</a></th>
                         <th class = "contest-time"><a>競技時間</a></th>
