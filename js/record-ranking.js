@@ -70,7 +70,9 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                                     recordRankingTableBodyElement.appendChild(rowElement);
                                 });
                     
-                                const thAnchorListArray = Array.from(recordRankingTableElement.getElementsByTagName("thead")[0].getElementsByTagName("a"));
+                                const theadElement = recordRankingTableElement.getElementsByTagName("thead")[0];
+                                const theadThElementArray = Array.from(theadElement.getElementsByTagName("th"));
+                                const thAnchorListArray = Array.from(theadElement.getElementsByTagName("a"));
                                 
                                 thAnchorListArray.forEach(anchor => {
                                     anchor.addEventListener("click", function(e) {
@@ -82,6 +84,12 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                                         document.getElementById(scoreRuleID).classList.add("active");
                                     });
                                 });
+
+                                theadThElementArray.forEach(thElement => {
+                                    if (thElement.getAttribute("order") == orderFactor) thElement.classList.add("active");
+                                    else thElement.classList.remove("active");
+                                });
+
                                 recordRankingTableElement.appendChild(recordRankingTableBodyElement);
                                 
                                 if (robotList[0].result[scoreRuleID].order == undefined) {

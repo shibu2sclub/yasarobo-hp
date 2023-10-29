@@ -117,9 +117,10 @@ ul#record-ranking-select-menu > li > a:hover::after {
     display: block;
     /*text-decoration: none;*/
     color: var(--font-color);
+    transition: .25s ease-in-out;
 }
 
-#record-ranking-tables > table th.order-factor {
+#record-ranking-tables > table th.active {
     font-weight: bold;
 }
 
