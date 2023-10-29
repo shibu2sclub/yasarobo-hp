@@ -71,7 +71,6 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                                 });
                     
                                 const theadElement = recordRankingTableElement.getElementsByTagName("thead")[0];
-                                const theadThElementArray = Array.from(theadElement.getElementsByTagName("th"));
                                 const thAnchorListArray = Array.from(theadElement.getElementsByTagName("a"));
                                 
                                 thAnchorListArray.forEach(anchor => {
@@ -85,12 +84,11 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                                     });
                                 });
 
-                                theadThElementArray.forEach(thElement => {
-                                    if (thElement.getAttribute("order") == orderFactor) thElement.classList.add("order-applied");
-                                    else thElement.classList.remove("order-applied");
-                                });
-
                                 recordRankingTableElement.appendChild(recordRankingTableBodyElement);
+                                
+                                Array.from(recordRankingTableElement.getElementsByClassName(orderFactor)).forEach(targetElement => {
+                                    targetElement.classList.add("order-applied");
+                                });
                                 
                                 if (robotList[0].result[scoreRuleID].order == undefined) {
                                     Array.from(recordRankingTableElement.getElementsByClassName("order")).forEach(orderElement => orderElement.style.display = "none");
