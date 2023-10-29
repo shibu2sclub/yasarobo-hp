@@ -15,7 +15,18 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                         if (courseID == getParam("c")) {
                             const courseRobotList = generateRobotListWithPoint(recordSetting, recordJSON, courseID);
 
-                            function generateTableElement(robotList, scoreRuleID) {
+                            function generateTableElement(robotList, scoreRuleID, defaultOrderFactor) {
+                                function updateTableOrder(orderFactor) {
+                                    let sortKey = [orderFactor, "sumPoint", "contestTime", "!id"];
+                                    if (orderFactor == "sumPoint") sortKey = ["sumPoint", "contestTime", "!id"];
+                                    const sortedCourseRobotListOrdered = sortRobotList(recordSetting, courseRobotList, scoreRuleID, sortKey);
+                                    const recordRankingTableBodyElementOrdered = generateTableElement(sortedCourseRobotListOrdered, scoreRuleID);
+                                    recordRankingTableBodyElementOrdered.classList.add("active");
+                                    const recordRankingTableBodyElementCurrent = document.getElementById(scoreRuleID);
+                                    recordRankingTableBodyElementCurrent.remove();
+                                    recordRankingTablesElement.appendChild(recordRankingTableBodyElementOrdered);
+                                }
+
                                 const recordRankingTableElement = document.createElement("table");
                                 recordRankingTableElement.id = scoreRuleID;
                                 recordRankingTableElement.innerHTML = `
@@ -62,18 +73,6 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                                 });
                     
                                 const thAnchorListArray = Array.from(recordRankingTableElement.getElementsByTagName("thead")[0].getElementsByTagName("a"));
-                                                    
-                                function updateTableOrder(orderFactor) {
-                                    let sortKey = [orderFactor, "sumPoint", "contestTime", "!id"];
-                                    if (orderFactor == "sumPoint") sortKey = ["sumPoint", "contestTime", "!id"];
-                                    console.log(sortKey)
-                                    const sortedCourseRobotListOrdered = sortRobotList(recordSetting, courseRobotList, scoreRuleID, sortKey);
-                                    const recordRankingTableBodyElementOrdered = generateTableElement(sortedCourseRobotListOrdered, scoreRuleID);
-                                    recordRankingTableBodyElementOrdered.classList.add("active");
-                                    const recordRankingTableBodyElementCurrent = document.getElementById(scoreRuleID);
-                                    recordRankingTableBodyElementCurrent.remove();
-                                    recordRankingTablesElement.appendChild(recordRankingTableBodyElementOrdered);
-                                }
                                 
                                 thAnchorListArray.forEach(anchor => {
                                     anchor.addEventListener("click", function(e) {
@@ -96,6 +95,7 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                                     Array.from(recordRankingTableElement.getElementsByClassName("contest-time")).forEach(judgePointElement => judgePointElement.style.display = "none");
                                 }
                             
+                                updateTableOrder("!id");
                                 return recordRankingTableElement;
                             }
 
