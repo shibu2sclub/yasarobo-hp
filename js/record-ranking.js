@@ -86,8 +86,8 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                                 });
 
                                 theadThElementArray.forEach(thElement => {
-                                    if (thElement.getAttribute("order") == orderFactor) thElement.classList.add("active");
-                                    else thElement.classList.remove("active");
+                                    if (thElement.getAttribute("order") == orderFactor) thElement.classList.add("order-applied");
+                                    else thElement.classList.remove("order-applied");
                                 });
 
                                 recordRankingTableElement.appendChild(recordRankingTableBodyElement);

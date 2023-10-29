@@ -120,7 +120,7 @@ ul#record-ranking-select-menu > li > a:hover::after {
     transition: .25s ease-in-out;
 }
 
-#record-ranking-tables > table th.active {
+#record-ranking-tables > table th.order-applied {
     font-weight: bold;
 }
 

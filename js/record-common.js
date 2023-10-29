@@ -221,7 +221,6 @@ function generateRobotListWithPoint(settings, recordJSON, courseID) {
 /* sortContest: sortを行う試技のキーを指定。1つだけ。 */
 /* sortKey: sortを行う項目名。順番に配列。対象はゼッケン番号などの試技に関係ないものと、競技点など試技に関係あるものの両方。 */
 function sortRobotList(settings, robotList, sortContest, sortKey) {
-    console.log(sortContest, sortKey)
     // 優先度の高い順に試技をソート
     if (sortContest == undefined) {
         const priorityOrderedScoreList = settings.scoreList.sort((a, b) => a.priority - b.priority);
