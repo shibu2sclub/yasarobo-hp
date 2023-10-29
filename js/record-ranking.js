@@ -15,7 +15,7 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                         if (courseID == getParam("c")) {
                             const courseRobotList = generateRobotListWithPoint(recordSetting, recordJSON, courseID);
 
-                            function generateTableElement(settings, robotList, scoreRuleID) {
+                            function generateTableElement(robotList, scoreRuleID) {
                                 const recordRankingTableElement = document.createElement("table");
                                 recordRankingTableElement.id = scoreRuleID;
                                 recordRankingTableElement.innerHTML = `
@@ -42,18 +42,6 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                                 
                                 robotList.forEach(robot => {
                                     const rowElement = document.createElement("tr");
-                                    /*rowElement.innerHTML = `
-                                        <td class = "order"><a>${robot.order}</a></td>
-                                        <td class = "robot-id"><a>${robot.id}</a></td>
-                                        <td class = "robot-name"><a>${robot.name}</a></td>
-                                        <td class = "team-name"><a>${robot.team}</a></td>
-                                        <td class = "belonging-name"><a>${robot.belonging}</a></td>
-                                        <td class = "sum-point"><a>${robot.result[scoreRuleID].sumPoint}</a></td>
-                                        <td class = "contest-point"><a>${robot.result[scoreRuleID].contestPoint}</a></td>
-                                        <td class = "judge-point"><a>${robot.result[scoreRuleID].judgePoint}</a></td>
-                                        <td class = "contest-time"><a>${robot.result[scoreRuleID].contestTime}</a></td>
-                                        <td class = "remark"><a>${robot.remark ? robot.remark != undefined : ""}</a></td>
-                                    `;*/
                                     rowElement.innerHTML = `
                                         <td class = "order" order = "order">${robot.order}</td>
                                         <td class = "id" order = "!id">${robot.id}</td>
@@ -79,8 +67,8 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                                     let sortKey = [orderFactor, "sumPoint", "contestTime", "!id"];
                                     if (orderFactor == "sumPoint") sortKey = ["sumPoint", "contestTime", "!id"];
                                     console.log(sortKey)
-                                    const sortedCourseRobotListOrdered = sortRobotList(settings, courseRobotList, scoreRuleID, sortKey);
-                                    const recordRankingTableBodyElementOrdered = generateTableElement(settings, sortedCourseRobotListOrdered, scoreRuleID);
+                                    const sortedCourseRobotListOrdered = sortRobotList(recordSetting, courseRobotList, scoreRuleID, sortKey);
+                                    const recordRankingTableBodyElementOrdered = generateTableElement(sortedCourseRobotListOrdered, scoreRuleID);
                                     recordRankingTableBodyElementOrdered.classList.add("active");
                                     const recordRankingTableBodyElementCurrent = document.getElementById(scoreRuleID);
                                     recordRankingTableBodyElementCurrent.remove();
@@ -128,7 +116,7 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                                 recordRankingBtn.appendChild(recordRankingBtnA);
                                 recordRankingSelectMenuElement.appendChild(recordRankingBtn);
 
-                                const recordRankingTableBodyElement = generateTableElement(recordSetting, sortedCourseRobotList, scoreRule.id);
+                                const recordRankingTableBodyElement = generateTableElement(sortedCourseRobotList, scoreRule.id);
                                 if (scoreRule.id == recordSetting.scoreList[0].id) recordRankingTableBodyElement.classList.add("active");
 
                                 recordRankingTablesElement.appendChild(recordRankingTableBodyElement);
