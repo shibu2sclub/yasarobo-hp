@@ -110,7 +110,7 @@ ul#record-ranking-select-menu > li > a:hover::after {
 
 #record-ranking-tables > table th, #record-ranking-tables > table td {
     padding: 0.2rem 0.5rem;
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
 }
 
 #record-ranking-tables > table th > a, #record-ranking-tables > table td > a {
