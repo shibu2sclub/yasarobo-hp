@@ -10,12 +10,14 @@
                     "TBYrrr",
                     "TRRBBYYYYRRRBBB"
                 ],
+                "judgePoint": 12,
                 "remainTime": "1:20:15" 
             },
             "2nd": {
                 "contest": [
                     "TRRBBYYYYRRRBBBy"
                 ],
+                "judgePoint": 12,
                 "remainTime": "1:10:38" 
             }
         }
@@ -30,12 +32,14 @@
                 "contest": [
                     "TRYYRRRYBBBByy"
                 ],
+                "judgePoint": 11,
                 "remainTime": "1:56:34"
             },
             "2nd":{
                 "contest": [
                     "TRYYRYBBBRBByyrR"
                 ],
+                "judgePoint": 11,
                 "remainTime": "1:55:32"
             }
         }
@@ -50,12 +54,14 @@
                 "contest": [
                     "TRYYRYBBBRBByyRR"
                 ],
+                "judgePoint": 10,
                 "remainTime": "2:02:11"
             },
             "2nd":{
                 "contest": [
                     "TRYYRRRBByy"
                 ],
+                "judgePoint": 10,
                 "remainTime": "1:55:41"
             }
         }
