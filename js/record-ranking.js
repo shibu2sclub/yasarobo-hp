@@ -14,19 +14,17 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                         // paramで指定されたコースか
                         if (courseID == getParam("c")) {
                             const courseRobotList = generateRobotListWithPoint(recordSetting, recordJSON, courseID);
+                            const h2CourseNameElement = document.getElementById("h2-course-name");
+                            h2CourseNameElement.innerText = courseRule.name;
 
-                            function generateTableElement(robotList, scoreRuleID, defaultOrderFactor) {
-                                function updateTableOrder(orderFactor) {
-                                    let sortKey = [orderFactor, "sumPoint", "contestTime", "!id"];
-                                    if (orderFactor == "sumPoint") sortKey = ["sumPoint", "contestTime", "!id"];
-                                    const sortedCourseRobotListOrdered = sortRobotList(recordSetting, courseRobotList, scoreRuleID, sortKey);
-                                    const recordRankingTableBodyElementOrdered = generateTableElement(sortedCourseRobotListOrdered, scoreRuleID);
-                                    recordRankingTableBodyElementOrdered.classList.add("active");
-                                    const recordRankingTableBodyElementCurrent = document.getElementById(scoreRuleID);
-                                    recordRankingTableBodyElementCurrent.remove();
-                                    recordRankingTablesElement.appendChild(recordRankingTableBodyElementOrdered);
-                                }
+                            const recordRankingSelectMenuElement = document.getElementById("record-ranking-select-menu");
+                            const recordRankingTablesElement = document.getElementById("record-ranking-tables");
 
+                            function generateTableElement(robotList, scoreRuleID, orderFactor) {
+                                let sortKey = [orderFactor, "sumPoint", "contestTime", "!id"];
+                                if (orderFactor == "sumPoint") sortKey = ["sumPoint", "contestTime", "!id"];
+                                const sortedCourseRobotListOrdered = sortRobotList(recordSetting, courseRobotList, scoreRuleID, sortKey);
+                                
                                 const recordRankingTableElement = document.createElement("table");
                                 recordRankingTableElement.id = scoreRuleID;
                                 recordRankingTableElement.innerHTML = `
@@ -51,7 +49,7 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                                 });
                                 recordRankingTableBodyElement = document.createElement("tbody");
                                 
-                                robotList.forEach(robot => {
+                                sortedCourseRobotListOrdered.forEach(robot => {
                                     const rowElement = document.createElement("tr");
                                     rowElement.innerHTML = `
                                         <td class = "order" order = "order">${robot.order}</td>
@@ -78,35 +76,28 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                                     anchor.addEventListener("click", function(e) {
                                         e.preventDefault();
                                         const targetOrderFactor = anchor.parentElement.getAttribute("order");
-                                        updateTableOrder(targetOrderFactor);
+                                        const recordRankingTableBodyElementCurrent = document.getElementById(scoreRuleID);
+                                        recordRankingTableBodyElementCurrent.remove();
+                                        generateTableElement(robotList, scoreRuleID, targetOrderFactor);
+                                        document.getElementById(scoreRuleID).classList.add("active");
                                     });
                                 });
-                    
                                 recordRankingTableElement.appendChild(recordRankingTableBodyElement);
                                 
                                 if (robotList[0].result[scoreRuleID].order == undefined) {
-                                    Array.from(recordRankingTableElement.getElementsByClassName("order")).forEach(judgePointElement => judgePointElement.style.display = "none");
+                                    Array.from(recordRankingTableElement.getElementsByClassName("order")).forEach(orderElement => orderElement.style.display = "none");
                                 }
                                 if (robotList[0].result[scoreRuleID].judgePoint == undefined) {
-                                    Array.from(recordRankingTableElement.getElementsByClassName("contest-point")).forEach(judgePointElement => judgePointElement.style.display = "none");
+                                    Array.from(recordRankingTableElement.getElementsByClassName("contest-point")).forEach(contestPointElement => contestPointElement.style.display = "none");
                                     Array.from(recordRankingTableElement.getElementsByClassName("judge-point")).forEach(judgePointElement => judgePointElement.style.display = "none");
                                 }
                                 if (robotList[0].result[scoreRuleID].contestTime == undefined) {
-                                    Array.from(recordRankingTableElement.getElementsByClassName("contest-time")).forEach(judgePointElement => judgePointElement.style.display = "none");
+                                    Array.from(recordRankingTableElement.getElementsByClassName("contest-time")).forEach(contestTimeElement => contestTimeElement.style.display = "none");
                                 }
-                            
-                                updateTableOrder("!id");
-                                return recordRankingTableElement;
+                                recordRankingTablesElement.append(recordRankingTableElement);
                             }
 
-                            const h2CourseNameElement = document.getElementById("h2-course-name");
-                            h2CourseNameElement.innerText = courseRule.name;
-
-                            const recordRankingSelectMenuElement = document.getElementById("record-ranking-select-menu");
-                            const recordRankingTablesElement = document.getElementById("record-ranking-tables");
                             recordSetting.scoreList.forEach(scoreRule => {
-                                const sortedCourseRobotList = sortRobotList(recordSetting, courseRobotList, scoreRule.id, ["sumPoint", "contestTime", "!id"]);    // issue: 1条件のみでソートしている
-
                                 const recordRankingBtn = document.createElement("li");
                                 recordRankingBtn.setAttribute("target-score", scoreRule.id);
                                 if (scoreRule.id == recordSetting.scoreList[0].id) recordRankingBtn.classList.add("active");
@@ -115,12 +106,9 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                                 recordRankingBtnA.innerText = scoreRule.name;
                                 recordRankingBtn.appendChild(recordRankingBtnA);
                                 recordRankingSelectMenuElement.appendChild(recordRankingBtn);
-
-                                const recordRankingTableBodyElement = generateTableElement(sortedCourseRobotList, scoreRule.id);
-                                if (scoreRule.id == recordSetting.scoreList[0].id) recordRankingTableBodyElement.classList.add("active");
-
-                                recordRankingTablesElement.appendChild(recordRankingTableBodyElement);
+                                generateTableElement(courseRobotList, scoreRule.id, "sumPoint");
                             });
+                            document.getElementById(recordSetting.scoreList[0].id).classList.add("active");
                         }
                     });
                 })
