@@ -110,7 +110,7 @@ ul#record-ranking-select-menu > li > a:hover::after {
 
 #record-ranking-tables > table th, #record-ranking-tables > table td {
     padding: 0.2rem 0.5rem;
-    border: 1px solid var(--font-color);
+    border: 1px solid #ddd;
 }
 
 #record-ranking-tables > table th > a, #record-ranking-tables > table td > a {
@@ -122,6 +122,15 @@ ul#record-ranking-select-menu > li > a:hover::after {
 
 #record-ranking-tables > table th.order-applied {
     font-weight: bold;
+}
+
+#record-ranking-tables > table > tbody tr:nth-child(2n+1) {
+    background-color: var(--light-gray-bg);
+
+}
+
+#record-ranking-tables > table th.order-applied, #record-ranking-tables > table td.order-applied {
+    background-color: #ddd;
 }
 
 #record-ranking-tables > table th > a:hover, #record-ranking-tables > table td > a:hover {

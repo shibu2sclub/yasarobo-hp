@@ -86,7 +86,7 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
 
                                 recordRankingTableElement.appendChild(recordRankingTableBodyElement);
                                 
-                                Array.from(recordRankingTableElement.getElementsByClassName(orderFactor)).forEach(targetElement => {
+                                Array.from(recordRankingTableElement.getElementsByClassName(orderFactor.replace("!", ""))).forEach(targetElement => {
                                     targetElement.classList.add("order-applied");
                                 });
                                 
@@ -150,5 +150,6 @@ const addToggleContestEvent = generateRecordRanking.then(() => {
                 }
             });
         });
+        resolve();
     });
 });
