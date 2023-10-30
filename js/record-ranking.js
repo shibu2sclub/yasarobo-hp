@@ -94,11 +94,11 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                                     Array.from(recordRankingTableElement.getElementsByClassName("order")).forEach(orderElement => orderElement.style.display = "none");
                                 }
                                 if (robotList[0].result[scoreRuleID].judgePoint == undefined) {
-                                    Array.from(recordRankingTableElement.getElementsByClassName("contest-point")).forEach(contestPointElement => contestPointElement.style.display = "none");
-                                    Array.from(recordRankingTableElement.getElementsByClassName("judge-point")).forEach(judgePointElement => judgePointElement.style.display = "none");
+                                    Array.from(recordRankingTableElement.getElementsByClassName("contestPoint")).forEach(contestPointElement => contestPointElement.style.display = "none");
+                                    Array.from(recordRankingTableElement.getElementsByClassName("judgePoint")).forEach(judgePointElement => judgePointElement.style.display = "none");
                                 }
                                 if (robotList[0].result[scoreRuleID].contestTime == undefined) {
-                                    Array.from(recordRankingTableElement.getElementsByClassName("contest-time")).forEach(contestTimeElement => contestTimeElement.style.display = "none");
+                                    Array.from(recordRankingTableElement.getElementsByClassName("contestTime")).forEach(contestTimeElement => contestTimeElement.style.display = "none");
                                 }
                                 recordRankingTablesElement.append(recordRankingTableElement);
                             }
