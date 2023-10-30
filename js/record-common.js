@@ -234,14 +234,8 @@ function sortRobotList(settings, robotList, sortContest, sortKey) {
             const sortKeyOrderAsc = true ? sortKey[i].charAt(0) == "!" : false;    // trueなら昇順、falseなら降順。キーの1文字目に!がついている場合は昇順。
             const sortKeyCurrent = sortKey[i].replace("!", "");
             const sortKeyMode = true ? ["sumPoint", "contestPoint", "judgePoint", "contestTime"].filter(sortKeyContestAffect => sortKeyContestAffect == sortKeyCurrent).length > 0 : false;    // trueなら試技に関係あるもの、falseなら試技に関係ないもの
-            if ((sortKeyMode && a.result[sortContest][sortKeyCurrent] > b.result[sortContest][sortKeyCurrent]) || (!sortKeyMode && (a[sortKeyCurrent] > b[sortKeyCurrent]))) {
-                if (sortKeyOrderAsc) return 1;
-                else return -1;
-            }
-            else if (sortKeyMode && (a.result[sortContest][sortKeyCurrent] < b.result[sortContest][sortKeyCurrent]) || (!sortKeyMode && (a[sortKeyCurrent] < b[sortKeyCurrent]))) {
-                if (sortKeyOrderAsc) return -1;
-                else return 1;
-            }
+            if ((sortKeyMode && a.result[sortContest][sortKeyCurrent] > b.result[sortContest][sortKeyCurrent]) || (!sortKeyMode && (a[sortKeyCurrent] > b[sortKeyCurrent]))) return sortKeyOrderAsc ? 1 : -1;
+            else if (sortKeyMode && (a.result[sortContest][sortKeyCurrent] < b.result[sortContest][sortKeyCurrent]) || (!sortKeyMode && (a[sortKeyCurrent] < b[sortKeyCurrent]))) return sortKeyOrderAsc ? -1 : 1;
             if (i == (sortKey.length - 1)) return 0;
         }
     });

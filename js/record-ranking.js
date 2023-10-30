@@ -112,7 +112,8 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                                 recordRankingBtnA.innerText = scoreRule.name;
                                 recordRankingBtn.appendChild(recordRankingBtnA);
                                 recordRankingSelectMenuElement.appendChild(recordRankingBtn);
-                                generateTableElement(courseRobotList, scoreRule.id, "sumPoint");
+                                const orderFactor = courseRobotList[0].result[scoreRule.id].sumPoint != undefined ? "sumPoint" : (courseRobotList[0].order != undefined ? "order" : "!id");
+                                generateTableElement(courseRobotList, scoreRule.id, orderFactor);
                             });
                             document.getElementById(recordSetting.scoreList[0].id).classList.add("active");
                         }
