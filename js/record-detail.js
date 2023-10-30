@@ -11,31 +11,50 @@ const generateRecordDetail = generateNavBGOverlay.then(() => {
                     const robotCourseData = recordSetting.courseList.filter(courseData => courseData.id == robotData.id.charAt(0))[0];  // ロボットのコース情報
                     const robotScoreListData = recordSetting.scoreList; // スコアリスト
 
-                    const recordDetailElement = document.getElementById('record-detail');
-                    const robotNameElement = document.createElement('h2');
-                    robotNameElement.classList.add('robot-name');
-                    robotNameElement.innerText = robotData.name;
-                    recordDetailElement.appendChild(robotNameElement);
-                    const robotCourseElement = document.createElement('h3');
-                    robotCourseElement.classList.add('robot-course');
-                    robotCourseElement.innerText = robotCourseData.name;
-                    recordDetailElement.appendChild(robotCourseElement);
-                    const robotScoreListElement = document.createElement('ul');
-                    robotScoreListElement.classList.add('robot-score-list');
-                    robotScoreListData.forEach(scoreData => {
-                        const scoreElement = document.createElement('li');
-                        scoreElement.classList.add('robot-score');
-                        const scoreTitleElement = document.createElement('h4');
-                        scoreTitleElement.classList.add('robot-score-title');
-                        scoreTitleElement.innerText = scoreData.name;
-                        scoreElement.appendChild(scoreTitleElement);
-                        const scorePointElement = document.createElement('p');
-                        scorePointElement.classList.add('robot-score-point');
-                        scorePointElement.innerText = robotData.result[scoreData.id].sumPoint;
-                        scoreElement.appendChild(scorePointElement);
-                        robotScoreListElement.appendChild(scoreElement);
-                    });
-                    recordDetailElement.appendChild(robotScoreListElement);                    
+                    const robotDetailWrapperElement = document.getElementById("robot-detail-wrapper");
+                    robotDetailWrapperElement.getElementsByClassName("robot-id")[0].innerText = robotData.id;
+                    robotDetailWrapperElement.getElementsByTagName("h2")[0].innerText = robotData.name;
+                    const robotDetailTableElement = robotDetailWrapperElement.getElementsByClassName("robot-detail-table")[0];
+                    robotDetailTableElement.innerHTML = `
+                    <dl class = "robot-detail-table-row">
+                        <dt>チーム名</dt><dd>${robotData.team}</dd>
+                    </dl>
+                    <dl class = "robot-detail-table-row">
+                        <dt>所属</dt><dd>${robotData.belonging != undefined ? robotData.belonging: "-"}</dd>
+                    </dl>
+                    `;
+
+                    const scoreWrapperElement = document.getElementById("score-wrapper");
+                    if (robotData.result != undefined) {
+                        robotScoreListData.forEach(scoreData => {
+                            const scoreElement = document.createElement("div");
+                            scoreElement.classList.add("score");
+                            scoreElement.classList.add("score-" + scoreData.id);
+                            const scoreResult = robotData.result[scoreData.id];
+                            scoreElement.innerHTML = `
+                            <h4>${scoreData.name}</h4>
+                            <div class = "robot-detail-table">
+                                <dl class = "robot-detail-table-row">
+                                    <dt>得点</dt><dd>${scoreResult.sumPoint}点${scoreResult.judgePoint != undefined ? "（競技点：" + scoreResult.contestPoint + "点 / 審査点：" + scoreResult.judgePoint + "点）" : ""}</dd>
+                                </dl>
+                                <dl class = "robot-detail-table-row">
+                                    <dt>競技時間</dt><dd>${scoreResult.contestTime}</dd>
+                                </dl>
+                            </div>
+                            <div class = "accordion-wrapper">
+                                <label class = "accordion-btn">
+                                    <input type="checkbox">
+                                    <div>スコア詳細</div>
+                                </label>
+                                <div class = "accordion-content">
+                                    test<br>
+                                    test
+                                </div>
+                            </div>
+                            `;
+                            scoreWrapperElement.appendChild(scoreElement);
+                        });
+                    }
                 })
                 .then(() => {
                     resolve();

@@ -216,7 +216,6 @@ function generateRobotListWithPoint(settings, recordJSON, courseID) {
     return robotList;
 }
 
-// issue: 1条件のみでソートしている、2ndなどの条件に対応したい
 /* robotList: ロボットリスト。事前にgenerateRobotListWithPointを通す必要がある。 */
 /* sortContest: sortを行う試技のキーを指定。1つだけ。 */
 /* sortKey: sortを行う項目名。順番に配列。対象はゼッケン番号などの試技に関係ないものと、競技点など試技に関係あるものの両方。 */
