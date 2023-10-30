@@ -1,0 +1,36 @@
+div.robot-id {
+    font-size: 0.8rem;
+}
+
+h2 {
+    font-weight: 500;
+    padding: 0;
+    margin-bottom: 1rem;
+}
+
+h4 {
+    font-weight: 500;
+}
+
+div.robot-detail-table {
+    width: 20rem;
+    font-size: 0.8rem;
+    margin: 1rem 0;
+}
+
+dl.robot-detail-table-row {
+    display: flex;
+    border-bottom: solid 1px #ccc;
+    margin: 0;
+    padding: 0.5rem 0;
+}
+
+dl.robot-detail-table-row:nth-child(1) {
+    border-top: solid 1px #ccc;
+}
+
+dl.robot-detail-table-row dt {
+    font-weight: bold;
+    width: 4rem;
+    margin-right: 0.4rem;
+}

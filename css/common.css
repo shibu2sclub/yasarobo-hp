@@ -751,3 +751,64 @@ ul.organizer-list {
     list-style: none;
     padding-left: 0;
 }
+
+label.accordion-btn {
+    cursor: pointer;
+}
+
+label.accordion-btn > input[type=checkbox] {
+    display: none;
+}
+
+label.accordion-btn > div {
+    display: inline-block;
+    position: relative;
+    padding-left: 1.2rem;
+    /*font-weight: bold;*/
+    border-bottom: solid 1px var(--font-color);
+}
+
+label.accordion-btn > div:hover {
+    color: var(--theme-color);
+    border-bottom: solid 1px var(--theme-color);
+}
+
+label.accordion-btn > div::before, label.accordion-btn > div::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 0.8rem;
+    height: 1.5px;
+    background-color: var(--font-color);
+    transform: translateY(-50%);
+}
+
+label.accordion-btn > div::before {
+    transform: translateY(-50%) rotateZ(90deg);
+    transition: .25s ease-in-out;
+}
+
+label.accordion-btn:hover > div::before, label.accordion-btn:hover > div::after {
+    background-color: var(--theme-color);
+}
+
+label.accordion-btn:has(input[type=checkbox]:checked) > div::before {
+    transform: translateY(-50%) rotateZ(180deg);
+}
+
+div.accordion-wrapper {
+    margin: 1rem 0;
+}
+
+div.accordion-wrapper > div.accordion-content {
+    max-height: 0;
+    overflow-y: hidden;
+    transition: .5s ease-in-out;
+}
+
+div.accordion-wrapper:has(label.accordion-btn > input[type=checkbox]:checked) > div.accordion-content {
+    max-height: 10rem;
+    padding-top: 0.5rem;
+}
