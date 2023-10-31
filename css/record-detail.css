@@ -35,23 +35,23 @@ dl.robot-detail-table-row dt {
     margin-right: 0.4rem;
 }
 
-div.score > div.accordion-wrapper {
+div.accordion-wrapper.smaller {
     font-size: 0.8rem;
 }
 
-div.score > div.accordion-wrapper label.accordion-btn > div::before, div.score > div.accordion-wrapper label.accordion-btn > div::after {
+div.accordion-wrapper.smaller label.accordion-btn > div::before, div.accordion-wrapper.smaller label.accordion-btn > div::after {
     width: 0.6rem;
 }
 
-div.score > div.accordion-wrapper div.robot-detail-table.point-detail {
+div.accordion-wrapper.smaller div.robot-detail-table.point-detail {
     width: 30rem;
 }
 
-div.score > div.accordion-wrapper div.robot-detail-table.point-detail dl.robot-detail-table-row dt {
+div.accordion-wrapper.smaller div.robot-detail-table.point-detail dl.robot-detail-table-row dt {
     width: 15rem;
 }
 
-div.score > div.accordion-wrapper div.robot-detail-table.point-detail dl.robot-detail-table-row dt > span {
+div.accordion-wrapper.smaller div.robot-detail-table.point-detail dl.robot-detail-table-row dt > span {
     font-weight: 500;
     display: block;
 }

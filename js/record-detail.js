@@ -54,7 +54,7 @@ const generateRecordDetail = generateNavBGOverlay.then(() => {
                                     <dt>競技時間</dt><dd>${scoreResult.contestTime}</dd>
                                 </dl>
                             </div>
-                            <div class = "accordion-wrapper">
+                            <div class = "accordion-wrapper smaller">
                                 <label class = "accordion-btn">
                                     <input type="checkbox">
                                     <div>スコア詳細</div>
