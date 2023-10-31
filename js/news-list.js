@@ -1,9 +1,6 @@
 const generateNewsList = generateNavBGOverlay.then((obj) => {
     return new Promise ((resolve, reject) => {
-        let pageYear = getParam('y');
-        if (pageYear == null) {
-            pageYear = siteYear;
-        }
+        const pageYear = checkYearParam();
         // First, let's fetch the news data from the JSON file
         fetch('/data/news-label-setting.json')
             .then(response => response.json())

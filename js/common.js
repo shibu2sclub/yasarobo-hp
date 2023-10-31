@@ -1,3 +1,45 @@
+// Judge the browser.
+// Return: The browser name.
+
+function judgeBrowser() {
+    var ua = navigator.userAgent;
+    if (ua.indexOf("MSIE") > 0 || ua.indexOf("Trident") > 0) {
+        return "IE";
+    } else if (ua.indexOf("Firefox") > 0) {
+        return "Firefox";
+    } else if (ua.indexOf("Chrome") > 0) {
+        return "Chrome";
+    } else if (ua.indexOf("Chromium") > 0) {
+        return "Chromium";
+    } else if (ua.indexOf("Safari") > 0) {
+        return "Safari";
+    } else if (ua.indexOf("Opera") > 0) {
+        return "Opera";
+    } else if (ua.indexOf("OPR") > 0) {
+        return "Blink Opera";
+    } else {
+        return "Unknown";
+    }
+}
+
+function getParam(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+function checkYearParam() {
+    let pageYear = getParam('y');
+    if (pageYear == null) {
+        pageYear = siteYear;
+    }
+    return pageYear;
+}
+
 const allWrapperElement = document.getElementById('all-wrapper');
 const containerElement = document.getElementById('container');
 
@@ -13,7 +55,8 @@ const loadSiteYear = new Promise ((resolve, reject) => {
         })
         .then(() => {
             resolve();
-        });
+        })
+        .catch(error => console.error(error));
 });
 
 // Generate the common footer in the "footerElement". The footer html is in /component/footer.html.
@@ -63,8 +106,22 @@ const generateNavMenu = generateNavHead.then((obj) => {
                     .then(response => response.json())
                     .then(data => {
                         const recordBtnElement = document.getElementById('record');
-                        if (!data.showRecord) {
-                            recordBtnElement.style.display = 'none';
+                        // その年のrecord-setting.jsonが存在しないorするが表示しない設定の場合は非表示
+                        fetch(`/data/${siteYear}/record-setting.json`)
+                            .then(response => response.json())
+                            .then(recordSettingJSON => {
+                                if (!recordSettingJSON.showRecord) {
+                                    recordBtnElement.style.display = 'none';
+                                }
+                            })
+                            .catch(error => {
+                                console.error(error)
+                                recordBtnElement.style.display = 'none';
+                            });
+                        
+                        const pastBtnElement = document.getElementById('past');
+                        if (data.pastYears == undefined || data.pastYears.length == 0) {
+                            pastBtnElement.style.display = 'none';
                         }
                     })
                     .catch(error => console.error(error));
@@ -156,6 +213,41 @@ const navBGOverlayUpdate = navMenuLinkUpdate.then((obj) => {
         navBGOverlayElement.addEventListener('click', function(e) {
             navHeadChkBoxElement.checked = false;
         });
+        resolve();
+    });
+});
+
+const judgeYearPastOrLatest = navBGOverlayUpdate.then(() => {
+    return new Promise ((resolve, reject) => {
+        const topicPathListLatestElement = document.querySelectorAll('.topic-path.latest-contest')[0];
+        const topicPathListPastElement = document.querySelectorAll('.topic-path.past-contests')[0];
+
+        if (topicPathListLatestElement != undefined && topicPathListPastElement != undefined) {
+            let pageYear = checkYearParam();
+            // 過去大会
+            if (pageYear != siteYear) {
+                topicPathListPastElement.style.display = 'flex';
+                const newsLinksAffectYear = topicPathListPastElement.getElementsByClassName("news-link-affect-year")[0];
+                if (newsLinksAffectYear != undefined) newsLinksAffectYear.setAttribute('href', `/news/?y=${pageYear}`);
+
+                const recordLinksAffectYear = topicPathListPastElement.getElementsByClassName("record-link-affect-year")[0];
+                if (recordLinksAffectYear != undefined) recordLinksAffectYear.setAttribute('href', `/record/?y=${pageYear}`);
+
+                const addYearArray = Array.from(document.getElementsByClassName("add-year"));
+                addYearArray.forEach(addYear => {
+                    addYear.innerText += `（${pageYear}年度）`;
+                });
+
+                const addYearEnArray = Array.from(document.getElementsByClassName("add-year-en"));
+                addYearEnArray.forEach(addYearEn => {
+                    addYearEn.innerText += ` (${pageYear})`;
+                });
+            }
+            // 最新大会
+            else {
+                topicPathListLatestElement.style.display = 'flex';
+            }
+        }
         resolve();
     });
 });

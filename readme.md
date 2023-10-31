@@ -14,7 +14,6 @@ GitHub Pagesの独自ドメイン機能とsclub.devのDNS設定。自前のサ�
 ```json:common.json
 {
     "year": 2023,
-    "showRecord": false,
     "pastYears": [
         2021,
         2022
@@ -23,8 +22,7 @@ GitHub Pagesの独自ドメイン機能とsclub.devのDNS設定。自前のサ�
 ```
 
 * year: トップページに掲載されている=最新のコンテストの開催年度。（第〇回大会のような大会のカウントとしての数値、1月～3月の場合は開催当日の年月日とは相違が生じる。）
-* showRecord: 競技記録・ロボット一覧を表示するかの設定。表示できる状態となったら```true```に。
-* pastYears: 過去大会の年度リスト。
+* pastYears: 過去大会の年度リスト。これがない場合はメニューに過去大会情報は表示しない。
 
 ### news-label-setting.json
 ニュースに付与するラベルの設定。
@@ -216,3 +214,723 @@ yearは非常に広範な範囲で用いているため、この場で影響範�
 * label: 記事のラベル（カテゴリ）。複数配置も可能な記法としているが基本的に一つにするように（対応していない）。ラベルの種類は```news-tag-setting.json```で設定する。
 * date: 日付。そのまま表示される。仕様上はどのような文字列でも問題ないが、デザインにおいて基本的には```yyyy.mm.dd```表記を想定しているため、一桁の場合は先頭に0を入れることを推奨。
 * article: 記事本文。1段落ごとに1項目で配列とする。
+
+### record-setting.json
+競技記録のデータ体裁に関する設定。以下は2023年度のやさしいロボコンの設定。
+
+```json:record-setting.json
+{
+    "showRecord": true,
+    "showAward": true,
+    "type": "detailed",
+    "courseList": [
+        {
+            "name": "チャレンジャーズコース",
+            "id": "C",
+            "ruleCaption": "ボールを自動で探索、取得し、色を認識してゴールに入れるミッションです。",
+            "baseRuleDesc": [
+                "競技者は、競技開始を宣言した後は手動での操作は出来ず、ロボットが自動で自律して動作することになります。",
+                "競技をやり直したい場合（例：ロボットが動作不調に陥った場合など）は、競技者は3回まで「リトライ」をすることができます。リトライにおいてはボールは全て置き直され、それまでに取った得点も全て無効となります。"
+            ],
+            "pointRuleDesc": [
+                "競技台には赤色、黄色、青色のゴムボールが各色5個、合計15個置かれています。正しい色のゴールにボールを入れた場合は3点、誤った色の場合は1点が加点されます。",
+                "またこれとは別に、自由ボールというルールが存在します。競技者は競技開始前やリトライ時に、テニスボール1個を受け取ります。このボールは競技台上に置くことも、ロボットに持たせることも可能です。自由ボールはどのゴールに入れても5点が加点されます。",
+                "最高得点は50点です。"
+            ],
+            "point": [
+                {
+                    "id": "R",
+                    "name": "赤色ボール（色正解）",
+                    "value": 3,
+                    "ui": {
+                        "shape": "circle",
+                        "bgColor": "red"
+                    }
+                },
+                {
+                    "id": "Y",
+                    "name": "黄色ボール（色正解）",
+                    "value": 3,
+                    "ui": {
+                        "shape": "circle",
+                        "bgColor": "yellow"
+                    }
+                },
+                {
+                    "id": "B",
+                    "name": "青色ボール（色正解）",
+                    "value": 3,
+                    "ui": {
+                        "shape": "circle",
+                        "bgColor": "blue"
+                    }
+                },
+                {
+                    "id": "r",
+                    "name": "赤色ボール（色不正解）",
+                    "value": 1,
+                    "ui": {
+                        "shape": "circle",
+                        "borderColor": "red"
+                    }
+                },
+                {
+                    "id": "y",
+                    "name": "黄色ボール（色不正解）",
+                    "value": 1,
+                    "ui": {
+                        "shape": "circle",
+                        "borderColor": "yellow"
+                    }
+                },
+                {
+                    "id": "b",
+                    "name": "青色ボール（色不正解）",
+                    "value": 1,
+                    "ui": {
+                        "shape": "circle",
+                        "borderColor": "blue"
+                    }
+                },
+                {
+                    "id": "T",
+                    "name": "自由ボール",
+                    "value": 5,
+                    "ui": {
+                        "shape": "diamond",
+                        "borderColor": "yellow"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "マスターズコース",
+            "id": "M",
+            "ruleCaption": "様々な物体を自動で探索、取得し、色を認識してゴールに入れたり移動させたりするミッションです。",
+            "baseRuleDesc": [
+                "競技者は、競技開始を宣言した後は手動での操作は出来ず、ロボットが自動で自律して動作することになります。",
+                "競技をやり直したい場合（例：ロボットが動作不調に陥った場合など）は、競技者は3回まで「リトライ」をすることができます。リトライにおいてはボールは全て置き直され、それまでに取った得点も全て無効となります。"
+            ],
+            "pointRuleDesc": [
+                "競技台には赤色のゴムボールが6個、青色のゴムボールが2個、スチール缶が立てられた状態で3本、アルミ缶が寝かされた状態で1本、水の入ったペットボトル（ウォーターボトル）が1本置かれています。",
+                "ゴムボールは正しい色のゴールに入れると4点、スチール缶は黄色ゴールに入れると6点、アルミ缶は黄色ゴールに入れると10点が加点されます。誤ったゴールに入れると1点です。",
+                "ウォーターボトルは中央段差上に移動させると15点が入ります。移動させた際のウォーターボトルの姿勢は問いません。中央段差上に乗っていない場合は0点です。",
+                "またこれとは別に、自由ボールというルールが存在します。競技者は競技開始前やリトライ時に、テニスボール1個を受け取ります。このボールは競技台上に置くことも、ロボットに持たせることも可能です。自由ボールはどのゴールに入れても5点が加点されます。",
+                "マスターズコースでは自由ボール以外の対象物をすべてゴールした状態で、ロボットがスタート位置（スタートエリア）に戻り、競技者が競技終了を宣言した場合は、リターンボーナスとして10点が加点されます。",
+                "最高得点はリターンボーナスを含めて90点です。"
+            ],
+            "point": [
+                {
+                    "id": "R",
+                    "name": "赤色ボール（色正解）",
+                    "value": 4,
+                    "ui": {
+                        "shape": "circle",
+                        "bgColor": "red"
+                    }
+                },
+                {
+                    "id": "B",
+                    "name": "青色ボール（色正解）",
+                    "value": 4,
+                    "ui": {
+                        "shape": "circle",
+                        "bgColor": "blue"
+                    }
+                },
+                {
+                    "id": "r",
+                    "name": "赤色ボール（色不正解）",
+                    "value": 1,
+                    "ui": {
+                        "shape": "circle",
+                        "borderColor": "red"
+                    }
+                },
+                {
+                    "id": "b",
+                    "name": "青色ボール（色不正解）",
+                    "value": 1,
+                    "ui": {
+                        "shape": "circle",
+                        "borderColor": "blue"
+                    }
+                },
+                {
+                    "id": "S",
+                    "name": "スチール缶（色正解）",
+                    "value": 6,
+                    "ui": {
+                        "shape": "rectangleNarrow",
+                        "bgColor": "yellow"
+                    }
+                },
+                {
+                    "id": "s",
+                    "name": "スチール缶（色不正解）",
+                    "value": 1,
+                    "ui": {
+                        "shape": "rectangleNarrow",
+                        "borderColor": "yellow"
+                    }
+                },
+                {
+                    "id": "A",
+                    "name": "アルミ缶（色正解）",
+                    "value": 10,
+                    "ui": {
+                        "shape": "rectangleWide",
+                        "bgColor": "yellow"
+                    }
+                },
+                {
+                    "id": "a",
+                    "name": "アルミ缶（色不正解）",
+                    "value": 1,
+                    "ui": {
+                        "shape": "rectangleWide",
+                        "borderColor": "yellow"
+                    }
+                },
+                {
+                    "id": "T",
+                    "name": "自由ボール",
+                    "value": 5,
+                    "ui": {
+                        "shape": "diamond",
+                        "borderColor": "yellow"
+                    }
+                },
+                {
+                    "id": "W",
+                    "name": "ウォーターボトル",
+                    "value": 10,
+                    "ui": {
+                        "shape": "triangle",
+                        "borderColor": "purple"
+                    }
+                },
+                {
+                    "id": "M",
+                    "name": "リターンボーナス",
+                    "value": 10,
+                    "ui": {
+                        "shape": "star",
+                        "bgColor": "orange"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "やさしいコース",
+            "id": "Y",
+            "ruleCaption": "ボールを競技者が戦略的に配置し、自動で探索、取得し、色を認識してゴールに入れるミッションです。",
+            "baseRuleDesc": [
+                "競技者は、競技開始を宣言した後は手動での操作は出来ず、ロボットが自動で自律して動作することになります。",
+                "競技をやり直したい場合（例：ロボットが動作不調に陥った場合など）は、競技者は3回まで「リトライ」をすることができます。リトライにおいてはボールは全て競技者が置き直します。それまでに取った得点も全て無効となります。"
+            ],            
+            "pointRuleDesc": [
+                "競技台には赤色、黄色、青色のゴムボールが各色4個、合計12個と、スポンジボール3個、すなわち15個のボールを競技者自ら置きます。",
+                "ゴムボールを配置できる位置は左エリア（ゴール側）と右エリア（他コースのボール配置位置）の両方です。ただし後述の通り左エリアと右エリアで得点に差が生じます。スタート台（スタートエリア）には配置できません。スポンジボールは右エリアにのみ配置できます。",
+                "右エリアに配置されたゴムボールは、正しい色のゴールにボールを入れた場合は6点、誤った色の場合は1点が加点されます。",
+                "左エリアに配置されたゴムボールはゴールの位置を問わず1点、スポンジボールはゴールの位置を問わず4点が加点されます。",
+                "またこれとは別に、ボーナス得点（当頁ではオリジナリティボーナスと表記）が存在します。特定の条件を満たし、十分に自作のロボットとみなされたロボットについては、ゴールしたボール1個あたり1点が加点されます。",
+                "最高得点はオリジナリティボーナスを含めて99点です。"
+            ],
+            "point": [
+                {
+                    "id": "R",
+                    "name": "右側赤色ゴムボール（色正解）",
+                    "value": 6,
+                    "ui": {
+                        "shape": "circle",
+                        "bgColor": "red"
+                    }
+                },
+                {
+                    "id": "Y",
+                    "name": "右側黄色ゴムボール（色正解）",
+                    "value": 6,
+                    "ui": {
+                        "shape": "circle",
+                        "bgColor": "yellow"
+                    }
+                },
+                {
+                    "id": "B",
+                    "name": "右側青色ゴムボール（色正解）",
+                    "value": 6,
+                    "ui": {
+                        "shape": "circle",
+                        "bgColor": "blue"
+                    }
+                },
+                {
+                    "id": "r",
+                    "name": "右側赤色ゴムボール（色不正解）",
+                    "value": 1,
+                    "ui": {
+                        "shape": "circle",
+                        "borderColor": "red"
+                    }
+                },
+                {
+                    "id": "y",
+                    "name": "右側黄色ゴムボール（色不正解）",
+                    "value": 1,
+                    "ui": {
+                        "shape": "circle",
+                        "borderColor": "yellow"
+                    }
+                },
+                {
+                    "id": "b",
+                    "name": "右側青色ゴムボール（色不正解）",
+                    "value": 1,
+                    "ui": {
+                        "shape": "circle",
+                        "borderColor": "blue"
+                    }
+                },
+                {
+                    "id": "M",
+                    "name": "左側ゴムボール",
+                    "value": 1,
+                    "ui": {
+                        "shape": "circle",
+                        "bgColor": "purple"
+                    }
+                },
+                {
+                    "id": "S",
+                    "name": "右側スポンジボール",
+                    "value": 4,
+                    "ui": {
+                        "shape": "circle",
+                        "borderColor": "purple"
+                    }
+                },
+                {
+                    "id": "O",
+                    "name": "オリジナリティボーナス",
+                    "bonusType": "add",
+                    "value": 1,
+                    "targetID": [
+                        "R",
+                        "Y",
+                        "B",
+                        "r",
+                        "y",
+                        "b",
+                        "M",
+                        "S"
+                    ],
+                    "ui": {
+                        "shape": "star",
+                        "borderColor": "green"
+                    }
+                }
+            ]
+        }
+    ],
+    "scoreList":[
+        {
+            "name": "ベストスコア",
+            "id": "12best",
+            "calculateType": "best",
+            "list": [
+                "1st",
+                "2nd"
+            ],
+            "default": true,
+            "priority": 1,
+            "desc": "1回目と2回目の試技における最高点です。最終順位の決定もこの得点で行います。"
+        },
+        {
+            "name": "1回目",
+            "id": "1st",
+            "time": "5:00:00",
+            "priority": 2
+        },
+        {
+            "name": "2回目",
+            "id": "2nd",
+            "time": "5:00:00",
+            "priority": 3
+        }
+    ]
+}
+```
+
+* showRecord: 全体のナビメニューに競技記録・ロボット一覧を表示するかの設定。表示できる状態となったら```true```に。なお、このファイル自体存在しない時は```false```扱いとなる。
+* showAward: 受賞者リストを表示するかどうか。
+* type: ```simple```、```default```、```detailed```
+    * simple: 集計結果の得点のみ。
+    * default: ボールや缶の取得状況、色を含んだデータ。```simple```に加えて得点の内訳が表示される。
+    * detailed: ```default```のデータを順番まで競技中の時間経過に沿って入力したもの。```default```に加えて得点順が表示される。
+* courseList: 各コースに関する設定。配列で渡す。
+    * name: コース名
+    * id: ID、ゼッケン番号1文字目と一致
+    * point: 得点・UI設定。各種で配列に。
+        * id: 得点文字列
+        * name: 得点の名前
+        * value: 得点やボーナスポイントの数値
+        * （任意）bonusType: ボーナスポイントなどの算出タイプ
+            * add: ```targetID```で指定した得点1回ずつに対して加算
+            * multiply: ```targetID```で指定した得点1回ずつに対して積算
+        * （bonusType指定時のみ）targetType: ```add```, ```multiply```を行う得点ID
+        * ui: UI設定
+            * shape: 形状
+                * circle: 円
+                * rectangleWide: 横長の長方形
+                * rectangleNarrow: 縦長の長方形
+                * diamond: ダイヤ
+                * hexagon: 六角形
+                * star: 星形
+* scoreList: 各試技に関する設定。実際の試技並びに算出得点ともにこちらで指定する。配列で渡す。なお順番はそのまま表示順に使用される。
+    * name: 名前
+    * id: 管理用ID。```id```, ```name```, ```team```, ```belonging```, ```result```といったロボット情報のキーと重複しないようにする。最初の文字に```!```を含まないようにする。
+    * （実際の競技）time: 競技時間
+    * （算出点）calculateType: 算出方法。なおこの算出は合計点のみで行い、競技点や審査点は考慮しない。
+        * max: 最大値。この場合は最大値となった競技に網掛けがつく。
+        * sum: 合計値
+    * （任意）default: ランキングを表示した際にデフォルトで表示したいもの。trueを入れる。存在しない場合は一番最初の試技が表示される。（なお競技記録トップページの最優秀賞・優秀賞は判定に用いた得点（priority）を表示する。）
+    * priority: 得点（・競技時間）優先順位。最も小さい値に設定されたものが最優先で、最優秀賞などの算出、最初の表示での順番に用いられる。それで順序がつけられない場合は2へ（各優先度での並べ替えは合計得点→時間で行われ、同率の場合は次の優先度を見る。基本的には予選敗退などで順位がついていない場合を想定）。
+    * （任意）desc: スコアの説明。出場者数が減る場合（予選→決勝など）はその説明も記載できる。（未実装）
+
+#### 知能ロボットコンテストのルールでの設定
+```json:record-setting.json
+{
+    "showRecord": true,
+    "showAward": true,
+    "type": "detailed",
+    "courseList":[
+        {
+            "name": "チャレンジャーズコース",
+            "id": "C",
+            "point": [
+                {
+                    "id": "R",
+                    "name": "赤色ボール（色正解）",
+                    "value": 3,
+                    "ui": {
+                        "shape": "circle",
+                        "bgColor": "red"
+                    }
+                },
+                {
+                    "id": "Y",
+                    "name": "黄色ボール（色正解）",
+                    "value": 3,
+                    "ui": {
+                        "shape": "circle",
+                        "bgColor": "yellow"
+                    }
+                },
+                {
+                    "id": "B",
+                    "name": "青色ボール（色正解）",
+                    "value": 3,
+                    "ui": {
+                        "shape": "circle",
+                        "bgColor": "blue"
+                    }
+                },
+                {
+                    "id": "r",
+                    "name": "赤色ボール（色不正解）",
+                    "value": 1,
+                    "ui": {
+                        "shape": "circle",
+                        "borderColor": "red"
+                    }
+                },
+                {
+                    "id": "y",
+                    "name": "黄色ボール（色不正解）",
+                    "value": 1,
+                    "ui": {
+                        "shape": "circle",
+                        "borderColor": "yellow"
+                    }
+                },
+                {
+                    "id": "b",
+                    "name": "青色ボール（色不正解）",
+                    "value": 1,
+                    "ui": {
+                        "shape": "circle",
+                        "borderColor": "blue"
+                    }
+                },
+                {
+                    "id": "T",
+                    "name": "自由ボール",
+                    "value": 5,
+                    "ui": {
+                        "shape": "diamond",
+                        "borderColor": "yellow"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "マスターズコース",
+            "id": "M",
+            "point": [
+                {
+                    "id": "R",
+                    "name": "赤色ボール（色正解）",
+                    "value": 4,
+                    "ui": {
+                        "shape": "circle",
+                        "bgColor": "red"
+                    }
+                },
+                {
+                    "id": "B",
+                    "name": "青色ボール（色正解）",
+                    "value": 4,
+                    "ui": {
+                        "shape": "circle",
+                        "bgColor": "blue"
+                    }
+                },
+                {
+                    "id": "r",
+                    "name": "赤色ボール（色不正解）",
+                    "value": 1,
+                    "ui": {
+                        "shape": "circle",
+                        "borderColor": "red"
+                    }
+                },
+                {
+                    "id": "b",
+                    "name": "青色ボール（色不正解）",
+                    "value": 1,
+                    "ui": {
+                        "shape": "circle",
+                        "borderColor": "blue"
+                    }
+                },
+                {
+                    "id": "S",
+                    "name": "スチール缶（色正解）",
+                    "value": 6,
+                    "ui": {
+                        "shape": "rectangleNarrow",
+                        "bgColor": "yellow"
+                    }
+                },
+                {
+                    "id": "s",
+                    "name": "スチール缶（色不正解）",
+                    "value": 1,
+                    "ui": {
+                        "shape": "rectangleNarrow",
+                        "borderColor": "yellow"
+                    }
+                },
+                {
+                    "id": "A",
+                    "name": "アルミ缶（色正解）",
+                    "value": 10,
+                    "ui": {
+                        "shape": "rectangleWide",
+                        "bgColor": "yellow"
+                    }
+                },
+                {
+                    "id": "a",
+                    "name": "アルミ缶（色不正解）",
+                    "value": 1,
+                    "ui": {
+                        "shape": "rectangleWide",
+                        "borderColor": "yellow"
+                    }
+                },
+                {
+                    "id": "T",
+                    "name": "自由ボール",
+                    "value": 5,
+                    "ui": {
+                        "shape": "diamond",
+                        "borderColor": "yellow"
+                    }
+                },
+                {
+                    "id": "W",
+                    "name": "ウォーターボトル",
+                    "value": 10,
+                    "ui": {
+                        "shape": "triangle",
+                        "borderColor": "purple"
+                    }
+                },
+                {
+                    "id": "M",
+                    "name": "リターンボーナス",
+                    "value": 10,
+                    "ui": {
+                        "shape": "star",
+                        "bgColor": "orange"
+                    }
+                }
+            ]
+        }
+    ],
+    "scoreList":[
+        {
+            "name": "1次予選",
+            "id": "1st",
+            "time": "5:00:00",
+            "default": true,
+            "priority": 4
+        },
+        {
+            "name": "敗者復活戦",
+            "id": "revival",
+            "time": "5:00:00",
+            "priority": 3
+        },{
+            "name": "2次予選",
+            "id": "2nd",
+            "time": "5:00:00",
+            "priority": 2
+        },{
+            "name": "決勝",
+            "id": "final",
+            "time": "10:00:00",
+            "priority": 1
+        }
+    ]
+}
+```
+
+### record.json
+競技記録。```{}```でロボット1組。
+
+#### typeがdefaultまたはdetailedの場合
+```json:record.json
+[
+    {
+        "id": "C01",
+        "name": "くらげ君",
+        "team": "しぶしぶ「寿」",
+        "belonging": "渋渋理科部",
+        "result": {
+            "1st": {
+                "contest": [
+                    "TBYrrr",
+                    "TRRBBYYYYRRRBBB"
+                ],
+                "remainTime": "1:20:15" 
+            }
+        }
+    },
+    {
+        "id": "C04",
+        "name": "mako-robo Surprising VIIctory",
+        "team": "しぶしぶ「射」",
+        "belonging": "渋谷中高理科部",
+        "result": {
+            "1st":{
+                "contest": [
+                    "TRYYRRRYBBBRBByy"
+                ],
+                "remainTime": "1:56:34"
+            }
+        }
+    }
+]
+```
+
+* ID: ゼッケン番号。1文字目でコース認識。
+    * C: チャレンジャーズ
+    * M: マスターズ
+    * Y: やさしい
+* name: ロボット名
+* team: チーム名
+* （任意）belonging: 所属
+* result: 結果
+    * 1st: 1回目
+    * 2nd: 2回目
+        * contest: 競技点情報（得点文字列）。以下のルールに沿って文字を羅列。```detailed```の場合は時間順に書くこと。リトライごとに1個ずつの文字列。最後の文字列が最後の試技なので最終結果。なお以下の文字斗ポイントの対応は```record-setting.json```で設定された通り。今回は2023年度のやさしいロボコンの設定を示す。
+            * R, Y, B: （黄はマスターズ以外）（やさしいは右エリアママボール）赤、黄、青ボール（色正解）
+            * r, y, b: （黄はマスターズ以外）（やさしいは右エリアママボール）赤、黄、青ボール（色不正解）
+            * T~~, t~~: **T**ennis ball（やさしい以外）テニスボール（色関係なし）
+            * S: **S**teel（マスターズ）スチール缶（色正解）
+            * s: **s**teel（マスターズ）スチール缶（色不正解）
+            * A: **A**luminium（マスターズ）アルミ缶（色正解）
+            * a: **a**luminium（マスターズ）アルミ缶（色不正解）
+            * W: **W**ater bottle（マスターズ）ウォーターボトル
+            * M~~, m~~: **M**ama ball（やさしい）左エリア用ママボール（色関係なし）
+            * S~~, s~~: **S**ponge ball（やさしい）右エリア用スポンジボール（色関係なし）
+            * M~~, m~~: **M**asters return bonus（マスターズ）リターンボーナス
+            * O~~, o~~: **O**riginality bonus（やさしい）オリジナリティボーナス（先頭に表記が望ましい）
+        * remainTime: 残り時間。```mm:ss:xx```のように書く。0はなくても補うが、基本的に分以外は一桁の場合先頭に0を付けることが望ましい。
+        * （予約）contestTime：競技時間。```record-setting.json```の競技時間から```remainTime```を引いたもの。
+        * （任意）contestPoint: 競技点、基本的には自動算出されるため不要。処理速度の問題が出た場合は先に入力しておくことも可能。
+        * （任意）judgePoint: 審査点
+        * （予約）sumPoint: 合計点 = 競技点＋審査点、内部で計算される。
+        * （予約）source: ```calculateType```が```best```の場合、どのスコアを持ってきたかを提示。
+
+#### typeがsimpleの場合
+```json:record.json
+[
+    {
+        "id": "C01",
+        "name": "くらげ君",
+        "team": "しぶしぶ「寿」",
+        "belonging": "渋渋理科部",
+        "result": {
+            "1st": {
+                "contest": {
+                    "score": 50,
+                    "retry": 1
+                },
+                "remainTime": "1:20:15" 
+            }
+        }
+    }
+]
+```
+
+異なる部分のみ記載する。
+* contest: 競技点情報
+    * score: 競技点（数値）
+    * retry: リトライ回数
+
+### record-award.json
+受賞者に関するデータ。
+
+```json:record-award.json
+{
+    "release": false,
+    "award": [
+        {
+            "name": "大会委員長賞",
+            "id": "C01",
+            "desc": "大会委員長賞は、大会において最も優れたロボットに贈られる賞です。技術力やデザイン、チャレンジ性などのすべてにおいて「オクト君」は格段に優れており、大会委員長賞に選考しました。"
+        },
+        {
+            "name": "最優秀技術賞",
+            "id": "C02",
+            "desc": "最優秀技術賞は、大会において最も優れた技術力を発揮したロボットに贈られる賞です。「dikefalos」はシンプルかつ非常に洗練された機構ながら、高い技術力を有しており、最優秀技術賞に選考しました。"
+        },
+        {
+            "name": "特別賞",
+            "id": "C04"
+        }
+    ]
+}
+```
+
+各コースの最優秀賞と優秀賞は自動計算で表示される。その他の賞はここで設定を行う。なお、得点やロボット名などは自動で表示される。
+
+* release: 受賞者をリリースするか。この時最優秀賞と優秀賞も自動計算の上で公開される。
+* award: 得点以外での特別賞の一覧。配列で記載。
+    * name: 賞の名前
+    * id: ゼッケン番号
+    * （任意）desc: 受賞ロボットに対する講評、判断理由、賞に関する説明。

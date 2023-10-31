@@ -4,7 +4,12 @@ const generatePastContestList = generateNavBGOverlay.then(() => {
         fetch('/data/common.json')
             .then(response => response.json())
             .then(data => {
-                data.pastYears.forEach((year) => {
+                let pastYearsList = data.pastYears;
+                // sort pastYearsList
+                pastYearsList.sort((a, b) => {
+                    return b - a;
+                });
+                pastYearsList.forEach((year) => {
                     fetch(`/data/${year}/information.json`)
                         .then(response => response.json())
                         .then(yearInfo => {

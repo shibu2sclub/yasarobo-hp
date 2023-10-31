@@ -1,0 +1,64 @@
+#content > div {
+    padding-bottom: 1rem;
+}
+
+#record-common {
+    position: relative;
+}
+
+#record-common > div > * {
+    padding-left: var(--padding-x);
+    padding-right: var(--padding-x);
+}
+
+#record-head-menu > ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    padding: 0 var(--padding-x);
+    background-color: var(--light-gray-bg);
+    flex-wrap: wrap;
+}
+
+#record-head-menu > ul > li {
+    padding: 0.5rem 0;
+    padding-right: 2rem;
+}
+
+#record-head-menu > ul > li.active {
+    font-weight: bold;
+}
+
+#record-head-menu > ul > li:first-child {
+    padding-left: 0;
+}
+
+#record-head-menu > ul > li > a {
+    color: var(--font-color);
+    text-decoration: none;
+    transition: .25s ease-in-out;
+    position: relative;
+}
+
+#record-head-menu > ul > li > a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -3px;
+    left: 0;
+    background-color: var(--font-color);
+    transition: .25s ease-in-out;
+}
+
+#record-head-menu > ul > li > a:hover {
+    color: var(--theme-color);
+}
+
+#record-head-menu > ul > li > a:hover::after, #record-head-menu > ul > li.active > a::after {
+    width: 100%;
+}
+
+#record-head-menu > ul > li > a:hover::after {
+    background-color: var(--theme-color);
+}

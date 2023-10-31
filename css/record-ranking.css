@@ -1,0 +1,170 @@
+:root {
+    --record-ranking-tables-font-size: clamp(0.6rem, calc(0.7 * (100vw - var(--nav-width)) / (1920 - 420) * 22), 1rem);
+}
+
+ul#record-ranking-select-menu {
+    display: block;
+    padding: 0;
+    /*padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--font-color);*/
+    list-style: none;
+    display: flex;
+}
+
+ul#record-ranking-select-menu > li {
+    margin-right: 2rem;
+}
+
+ul#record-ranking-select-menu > li.active {
+    font-weight: bold;
+}
+
+ul#record-ranking-select-menu > li > a {
+    position: relative;
+    padding-right: 1.5rem;
+    text-decoration: none;
+    color: var(--font-color);
+}
+
+ul#record-ranking-select-menu > li > a::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -3px;
+    left: 0;
+    background-color: var(--font-color);
+    transition: .25s ease-in-out;
+}
+
+ul#record-ranking-select-menu > li > a:hover::before, ul#record-ranking-select-menu > li.active > a::before {
+    width: 100%;
+}
+
+ul#record-ranking-select-menu > li > a:hover::before {
+    background-color: var(--theme-color);
+}
+
+ul#record-ranking-select-menu > li > a:hover {
+    color: var(--theme-color);
+}
+
+ul#record-ranking-select-menu > li > a::after {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    right: 0.3rem;
+    content: "";
+    width: 0.4rem;
+    height: 0.4rem;
+    border: calc(0.4rem / 6) solid;
+    border-color: var(--font-color) var(--font-color) transparent transparent;
+    transform: rotate(45deg) translateX(-35.36%) translateY(-35.36%);
+    transition: 0.15s ease-out;
+}
+
+ul#record-ranking-select-menu > li > a:hover::after {
+    right: 0.15rem;
+    border-color: var(--theme-color) var(--theme-color) transparent transparent;
+}
+
+#record-ranking-tables {
+    max-width: calc(100vw - 2 * var(--padding-x) - var(--nav-width));
+    overflow-x: scroll;
+}
+
+#record-ranking-tables::-webkit-scrollbar{
+    height: 10px;
+}
+
+#record-ranking-tables::-webkit-scrollbar-thumb{
+    background-color: var(--nav-bar-btn-bg-color);
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 900px) {
+    #record-ranking-tables {
+        max-width: calc(100vw - 2 * var(--padding-x));
+    }
+}
+
+#record-ranking-tables > table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    visibility: collapse;
+    opacity: 0;
+    transition: none;
+    font-size: var(--record-ranking-tables-font-size);
+}
+
+#record-ranking-tables > table.active {
+    visibility: visible;
+    opacity: 1;
+    transition: .5s ease-in-out;
+}
+
+#record-ranking-tables > table th {
+    font-weight: 500;
+}
+
+#record-ranking-tables > table th, #record-ranking-tables > table td {
+    padding: 0.2rem 0.5rem;
+    border: 1px solid #ccc;
+}
+
+#record-ranking-tables > table th > a, #record-ranking-tables > table td > a {
+    display: block;
+    /*text-decoration: none;*/
+    color: var(--font-color);
+    transition: .25s ease-in-out;
+}
+
+#record-ranking-tables > table th.order-applied {
+    font-weight: bold;
+}
+
+#record-ranking-tables > table > tbody tr:nth-child(2n+1) {
+    background-color: var(--light-gray-bg);
+
+}
+
+#record-ranking-tables > table th.order-applied, #record-ranking-tables > table td.order-applied {
+    background-color: #ddd;
+}
+
+#record-ranking-tables > table th > a:hover, #record-ranking-tables > table td > a:hover {
+    color: var(--theme-color);
+}
+
+#record-ranking-tables > table td.order {
+    width: calc(2.5 * var(--record-ranking-tables-font-size));
+}
+
+#record-ranking-tables > table td.robot-id {
+    width: calc(2.5 * var(--record-ranking-tables-font-size));
+}
+
+#record-ranking-tables > table td.robot-name {
+    min-width: calc(15 * var(--record-ranking-tables-font-size));
+}
+
+#record-ranking-tables > table td.team-name {
+    min-width: calc(10 * var(--record-ranking-tables-font-size));
+}
+
+#record-ranking-tables > table td.belonging-name {
+    min-width: calc(10 * var(--record-ranking-tables-font-size));
+}
+
+#record-ranking-tables > table td.sum-point, #record-ranking-tables > table td.sum-point, #record-ranking-tables > table td.contest-point, #record-ranking-tables > table td.judge-point {
+    width: calc(3.5 * var(--record-ranking-tables-font-size));
+}
+
+#record-ranking-tables > table td.contest-time {
+    width: calc(4.5 * var(--record-ranking-tables-font-size));
+}
+
+#record-ranking-tables > table td.remark {
+    min-width: calc(2.5 * var(--record-ranking-tables-font-size));
+}

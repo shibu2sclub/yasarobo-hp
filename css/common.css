@@ -9,6 +9,8 @@
     --theme-color: #3C6D3C;
     --theme-color-bright: #518451;
 
+    --light-gray-bg: #F5F5F5;
+
     --nav-width: calc(420px - (1920px - 100vw) / 720 * 80);
     
     --nav-head-height: 3.5rem;
@@ -643,23 +645,29 @@ h2 {
 
 h3 {
     margin-bottom: 0.5rem;
+    font-weight: 500;
 }
 
-#content {
-    padding: 0 5rem;
-    position: relative;
+:root {
+    --padding-x: 5rem;
 }
+
 
 @media screen and (max-width: 1200px) {
-    #content {
-        padding: 0 4rem;
+    :root {
+        --padding-x: 4rem;
     }
 }
 
 @media screen and (max-width: 900px) {
-    #content {
-        padding: 0 2rem;
+    :root {
+        --padding-x: 2rem;
     }
+}
+
+#content {
+    padding: 0 var(--padding-x);
+    position: relative;
 }
 
 #content > div {
@@ -742,4 +750,68 @@ ul.topic-path > li > a:hover {
 ul.organizer-list {
     list-style: none;
     padding-left: 0;
+}
+
+label.accordion-btn {
+    cursor: pointer;
+}
+
+label.accordion-btn > input[type=checkbox] {
+    display: none;
+}
+
+label.accordion-btn > div {
+    display: inline-block;
+    position: relative;
+    padding-left: 1.2rem;
+    /*font-weight: bold;*/
+    border-bottom: solid 1px var(--font-color);
+    transition: .25s ease-in-out;
+}
+
+label.accordion-btn > div:hover {
+    color: var(--theme-color);
+    border-bottom: solid 1px var(--theme-color);
+}
+
+label.accordion-btn > div::before, label.accordion-btn > div::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 0.8rem;
+    height: 1.5px;
+    background-color: var(--font-color);
+    transform: translateY(-50%);
+    transition: .25s ease-in-out;
+}
+
+label.accordion-btn > div::before {
+    transform: translateY(-50%) rotateZ(90deg);
+    transition: .25s ease-in-out;
+}
+
+label.accordion-btn:hover > div::before, label.accordion-btn:hover > div::after {
+    background-color: var(--theme-color);
+}
+
+label.accordion-btn:has(input[type=checkbox]:checked) > div::before {
+    transform: translateY(-50%) rotateZ(180deg);
+}
+
+div.accordion-wrapper {
+    margin: 1rem 0;
+}
+
+div.accordion-wrapper > div.accordion-content {
+    max-height: 0;
+    overflow-y: hidden;
+    transition: .5s ease-in-out;
+    margin: 0.5rem 0;
+    box-sizing: border-box;
+}
+
+div.accordion-wrapper:has(label.accordion-btn > input[type=checkbox]:checked) > div.accordion-content {
+    max-height: 45rem;
 }
