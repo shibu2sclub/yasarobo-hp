@@ -63,8 +63,8 @@ const generateRecordDetail = generateNavBGOverlay.then(() => {
                                     <input type="checkbox">
                                     <div>スコア詳細</div>
                                 </label>
-                                <div class = "accordion-content">
-                                    <div class = "robot-detail-table point-detail"></div>
+                                <div class = "accordion-content point-detail">
+                                    <div class = "robot-detail-table"></div>
                                 </div>
                             </div>
                             `;
@@ -86,18 +86,46 @@ const generateRecordDetail = generateNavBGOverlay.then(() => {
                                 const sourceNoticePElement = document.createElement("p");
                                 sourceNoticePElement.classList.add("source-notice");
                                 sourceNoticePElement.innerHTML = `<budoux-ja>以下のデータは得点を達成した「${sourceName}」の結果をもとに表示しています。</budoux-ja>`;
-                                pointDetailElement.appendChild(sourceNoticePElement);
+                                pointDetailElement.prepend(sourceNoticePElement);
                             }
+
+                            const robotDetailTableElement = pointDetailElement.getElementsByClassName("robot-detail-table")[0];
                             const coursePointRules = robotCourseData.point;
+                            const pointDetailData = calculateScore(recordSetting, robotData.id, scoreResult.contest[scoreResult.contest.length - 1])[1];
+
+                            const bonusPointRules = [];
+                            coursePointRules.forEach(pointRule => {
+                                if (pointRule.bonusType != undefined) bonusPointRules.push(pointRule);
+                            });
+
                             coursePointRules.forEach(pointRule => {
                                 const pointRuleElement = document.createElement("dl");
                                 pointRuleElement.classList.add("robot-detail-table-row");
-                                const pointStringNum = (scoreResult.contest[scoreResult.contest.length - 1].match(new RegExp(pointRule.id, "g")) || []).length;
-                                pointRuleElement.innerHTML = `
-                                <dt>${pointRule.name}<span>各${pointRule.value}点</span></dt>
-                                <dd>${pointStringNum}個（回）</dd><dd>${pointStringNum * pointRule.value}点</dd>
-                                `;
-                                pointDetailElement.appendChild(pointRuleElement);
+                                const pointNum = pointDetailData[pointRule.id] || 0;
+
+
+                                let pointBonusAdded = pointRule.value;
+                                bonusPointRules.forEach(bonusPointRule => {
+                                    if (bonusPointRule.targetID.filter(targetID => targetID == pointRule.id).length > 0) {
+                                        if (bonusPointRule.bonusType == "add") pointBonusAdded += bonusPointRule.value;
+                                        else if (bonusPointRule.bonusType == "multiply") pointBonusAdded *= bonusPointRule.value;
+                                    }
+                                });
+
+                                if (pointRule.bonusType == undefined){
+                                    pointRuleElement.innerHTML = `
+                                    <dt>${pointRule.name}<span>各${pointRule.value}点${pointBonusAdded != pointRule.value ? "→" + String(pointBonusAdded) + "点" : ""}</span></dt>
+                                    <dd>${pointNum}個（回）</dd><dd>${pointBonusAdded * pointNum}点</dd>
+                                    `;
+                                }
+                                else {
+                                    pointRuleElement.innerHTML = `
+                                    <dt>${pointRule.name}</dt>
+                                    <dd>${pointNum ? "有効" : "無効"}</dd>
+                                    `;
+                                    pointRuleElement.classList.add("bonus");
+                                }
+                                robotDetailTableElement.appendChild(pointRuleElement);
                             });
                             scoreWrapperElement.appendChild(scoreElement);
                         });

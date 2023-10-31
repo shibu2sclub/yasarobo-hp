@@ -766,6 +766,7 @@ label.accordion-btn > div {
     padding-left: 1.2rem;
     /*font-weight: bold;*/
     border-bottom: solid 1px var(--font-color);
+    transition: .25s ease-in-out;
 }
 
 label.accordion-btn > div:hover {
@@ -783,6 +784,7 @@ label.accordion-btn > div::before, label.accordion-btn > div::after {
     height: 1.5px;
     background-color: var(--font-color);
     transform: translateY(-50%);
+    transition: .25s ease-in-out;
 }
 
 label.accordion-btn > div::before {
