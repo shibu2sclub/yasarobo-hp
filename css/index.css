@@ -437,7 +437,7 @@ h1 > span:nth-child(2) {
 }
 
 #content > div:nth-child(2n) {
-    background-color: var(--content-even-bg-color);
+    background-color: var(--light-gray-bg);
 }
 
 #content > div:nth-child(2n) > div.bg-h1 {
