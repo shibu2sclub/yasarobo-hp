@@ -27,13 +27,17 @@ const generateRecordDetail = generateNavBGOverlay.then(() => {
                     const baseRuleElement = document.getElementById("base-rule");
                     robotCourseData.baseRuleDesc.forEach(baseRuleDesc => {
                         const descPElement = document.createElement("p");
-                        descPElement.innerHTML = baseRuleDesc;
+                        const descPInnerElement = document.createElement("budoux-ja");
+                        descPInnerElement.innerHTML = baseRuleDesc;
+                        descPElement.appendChild(descPInnerElement);
                         baseRuleElement.appendChild(descPElement);
                     });
                     const pointRuleElement = document.getElementById("point-rule");
                     robotCourseData.pointRuleDesc.forEach(pointRuleDesc => {
                         const descPElement = document.createElement("p");
-                        descPElement.innerHTML = pointRuleDesc;
+                        const descPInnerElement = document.createElement("budoux-ja");
+                        descPInnerElement.innerHTML = pointRuleDesc;
+                        descPElement.appendChild(descPInnerElement);
                         pointRuleElement.appendChild(descPElement);
                     });
 
