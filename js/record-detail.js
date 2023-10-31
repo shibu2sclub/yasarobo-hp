@@ -24,6 +24,19 @@ const generateRecordDetail = generateNavBGOverlay.then(() => {
                     </dl>
                     `;
 
+                    const baseRuleElement = document.getElementById("base-rule");
+                    robotCourseData.baseRuleDesc.forEach(baseRuleDesc => {
+                        const descPElement = document.createElement("p");
+                        descPElement.innerHTML = baseRuleDesc;
+                        baseRuleElement.appendChild(descPElement);
+                    });
+                    const pointRuleElement = document.getElementById("point-rule");
+                    robotCourseData.pointRuleDesc.forEach(pointRuleDesc => {
+                        const descPElement = document.createElement("p");
+                        descPElement.innerHTML = pointRuleDesc;
+                        pointRuleElement.appendChild(descPElement);
+                    });
+
                     const scoreWrapperElement = document.getElementById("score-wrapper");
                     if (robotData.result != undefined) {
                         robotScoreListData.forEach(scoreData => {
