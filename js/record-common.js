@@ -123,7 +123,6 @@ function calculateScore(settings, robotID, pointString, debugMode = false) {
     }
 
     if (debugMode) result[2] = debugTextArray;
-    console.log(result)
     return result;
 }
 
