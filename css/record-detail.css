@@ -43,15 +43,23 @@ div.accordion-wrapper.smaller label.accordion-btn > div::before, div.accordion-w
     width: 0.6rem;
 }
 
-div.accordion-wrapper.smaller div.robot-detail-table.point-detail {
+div.accordion-wrapper.smaller div.accordion-content.point-detail div.robot-detail-table {
     width: 30rem;
+    display: flex;
+    flex-direction: column;
 }
 
-div.accordion-wrapper.smaller div.robot-detail-table.point-detail dl.robot-detail-table-row dt {
+div.accordion-wrapper.smaller div.accordion-content.point-detail div.robot-detail-table dl.robot-detail-table-row dt {
     width: 15rem;
 }
 
-div.accordion-wrapper.smaller div.robot-detail-table.point-detail dl.robot-detail-table-row dt > span {
+div.accordion-wrapper.smaller div.accordion-content.point-detail div.robot-detail-table dl.robot-detail-table-row dt > span {
     font-weight: 500;
     display: block;
+}
+
+div.accordion-wrapper.smaller div.accordion-content.point-detail div.robot-detail-table dl.robot-detail-table-row.bonus {
+    order: -1;
+    border-top: 1px solid #ccc;
+    border-bottom: none;
 }

@@ -6,7 +6,7 @@ function calculateScore(settings, robotID, pointString, debugMode = false) {
     
     // 対象の設定の読み込み
     let courseSetting = {};
-    let result = 0;
+    let result = [0, {}, ""];
 
     let debugTextArray = [];
 
@@ -49,6 +49,8 @@ function calculateScore(settings, robotID, pointString, debugMode = false) {
     for (let i = 0; i < pointString.length; i++) {
 		const containedRule = bonusRuleArray.filter((bonusRule) => bonusRule.id == pointString.charAt(i));
         if (containedRule.length > 0) {
+            if (result[1][containedRule[0].id] == undefined) result[1][containedRule[0].id] = 0;
+            result[1][containedRule[0].id] = true;
             const duplicateCheck = enabledBonusRuleArray.filter((enabledBonusRule) => enabledBonusRule.id == containedRule[0].id)
             if (duplicateCheck.length == 0) enabledBonusRuleArray.push(containedRule[0]);
         }
@@ -73,6 +75,9 @@ function calculateScore(settings, robotID, pointString, debugMode = false) {
         }
         else if (pointSetting.bonusType == undefined) {
             addPoint = pointSetting.value;
+            
+            if (result[1][pointSetting.id] == undefined) result[1][pointSetting.id] = 0;
+            result[1][pointSetting.id]++;
         
             if (debugMode) {
                 debugTextArray.push("Added " + addPoint + " point(s). pointString: " + pointString.charAt(i));
@@ -107,7 +112,7 @@ function calculateScore(settings, robotID, pointString, debugMode = false) {
                     }
                 });
             }
-            result += addPoint;
+            result[0] += addPoint;
         }
         else {
             if (debugMode) {
@@ -117,8 +122,9 @@ function calculateScore(settings, robotID, pointString, debugMode = false) {
         }
     }
 
-    if (debugMode) return [result, debugTextArray];
-    else return result;
+    if (debugMode) result[2] = debugTextArray;
+    console.log(result)
+    return result;
 }
 
 function timeConvertStringToMsec(timeString) {
@@ -148,7 +154,7 @@ function generateRobotListWithPoint(settings, recordJSON, courseID) {
                 const contestResult = resultList[key];
                 const pointStringsArray = contestResult.contest;
                 const pointString = pointStringsArray[pointStringsArray.length - 1];
-                const point = calculateScore(settings, robotID, pointString);
+                const point = calculateScore(settings, robotID, pointString)[0];
 
                 record.result[key].contestPoint = point;
                 if (record.result[key].judgePoint != undefined) record.result[key].sumPoint = point + record.result[key].judgePoint;
