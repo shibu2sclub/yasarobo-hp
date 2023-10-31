@@ -874,6 +874,7 @@ yearは非常に広範な範囲で用いているため、この場で影響範�
         * （任意）contestPoint: 競技点、基本的には自動算出されるため不要。処理速度の問題が出た場合は先に入力しておくことも可能。
         * （任意）judgePoint: 審査点
         * （予約）sumPoint: 合計点 = 競技点＋審査点、内部で計算される。
+        * （予約）source: ```calculateType```が```best```の場合、どのスコアを持ってきたかを提示。
 
 #### typeがsimpleの場合
 ```json:record.json

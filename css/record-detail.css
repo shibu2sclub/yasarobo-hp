@@ -34,3 +34,24 @@ dl.robot-detail-table-row dt {
     width: 4rem;
     margin-right: 0.4rem;
 }
+
+div.score > div.accordion-wrapper {
+    font-size: 0.8rem;
+}
+
+div.score > div.accordion-wrapper label.accordion-btn > div::before, div.score > div.accordion-wrapper label.accordion-btn > div::after {
+    width: 0.6rem;
+}
+
+div.score > div.accordion-wrapper div.robot-detail-table.point-detail {
+    width: 30rem;
+}
+
+div.score > div.accordion-wrapper div.robot-detail-table.point-detail dl.robot-detail-table-row dt {
+    width: 15rem;
+}
+
+div.score > div.accordion-wrapper div.robot-detail-table.point-detail dl.robot-detail-table-row dt > span {
+    font-weight: 500;
+    display: block;
+}

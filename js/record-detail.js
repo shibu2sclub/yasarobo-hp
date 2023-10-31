@@ -33,7 +33,7 @@ const generateRecordDetail = generateNavBGOverlay.then(() => {
                             const scoreResult = robotData.result[scoreData.id];
                             scoreElement.innerHTML = `
                             <h4>${scoreData.name}</h4>
-                            <div class = "robot-detail-table">
+                            <div class = "robot-detail-table robot-info">
                                 <dl class = "robot-detail-table-row">
                                     <dt>得点</dt><dd>${scoreResult.sumPoint}点${scoreResult.judgePoint != undefined ? "（競技点：" + scoreResult.contestPoint + "点 / 審査点：" + scoreResult.judgePoint + "点）" : ""}</dd>
                                 </dl>
@@ -47,11 +47,41 @@ const generateRecordDetail = generateNavBGOverlay.then(() => {
                                     <div>スコア詳細</div>
                                 </label>
                                 <div class = "accordion-content">
-                                    test<br>
-                                    test
+                                    <div class = "robot-detail-table point-detail"></div>
                                 </div>
                             </div>
                             `;
+                            const robotInfoElement = scoreElement.getElementsByClassName("robot-info")[0];
+
+                            let sourceName = undefined;
+                            if (scoreResult.source != undefined) {
+                                sourceName = robotScoreListData.filter(scoreDataBuff => scoreDataBuff.id == scoreResult.source)[0].name;
+                                const sourceElement = document.createElement("dl");
+                                sourceElement.classList.add("robot-detail-table-row");
+                                sourceElement.innerHTML = `
+                                <dt>達成試技</dt>
+                                <dd>${sourceName}</dd>
+                                `;
+                                robotInfoElement.appendChild(sourceElement);
+                            }
+                            const pointDetailElement = scoreElement.getElementsByClassName("point-detail")[0];
+                            if (scoreResult.source != undefined) {
+                                const sourceNoticePElement = document.createElement("p");
+                                sourceNoticePElement.classList.add("source-notice");
+                                sourceNoticePElement.innerHTML = `<budoux-ja>以下のデータは得点を達成した「${sourceName}」の結果をもとに表示しています。</budoux-ja>`;
+                                pointDetailElement.appendChild(sourceNoticePElement);
+                            }
+                            const coursePointRules = robotCourseData.point;
+                            coursePointRules.forEach(pointRule => {
+                                const pointRuleElement = document.createElement("dl");
+                                pointRuleElement.classList.add("robot-detail-table-row");
+                                const pointStringNum = (scoreResult.contest[scoreResult.contest.length - 1].match(new RegExp(pointRule.id, "g")) || []).length;
+                                pointRuleElement.innerHTML = `
+                                <dt>${pointRule.name}<span>各${pointRule.value}点</span></dt>
+                                <dd>${pointStringNum}個（回）</dd><dd>${pointStringNum * pointRule.value}点</dd>
+                                `;
+                                pointDetailElement.appendChild(pointRuleElement);
+                            });
                             scoreWrapperElement.appendChild(scoreElement);
                         });
                     }
