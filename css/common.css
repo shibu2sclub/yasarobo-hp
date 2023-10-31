@@ -806,9 +806,10 @@ div.accordion-wrapper > div.accordion-content {
     max-height: 0;
     overflow-y: hidden;
     transition: .5s ease-in-out;
+    margin: 0.5rem 0;
+    box-sizing: border-box;
 }
 
 div.accordion-wrapper:has(label.accordion-btn > input[type=checkbox]:checked) > div.accordion-content {
     max-height: 10rem;
-    padding-top: 0.5rem;
 }
