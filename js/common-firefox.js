@@ -38,7 +38,6 @@ const navMenuSupportFireFox = navBGOverlayUpdate.then((obj) => {
                 Array.from(links).forEach(element => {
                     element.addEventListener('click', () => {
                         navHeadChkBoxElement.checked = false;
-                        console.log("test")
                         navMenuElement.classList.remove('open-firefox');
                         navBGOverlayElement.classList.remove('open-firefox');
                         navHeadElement.classList.remove('open-firefox');
