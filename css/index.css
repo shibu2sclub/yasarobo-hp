@@ -5,6 +5,12 @@
     --key-visual-height: calc(100svh - var(--header-height) - var(--news-height));
 }
 
+@media screen and (max-height: 600px) {
+    :root {
+        --key-visual-height: calc(100svh - var(--header-height));
+    }
+}
+
 /*@media screen and (max-width: 900px) {
     :root {
     }
