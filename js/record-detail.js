@@ -91,26 +91,16 @@ const generateRecordDetail = generateNavBGOverlay.then(() => {
 
                             const robotDetailTableElement = pointDetailElement.getElementsByClassName("robot-detail-table")[0];
                             const coursePointRules = robotCourseData.point;
-                            const pointDetailData = calculateScore(recordSetting, robotData.id, scoreResult.contest[scoreResult.contest.length - 1])[1];
 
-                            const bonusPointRules = [];
-                            coursePointRules.forEach(pointRule => {
-                                if (pointRule.bonusType != undefined) bonusPointRules.push(pointRule);
-                            });
+                            const scoreDataArray = calculateScore(recordSetting, robotData.id, scoreResult.contest[scoreResult.contest.length - 1]);
+                            const pointDetailData = scoreDataArray[1];
+                            const pointBonusAddedData = scoreDataArray[2];
 
                             coursePointRules.forEach(pointRule => {
                                 const pointRuleElement = document.createElement("dl");
                                 pointRuleElement.classList.add("robot-detail-table-row");
                                 const pointNum = pointDetailData[pointRule.id] || 0;
-
-
-                                let pointBonusAdded = pointRule.value;
-                                bonusPointRules.forEach(bonusPointRule => {
-                                    if (bonusPointRule.targetID.filter(targetID => targetID == pointRule.id).length > 0) {
-                                        if (bonusPointRule.bonusType == "add") pointBonusAdded += bonusPointRule.value;
-                                        else if (bonusPointRule.bonusType == "multiply") pointBonusAdded *= bonusPointRule.value;
-                                    }
-                                });
+                                const pointBonusAdded = pointBonusAddedData[pointRule.id];
 
                                 if (pointRule.bonusType == undefined){
                                     pointRuleElement.innerHTML = `
