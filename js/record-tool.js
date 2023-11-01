@@ -13,7 +13,7 @@ function OnButtonClick() {
             const result = calculateScore(data, robotIDElement.value, pointStringElement.value, true);
             pointBoxElement.innerText = result[0];
             debugMessageElement.innerHTML = "";
-            result[2].forEach(message => {
+            result[3].forEach(message => {
                 debugMessageElement.innerHTML += message + "<br>";
             });
         });

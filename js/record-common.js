@@ -1,6 +1,7 @@
 /* setting: 連想配列でrecord-setting.jsonをそのまま。 */
 /* robotID: ゼッケン番号。コース判定もこれで行う。 */
 /* pointString: 得点の文字列。配列ではなく各試技1回の文字列単体を。 */
+/* 出力: [得点. {各得点の回数・個数}, {各得点の点数}, デバッグ文章] */
 function calculateScore(settings, robotID, pointString, debugMode = false) {
     settings = settings.courseList;
     
@@ -52,16 +53,37 @@ function calculateScore(settings, robotID, pointString, debugMode = false) {
             if (result[1][containedRule[0].id] == undefined) result[1][containedRule[0].id] = 0;
             result[1][containedRule[0].id] = true;
             const duplicateCheck = enabledBonusRuleArray.filter((enabledBonusRule) => enabledBonusRule.id == containedRule[0].id)
-            if (duplicateCheck.length == 0) enabledBonusRuleArray.push(containedRule[0]);
+            if (duplicateCheck.length == 0) {
+                enabledBonusRuleArray.push(containedRule[0]);
+                if (debugMode) {
+                    debugTextArray.push("Enabled bonus rule: ", containedRule[0].id);
+                    console.log(debugTextArray[debugTextArray.length - 1]);
+                }
+            }
         }
 	}
     
     if (debugMode) {
         debugTextArray.push("Loaded enabled bonus rule.");
         console.log(debugTextArray[debugTextArray.length - 1]);
-        debugTextArray.push("Enabled bonus rule: " + enabledBonusRuleArray.length);
-        console.log(debugTextArray[debugTextArray.length - 1]);
     }
+
+
+    // ボーナス得点の反映
+    let bonusAddedPoint = {};
+    courseSetting.point.forEach(pointSetting => {
+        bonusAddedPoint[pointSetting.id] = pointSetting.value;
+        enabledBonusRuleArray.forEach(enabledBonusRule => {
+            if (enabledBonusRule.targetID.filter(targetID => targetID == pointSetting.id).length > 0) {
+                if (enabledBonusRule.bonusType == "add") bonusAddedPoint[pointSetting.id] += enabledBonusRule.value;
+                else if (enabledBonusRule.bonusType == "multiply") bonusAddedPoint[pointSetting.id] *= enabledBonusRule.value;
+            }
+        });
+        if (debugMode) {
+            debugTextArray.push("Bonus Added: ", pointSetting.id, " ", bonusAddedPoint[pointSetting.id]);
+            console.log(debugTextArray[debugTextArray.length - 1]);
+        }
+    });
 
     // 文字列ごとの加算
     for (let i = 0; i < pointString.length; i++) {
@@ -74,8 +96,6 @@ function calculateScore(settings, robotID, pointString, debugMode = false) {
             }
         }
         else if (pointSetting.bonusType == undefined) {
-            addPoint = pointSetting.value;
-            
             if (result[1][pointSetting.id] == undefined) result[1][pointSetting.id] = 0;
             result[1][pointSetting.id]++;
         
@@ -85,34 +105,7 @@ function calculateScore(settings, robotID, pointString, debugMode = false) {
                 debugTextArray.push("Checking bonus rule.");
                 console.log(debugTextArray[debugTextArray.length - 1]);
             }
-
-            // ボーナス加算
-            if (enabledBonusRuleArray.length > 0) {
-                enabledBonusRuleArray.forEach(enabledBonusRule => {
-                    const checkBonusTargetID = enabledBonusRule.targetID.filter((idBuff) => idBuff == pointString.charAt(i));
-                    if (checkBonusTargetID.length > 0) {
-                        if (debugMode) {
-                            debugTextArray.push("Applied Bonus Rule: " + enabledBonusRule.id);
-                            console.log(debugTextArray[debugTextArray.length - 1]);
-                        }
-                        if (enabledBonusRule.bonusType == "add") {
-                            addPoint += enabledBonusRule.value;
-                            if (debugMode) {
-                                debugTextArray.push("Bonus: Added " + enabledBonusRule.value + " point(s). pointString: " + enabledBonusRule.id);
-                                console.log(debugTextArray[debugTextArray.length - 1]);
-                            }
-                        }
-                        else if (enabledBonusRule.bonusType == "multiply") {
-                            addPoint *= enabledBonusRule.value;
-                            if (debugMode) {
-                                debugTextArray.push("Bonus: Multiplied " + enabledBonusRule.value + ". pointString: " + enabledBonusRule.id);
-                                console.log(debugTextArray[debugTextArray.length - 1]);
-                            }
-                        }
-                    }
-                });
-            }
-            result[0] += addPoint;
+            result[0] += bonusAddedPoint[pointSetting.id];
         }
         else {
             if (debugMode) {
@@ -122,7 +115,8 @@ function calculateScore(settings, robotID, pointString, debugMode = false) {
         }
     }
 
-    if (debugMode) result[2] = debugTextArray;
+    result[2] = bonusAddedPoint;
+    if (debugMode) result[3] = debugTextArray;
     return result;
 }
 
