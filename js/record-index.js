@@ -37,12 +37,15 @@ const generateRecordList = generateNavBGOverlay.then(() => {
                         robotBelongingNameElement.innerText = robot.belonging;
                         robotLinkElement.appendChild(robotBelongingNameElement);
                     }
+                    const robotSumPointElement = document.createElement('div');
+                    robotSumPointElement.innerText = `得点：${priorityResult.sumPoint}点`;
+                    robotLinkElement.appendChild(robotSumPointElement);
                     const robotDetailRecordElement = document.createElement('div');
-                    const contestPointElement = document.createElement('span');
-                    contestPointElement.classList.add('contest-point');
-                    contestPointElement.innerText = `競技点：${priorityResult.sumPoint}点`;
-                    robotDetailRecordElement.appendChild(contestPointElement);
                     if (priorityResult.judgePoint != undefined) {
+                        const contestPointElement = document.createElement('span');
+                        contestPointElement.classList.add('contest-point');
+                        contestPointElement.innerText = `競技点：${priorityResult.contestPoint}点`;
+                        robotDetailRecordElement.appendChild(contestPointElement);
                         const judgePointElement = document.createElement('span');
                         judgePointElement.classList.add('judge-point');
                         judgePointElement.innerText = `審査点：${priorityResult.judgePoint}点`;
@@ -55,7 +58,7 @@ const generateRecordList = generateNavBGOverlay.then(() => {
                         remainTimeElement.innerText = `競技時間：${timeConvertStringToJPString(priorityResult.contestTime)}`;
                         robotDetailRecordElement.appendChild(remainTimeElement);
                     }
-                    robotLinkElement.appendChild(robotDetailRecordElement)
+                    robotLinkElement.appendChild(robotDetailRecordElement);
                     robotElement.appendChild(robotLinkElement);
                     return robotElement;
                 }
