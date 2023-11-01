@@ -21,8 +21,8 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                             const recordRankingTablesElement = document.getElementById("record-ranking-tables");
 
                             function generateTableElement(robotList, scoreRuleID, orderFactor) {
-                                let sortKey = [orderFactor, "sumPoint", "contestTime", "!id"];
-                                if (orderFactor == "sumPoint") sortKey = ["sumPoint", "contestTime", "!id"];
+                                let sortKey = [orderFactor, "sumPoint", "!contestTime", "!id"];
+                                if (orderFactor == "sumPoint") sortKey = ["sumPoint", "!contestTime", "!id"];
                                 const sortedCourseRobotListOrdered = sortRobotList(recordSetting, courseRobotList, scoreRuleID, sortKey);
                                 
                                 const recordRankingTableElement = document.createElement("table");
@@ -30,16 +30,16 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                                 recordRankingTableElement.innerHTML = `
                                     <thead>
                                         <tr>
-                                            <th class = "order" order = "order"><a>走順</a></th>
+                                            <th class = "order" order = "!order"><a>走順</a></th>
                                             <th class = "id" order = "!id"><a>番号</a></th>
-                                            <th class = "name" order = "name"><a>ロボット名</a></th>
-                                            <th class = "team" order = "team"><a>チーム名</a></th>
-                                            <th class = "belonging" order = "belonging"><a>所属</a></th>
+                                            <th class = "name" order = "!name"><a>ロボット名</a></th>
+                                            <th class = "team" order = "!team"><a>チーム名</a></th>
+                                            <th class = "belonging" order = "!belonging"><a>所属</a></th>
                                             <th class = "sumPoint" order = "sumPoint"><a>得点</a></th>
                                             <th class = "contestPoint" order = "contestPoint"><a>競技点</a></th>
                                             <th class = "judgePoint" order = "judgePoint"><a>審査点</a></th>
-                                            <th class = "contestTime" order = "contestTime"><a>競技時間</a></th>
-                                            <th class = "remark" order = "remark"><a>備考</a></th>
+                                            <th class = "contestTime" order = "!contestTime"><a>競技時間</a></th>
+                                            <th class = "remark" order = "!remark"><a>備考</a></th>
                                         </tr>
                                     </thead>
                                 `;
@@ -52,16 +52,16 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                                 sortedCourseRobotListOrdered.forEach(robot => {
                                     const rowElement = document.createElement("tr");
                                     rowElement.innerHTML = `
-                                        <td class = "order" order = "order">${robot.order}</td>
+                                        <td class = "order" order = "!order">${robot.order}</td>
                                         <td class = "id" order = "!id">${robot.id}</td>
-                                        <td class = "name" order = "name"><a>${robot.name}</a></td>
-                                        <td class = "team" order = "team">${robot.team}</td>
-                                        <td class = "belonging" order = "belonging">${robot.belonging}</td>
+                                        <td class = "name" order = "!name"><a>${robot.name}</a></td>
+                                        <td class = "team" order = "!team">${robot.team}</td>
+                                        <td class = "belonging" order = "!belonging">${robot.belonging}</td>
                                         <td class = "sumPoint" order = "sumPoint">${robot.result[scoreRuleID].sumPoint}</td>
                                         <td class = "contestPoint" order = "contestPoint">${robot.result[scoreRuleID].contestPoint}</td>
                                         <td class = "judgePoint" order = "judgePoint">${robot.result[scoreRuleID].judgePoint}</td>
-                                        <td class = "contestTime" order = "contestTime">${robot.result[scoreRuleID].contestTime}</td>
-                                        <td class = "remark" order = "remark">${robot.remark ? robot.remark != undefined : ""}</td>
+                                        <td class = "contestTime" order = "!contestTime">${robot.result[scoreRuleID].contestTime}</td>
+                                        <td class = "remark" order = "!remark">${robot.remark ? robot.remark != undefined : ""}</td>
                                     `;
                                     tdLinkElementsArray = Array.from(rowElement.getElementsByTagName("a"));
                                     tdLinkElementsArray.forEach(linkElement => {
