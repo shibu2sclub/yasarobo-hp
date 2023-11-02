@@ -38,7 +38,6 @@ const navMenuSupportFireFox = navBGOverlayUpdate.then((obj) => {
                 Array.from(links).forEach(element => {
                     element.addEventListener('click', () => {
                         navHeadChkBoxElement.checked = false;
-                        console.log("test")
                         navMenuElement.classList.remove('open-firefox');
                         navBGOverlayElement.classList.remove('open-firefox');
                         navHeadElement.classList.remove('open-firefox');
@@ -48,5 +47,25 @@ const navMenuSupportFireFox = navBGOverlayUpdate.then((obj) => {
 
             resolve();
         }
+    });
+});
+
+const accordionSupportFireFox = navBGOverlayUpdate.then((obj) => {
+    return new Promise ((resolve, reject) => {
+        if (judgeBrowser() == "Firefox") {
+            const accordionWrapperElementsArray = Array.from(navHeadElement.getElementsByClassName('accordion-wrapper'));
+            accordionWrapperElementsArray.forEach(element => {
+                const accordionChkBoxElement = element.getElementsByTagName('input')[0];
+                accordionChkBoxElement.addEventListener('change', () => {
+                    if (accordionChkBoxElement.checked) {
+                        element.classList.add('open-firefox');
+                    }
+                    else {
+                        element.classList.remove('open-firefox');
+                    }
+                });
+            });
+        }
+        resolve();
     });
 });

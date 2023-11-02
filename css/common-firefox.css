@@ -39,4 +39,12 @@
     #nav-head.open-firefox label.menu-three-bar-btn > div.bars > span:nth-of-type(3) {
         transform: skewY(-45deg) translateY(50%);
     }
+
+    div.accordion-wrapper.open-firefox > label.accordion-btn > div::before {
+        transform: translateY(-50%) rotateZ(180deg);
+    }
+    
+    div.accordion-wrapper.open-firefox > div.accordion-content {
+        max-height: 45rem;
+    }
 }
