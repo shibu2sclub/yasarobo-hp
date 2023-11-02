@@ -127,15 +127,23 @@ const generateRecordList = generateNavBGOverlay.then(() => {
                                         const awardRobotListElement = document.createElement('div');
                                         awardRobotListElement.classList.add('course-robot-list-container');
 
+                                        if (typeof(award.id) != "object") award.id = [award.id];
                                         // filter recordListWithPoint by award.id == recordListWithPoint each element's id
-                                        const awardRobotList = recordListWithPoint.filter(robot => robot.id == award.id);
-
-                                        const robotListElement = document.createElement('div');
-                                        
-                                        robotListElement.classList.add('robot-list');
-                                        awardRobotList.forEach(robot => {
-                                            robotListElement.appendChild(generateRobotItem(robot));
+                                        let awardRobotList = [];
+                                        award.id.forEach(id => {
+                                            awardRobotList = awardRobotList.concat(recordListWithPoint.filter(robot => robot.id == id));
                                         });
+                                        
+                                        const robotListElement = document.createElement('div');
+                                        robotListElement.classList.add('robot-list');
+
+                                        awardRobotList.forEach(robot => {
+                                            const robotContainerElement = document.createElement('div');
+                                            robotContainerElement.classList.add('robot-container');
+                                            robotContainerElement.appendChild(generateRobotItem(robot));
+                                            robotListElement.appendChild(robotContainerElement);
+                                        });
+
                                         awardRobotListElement.appendChild(robotListElement);
                                         awardElement.appendChild(awardRobotListElement);
 
