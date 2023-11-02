@@ -31,8 +31,10 @@ function generateNewsListItem(newsItem, labelSettingData, year = siteYear) {
     newsItemTxtContainerElement.appendChild(labelContainerElement);
 
     const titleElement = document.createElement('div');
+    const budouxElement = document.createElement('budoux-ja');
     titleElement.classList.add('title');
-    titleElement.textContent = newsItem.title;
+    budouxElement.textContent = newsItem.title;
+    titleElement.appendChild(budouxElement);
     newsItemTxtContainerElement.appendChild(titleElement);
 
     return newsItemElement;
