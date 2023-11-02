@@ -73,6 +73,12 @@ ul#record-ranking-select-menu > li > a:hover::after {
     overflow-x: scroll;
 }
 
+@media screen and (max-width: 900px) {
+    #record-ranking-tables {
+        max-width: calc(100vw - 2 * var(--padding-x));
+    }
+}
+
 #record-ranking-tables::-webkit-scrollbar{
     height: 10px;
 }
@@ -80,12 +86,6 @@ ul#record-ranking-select-menu > li > a:hover::after {
 #record-ranking-tables::-webkit-scrollbar-thumb{
     background-color: var(--nav-bar-btn-bg-color);
     border-radius: 5px;
-}
-
-@media screen and (max-width: 900px) {
-    #record-ranking-tables {
-        max-width: calc(100vw - 2 * var(--padding-x));
-    }
 }
 
 #record-ranking-tables > table {
@@ -96,6 +96,7 @@ ul#record-ranking-select-menu > li > a:hover::after {
     opacity: 0;
     transition: none;
     font-size: var(--record-ranking-tables-font-size);
+    min-width: 800px;
 }
 
 #record-ranking-tables > table.active {
