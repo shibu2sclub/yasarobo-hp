@@ -154,3 +154,22 @@ const addToggleContestEvent = generateRecordRanking.then(() => {
         resolve();
     });
 });
+
+const scrollNotice = addToggleContestEvent.then(() => {
+    return new Promise((resolve, reject) => {
+        const scrollNoticeElement = document.getElementById("scroll-notice");
+        const recordRankingTablesElement = document.getElementById("record-ranking-tables");
+        const recordRankingTableElement = recordRankingTablesElement.getElementsByTagName("table")[0];
+        function widthCheck() {
+            // console.log(recordRankingTablesElement.offsetWidth, " ", recordRankingTableElement.offsetWidth);
+            if (recordRankingTablesElement.offsetWidth < recordRankingTableElement.offsetWidth) {
+                scrollNoticeElement.style.display = "block";
+            }
+            else {
+                scrollNoticeElement.style.display = "none";
+            }
+        }
+        widthCheck();
+        window.addEventListener("resize", widthCheck);
+    })
+});
