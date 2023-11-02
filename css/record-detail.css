@@ -22,11 +22,14 @@ dl.robot-detail-table-row {
     display: flex;
     border-bottom: solid 1px #ccc;
     margin: 0;
-    padding: 0.5rem 0;
 }
 
 dl.robot-detail-table-row:nth-child(1) {
     border-top: solid 1px #ccc;
+}
+
+dl.robot-detail-table-row dt, dl.robot-detail-table-row dd {
+    padding: 0.5rem 0;
 }
 
 dl.robot-detail-table-row dt {
@@ -62,4 +65,29 @@ div.accordion-wrapper.smaller div.accordion-content.point-detail div.robot-detai
     order: -1;
     border-top: 1px solid #ccc;
     border-bottom: none;
+}
+
+@media screen and (max-width: 600px) {
+    div.robot-detail-table, div.accordion-wrapper.smaller div.accordion-content.point-detail div.robot-detail-table {
+        margin: 1rem calc(-1 * var(--padding-x));
+        width: 100vw;
+    }
+
+    div.accordion-wrapper > div.point-detail.accordion-content {
+        margin: 0.5rem calc(-1 * var(--padding-x));
+        padding: 0 var(--padding-x);
+    }
+
+    div.robot-detail-table dt, div.robot-detail-table dd {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    div.robot-detail-table dt {
+        background-color: var(--light-gray-bg);
+    }
+
+    div.robot-detail-table dd {
+        margin-inline-start: 0;
+    }
 }
