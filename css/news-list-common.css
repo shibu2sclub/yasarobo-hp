@@ -62,7 +62,7 @@
     flex: 1;
     overflow-wrap: break-word;
     transition: 0.3s ease-out letter-spacing;
-    
+    font-size: 0.95rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
