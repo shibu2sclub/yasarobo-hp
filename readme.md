@@ -236,7 +236,7 @@ yearは非常に広範な範囲で用いているため、この場で影響範�
 {
     "showRecord": true,
     "showAward": true,
-    "type": "detailed",
+    "type": "default",
     "courseList": [
         {
             "name": "チャレンジャーズコース",
@@ -255,65 +255,37 @@ yearは非常に広範な範囲で用いているため、この場で影響範�
                 {
                     "id": "R",
                     "name": "赤色ボール（色正解）",
-                    "value": 3,
-                    "ui": {
-                        "shape": "circle",
-                        "bgColor": "red"
-                    }
+                    "value": 3
                 },
                 {
                     "id": "Y",
                     "name": "黄色ボール（色正解）",
-                    "value": 3,
-                    "ui": {
-                        "shape": "circle",
-                        "bgColor": "yellow"
-                    }
+                    "value": 3
                 },
                 {
                     "id": "B",
                     "name": "青色ボール（色正解）",
-                    "value": 3,
-                    "ui": {
-                        "shape": "circle",
-                        "bgColor": "blue"
-                    }
+                    "value": 3
                 },
                 {
                     "id": "r",
                     "name": "赤色ボール（色不正解）",
-                    "value": 1,
-                    "ui": {
-                        "shape": "circle",
-                        "borderColor": "red"
-                    }
+                    "value": 1
                 },
                 {
                     "id": "y",
                     "name": "黄色ボール（色不正解）",
-                    "value": 1,
-                    "ui": {
-                        "shape": "circle",
-                        "borderColor": "yellow"
-                    }
+                    "value": 1
                 },
                 {
                     "id": "b",
                     "name": "青色ボール（色不正解）",
-                    "value": 1,
-                    "ui": {
-                        "shape": "circle",
-                        "borderColor": "blue"
-                    }
+                    "value": 1
                 },
                 {
                     "id": "T",
                     "name": "自由ボール",
-                    "value": 5,
-                    "ui": {
-                        "shape": "diamond",
-                        "borderColor": "yellow"
-                    }
+                    "value": 5
                 }
             ]
         },
@@ -337,101 +309,57 @@ yearは非常に広範な範囲で用いているため、この場で影響範�
                 {
                     "id": "R",
                     "name": "赤色ボール（色正解）",
-                    "value": 4,
-                    "ui": {
-                        "shape": "circle",
-                        "bgColor": "red"
-                    }
+                    "value": 4
                 },
                 {
                     "id": "B",
                     "name": "青色ボール（色正解）",
-                    "value": 4,
-                    "ui": {
-                        "shape": "circle",
-                        "bgColor": "blue"
-                    }
+                    "value": 4
                 },
                 {
                     "id": "r",
                     "name": "赤色ボール（色不正解）",
-                    "value": 1,
-                    "ui": {
-                        "shape": "circle",
-                        "borderColor": "red"
-                    }
+                    "value": 1
                 },
                 {
                     "id": "b",
                     "name": "青色ボール（色不正解）",
-                    "value": 1,
-                    "ui": {
-                        "shape": "circle",
-                        "borderColor": "blue"
-                    }
+                    "value": 1
                 },
                 {
                     "id": "S",
                     "name": "スチール缶（色正解）",
-                    "value": 6,
-                    "ui": {
-                        "shape": "rectangleNarrow",
-                        "bgColor": "yellow"
-                    }
+                    "value": 6
                 },
                 {
                     "id": "s",
                     "name": "スチール缶（色不正解）",
-                    "value": 1,
-                    "ui": {
-                        "shape": "rectangleNarrow",
-                        "borderColor": "yellow"
-                    }
+                    "value": 1
                 },
                 {
                     "id": "A",
                     "name": "アルミ缶（色正解）",
-                    "value": 10,
-                    "ui": {
-                        "shape": "rectangleWide",
-                        "bgColor": "yellow"
-                    }
+                    "value": 10
                 },
                 {
                     "id": "a",
                     "name": "アルミ缶（色不正解）",
-                    "value": 1,
-                    "ui": {
-                        "shape": "rectangleWide",
-                        "borderColor": "yellow"
-                    }
+                    "value": 1
                 },
                 {
                     "id": "T",
                     "name": "自由ボール",
-                    "value": 5,
-                    "ui": {
-                        "shape": "diamond",
-                        "borderColor": "yellow"
-                    }
+                    "value": 5
                 },
                 {
                     "id": "W",
                     "name": "ウォーターボトル",
-                    "value": 10,
-                    "ui": {
-                        "shape": "triangle",
-                        "borderColor": "purple"
-                    }
+                    "value": 10
                 },
                 {
                     "id": "M",
                     "name": "リターンボーナス",
-                    "value": 10,
-                    "ui": {
-                        "shape": "star",
-                        "bgColor": "orange"
-                    }
+                    "value": 10
                 }
             ]
         },
@@ -455,74 +383,42 @@ yearは非常に広範な範囲で用いているため、この場で影響範�
                 {
                     "id": "R",
                     "name": "右側赤色ゴムボール（色正解）",
-                    "value": 6,
-                    "ui": {
-                        "shape": "circle",
-                        "bgColor": "red"
-                    }
+                    "value": 6
                 },
                 {
                     "id": "Y",
                     "name": "右側黄色ゴムボール（色正解）",
-                    "value": 6,
-                    "ui": {
-                        "shape": "circle",
-                        "bgColor": "yellow"
-                    }
+                    "value": 6
                 },
                 {
                     "id": "B",
                     "name": "右側青色ゴムボール（色正解）",
-                    "value": 6,
-                    "ui": {
-                        "shape": "circle",
-                        "bgColor": "blue"
-                    }
+                    "value": 6
                 },
                 {
                     "id": "r",
                     "name": "右側赤色ゴムボール（色不正解）",
-                    "value": 1,
-                    "ui": {
-                        "shape": "circle",
-                        "borderColor": "red"
-                    }
+                    "value": 1
                 },
                 {
                     "id": "y",
                     "name": "右側黄色ゴムボール（色不正解）",
-                    "value": 1,
-                    "ui": {
-                        "shape": "circle",
-                        "borderColor": "yellow"
-                    }
+                    "value": 1
                 },
                 {
                     "id": "b",
                     "name": "右側青色ゴムボール（色不正解）",
-                    "value": 1,
-                    "ui": {
-                        "shape": "circle",
-                        "borderColor": "blue"
-                    }
+                    "value": 1
                 },
                 {
                     "id": "M",
                     "name": "左側ゴムボール",
-                    "value": 1,
-                    "ui": {
-                        "shape": "circle",
-                        "bgColor": "purple"
-                    }
+                    "value": 1
                 },
                 {
                     "id": "S",
                     "name": "右側スポンジボール",
-                    "value": 4,
-                    "ui": {
-                        "shape": "circle",
-                        "borderColor": "purple"
-                    }
+                    "value": 4
                 },
                 {
                     "id": "O",
@@ -538,11 +434,7 @@ yearは非常に広範な範囲で用いているため、この場で影響範�
                         "b",
                         "M",
                         "S"
-                    ],
-                    "ui": {
-                        "shape": "star",
-                        "borderColor": "green"
-                    }
+                    ]
                 }
             ]
         }
@@ -578,10 +470,9 @@ yearは非常に広範な範囲で用いているため、この場で影響範�
 
 * showRecord: 全体のナビメニューに競技記録・ロボット一覧を表示するかの設定。表示できる状態となったら```true```に。なお、このファイル自体存在しない時は```false```扱いとなる。
 * showAward: 受賞者リストを表示するかどうか。
-* type: ```simple```、```default```、```detailed```
+* type: ```simple```、```default```
     * simple: 集計結果の得点のみ。
     * default: ボールや缶の取得状況、色を含んだデータ。```simple```に加えて得点の内訳が表示される。
-    * detailed: ```default```のデータを順番まで競技中の時間経過に沿って入力したもの。```default```に加えて得点順が表示される。
 * courseList: 各コースに関する設定。配列で渡す。
     * name: コース名
     * id: ID、ゼッケン番号1文字目と一致
@@ -593,14 +484,6 @@ yearは非常に広範な範囲で用いているため、この場で影響範�
             * add: ```targetID```で指定した得点1回ずつに対して加算
             * multiply: ```targetID```で指定した得点1回ずつに対して積算
         * （bonusType指定時のみ）targetType: ```add```, ```multiply```を行う得点ID
-        * ui: UI設定
-            * shape: 形状
-                * circle: 円
-                * rectangleWide: 横長の長方形
-                * rectangleNarrow: 縦長の長方形
-                * diamond: ダイヤ
-                * hexagon: 六角形
-                * star: 星形
 * scoreList: 各試技に関する設定。実際の試技並びに算出得点ともにこちらで指定する。配列で渡す。なお順番はそのまま表示順に使用される。
     * name: 名前
     * id: 管理用ID。```id```, ```name```, ```team```, ```belonging```, ```result```といったロボット情報のキーと重複しないようにする。最初の文字に```!```を含まないようにする。
@@ -617,179 +500,130 @@ yearは非常に広範な範囲で用いているため、この場で影響範�
 {
     "showRecord": true,
     "showAward": true,
-    "type": "detailed",
+    "type": "default",
     "courseList":[
         {
             "name": "チャレンジャーズコース",
             "id": "C",
+            "ruleCaption": "ボールを自動で探索、取得し、色を認識してゴールに入れるミッションです。",
+            "baseRuleDesc": [
+                "競技者は、競技開始を宣言した後は手動での操作は出来ず、ロボットが自動で自律して動作することになります。",
+                "競技をやり直したい場合（例：ロボットが動作不調に陥った場合など）は、競技者は3回まで「リトライ」をすることができます。リトライにおいてはボールは全て置き直され、それまでに取った得点も全て無効となります。"
+            ],
+            "pointRuleDesc": [
+                "競技台には赤色、黄色、青色のゴムボールが各色5個、合計15個置かれています。正しい色のゴールにボールを入れた場合は3点、誤った色の場合は1点が加点されます。",
+                "またこれとは別に、自由ボールというルールが存在します。競技者は競技開始前やリトライ時に、テニスボール1個を受け取ります。このボールは競技台上に置くことも、ロボットに持たせることも可能です。自由ボールはどのゴールに入れても5点が加点されます。",
+                "最高得点は50点です。"
+            ],
             "point": [
                 {
                     "id": "R",
                     "name": "赤色ボール（色正解）",
-                    "value": 3,
-                    "ui": {
-                        "shape": "circle",
-                        "bgColor": "red"
-                    }
+                    "value": 3
                 },
                 {
                     "id": "Y",
                     "name": "黄色ボール（色正解）",
-                    "value": 3,
-                    "ui": {
-                        "shape": "circle",
-                        "bgColor": "yellow"
-                    }
+                    "value": 3
                 },
                 {
                     "id": "B",
                     "name": "青色ボール（色正解）",
-                    "value": 3,
-                    "ui": {
-                        "shape": "circle",
-                        "bgColor": "blue"
-                    }
+                    "value": 3
                 },
                 {
                     "id": "r",
                     "name": "赤色ボール（色不正解）",
-                    "value": 1,
-                    "ui": {
-                        "shape": "circle",
-                        "borderColor": "red"
-                    }
+                    "value": 1
                 },
                 {
                     "id": "y",
                     "name": "黄色ボール（色不正解）",
-                    "value": 1,
-                    "ui": {
-                        "shape": "circle",
-                        "borderColor": "yellow"
-                    }
+                    "value": 1
                 },
                 {
                     "id": "b",
                     "name": "青色ボール（色不正解）",
-                    "value": 1,
-                    "ui": {
-                        "shape": "circle",
-                        "borderColor": "blue"
-                    }
+                    "value": 1
                 },
                 {
                     "id": "T",
                     "name": "自由ボール",
-                    "value": 5,
-                    "ui": {
-                        "shape": "diamond",
-                        "borderColor": "yellow"
-                    }
+                    "value": 5
                 }
             ]
         },
         {
             "name": "マスターズコース",
             "id": "M",
+            "ruleCaption": "様々な物体を自動で探索、取得し、色を認識してゴールに入れたり移動させたりするミッションです。",
+            "baseRuleDesc": [
+                "競技者は、競技開始を宣言した後は手動での操作は出来ず、ロボットが自動で自律して動作することになります。",
+                "競技をやり直したい場合（例：ロボットが動作不調に陥った場合など）は、競技者は3回まで「リトライ」をすることができます。リトライにおいてはボールは全て置き直され、それまでに取った得点も全て無効となります。"
+            ],
+            "pointRuleDesc": [
+                "競技台には赤色のゴムボールが6個、青色のゴムボールが2個、スチール缶が立てられた状態で3本、アルミ缶が寝かされた状態で1本、水の入ったペットボトル（ウォーターボトル）が1本置かれています。",
+                "ゴムボールは正しい色のゴールに入れると4点、スチール缶は黄色ゴールに入れると6点、アルミ缶は黄色ゴールに入れると10点が加点されます。誤ったゴールに入れると1点です。",
+                "ウォーターボトルは中央段差上に移動させると15点が入ります。移動させた際のウォーターボトルの姿勢は問いません。中央段差上に乗っていない場合は0点です。",
+                "またこれとは別に、自由ボールというルールが存在します。競技者は競技開始前やリトライ時に、テニスボール1個を受け取ります。このボールは競技台上に置くことも、ロボットに持たせることも可能です。自由ボールはどのゴールに入れても5点が加点されます。",
+                "マスターズコースでは自由ボール以外の対象物をすべてゴールした状態で、ロボットがスタート位置（スタートエリア）に戻り、競技者が競技終了を宣言した場合は、リターンボーナスとして10点が加点されます。",
+                "最高得点はリターンボーナスを含めて90点です。"
+            ],
             "point": [
                 {
                     "id": "R",
                     "name": "赤色ボール（色正解）",
-                    "value": 4,
-                    "ui": {
-                        "shape": "circle",
-                        "bgColor": "red"
-                    }
+                    "value": 4
                 },
                 {
                     "id": "B",
                     "name": "青色ボール（色正解）",
-                    "value": 4,
-                    "ui": {
-                        "shape": "circle",
-                        "bgColor": "blue"
-                    }
+                    "value": 4
                 },
                 {
                     "id": "r",
                     "name": "赤色ボール（色不正解）",
-                    "value": 1,
-                    "ui": {
-                        "shape": "circle",
-                        "borderColor": "red"
-                    }
+                    "value": 1
                 },
                 {
                     "id": "b",
                     "name": "青色ボール（色不正解）",
-                    "value": 1,
-                    "ui": {
-                        "shape": "circle",
-                        "borderColor": "blue"
-                    }
+                    "value": 1
                 },
                 {
                     "id": "S",
                     "name": "スチール缶（色正解）",
-                    "value": 6,
-                    "ui": {
-                        "shape": "rectangleNarrow",
-                        "bgColor": "yellow"
-                    }
+                    "value": 6
                 },
                 {
                     "id": "s",
                     "name": "スチール缶（色不正解）",
-                    "value": 1,
-                    "ui": {
-                        "shape": "rectangleNarrow",
-                        "borderColor": "yellow"
-                    }
+                    "value": 1
                 },
                 {
                     "id": "A",
                     "name": "アルミ缶（色正解）",
-                    "value": 10,
-                    "ui": {
-                        "shape": "rectangleWide",
-                        "bgColor": "yellow"
-                    }
+                    "value": 10
                 },
                 {
                     "id": "a",
                     "name": "アルミ缶（色不正解）",
-                    "value": 1,
-                    "ui": {
-                        "shape": "rectangleWide",
-                        "borderColor": "yellow"
-                    }
+                    "value": 1
                 },
                 {
                     "id": "T",
                     "name": "自由ボール",
-                    "value": 5,
-                    "ui": {
-                        "shape": "diamond",
-                        "borderColor": "yellow"
-                    }
+                    "value": 5
                 },
                 {
                     "id": "W",
                     "name": "ウォーターボトル",
-                    "value": 10,
-                    "ui": {
-                        "shape": "triangle",
-                        "borderColor": "purple"
-                    }
+                    "value": 10
                 },
                 {
                     "id": "M",
                     "name": "リターンボーナス",
-                    "value": 10,
-                    "ui": {
-                        "shape": "star",
-                        "bgColor": "orange"
-                    }
+                    "value": 10
                 }
             ]
         }
