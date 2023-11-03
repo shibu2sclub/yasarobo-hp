@@ -62,7 +62,18 @@ const generatePastContestList = generateNavBGOverlay.then(() => {
                             linkRecordAElement.classList.add('internal-link');
                             linkRecordElement.appendChild(linkRecordAElement);
                             linkListElement.appendChild(linkRecordElement);
-
+                            
+                            if (yearInfo.rule != undefined) {
+                                const linkRuleElement = document.createElement('li');
+                                const linkRuleAElement = document.createElement('a');
+                                linkRuleAElement.innerText = yearInfo.rule.name;
+                                linkRuleAElement.href = yearInfo.rule.link;
+                                linkRuleAElement.classList.add('external-link');
+                                linkRuleAElement.setAttribute('target', '_blank');
+                                linkRuleElement.appendChild(linkRuleAElement);
+                                linkListElement.appendChild(linkRuleElement);
+                            }
+                            
                             pastContestElement.appendChild(linkListElement);
                             articleElement.appendChild(pastContestElement);
                         })

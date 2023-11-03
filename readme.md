@@ -156,6 +156,10 @@ yearは非常に広範な範囲で用いているため、この場で影響範�
         "name": "渋谷教育学園渋谷中学高等学校 理科部ロボコン班 やさしいロボコン担当",
         "linkName": "yasarobo@googlegroups.com",
         "link": "mailto:yasarobo@googlegroups.com"
+    },
+    "rule": {
+        "name": "ルール・開催要項（原案・PDF）",
+        "link": "https://drive.google.com/file/d/1f8vbpx1p_VoEAQCKo9FgvEAp0db_YkO-/view?usp=drive_link"
     }
 }
 ```
@@ -179,6 +183,9 @@ yearは非常に広範な範囲で用いているため、この場で影響範�
     * name: お問い合わせ先の名前
     * linkName: お問い合わせ先のリンク名。メールアドレスかリンク先の名前を記載する。
     * link: お問い合わせ先のURL（メールアドレスなら```mailto:```をつけること）
+* rule: ルール・開催要項へのリンク（PDF）
+    * name: リンク名
+    * link: URL
 
 ### news.json
 ニュース記事のJSONファイル。
