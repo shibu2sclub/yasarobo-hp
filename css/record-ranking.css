@@ -88,11 +88,29 @@ ul#record-ranking-select-menu > li > a:hover::after {
     border-radius: 5px;
 }
 
+@keyframes fadeIn {
+    0% {
+        display: none;
+        visibility: collapse;
+        opacity: 0;
+    }
+
+    1% {
+        display: block;
+        visibility: visible;
+        opacity: 0;
+    }
+  
+    100% {
+        opacity: 1;
+    }
+}
+
 #record-ranking-tables > table {
     width: 100%;
     text-align: left;
     border-collapse: collapse;
-    visibility: collapse;
+    display: none;
     opacity: 0;
     transition: none;
     font-size: var(--record-ranking-tables-font-size);
@@ -100,9 +118,9 @@ ul#record-ranking-select-menu > li > a:hover::after {
 }
 
 #record-ranking-tables > table.active {
-    visibility: visible;
+    animation: fadeIn .3s ease-in-out;
+    display: block;
     opacity: 1;
-    transition: .5s ease-in-out;
 }
 
 #record-ranking-tables > table th {
