@@ -225,7 +225,23 @@ const generateAccess = generateDetail.then(() => {
     });
 });
 
-const adjustScrollHeight = generateAccess.then(() => {
+const generateRuleLink = generateAccess.then(() => {
+    return new Promise((resolve, reject) => {
+        const ruleLinkElement = document.getElementById('rule-link');
+        fetch(`/data/${siteYear}/information.json`)
+            .then(response => response.json())
+            .then(infoData => {
+                ruleLinkElement.setAttribute('href', infoData.rule.link);
+                ruleLinkElement.innerText = infoData.rule.name;
+            })
+            .then(() => {
+                resolve();
+            })
+            .catch(error => console.error(error));
+    });
+});
+
+const adjustScrollHeight = generateRuleLink.then(() => {
     return new Promise((resolve, reject) => {
         const navHeadElement = document.getElementById("nav-head");
         const navMenuElement = document.getElementById("nav-menu");

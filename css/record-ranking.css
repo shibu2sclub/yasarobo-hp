@@ -88,7 +88,7 @@ ul#record-ranking-select-menu > li > a:hover::after {
     border-radius: 5px;
 }
 
-@keyframes fadeIn {
+@keyframes fadeIn-table {
     0% {
         display: none;
         visibility: collapse;
@@ -96,7 +96,7 @@ ul#record-ranking-select-menu > li > a:hover::after {
     }
 
     1% {
-        display: block;
+        display: table;
         visibility: visible;
         opacity: 0;
     }
@@ -118,8 +118,8 @@ ul#record-ranking-select-menu > li > a:hover::after {
 }
 
 #record-ranking-tables > table.active {
-    animation: fadeIn .3s ease-in-out;
-    display: block;
+    animation: fadeIn-table .3s ease-in-out;
+    display: table;
     opacity: 1;
 }
 
