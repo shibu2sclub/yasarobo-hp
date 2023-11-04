@@ -61,7 +61,7 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                                         <td class = "contestPoint" order = "contestPoint">${robot.result[scoreRuleID].contestPoint}</td>
                                         <td class = "judgePoint" order = "judgePoint">${robot.result[scoreRuleID].judgePoint}</td>
                                         <td class = "contestTime" order = "!contestTime">${robot.result[scoreRuleID].contestTime}</td>
-                                        <td class = "remark" order = "!remark">${robot.remark ? robot.remark != undefined : ""}</td>
+                                        <td class = "remark" order = "!remark">${robot.result[scoreRuleID].remark ? robot.result[scoreRuleID].remark != undefined : ""}</td>
                                     `;
                                     tdLinkElementsArray = Array.from(rowElement.getElementsByTagName("a"));
                                     tdLinkElementsArray.forEach(linkElement => {

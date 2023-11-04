@@ -24,6 +24,33 @@ const generateRecordDetail = generateNavBGOverlay.then(() => {
                     </dl>
                     `;
 
+                    if (robotData.category != undefined) {
+                        let categoryString = "";
+                        robotData.category.forEach(category => {
+                            categoryString += category + " / ";
+                        });
+                        robotDetailTableElement.innerHTML += `
+                        <dl class = "robot-detail-table-row">
+                            <dt>カテゴリ</dt><dd>${categoryString}</dd>
+                        </dl>
+                        `
+                    }
+
+                    const robotDescWrapperElement = document.getElementById("robot-desc-wrapper");
+                    if (robotData.feature != undefined) {
+                        robotDescWrapperElement.innerHTML += `
+                        <h3>ロボットの特徴</h3>
+                        <p><budoux-ja>${robotData.feature}</budoux-ja></p>
+                        `
+                    }
+                    
+                    if (robotData.appeal != undefined) {
+                        robotDescWrapperElement.innerHTML += `
+                        <h3>ロボットの特徴</h3>
+                        <p><budoux-ja>${robotData.appeal}</budoux-ja></p>
+                        `
+                    }
+
                     const baseRuleElement = document.getElementById("base-rule");
                     robotCourseData.baseRuleDesc.forEach(baseRuleDesc => {
                         const descPElement = document.createElement("p");
