@@ -51,15 +51,27 @@ const generateRecordDetail = generateNavBGOverlay.then(() => {
                     }
 
                     const robotDescWrapperElement = document.getElementById("robot-desc-wrapper");
+                    robotDescWrapperElement.innerHTML = `
+                    <div class = "accordion-wrapper smaller">
+                        <label class = "accordion-btn">
+                            <input type="checkbox">
+                            <div>ロボットの説明</div>
+                        </label>
+                        <div class = "accordion-content">
+                            <div id = "robot-desc"></div>
+                        </div>
+                    </div>
+                    `;
+                    const robotDescElement = document.getElementById("robot-desc");
                     if (robotData.feature != undefined) {
-                        robotDescWrapperElement.innerHTML += `
+                        robotDescElement.innerHTML += `
                         <h3>ロボットの特徴</h3>
                         <p><budoux-ja>${robotData.feature}</budoux-ja></p>
                         `
                     }
                     
                     if (robotData.appeal != undefined) {
-                        robotDescWrapperElement.innerHTML += `
+                        robotDescElement.innerHTML += `
                         <h3>アピールポイント</h3>
                         <p><budoux-ja>${robotData.appeal}</budoux-ja></p>
                         `
