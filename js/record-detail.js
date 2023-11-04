@@ -60,7 +60,7 @@ const generateRecordDetail = generateNavBGOverlay.then(() => {
                     
                     if (robotData.appeal != undefined) {
                         robotDescWrapperElement.innerHTML += `
-                        <h3>ロボットの特徴</h3>
+                        <h3>アピールポイント</h3>
                         <p><budoux-ja>${robotData.appeal}</budoux-ja></p>
                         `
                     }
