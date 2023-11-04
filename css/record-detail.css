@@ -73,12 +73,30 @@ dl.robot-detail-table-row:nth-child(1) {
 
 dl.robot-detail-table-row dt, dl.robot-detail-table-row dd {
     padding: 0.5rem 0;
+    margin-inline-start: 0;
 }
 
 dl.robot-detail-table-row dt {
     font-weight: bold;
-    width: 4rem;
+    width: 5rem;
     margin-right: 0.4rem;
+    flex-shrink: 0;
+}
+
+dl.robot-detail-table-row dd:nth-child(n+3) {
+    margin-left: 2rem;
+}
+
+#category-list > span {
+    padding-right: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+#category-list > span:not(:nth-last-child(1)):before {
+    content: "/";
+    position: absolute;
+    right: 0.5rem;
 }
 
 div.accordion-wrapper.smaller {
@@ -130,7 +148,7 @@ div.accordion-wrapper.smaller div.accordion-content.point-detail div.robot-detai
         background-color: var(--light-gray-bg);
     }
 
-    div.robot-detail-table dd {
-        margin-inline-start: 0;
+    dl.robot-detail-table-row dd:nth-child(n+3) {
+        margin-left: 1rem;
     }
 }

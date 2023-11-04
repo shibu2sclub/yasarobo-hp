@@ -25,15 +25,17 @@ const generateRecordDetail = generateNavBGOverlay.then(() => {
                     `;
 
                     if (robotData.category != undefined) {
-                        let categoryString = "";
-                        robotData.category.forEach(category => {
-                            categoryString += category + " / ";
-                        });
                         robotDetailTableElement.innerHTML += `
                         <dl class = "robot-detail-table-row">
-                            <dt>カテゴリ</dt><dd>${categoryString}</dd>
+                            <dt>カテゴリ</dt><dd id = "category-list"></dd>
                         </dl>
                         `
+                        const categoryListElement = document.getElementById("category-list");
+                        robotData.category.forEach(category => {
+                            const categoryElement = document.createElement("span");
+                            categoryElement.innerText = category;
+                            categoryListElement.appendChild(categoryElement);
+                        });
                     }
 
                     if (robotData.size != undefined) {
