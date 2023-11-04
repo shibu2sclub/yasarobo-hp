@@ -36,6 +36,18 @@ const generateRecordDetail = generateNavBGOverlay.then(() => {
                         `
                     }
 
+                    if (robotData.size != undefined) {
+                        let categoryString = "";
+                        robotData.category.forEach(category => {
+                            categoryString += category + " / ";
+                        });
+                        robotDetailTableElement.innerHTML += `
+                        <dl class = "robot-detail-table-row">
+                            <dt>サイズ</dt><dd>長さ: ${robotData.size.length}mm<br>横幅: ${robotData.size.width}mm<br>高さ: ${robotData.size.height}mm</dd>
+                        </dl>
+                        `
+                    }
+
                     const robotDescWrapperElement = document.getElementById("robot-desc-wrapper");
                     if (robotData.feature != undefined) {
                         robotDescWrapperElement.innerHTML += `
