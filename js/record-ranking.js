@@ -52,16 +52,16 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                                 sortedCourseRobotListOrdered.forEach(robot => {
                                     const rowElement = document.createElement("tr");
                                     rowElement.innerHTML = `
-                                        <td class = "order" order = "!order">${robot.order}</td>
-                                        <td class = "id" order = "!id">${robot.id}</td>
-                                        <td class = "name" order = "!name"><a>${robot.name}</a></td>
-                                        <td class = "team" order = "!team">${robot.team}</td>
-                                        <td class = "belonging" order = "!belonging">${robot.belonging}</td>
-                                        <td class = "sumPoint" order = "sumPoint">${robot.result[scoreRuleID].sumPoint}</td>
-                                        <td class = "contestPoint" order = "contestPoint">${robot.result[scoreRuleID].contestPoint}</td>
-                                        <td class = "judgePoint" order = "judgePoint">${robot.result[scoreRuleID].judgePoint}</td>
-                                        <td class = "contestTime" order = "!contestTime">${robot.result[scoreRuleID].contestTime}</td>
-                                        <td class = "remark" order = "!remark">${robot.result[scoreRuleID].remark ? robot.result[scoreRuleID].remark != undefined : ""}</td>
+                                        <td class = "order" order = "!order">${robot.result[scoreRuleID].order || ""}</td>
+                                        <td class = "id" order = "!id">${robot.id || ""}</td>
+                                        <td class = "name" order = "!name"><a>${robot.name || ""}</a></td>
+                                        <td class = "team" order = "!team">${robot.team || ""}</td>
+                                        <td class = "belonging" order = "!belonging">${robot.belonging || ""}</td>
+                                        <td class = "sumPoint" order = "sumPoint">${robot.result[scoreRuleID].sumPoint || ""}</td>
+                                        <td class = "contestPoint" order = "contestPoint">${robot.result[scoreRuleID].contestPoint || ""}</td>
+                                        <td class = "judgePoint" order = "judgePoint">${robot.result[scoreRuleID].judgePoint || ""}</td>
+                                        <td class = "contestTime" order = "!contestTime">${robot.result[scoreRuleID].contestTime || ""}</td>
+                                        <td class = "remark" order = "!remark">${robot.result[scoreRuleID].remark || ""}</td>
                                     `;
                                     tdLinkElementsArray = Array.from(rowElement.getElementsByTagName("a"));
                                     tdLinkElementsArray.forEach(linkElement => {
@@ -112,7 +112,7 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                                 recordRankingBtnA.innerText = scoreRule.name;
                                 recordRankingBtn.appendChild(recordRankingBtnA);
                                 recordRankingSelectMenuElement.appendChild(recordRankingBtn);
-                                const orderFactor = courseRobotList[0].result[scoreRule.id].sumPoint != undefined ? "sumPoint" : (courseRobotList[0].order != undefined ? "order" : "!id");
+                                const orderFactor = courseRobotList[0].result[scoreRule.id].sumPoint != undefined ? "sumPoint" : (courseRobotList[0].order != undefined ? "!order" : "!id");
                                 generateTableElement(courseRobotList, scoreRule.id, orderFactor);
                             });
                             document.getElementById(recordSetting.scoreList[0].id).classList.add("active");
