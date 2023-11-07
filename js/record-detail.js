@@ -24,6 +24,47 @@ const generateRecordDetail = generateNavBGOverlay.then(() => {
                     </dl>
                     `;
 
+                    if (robotData.category != undefined) {
+                        robotDetailTableElement.innerHTML += `
+                        <dl class = "robot-detail-table-row">
+                            <dt>カテゴリ</dt><dd id = "category-list"></dd>
+                        </dl>
+                        `
+                        const categoryListElement = document.getElementById("category-list");
+                        robotData.category.forEach(category => {
+                            const categoryElement = document.createElement("span");
+                            categoryElement.innerText = category;
+                            categoryListElement.appendChild(categoryElement);
+                        });
+                    }
+
+                    if (robotData.size != undefined) {
+                        let categoryString = "";
+                        robotData.category.forEach(category => {
+                            categoryString += category + " / ";
+                        });
+                        robotDetailTableElement.innerHTML += `
+                        <dl class = "robot-detail-table-row">
+                            <dt>サイズ</dt><dd>長さ: ${robotData.size.length}mm<br>横幅: ${robotData.size.width}mm<br>高さ: ${robotData.size.height}mm</dd>
+                        </dl>
+                        `
+                    }
+
+                    const robotDescWrapperElement = document.getElementById("robot-desc-wrapper");
+                    if (robotData.feature != undefined) {
+                        robotDescWrapperElement.innerHTML += `
+                        <h3>ロボットの特徴</h3>
+                        <p><budoux-ja>${robotData.feature}</budoux-ja></p>
+                        `
+                    }
+                    
+                    if (robotData.appeal != undefined) {
+                        robotDescWrapperElement.innerHTML += `
+                        <h3>アピールポイント</h3>
+                        <p><budoux-ja>${robotData.appeal}</budoux-ja></p>
+                        `
+                    }
+
                     const baseRuleElement = document.getElementById("base-rule");
                     robotCourseData.baseRuleDesc.forEach(baseRuleDesc => {
                         const descPElement = document.createElement("p");
