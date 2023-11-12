@@ -3,6 +3,8 @@
     --news-height: 21rem;
     --key-visual-height: calc(100vh - var(--header-height) - var(--news-height));
     --key-visual-height: calc(100svh - var(--header-height) - var(--news-height));
+    
+    --content-padding: var(--content-padding-calc);
 }
 
 @media screen and (max-height: 600px) {
