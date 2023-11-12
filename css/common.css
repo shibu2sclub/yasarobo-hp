@@ -21,7 +21,8 @@
 
     --content-width: 100%;
     --content-padding-min: 5rem;
-    --content-padding: max(var(--content-padding-min), calc((100% - var(--content-width)) / 2));
+    --content-padding-calc: calc((100% - var(--content-width)) / 2);
+    --content-padding: max(var(--content-padding-min), var(--content-padding-calc));
 }
 
 html {
