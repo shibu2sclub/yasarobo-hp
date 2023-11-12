@@ -670,12 +670,9 @@ h3 {
     position: relative;
 }
 
-#content > div {
-    padding-bottom: 3rem;
-}
-
 div.article {
     padding-top: 2rem;
+    padding-bottom: 3rem;
 }
 
 div.article > :first-child {
