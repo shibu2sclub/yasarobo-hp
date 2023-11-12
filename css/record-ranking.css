@@ -69,13 +69,13 @@ ul#record-ranking-select-menu > li > a:hover::after {
 }
 
 #record-ranking-tables {
-    max-width: calc(100vw - 2 * var(--padding-x) - var(--nav-width));
+    max-width: calc(100vw - 2 * var(--content-padding) - var(--nav-width));
     overflow-x: scroll;
 }
 
 @media screen and (max-width: 900px) {
     #record-ranking-tables {
-        max-width: calc(100vw - 2 * var(--padding-x));
+        max-width: calc(100vw - 2 * var(--content-padding));
     }
 }
 
