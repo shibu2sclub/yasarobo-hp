@@ -408,6 +408,7 @@ h1 > span:nth-child(2) {
 
 #content > div {
     position: relative;
+    padding: 0 var(--content-padding);
 }
 
 #content > #news {
@@ -449,7 +450,7 @@ h1 > span:nth-child(2) {
 #content > div:nth-child(2n) > div.bg-h1 {
     color: #fff;
     left: auto;
-    right: 1rem;
+    right: calc(1rem + var(--content-padding));
     transform-origin: right top;
     transform: rotate(-90deg) translateY(-100%);
 }
