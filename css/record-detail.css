@@ -130,13 +130,13 @@ div.accordion-wrapper.smaller div.accordion-content.point-detail div.robot-detai
 
 @media screen and (max-width: 600px) {
     div.robot-detail-table, div.accordion-wrapper.smaller div.accordion-content.point-detail div.robot-detail-table {
-        margin: 1rem calc(-1 * var(--padding-x));
+        margin: 1rem calc(-1 * var(--content-padding));
         width: 100vw;
     }
 
     div.accordion-wrapper > div.point-detail.accordion-content {
-        margin: 0.5rem calc(-1 * var(--padding-x));
-        padding: 0 var(--padding-x);
+        margin: 0.5rem calc(-1 * var(--content-padding));
+        padding: 0 var(--content-padding);
     }
 
     div.robot-detail-table dt, div.robot-detail-table dd {

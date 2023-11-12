@@ -7,15 +7,15 @@
 }
 
 #record-common > div > * {
-    padding-left: var(--padding-x);
-    padding-right: var(--padding-x);
+    padding-left: var(--content-padding);
+    padding-right: var(--content-padding);
 }
 
 #record-head-menu > ul {
     list-style: none;
     display: flex;
     align-items: center;
-    padding: 0 var(--padding-x);
+    padding: 0 var(--content-padding);
     background-color: var(--light-gray-bg);
     flex-wrap: wrap;
 }
