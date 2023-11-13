@@ -1,0 +1,191 @@
+[
+    {
+        "id": "C01",
+        "name": "くらげ君",
+        "team": "しぶしぶ「寿」",
+        "belonging": "渋渋理科部",
+        "size": {
+            "length": 300,
+            "width": 300,
+            "height": 280
+        },
+        "category": [
+            "自立型",
+            "単独型",
+            "ライントレース",
+            "ビジョンセンサ",
+            "風"
+        ],
+        "feature": "過去の出場ではＰＳＤでボールを探索していたのですが、外乱光やノイズに邪魔されてしまい、ボールを正確に見つけることができませんでした。今回はカメラを積み、読み込んだ画像を処理をすることでボールの位置を認識する方法にしました。色も従来使っていたカラーセンサーよりも正確に検出できています。又、今回メインに使用したＣＰＵボードがラズベリーパイだったのですが、直接モーター類を操作するのはリアルタイム性に欠け、難しいため、ハード動作の別ＣＰＵボードとソフト動作のラズベリーパイの2層に分け、シリアル通信を行うことで互いに情報をやり取りしロボットを動かしています。",
+        "appeal": "今回で4回目の出場となりますが、来年からは受験期に入るため高校生としては最後の出場となります。毎年度自分のロボットを評価していただき、ありがとうございました。",
+        "result": {
+            "1st": {
+                "order": 2,
+                "contest": [
+                    "TBYrrr",
+                    "TRRBBYYYYRRRBBB"
+                ],
+                "remainTime": "1:20:15" 
+            },
+            "2nd": {
+                "order": 3,
+                "contest": [
+                    "TRRBBYYYYRRRBBBy"
+                ],
+                "judgePoint": 12,
+                "remainTime": "1:10:38" 
+            },
+            "final": {
+                "order": 3,
+                "contest": [
+                    "TRRBBYYYYRRRBBBy"
+                ],
+                "judgePoint": 12,
+                "remainTime": "1:10:38" 
+            }
+        }
+    },
+    {
+        "id": "C04",
+        "name": "mako-robo Surprising VIIctory",
+        "team": "しぶしぶ「射」",
+        "belonging": "渋谷中高理科部",
+        "result": {
+            "1st":{
+                "order": 1,
+                "contest": [
+                    "TRYYRRRYBBBByy"
+                ],
+                "remainTime": "1:56:34"
+            },
+            "2nd":{
+                "order": 2,
+                "contest": [
+                    "TRYYRYBBBRBByyrR"
+                ],
+                "judgePoint": 11,
+                "remainTime": "1:55:32"
+            }
+        }
+    },
+    {
+        "id": "C06",
+        "name": "dikefalos",
+        "team": "しぶしぶ「燭」",
+        "belonging": "渋谷中高理科部",
+        "result": {
+            "1st":{
+                "order": 3,
+                "contest": [
+                    "TRRR"
+                ],
+                "remainTime": "2:02:11"
+            },
+            "revival":{
+                "contest": [
+                    "TRYYRYBBBRBByyRR"
+                ],
+                "remainTime": "2:02:11"
+            },
+            "2nd":{
+                "order": 1,
+                "contest": [
+                    "TRYYRRRBByy"
+                ],
+                "judgePoint": 10,
+                "remainTime": "1:55:41"
+            },
+            "final":{
+                "contest": [
+                    "TRYYRRRBByy"
+                ],
+                "judgePoint": 10,
+                "remainTime": "1:55:41"
+            }
+        }
+    },
+    {
+        "id": "C08",
+        "name": "棄権くん",
+        "team": "しぶしぶ「棄」",
+        "belonging": "渋谷中高理科部",
+        "result": {
+            "1st":{
+                "order": 4,
+                "remark": "棄権"
+            }
+        }
+    },
+    {
+        "id": "M01",
+        "name": "bellatrix",
+        "team": "しぶしぶ「圧」",
+        "belonging": "渋谷中高理科部",
+        "result": {
+            "1st":{
+                "contest": [
+                    "TRBRBWASssM"
+                ],
+                "remainTime": "2:02:11"
+            },
+            "2nd":{
+                "contest": [
+                    "TRRBBrrRSSWM"
+                ],
+                "remainTime": "1:55:41"
+            }
+        }
+    },
+    {
+        "id": "M02",
+        "name": "Sirius",
+        "team": "しぶしぶ「星」",
+        "belonging": "渋谷中高理科部",
+        "result": {
+            "1st":{
+                "contest": [
+                    "TSsSARBRb"
+                ],
+                "remainTime": "1:02:15"
+            },
+            "2nd":{
+                "contest": [
+                    "TSSSARRBB"
+                ],
+                "remainTime": "0:58:29"
+            },
+            "final":{
+                "contest": [
+                    "TSSSARRBB"
+                ],
+                "remainTime": "0:58:29"
+            }
+        }
+    },
+    {
+        "id": "M03",
+        "name": "Ascella",
+        "team": "しぶしぶ「士」",
+        "belonging": "渋谷中高理科部",
+        "result": {
+            "1st":{
+                "contest": [
+                    "SsRr"
+                ],
+                "remainTime": "3:02:15"
+            },
+            "2nd":{
+                "contest": [
+                    "TSsWrrbbSM"
+                ],
+                "remainTime": "0:00:00"
+            },
+            "final":{
+                "contest": [
+                    "TSsWrrbbSM"
+                ],
+                "remainTime": "0:00:00"
+            }
+        }
+    }
+]

@@ -38,10 +38,12 @@ const generateRecordList = generateNavBGOverlay.then(() => {
                         robotLinkElement.appendChild(robotBelongingNameElement);
                     }
                     const robotSumPointElement = document.createElement('div');
-                    robotSumPointElement.innerText = `得点：${priorityResult.sumPoint}点`;
+                    if (priorityResult != undefined && priorityResult.sumPoint != undefined) robotSumPointElement.innerText = `得点：${priorityResult.sumPoint}点`; // 試技が行われているとき・得点が算出されているときのみ表示（エラー防止）
+                    else if (priorityResult != undefined) robotSumPointElement.innerText = priorityResult.remark || "";
+                    else robotSumPointElement.innerText = "競技結果なし";   // issue: 他の競技結果がある場合は表示できるようにしたい
                     robotLinkElement.appendChild(robotSumPointElement);
                     const robotDetailRecordElement = document.createElement('div');
-                    if (priorityResult.judgePoint != undefined) {
+                    if (priorityResult != undefined && priorityResult.judgePoint != undefined) {
                         const contestPointElement = document.createElement('span');
                         contestPointElement.classList.add('contest-point');
                         contestPointElement.innerText = `競技点：${priorityResult.contestPoint}点`;
@@ -52,7 +54,7 @@ const generateRecordList = generateNavBGOverlay.then(() => {
                         robotDetailRecordElement.appendChild(judgePointElement);
                     }
                     // 審査点がない場合のみ表示する（表示場所の都合）
-                    else if (priorityResult.contestTime != undefined) {
+                    else if (priorityResult != undefined && priorityResult.contestTime != undefined) {
                         const remainTimeElement = document.createElement('span');
                         remainTimeElement.classList.add('remain-time');
                         remainTimeElement.innerText = `競技時間：${timeConvertStringToJPString(priorityResult.contestTime)}`;
@@ -82,7 +84,7 @@ const generateRecordList = generateNavBGOverlay.then(() => {
                                         const courseID = courseRule.id;
                                         const courseRobotList = generateRobotListWithPoint(recordSetting, recordJSON, courseID);
                                         recordListWithPoint = recordListWithPoint.concat(courseRobotList);    // 全コースのリストを作成
-                                        const sortedCourseRobotList = sortRobotList(recordSetting, courseRobotList);
+                                        const sortedCourseRobotList = sortRobotList(recordSetting, courseRobotList).filter(robot => robot.result[priorityScoreSetting.id] != undefined && robot.result[priorityScoreSetting.id].sumPoint != undefined);
 
                                         const courseElement = document.createElement('div');
                                         courseElement.classList.add('course');
@@ -95,24 +97,38 @@ const generateRecordList = generateNavBGOverlay.then(() => {
                                         const robotListElement = document.createElement('div');
                                         robotListElement.classList.add('robot-list');
 
-                                        for (let i = 0; (i < 2 && i < sortedCourseRobotList.length); i++) {
+                                        const sortedCourseRobotListForAward = sortedCourseRobotList.filter(robot => robot.result[priorityScoreSetting.id] != undefined && robot.result[priorityScoreSetting.id].sumPoint != undefined && robot.result[priorityScoreSetting.id].sumPoint != 0); // 試技が行われていない場合や得点が0点の場合は表示しない
+                                        for (let i = 0; (i < 2 && i < sortedCourseRobotListForAward.length); i++) {
                                             const robotContainerElement = document.createElement('div');
                                             robotContainerElement.classList.add('robot-container');
                                             const awardTitleElement = document.createElement('h3');
-                                            if (i == 0) awardTitleElement.innerText = "最優秀賞";
-                                            else if (i == 1) awardTitleElement.innerText = "優秀賞";
+                                            if (i == 0) awardTitleElement.innerText = "優勝";
+                                            else if (i == 1) awardTitleElement.innerText = "準優勝";
 
                                             robotContainerElement.appendChild(awardTitleElement);
-                                            robotContainerElement.appendChild(generateRobotItem(sortedCourseRobotList[i]));
+                                            robotContainerElement.appendChild(generateRobotItem(sortedCourseRobotListForAward[i]));
                                             robotListElement.appendChild(robotContainerElement);
                                         }
                                         courseRobotListElement.appendChild(robotListElement);
-                                        const courseMoreElement = document.createElement('a');
-                                        courseMoreElement.classList.add('course-more');
-                                        courseMoreElement.classList.add('internal-link');
-                                        courseMoreElement.setAttribute('href', `/record/ranking/?y=${pageYear}&c=${courseID}`);
-                                        courseMoreElement.innerText = "もっと見る";
-                                        courseRobotListElement.appendChild(courseMoreElement);
+                                        if (sortedCourseRobotListForAward.length == 1) {
+                                            const awardRemarkElement = document.createElement('p');
+                                            if (sortedCourseRobotList[1] == undefined || sortedCourseRobotList[1].result[priorityScoreSetting.id] == undefined) awardRemarkElement.innerText = "該当者がいないため、表彰としての準優勝はありませんでした。"; // 試技さえ行われていなかった場合
+                                            else awardRemarkElement.innerText = "成績上の該当者がいないため、表彰としての準優勝はありませんでした。";   // 試技は行われていた場合
+                                            courseRobotListElement.appendChild(awardRemarkElement);
+                                        }
+                                        else if (sortedCourseRobotListForAward.length == 0) {
+                                            const awardRemarkElement = document.createElement('p');
+                                            awardRemarkElement.innerText = "出場者がいないため、表彰はありませんでした。";
+                                            courseRobotListElement.appendChild(awardRemarkElement);
+                                        }
+                                        if (sortedCourseRobotListForAward.length > 0) {
+                                            const courseMoreElement = document.createElement('a');
+                                            courseMoreElement.classList.add('course-more');
+                                            courseMoreElement.classList.add('internal-link');
+                                            courseMoreElement.setAttribute('href', `/record/ranking/?y=${pageYear}&c=${courseID}`);
+                                            courseMoreElement.innerText = "もっと見る";
+                                            courseRobotListElement.appendChild(courseMoreElement);
+                                        }
                                         courseElement.appendChild(courseRobotListElement);
                                         recordListElement.appendChild(courseElement);
                                     });
