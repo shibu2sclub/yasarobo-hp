@@ -21,12 +21,10 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                             const recordRankingTablesElement = document.getElementById("record-ranking-tables");
 
                             function generateTableElement(robotList, scoreRuleID, orderFactor) {
-                                console.log(robotList)
                                 if (robotList.length > 0) {
                                     let sortKey = [orderFactor, "sumPoint", "!contestTime", "!id"];
                                     if (orderFactor == "sumPoint") sortKey = ["sumPoint", "!contestTime", "!id"];
                                     const sortedCourseRobotListOrdered = sortRobotList(recordSetting, courseRobotList, scoreRuleID, sortKey);
-                                    
                                     const recordRankingTableElement = document.createElement("table");
                                     recordRankingTableElement.id = scoreRuleID;
                                     recordRankingTableElement.innerHTML = `
@@ -59,10 +57,10 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                                             <td class = "name" order = "!name"><a>${robot.name || ""}</a></td>
                                             <td class = "team" order = "!team">${robot.team || ""}</td>
                                             <td class = "belonging" order = "!belonging">${robot.belonging || ""}</td>
-                                            <td class = "sumPoint" order = "sumPoint">${String(robot.result[scoreRuleID].sumPoint) || "-"}</td>
-                                            <td class = "contestPoint" order = "contestPoint">${String(robot.result[scoreRuleID].contestPoint) || "-"}</td>
-                                            <td class = "judgePoint" order = "judgePoint">${String(robot.result[scoreRuleID].judgePoint) || "-"}</td>
-                                            <td class = "contestTime" order = "!contestTime">${String(robot.result[scoreRuleID].contestTime) || "-"}</td>
+                                            <td class = "sumPoint" order = "sumPoint">${robot.result[scoreRuleID].sumPoint != undefined ? robot.result[scoreRuleID].sumPoint : "-"}</td>
+                                            <td class = "contestPoint" order = "contestPoint">${robot.result[scoreRuleID].contestPoint != undefined ? robot.result[scoreRuleID].contestPoint : "-"}</td>
+                                            <td class = "judgePoint" order = "judgePoint">${robot.result[scoreRuleID].judgePoint != undefined ? robot.result[scoreRuleID].judgePoint : "-"}</td>
+                                            <td class = "contestTime" order = "!contestTime">${robot.result[scoreRuleID].contestTime || "-"}</td>
                                             <td class = "remark" order = "!remark">${robot.result[scoreRuleID].remark || ""}</td>
                                         `;
                                         tdLinkElementsArray = Array.from(rowElement.getElementsByTagName("a"));
@@ -92,14 +90,14 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                                         targetElement.classList.add("order-applied");
                                     });
                                     
-                                    if (robotList[0].result[scoreRuleID].order == undefined) {
+                                    if (sortedCourseRobotListOrdered[0].result[scoreRuleID].order == undefined) {
                                         Array.from(recordRankingTableElement.getElementsByClassName("order")).forEach(orderElement => orderElement.style.display = "none");
                                     }
-                                    if (robotList[0].result[scoreRuleID].judgePoint == undefined) {
+                                    if (sortedCourseRobotListOrdered[0].result[scoreRuleID].judgePoint == undefined) {
                                         Array.from(recordRankingTableElement.getElementsByClassName("contestPoint")).forEach(contestPointElement => contestPointElement.style.display = "none");
                                         Array.from(recordRankingTableElement.getElementsByClassName("judgePoint")).forEach(judgePointElement => judgePointElement.style.display = "none");
                                     }
-                                    if (robotList[0].result[scoreRuleID].contestTime == undefined) {
+                                    if (sortedCourseRobotListOrdered[0].result[scoreRuleID].contestTime == undefined) {
                                         Array.from(recordRankingTableElement.getElementsByClassName("contestTime")).forEach(contestTimeElement => contestTimeElement.style.display = "none");
                                     }
                                     recordRankingTablesElement.append(recordRankingTableElement);
@@ -121,7 +119,7 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                                 recordRankingBtnA.innerText = scoreRule.name;
                                 recordRankingBtn.appendChild(recordRankingBtnA);
                                 recordRankingSelectMenuElement.appendChild(recordRankingBtn);
-                                const orderFactor = courseRobotList.length > 0 ? courseRobotList[0].result[scoreRule.id].sumPoint != undefined ? "sumPoint" : (courseRobotList[0].order != undefined ? "!order" : "!id") : "!id";   // コンテンツがない場合は空要素を入れるのでもうどうでもいい
+                                const orderFactor = courseRobotList.length > 0 ? (courseRobotList[0].result[scoreRule.id] != undefined && courseRobotList[0].result[scoreRule.id].sumPoint != undefined) ? "sumPoint" : (courseRobotList[0].order != undefined ? "!order" : "!id") : "!id";   // コンテンツがない場合は空要素を入れるのでもうどうでもいい
                                 generateTableElement(courseRobotList, scoreRule.id, orderFactor);
                             });
                             document.getElementById(recordSetting.scoreList[0].id).classList.add("active");
