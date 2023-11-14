@@ -118,7 +118,8 @@ const generateRecordList = generateNavBGOverlay.then(() => {
                                         }
                                         else if (sortedCourseRobotListForAward.length == 0) {
                                             const awardRemarkElement = document.createElement('p');
-                                            awardRemarkElement.innerText = "出場者がいないため、表彰はありませんでした。";
+                                            if (sortedCourseRobotList[0] == undefined) awardRemarkElement.innerText = "出場者がいないため、表彰はありませんでした。";
+                                            else awardRemarkElement.innerText = "成績上の該当者がいないため、表彰はありませんでした。";
                                             courseRobotListElement.appendChild(awardRemarkElement);
                                         }
                                         if (sortedCourseRobotListForAward.length > 0) {
