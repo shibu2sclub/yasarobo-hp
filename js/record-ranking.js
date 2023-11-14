@@ -168,7 +168,7 @@ const scrollNotice = addToggleContestEvent.then(() => {
         const recordRankingTablesElement = document.getElementById("record-ranking-tables");
         const recordRankingTableElement = recordRankingTablesElement.querySelector("table.active");
         function widthCheck() {
-            console.log(recordRankingTablesElement.offsetWidth, " ", recordRankingTableElement.offsetWidth);
+            //console.log(recordRankingTablesElement.offsetWidth, " ", recordRankingTableElement.offsetWidth);
             if (recordRankingTablesElement.offsetWidth < recordRankingTableElement.offsetWidth) {
                 scrollNoticeElement.style.display = "block";
             }
