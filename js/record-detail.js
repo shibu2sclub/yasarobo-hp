@@ -11,7 +11,6 @@ async function loadImageFile(imageUrlWithoutExtension) {
         const ret3 = await checkFileExistence(imageUrlWithoutExtension + '.jpeg');
         const ret4 = await checkFileExistence(imageUrlWithoutExtension + '.png');
         const ret5 = await checkFileExistence(imageUrlWithoutExtension + '.webp');
-        console.log(ret5);
         if (ret1.status == 200) {
             robotImageElement.src = `${imageUrlWithoutExtension}.jpg`;
             robotImageElement.style.display = "block";
@@ -131,7 +130,7 @@ const generateRecordDetail = generateNavBGOverlay.then(() => {
                     if (robotData.result != undefined) {
                         robotScoreListData.forEach(scoreData => {
                             const scoreResult = robotData.result[scoreData.id];
-                            
+
                             if (scoreResult != undefined) { // 出場している試技のみ生成
                                 const scoreElement = document.createElement("div");
                                 scoreElement.classList.add("score");
@@ -153,7 +152,7 @@ const generateRecordDetail = generateNavBGOverlay.then(() => {
     
                                 const scoreTableElement = scoreElement.getElementsByClassName("robot-detail-table")[0];
                                 const scoreAcordionWrapperElement = scoreElement.getElementsByClassName("score-accordion-wrapper")[0];
-                                if (scoreResult.sumPoint != undefined) {
+                                if (scoreResult.sumPoint != undefined) {    // 得点が存在する場合
                                     scoreTableElement.innerHTML = `
                                     <dl class = "robot-detail-table-row">
                                         <dt>得点</dt><dd>${scoreResult.sumPoint}点${scoreResult.judgePoint != undefined ? "（競技点：" + scoreResult.contestPoint + "点 / 審査点：" + scoreResult.judgePoint + "点）" : ""}</dd>
@@ -163,7 +162,7 @@ const generateRecordDetail = generateNavBGOverlay.then(() => {
                                     </dl>
                                     `
                                 }
-                                else {
+                                else {  // 棄権などの場合
                                     scoreAcordionWrapperElement.style.display = "none";
                                     scoreTableElement.innerHTML = `
                                     <dl class = "robot-detail-table-row">
@@ -224,9 +223,6 @@ const generateRecordDetail = generateNavBGOverlay.then(() => {
                                         }
                                         robotDetailTableElement.appendChild(pointRuleElement);
                                     });
-                                }
-                                else {
-                                    ;
                                 }
                                 scoreWrapperElement.appendChild(scoreElement);
                             }
