@@ -161,6 +161,13 @@ const generateRecordDetail = generateNavBGOverlay.then(() => {
                                         <dt>競技時間</dt><dd>${scoreResult.contestTime}</dd>
                                     </dl>
                                     `
+                                    //if (scoreResult.retry > 0) {
+                                        scoreTableElement.innerHTML += `
+                                        <dl class = "robot-detail-table-row">
+                                            <dt>リトライ</dt><dd>${scoreResult.retry}回</dd>
+                                        </dl>
+                                        `
+                                    //}
                                 }
                                 else {  // 棄権などの場合
                                     scoreAcordionWrapperElement.style.display = "none";

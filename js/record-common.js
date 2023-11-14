@@ -161,6 +161,7 @@ function generateRobotListWithPoint(settings, recordJSON, courseID) {
     
                     const scoreContestTimeMsec = scoreRuleTimeMsec - scoreRemainTimeMsec;
                     record.result[key].contestTime = timeConvertMsecToString(scoreContestTimeMsec);
+                    if (record.result[key].retry == undefined) record.result[key].retry = (record.result[key].contest != undefined && record.result[key].contest.length - 1 >= 0) ? record.result[key].contest.length - 1 : 0;
                 }
             });
 
@@ -170,7 +171,7 @@ function generateRobotListWithPoint(settings, recordJSON, courseID) {
                     const calculateType = scoreSetting.calculateType;
                     if (calculateType == "best") {
                         // リスト内での最高点算出
-                        let maxPoint = -1, maxPointContestPoint = 0, maxPointJudgePoint = 0, maxPointContestTime = "", maxPointSource = "", maxPointPointString = []; // 合計点が最大の時の各得点
+                        let maxPoint = -1, maxPointContestPoint = 0, maxPointJudgePoint = 0, maxPointContestTime = "", maxPointSource = "", maxPointPointString = [], maxPointRetry = 0; // 合計点が最大の時の各得点
                         scoreSetting.list.forEach(calcScoreID => {
                             if (record.result[calcScoreID] == undefined) console.error("Error: Score of " + calcScoreID + " is not defined. robotID: " + robotID);
                             else {
@@ -182,6 +183,7 @@ function generateRobotListWithPoint(settings, recordJSON, courseID) {
                                     maxPointContestPoint = contestResult.contestPoint;
                                     maxPointContestTime = contestResult.contestTime;
                                     maxPointPointString = contestResult.contest;
+                                    maxPointRetry = contestResult.retry;
                                     if (record.result[calcScoreID].judgePoint != undefined) maxPointJudgePoint = contestResult.judgePoint;
                                     else maxPointJudgePoint = undefined;
                                 }
@@ -193,6 +195,7 @@ function generateRobotListWithPoint(settings, recordJSON, courseID) {
                         record.result[scoreSetting.id].contestPoint = maxPointContestPoint;
                         record.result[scoreSetting.id].contestTime = maxPointContestTime;
                         record.result[scoreSetting.id].contest = maxPointPointString;
+                        record.result[scoreSetting.id].retry = maxPointRetry;
                         if (maxPointJudgePoint != undefined) record.result[scoreSetting.id].judgePoint = maxPointJudgePoint;
                     }
                     else if (calculateType == "sum") {
