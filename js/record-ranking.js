@@ -166,9 +166,9 @@ const scrollNotice = addToggleContestEvent.then(() => {
     return new Promise((resolve, reject) => {
         const scrollNoticeElement = document.getElementById("scroll-notice");
         const recordRankingTablesElement = document.getElementById("record-ranking-tables");
-        const recordRankingTableElement = recordRankingTablesElement.getElementsByTagName("table")[0];
+        const recordRankingTableElement = recordRankingTablesElement.querySelector("table.active");
         function widthCheck() {
-            // console.log(recordRankingTablesElement.offsetWidth, " ", recordRankingTableElement.offsetWidth);
+            //console.log(recordRankingTablesElement.offsetWidth, " ", recordRankingTableElement.offsetWidth);
             if (recordRankingTablesElement.offsetWidth < recordRankingTableElement.offsetWidth) {
                 scrollNoticeElement.style.display = "block";
             }
@@ -176,7 +176,7 @@ const scrollNotice = addToggleContestEvent.then(() => {
                 scrollNoticeElement.style.display = "none";
             }
         }
-        widthCheck();
+        setTimeout(widthCheck, 100);    // なんか読み込み時に取得できないので遅らせる（おそらく表示アニメーションでdisplayがnoneの時に幅を読んでしまう？？）
         window.addEventListener("resize", widthCheck);
     })
 });
