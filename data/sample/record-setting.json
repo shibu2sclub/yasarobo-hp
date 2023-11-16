@@ -20,65 +20,37 @@
                 {
                     "id": "R",
                     "name": "赤色ボール（色正解）",
-                    "value": 3,
-                    "ui": {
-                        "shape": "circle",
-                        "bgColor": "red"
-                    }
+                    "value": 3
                 },
                 {
                     "id": "Y",
                     "name": "黄色ボール（色正解）",
-                    "value": 3,
-                    "ui": {
-                        "shape": "circle",
-                        "bgColor": "yellow"
-                    }
+                    "value": 3
                 },
                 {
                     "id": "B",
                     "name": "青色ボール（色正解）",
-                    "value": 3,
-                    "ui": {
-                        "shape": "circle",
-                        "bgColor": "blue"
-                    }
+                    "value": 3
                 },
                 {
                     "id": "r",
                     "name": "赤色ボール（色不正解）",
-                    "value": 1,
-                    "ui": {
-                        "shape": "circle",
-                        "borderColor": "red"
-                    }
+                    "value": 1
                 },
                 {
                     "id": "y",
                     "name": "黄色ボール（色不正解）",
-                    "value": 1,
-                    "ui": {
-                        "shape": "circle",
-                        "borderColor": "yellow"
-                    }
+                    "value": 1
                 },
                 {
                     "id": "b",
                     "name": "青色ボール（色不正解）",
-                    "value": 1,
-                    "ui": {
-                        "shape": "circle",
-                        "borderColor": "blue"
-                    }
+                    "value": 1
                 },
                 {
                     "id": "T",
                     "name": "自由ボール",
-                    "value": 5,
-                    "ui": {
-                        "shape": "diamond",
-                        "borderColor": "yellow"
-                    }
+                    "value": 5
                 }
             ]
         },
@@ -102,101 +74,57 @@
                 {
                     "id": "R",
                     "name": "赤色ボール（色正解）",
-                    "value": 4,
-                    "ui": {
-                        "shape": "circle",
-                        "bgColor": "red"
-                    }
+                    "value": 4
                 },
                 {
                     "id": "B",
                     "name": "青色ボール（色正解）",
-                    "value": 4,
-                    "ui": {
-                        "shape": "circle",
-                        "bgColor": "blue"
-                    }
+                    "value": 4
                 },
                 {
                     "id": "r",
                     "name": "赤色ボール（色不正解）",
-                    "value": 1,
-                    "ui": {
-                        "shape": "circle",
-                        "borderColor": "red"
-                    }
+                    "value": 1
                 },
                 {
                     "id": "b",
                     "name": "青色ボール（色不正解）",
-                    "value": 1,
-                    "ui": {
-                        "shape": "circle",
-                        "borderColor": "blue"
-                    }
+                    "value": 1
                 },
                 {
                     "id": "S",
                     "name": "スチール缶（色正解）",
-                    "value": 6,
-                    "ui": {
-                        "shape": "rectangleNarrow",
-                        "bgColor": "yellow"
-                    }
+                    "value": 6
                 },
                 {
                     "id": "s",
                     "name": "スチール缶（色不正解）",
-                    "value": 1,
-                    "ui": {
-                        "shape": "rectangleNarrow",
-                        "borderColor": "yellow"
-                    }
+                    "value": 1
                 },
                 {
                     "id": "A",
                     "name": "アルミ缶（色正解）",
-                    "value": 10,
-                    "ui": {
-                        "shape": "rectangleWide",
-                        "bgColor": "yellow"
-                    }
+                    "value": 10
                 },
                 {
                     "id": "a",
                     "name": "アルミ缶（色不正解）",
-                    "value": 1,
-                    "ui": {
-                        "shape": "rectangleWide",
-                        "borderColor": "yellow"
-                    }
+                    "value": 1
                 },
                 {
                     "id": "T",
                     "name": "自由ボール",
-                    "value": 5,
-                    "ui": {
-                        "shape": "diamond",
-                        "borderColor": "yellow"
-                    }
+                    "value": 5
                 },
                 {
                     "id": "W",
                     "name": "ウォーターボトル",
-                    "value": 15,
-                    "ui": {
-                        "shape": "triangle",
-                        "borderColor": "purple"
-                    }
+                    "value": 15
                 },
                 {
                     "id": "M",
                     "name": "リターンボーナス",
-                    "value": 10,
-                    "ui": {
-                        "shape": "star",
-                        "bgColor": "orange"
-                    }
+                    "value": 10
                 }
             ]
         },
@@ -220,74 +148,42 @@
                 {
                     "id": "R",
                     "name": "右側赤色ゴムボール（色正解）",
-                    "value": 6,
-                    "ui": {
-                        "shape": "circle",
-                        "bgColor": "red"
-                    }
+                    "value": 6
                 },
                 {
                     "id": "Y",
                     "name": "右側黄色ゴムボール（色正解）",
-                    "value": 6,
-                    "ui": {
-                        "shape": "circle",
-                        "bgColor": "yellow"
-                    }
+                    "value": 6
                 },
                 {
                     "id": "B",
                     "name": "右側青色ゴムボール（色正解）",
-                    "value": 6,
-                    "ui": {
-                        "shape": "circle",
-                        "bgColor": "blue"
-                    }
+                    "value": 6
                 },
                 {
                     "id": "r",
                     "name": "右側赤色ゴムボール（色不正解）",
-                    "value": 1,
-                    "ui": {
-                        "shape": "circle",
-                        "borderColor": "red"
-                    }
+                    "value": 2
                 },
                 {
                     "id": "y",
                     "name": "右側黄色ゴムボール（色不正解）",
-                    "value": 1,
-                    "ui": {
-                        "shape": "circle",
-                        "borderColor": "yellow"
-                    }
+                    "value": 2
                 },
                 {
                     "id": "b",
                     "name": "右側青色ゴムボール（色不正解）",
-                    "value": 1,
-                    "ui": {
-                        "shape": "circle",
-                        "borderColor": "blue"
-                    }
+                    "value": 2
                 },
                 {
                     "id": "M",
                     "name": "左側ゴムボール",
-                    "value": 1,
-                    "ui": {
-                        "shape": "circle",
-                        "bgColor": "purple"
-                    }
+                    "value": 1
                 },
                 {
                     "id": "S",
                     "name": "右側スポンジボール",
-                    "value": 4,
-                    "ui": {
-                        "shape": "circle",
-                        "borderColor": "purple"
-                    }
+                    "value": 4
                 },
                 {
                     "id": "O",
@@ -303,11 +199,7 @@
                         "b",
                         "M",
                         "S"
-                    ],
-                    "ui": {
-                        "shape": "star",
-                        "borderColor": "green"
-                    }
+                    ]
                 }
             ]
         }
