@@ -146,19 +146,23 @@ function generateRobotListWithPoint(settings, recordJSON, courseID) {
             Object.keys(resultList).forEach(key => {
                 const contestResult = resultList[key];
                 const pointStringsArray = contestResult.contest;
-                const pointString = pointStringsArray[pointStringsArray.length - 1];
-                const point = calculateScore(settings, robotID, pointString)[0];
 
-                record.result[key].contestPoint = point;
-                if (record.result[key].judgePoint != undefined) record.result[key].sumPoint = point + record.result[key].judgePoint;
-                else record.result[key].sumPoint = point;
+                if (pointStringsArray != undefined) {
+                    const pointString = pointStringsArray[pointStringsArray.length - 1];
+                    const point = calculateScore(settings, robotID, pointString)[0];
 
-                const scoreSetting = settings.scoreList.filter(scoreSettings => scoreSettings.id == key)[0];
-                const scoreRuleTimeMsec = timeConvertStringToMsec(scoreSetting.time);
-                const scoreRemainTimeMsec = timeConvertStringToMsec(contestResult.remainTime);
-
-                const scoreContestTimeMsec = scoreRuleTimeMsec - scoreRemainTimeMsec;
-                record.result[key].contestTime = timeConvertMsecToString(scoreContestTimeMsec);
+                    record.result[key].contestPoint = point;
+                    if (record.result[key].judgePoint != undefined) record.result[key].sumPoint = point + record.result[key].judgePoint;
+                    else record.result[key].sumPoint = point;
+    
+                    const scoreSetting = settings.scoreList.filter(scoreSettings => scoreSettings.id == key)[0];
+                    const scoreRuleTimeMsec = timeConvertStringToMsec(scoreSetting.time);
+                    const scoreRemainTimeMsec = timeConvertStringToMsec(contestResult.remainTime);
+    
+                    const scoreContestTimeMsec = scoreRuleTimeMsec - scoreRemainTimeMsec;
+                    record.result[key].contestTime = timeConvertMsecToString(scoreContestTimeMsec);
+                    if (record.result[key].retry == undefined) record.result[key].retry = (record.result[key].contest != undefined && record.result[key].contest.length - 1 >= 0) ? record.result[key].contest.length - 1 : 0;
+                }
             });
 
             // 算出点がある場合は、算出点を計算
@@ -167,7 +171,7 @@ function generateRobotListWithPoint(settings, recordJSON, courseID) {
                     const calculateType = scoreSetting.calculateType;
                     if (calculateType == "best") {
                         // リスト内での最高点算出
-                        let maxPoint = 0, maxPointContestPoint = 0, maxPointJudgePoint = 0, maxPointContestTime = "", maxPointSource = "", maxPointPointString = []; // 合計点が最大の時の各得点
+                        let maxPoint = -1, maxPointContestPoint = 0, maxPointJudgePoint = 0, maxPointContestTime = "", maxPointSource = "", maxPointPointString = [], maxPointRetry = 0; // 合計点が最大の時の各得点
                         scoreSetting.list.forEach(calcScoreID => {
                             if (record.result[calcScoreID] == undefined) console.error("Error: Score of " + calcScoreID + " is not defined. robotID: " + robotID);
                             else {
@@ -179,6 +183,7 @@ function generateRobotListWithPoint(settings, recordJSON, courseID) {
                                     maxPointContestPoint = contestResult.contestPoint;
                                     maxPointContestTime = contestResult.contestTime;
                                     maxPointPointString = contestResult.contest;
+                                    maxPointRetry = contestResult.retry;
                                     if (record.result[calcScoreID].judgePoint != undefined) maxPointJudgePoint = contestResult.judgePoint;
                                     else maxPointJudgePoint = undefined;
                                 }
@@ -190,6 +195,7 @@ function generateRobotListWithPoint(settings, recordJSON, courseID) {
                         record.result[scoreSetting.id].contestPoint = maxPointContestPoint;
                         record.result[scoreSetting.id].contestTime = maxPointContestTime;
                         record.result[scoreSetting.id].contest = maxPointPointString;
+                        record.result[scoreSetting.id].retry = maxPointRetry;
                         if (maxPointJudgePoint != undefined) record.result[scoreSetting.id].judgePoint = maxPointJudgePoint;
                     }
                     else if (calculateType == "sum") {
@@ -232,13 +238,18 @@ function sortRobotList(settings, robotList, sortContest, sortKey) {
         sortContest = [priorityOrderedScoreIDList[0]];
         sortKey = ["sumPoint", "!contestTime", "!id"];
     }
+    robotList = robotList.filter(robot => robot.result[sortContest] != undefined);  // 試技がないロボットを除外
     robotList.sort((a, b) => {
         for (let i = 0; i < sortKey.length; i++) {
-            const sortKeyOrderAsc = true ? sortKey[i].charAt(0) == "!" : false;    // trueなら昇順、falseなら降順。キーの1文字目に!がついている場合は昇順。
+            const sortKeyOrderAsc = (sortKey[i].charAt(0) == "!");    // trueなら昇順、falseなら降順。キーの1文字目に!がついている場合は昇順。
             const sortKeyCurrent = sortKey[i].replace("!", "");
-            const sortKeyMode = true ? ["sumPoint", "contestPoint", "judgePoint", "contestTime", "order"].filter(sortKeyContestAffect => sortKeyContestAffect == sortKeyCurrent).length > 0 : false;    // trueなら試技に関係あるもの、falseなら試技に関係ないもの
-            if ((sortKeyMode && a.result[sortContest][sortKeyCurrent] > b.result[sortContest][sortKeyCurrent]) || (!sortKeyMode && (a[sortKeyCurrent] > b[sortKeyCurrent]))) return sortKeyOrderAsc ? 1 : -1;
-            else if (sortKeyMode && (a.result[sortContest][sortKeyCurrent] < b.result[sortContest][sortKeyCurrent]) || (!sortKeyMode && (a[sortKeyCurrent] < b[sortKeyCurrent]))) return sortKeyOrderAsc ? -1 : 1;
+            const sortKeyMode = (["sumPoint", "contestPoint", "judgePoint", "contestTime", "order"].filter(sortKeyContestAffect => sortKeyContestAffect == sortKeyCurrent).length > 0);    // trueなら試技に関係あるもの、falseなら試技に関係ないもの
+            if ((sortKeyMode && a.result[sortContest][sortKeyCurrent] == undefined && b.result[sortContest][sortKeyCurrent] != undefined) || (!sortKeyMode && (a[sortKeyCurrent] == undefined && b[sortKeyCurrent] != undefined))) return 1;
+            else if (sortKeyMode && (a.result[sortContest][sortKeyCurrent] != undefined && b.result[sortContest][sortKeyCurrent] == undefined) || (!sortKeyMode && (a[sortKeyCurrent] != undefined && b[sortKeyCurrent] == undefined))) return -1;
+            else if (sortKeyMode && (a.result[sortContest][sortKeyCurrent] != undefined && b.result[sortContest][sortKeyCurrent] != undefined) || (!sortKeyMode && (a[sortKeyCurrent] != undefined && b[sortKeyCurrent] != undefined))) {
+                if ((sortKeyMode && a.result[sortContest][sortKeyCurrent] > b.result[sortContest][sortKeyCurrent]) || (!sortKeyMode && (a[sortKeyCurrent] > b[sortKeyCurrent]))) return sortKeyOrderAsc ? 1 : -1;
+                else if (sortKeyMode && (a.result[sortContest][sortKeyCurrent] < b.result[sortContest][sortKeyCurrent]) || (!sortKeyMode && (a[sortKeyCurrent] < b[sortKeyCurrent]))) return sortKeyOrderAsc ? -1 : 1;
+            }
             if (i == (sortKey.length - 1)) return 0;
         }
     });
