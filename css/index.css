@@ -471,13 +471,13 @@ div.bg-h1 {
     }
     
     #content > div:nth-child(n) > div.article {
-        padding: 0 2rem;
+        padding: 1rem 2rem;
     }
 }
 
 @media screen and (max-width: 900px) {
     #content > div:nth-child(n) > div.article {
-        padding: 0 1rem;
+        padding: 1rem;
     }
 
     #content > div > div.bg-h1:not(.mb-rotate) {
