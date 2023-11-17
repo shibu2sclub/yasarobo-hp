@@ -700,7 +700,7 @@ div.bg-h1 {
 
     color: var(--bg-h1-color);
 
-    left: calc(1rem + var(--content-padding));
+    left: 1rem;
     transform-origin: left top;
     transform: rotate(-90deg) translateX(-100%);
 
