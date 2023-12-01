@@ -2,10 +2,10 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
     return new Promise((resolve, reject) => {
         const pageYear = checkYearParam();
 
-        fetch(`/data/${pageYear}/record-setting.json`)
+        fetch(`/data/${pageYear}/record-setting.json`,{cache: "no-store"})
             .then(response => response.json())
             .then(recordSetting => {
-                fetch(`/data/${pageYear}/record.json`)
+                fetch(`/data/${pageYear}/record.json`,{cache: "no-store"})
                 .then(response => response.json())
                 .then(recordJSON => {
                     recordSetting.courseList.forEach(courseRule => {

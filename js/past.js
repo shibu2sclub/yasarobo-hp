@@ -1,7 +1,7 @@
 const generatePastContestList = generateNavBGOverlay.then(() => {
     return new Promise ((resolve, reject) => {
         // fetch common.json
-        fetch('/data/common.json')
+        fetch('/data/common.json',{cache: "no-store"})
             .then(response => response.json())
             .then(data => {
                 let pastYearsList = data.pastYears;
@@ -10,7 +10,7 @@ const generatePastContestList = generateNavBGOverlay.then(() => {
                     return b - a;
                 });
                 pastYearsList.forEach((year) => {
-                    fetch(`/data/${year}/information.json`)
+                    fetch(`/data/${year}/information.json`,{cache: "no-store"})
                         .then(response => response.json())
                         .then(yearInfo => {
                             const contentElement = document.getElementById('content');

@@ -5,10 +5,10 @@ const generateNewsArticle = navBGOverlayUpdate.then((obj) => {
         if (pageYear == null) {
             pageYear = siteYear;
         }
-        fetch('/data/news-label-setting.json')
+        fetch('/data/news-label-setting.json',{cache: "no-store"})
             .then(response => response.json())
             .then(labelSettingData => {
-                fetch(`/data/${pageYear}/news.json`)
+                fetch(`/data/${pageYear}/news.json`,{cache: "no-store"})
                     .then(response => response.json())
                     .then(data => {
                         // Once we have the data, we can generate the DOM elements

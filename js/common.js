@@ -48,7 +48,7 @@ const footerElement = document.createElement('footer');
 let siteYear = '';
 
 const loadSiteYear = new Promise ((resolve, reject) => {
-    fetch('/data/common.json')
+    fetch('/data/common.json',{cache: "no-store"})
         .then(response => response.json())
         .then(data => {
             siteYear = data.year;
@@ -62,7 +62,7 @@ const loadSiteYear = new Promise ((resolve, reject) => {
 // Generate the common footer in the "footerElement". The footer html is in /component/footer.html.
 const generateFooter = loadSiteYear.then((obj) => {
     return new Promise ((resolve, reject) => {
-        fetch('/component/footer.html')
+        fetch('/component/footer.html',{cache: "no-store"})
             .then(response => response.text())
             .then(data => {
                 footerElement.innerHTML = data;
@@ -79,7 +79,7 @@ const navHeadElement = document.createElement('nav');
 const generateNavHead = generateFooter.then((obj) => {
     return new Promise ((resolve, reject) => {
         navHeadElement.setAttribute('id', 'nav-head');
-        fetch('/component/nav-head.html')
+        fetch('/component/nav-head.html',{cache: "no-store"})
             .then(response => response.text())
             .then(data => {
                 navHeadElement.innerHTML = data;
@@ -96,18 +96,18 @@ const navMenuElement = document.createElement('nav');
 const generateNavMenu = generateNavHead.then((obj) => {
     return new Promise ((resolve, reject) => {
         navMenuElement.setAttribute('id', 'nav-menu');
-        fetch('/component/nav-menu.html')
+        fetch('/component/nav-menu.html',{cache: "no-store"})
             .then(response => response.text())
             .then(data => {
                 navMenuElement.innerHTML = data;
                 allWrapperElement.insertBefore(navMenuElement, containerElement);
                 // fetch common.json
-                fetch('/data/common.json')
+                fetch('/data/common.json',{cache: "no-store"})
                     .then(response => response.json())
                     .then(data => {
                         const recordBtnElement = document.getElementById('record');
                         // その年のrecord-setting.jsonが存在しないorするが表示しない設定の場合は非表示
-                        fetch(`/data/${siteYear}/record-setting.json`)
+                        fetch(`/data/${siteYear}/record-setting.json`,{cache: "no-store"})
                             .then(response => response.json())
                             .then(recordSettingJSON => {
                                 if (!recordSettingJSON.showRecord) {
@@ -144,7 +144,7 @@ const generateNavBGOverlay = generateNavMenu.then((obj) => {
 
 const generateLogo = generateNavBGOverlay.then((obj) => {
     return new Promise ((resolve, reject) => {
-        fetch('/component/logo.html')
+        fetch('/component/logo.html',{cache: "no-store"})
             .then(response => response.text())
             .then(data => {
                 const logoElements = document.getElementsByClassName('logo');
