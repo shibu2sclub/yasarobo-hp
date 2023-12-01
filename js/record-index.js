@@ -2,7 +2,7 @@ const generateRecordList = generateNavBGOverlay.then(() => {
     return new Promise((resolve, reject) => {
         const pageYear = checkYearParam();
 
-        fetch(`/data/${pageYear}/record-setting.json`)
+        fetch(`/data/${pageYear}/record-setting.json`,{cache: "no-store"})
             .then(response => response.json())
             .then(recordSetting => {
                 if (!recordSetting.showAward) {
@@ -67,11 +67,11 @@ const generateRecordList = generateNavBGOverlay.then(() => {
 
                 let recordListWithPoint = [];   // 全コースのリスト
 
-                fetch(`/data/${pageYear}/record-award.json`)
+                fetch(`/data/${pageYear}/record-award.json`,{cache: "no-store"})
                     .then(response => response.json())
                     .then(recordAwardJSON => {
                         if (recordSetting.showAward) {
-                            fetch(`/data/${pageYear}/record.json`)
+                            fetch(`/data/${pageYear}/record.json`,{cache: "no-store"})
                                 .then(response => response.json())
                                 .then(recordJSON => {
                                     const recordListElement = document.getElementById('record-list');

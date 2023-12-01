@@ -20,7 +20,7 @@ const setNavHeaderBGColorSwitcher = navBGOverlayUpdate.then(() => {
 const slideshowElement = document.getElementById('key-visual-img-slideshow');
 const generateSlideshow = setNavHeaderBGColorSwitcher.then(() => {
     return new Promise((resolve, reject) => {
-        fetch('/data/index-slideshow.json')
+        fetch('/data/index-slideshow.json',{cache: "no-store"})
             .then(response => response.json())
             .then(data => {
                 data.forEach(element => {
@@ -83,7 +83,7 @@ const generateVideoView = generateSlideshow.then(() => {
     return new Promise((resolve, reject) => {
         const videoViewElement = document.getElementById('key-visual-player');
         // fetch index-video.json and put the url into the videoViewElement
-        fetch('/data/index-video.json')
+        fetch('/data/index-video.json',{cache: "no-store"})
             .then(response => response.json())
             .then(data => {
                 youTubeUrl = 'https://www.youtube.com/embed/' + data.id + '?start=' + data.start + '&si=C_KkbHkAyLTeIPM_&controls=0&autoplay=1&mute=1&loop=1&playlist=' + data.id
@@ -100,7 +100,7 @@ const generateVideoView = generateSlideshow.then(() => {
 
 const headerDataRewrite = generateVideoView.then(() => {
     return new Promise((resolve, reject) => {
-        fetch(`/data/${siteYear}/information.json`)
+        fetch(`/data/${siteYear}/information.json`,{cache: "no-store"})
             .then(response => response.json())
             .then(infoData => {
                 const date = infoData.date.split('.');
@@ -129,7 +129,7 @@ const headerDataRewrite = generateVideoView.then(() => {
 const generateDetail = headerDataRewrite.then(() => {
     return new Promise((resolve, reject) => {
         const detailElement = document.getElementById('detail');
-        fetch(`/data/${siteYear}/information.json`)
+        fetch(`/data/${siteYear}/information.json`,{cache: "no-store"})
             .then(response => response.json())
             .then(infoData => {
                 const date = infoData.date.split('.');
@@ -178,10 +178,10 @@ const generateAccess = generateDetail.then(() => {
     return new Promise((resolve, reject) => {
         // fetch access.html and insert it into the DOM "#access-wrapper"
         const accessWrapperElement = document.getElementById('access-wrapper');
-        fetch(`/data/${siteYear}/information.json`)
+        fetch(`/data/${siteYear}/information.json`,{cache: "no-store"})
             .then(response => response.json())
             .then(infoData => {
-                fetch('/component/access.html')
+                fetch('/component/access.html',{cache: "no-store"})
                 .then(response => response.text())
                 .then(accessHTML => {
                     accessWrapperElement.innerHTML = accessHTML;
@@ -228,7 +228,7 @@ const generateAccess = generateDetail.then(() => {
 const generateRuleLink = generateAccess.then(() => {
     return new Promise((resolve, reject) => {
         const ruleLinkElement = document.getElementById('rule-link');
-        fetch(`/data/${siteYear}/information.json`)
+        fetch(`/data/${siteYear}/information.json`,{cache: "no-store"})
             .then(response => response.json())
             .then(infoData => {
                 ruleLinkElement.setAttribute('href', infoData.rule.link);

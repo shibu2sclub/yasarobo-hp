@@ -7,7 +7,7 @@ function OnButtonClick() {
 
     let pageYear = checkYearParam();
 
-    fetch(`/data/${pageYear}/record-setting.json`)
+    fetch(`/data/${pageYear}/record-setting.json`,{cache: "no-store"})
         .then(response => response.json())
         .then(data => {
             const result = calculateScore(data, robotIDElement.value, pointStringElement.value, true);

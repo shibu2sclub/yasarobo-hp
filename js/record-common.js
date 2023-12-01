@@ -268,7 +268,7 @@ const recordUrlCheckAddYear = loadSiteYear.then(() => {
         else {
             // fetch common.json and compare paramY with pastYears list in common.json
             // if paramY is not in pastYears list, redirect to error page
-            fetch("/data/common.json")
+            fetch("/data/common.json",{cache: "no-store"})
                 .then(response => response.json())
                 .then(commonJSON => {
                     const pastYears = commonJSON.pastYears;
@@ -285,7 +285,7 @@ const recordUrlCheckAddYear = loadSiteYear.then(() => {
 const generateRecordHeadMenu = generateNavBGOverlay.then(() => {
     return new Promise((resolve, reject) => {
         const pageYear = checkYearParam();
-        fetch(`/data/${pageYear}/record-setting.json`)
+        fetch(`/data/${pageYear}/record-setting.json`,{cache: "no-store"})
             .then(response => response.json())
             .then(recordSetting => {
                 const recordHeadMenuElement = document.getElementById('record-head-menu');

@@ -48,7 +48,7 @@ const newsUrlCheckAddYear = loadSiteYear.then(() => {
         if (paramY != null && paramY != siteYear) {
             // fetch common.json and compare paramY with pastYears list in common.json
             // if paramY is not in pastYears list, redirect to error page
-            fetch("/data/common.json")
+            fetch("/data/common.json",{cache: "no-store"})
                 .then(response => response.json())
                 .then(commonJSON => {
                     const pastYears = commonJSON.pastYears;

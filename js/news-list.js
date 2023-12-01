@@ -2,10 +2,10 @@ const generateNewsList = generateNavBGOverlay.then((obj) => {
     return new Promise ((resolve, reject) => {
         const pageYear = checkYearParam();
         // First, let's fetch the news data from the JSON file
-        fetch('/data/news-label-setting.json')
+        fetch('/data/news-label-setting.json',{cache: "no-store"})
             .then(response => response.json())
             .then(labelSettingData => {
-                fetch(`/data/${pageYear}/news.json`)
+                fetch(`/data/${pageYear}/news.json`,{cache: "no-store"})
                     .then(response => response.json())
                     .then(data => {
                         // Once we have the data, we can generate the DOM elements
