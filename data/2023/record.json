@@ -11,7 +11,9 @@
                 "remainTime": "0:31:66"
             },
             "2nd": {
-                "order": 1
+                "order": 1,
+                "contest": "Tr",
+                "remainTime": "0:18:38"
             }
         }
     },
@@ -27,7 +29,10 @@
                 "remainTime": "0:15:15"
             },
             "2nd": {
-                "order": 2
+                "order": 2,
+                "contest": "Tyryr",
+                "remainTime": "0:00:00",
+                "retry": 2
             }
         }
     },
@@ -43,7 +48,10 @@
                 "remainTime": "1:10:05"
             },
             "2nd": {
-                "order": 3
+                "order": 3,
+                "contest": "b",
+                "retry": 1,
+                "remainTime": "1:49:57"
             }
         }
     },
@@ -59,7 +67,10 @@
                 "remainTime": "0:31:34"
             },
             "2nd": {
-                "order": 4
+                "order": 4,
+                "retry": 3,
+                "contest": "T",
+                "remainTime": "1:55:89"
             }
         }
     },
@@ -76,7 +87,10 @@
                 "retry": 3
             },
             "2nd": {
-                "order": 5
+                "order": 5,
+                "contest": "OMMMM",
+                "remainTime": "2:58:31",
+                "retry": 2
             }
         }
     },
@@ -92,7 +106,8 @@
                 "remainTime": "4:46:85"
             },
             "2nd": {
-                "order": 6
+                "order": 6,
+                "remark": "棄権"
             }
         }
     },
@@ -109,7 +124,10 @@
                 "retry": 2
             },
             "2nd": {
-                "order": 7
+                "order": 7,
+                "contest": "T",
+                "remainTime": "0:00:00",
+                "retry": 1
             }
         }
     },
@@ -126,7 +144,9 @@
                 "retry": 2
             },
             "2nd": {
-                "order": 8
+                "order": 8,
+                "contest": "TBYYB",
+                "remainTime": "0:00:00"
             }
         }
     },
@@ -142,7 +162,9 @@
                 "remainTime": "0:00:00"
             },
             "2nd": {
-                "order": 9
+                "order": 9,
+                "contest": "TYBRRRYRBB",
+                "remainTime": "0:00:00"
             }
         }
     },
@@ -159,7 +181,10 @@
                 "retry": 3
             },
             "2nd": {
-                "order": 10
+                "order": 10,
+                "contest": "T",
+                "remainTime": "1:22:57",
+                "retry": 3
             }
         }
     },
@@ -176,7 +201,10 @@
                 "retry": 3
             },
             "2nd": {
-                "order": 11
+                "order": 11,
+                "contest": "",
+                "remainTime": "1:53:28",
+                "retry": 2
             }
         }
     },
@@ -187,12 +215,15 @@
         "result": {
             "1st": {
                 "order": 12,
-                "contest": "TyYBY",
+                "contest": "yYBY",
                 "remainTime": "0:00:00",
                 "retry": 2
             },
             "2nd": {
-                "order": 12
+                "order": 12,
+                "contest": "BBR",
+                "remainTime": "0:00:00",
+                "retry": 2
             }
         }
     },
@@ -208,7 +239,10 @@
                 "contest": "MMMM"
             },
             "2nd": {
-                "order": 13
+                "order": 13,
+                "remainTime": "4:25:55",
+                "contest": "MM",
+                "retry": 1
             }
         }
     }
