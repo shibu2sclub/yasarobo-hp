@@ -21,18 +21,13 @@
         "result": {
             "1st": {
                 "order": 2,
-                "contest": [
-                    "TBYrrr",
-                    "TRRBBYYYYRRRBBB"
-                ],
+                "contest": "TRRBBYYYYRRRBBB",
                 "judgePoint": 12,
                 "remainTime": "1:20:15" 
             },
             "2nd": {
                 "order": 3,
-                "contest": [
-                    "TRRBBYYYYRRRBBBy"
-                ],
+                "contest": "TRRBBYYYYRRRBBBy",
                 "judgePoint": 12,
                 "remainTime": "1:10:38" 
             }
@@ -46,17 +41,13 @@
         "result": {
             "1st":{
                 "order": 3,
-                "contest": [
-                    ""
-                ],
+                "contest": "",
                 "judgePoint": 0,
                 "remainTime": "2:02:11"
             },
             "2nd":{
                 "order": 1,
-                "contest": [
-                    ""
-                ],
+                "contest": "",
                 "judgePoint": 0,
                 "remainTime": "1:55:41"
             }
@@ -69,15 +60,11 @@
         "belonging": "渋谷中高理科部",
         "result": {
             "1st":{
-                "contest": [
-                    "TRBRBWASssM"
-                ],
+                "contest": "TRBRBWASssM",
                 "remainTime": "2:02:11"
             },
             "2nd":{
-                "contest": [
-                    "TRRBBrrRSSWM"
-                ],
+                "contest": "TRRBBrrRSSWM",
                 "remainTime": "1:55:41"
             }
         }
@@ -90,17 +77,13 @@
         "result": {
             "1st":{
                 "order": 2,
-                "contest": [
-                    ""
-                ],
+                "contest": "",
                 "judgePoint": 0,
                 "remainTime": "2:02:11"
             },
             "2nd":{
                 "order": 1,
-                "contest": [
-                    ""
-                ],
+                "contest": "",
                 "judgePoint": 0,
                 "remainTime": "1:55:41"
             }
@@ -114,17 +97,13 @@
         "result": {
             "1st":{
                 "order": 1,
-                "contest": [
-                    ""
-                ],
+                "contest": "",
                 "judgePoint": 0,
                 "remainTime": "2:02:11"
             },
             "2nd":{
                 "order": 2,
-                "contest": [
-                    ""
-                ],
+                "contest": "",
                 "judgePoint": 0,
                 "remainTime": "1:55:41"
             }
