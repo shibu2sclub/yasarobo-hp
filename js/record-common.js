@@ -160,7 +160,7 @@ function generateRobotListWithPoint(settings, recordJSON, courseID) {
     
                     const scoreContestTimeMsec = scoreRuleTimeMsec - scoreRemainTimeMsec;
                     record.result[key].contestTime = timeConvertMsecToString(scoreContestTimeMsec);
-                    if (record.result[key].retry == undefined) record.result[key].retry = (record.result[key].contest != undefined && record.result[key].contest.length - 1 >= 0) ? record.result[key].contest.length - 1 : 0;
+                    if (record.result[key].retry == undefined) record.result[key].retry = 0;
                 }
             });
 

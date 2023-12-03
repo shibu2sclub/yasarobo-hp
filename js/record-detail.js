@@ -205,7 +205,7 @@ const generateRecordDetail = generateNavBGOverlay.then(() => {
                                 const robotDetailTableElement = pointDetailElement.getElementsByClassName("robot-detail-table")[0];
                                 const coursePointRules = robotCourseData.point;
                                 if (scoreResult.contest != undefined) { // 棄権でない場合
-                                    const scoreDataArray = calculateScore(recordSetting, robotData.id, scoreResult.contest[scoreResult.contest.length - 1]);
+                                    const scoreDataArray = calculateScore(recordSetting, robotData.id, scoreResult.contest);
                                     const pointDetailData = scoreDataArray[1];
                                     const pointBonusAddedData = scoreDataArray[2];
     
