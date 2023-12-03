@@ -1,7 +1,7 @@
 [
     {
         "id": "C01",
-        "name": "みさきちゃんの",
+        "name": "Mさきちゃんの",
         "team": "-",
         "belonging": "渋渋理科部",
         "result": {
@@ -236,12 +236,12 @@
             "1st": {
                 "order": 13,
                 "remainTime": "4:09:44",
-                "contest": "MMMM"
+                "contest": "OMMMM"
             },
             "2nd": {
                 "order": 13,
                 "remainTime": "4:25:55",
-                "contest": "MM",
+                "contest": "OMM",
                 "retry": 1
             }
         }
