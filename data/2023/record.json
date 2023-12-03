@@ -6,7 +6,9 @@
         "belonging": "渋渋理科部",
         "result": {
             "1st": {
-                "order": 1
+                "order": 1,
+                "contest": "Tr",
+                "remainTime": "0:31:66"
             },
             "2nd": {
                 "order": 1
@@ -20,7 +22,9 @@
         "belonging": "渋渋理科部",
         "result": {
             "1st": {
-                "order": 2
+                "order": 2,
+                "contest": "TyBr",
+                "remainTime": "0:15:15"
             },
             "2nd": {
                 "order": 2
@@ -34,7 +38,9 @@
         "belonging": "渋渋理科部",
         "result": {
             "1st": {
-                "order": 3
+                "order": 3,
+                "contest": "bb",
+                "remainTime": "1:10:05"
             },
             "2nd": {
                 "order": 3
@@ -48,7 +54,9 @@
         "belonging": "渋渋理科部",
         "result": {
             "1st": {
-                "order": 4
+                "order": 4,
+                "contest": "TrByy",
+                "remainTime": "0:31:34"
             },
             "2nd": {
                 "order": 4
@@ -62,7 +70,10 @@
         "belonging": "渋渋理科部",
         "result": {
             "1st": {
-                "order": 5
+                "order": 5,
+                "contest": "OM",
+                "remainTime": "3:19:01",
+                "retry": 3
             },
             "2nd": {
                 "order": 5
@@ -76,7 +87,9 @@
         "belonging": "渋渋理科部",
         "result": {
             "1st": {
-                "order": 6
+                "order": 6,
+                "contest": "OMMM",
+                "remainTime": "4:46:85"
             },
             "2nd": {
                 "order": 6
@@ -90,7 +103,10 @@
         "belonging": "しぶまくOB",
         "result": {
             "1st": {
-                "order": 7
+                "order": 7,
+                "contest": "T",
+                "remainTime": "0:00:00",
+                "retry": 2
             },
             "2nd": {
                 "order": 7
@@ -104,7 +120,10 @@
         "belonging": "渋渋理科部",
         "result": {
             "1st": {
-                "order": 8
+                "order": 8,
+                "contest": "Ty",
+                "remainTime": "0:00:00",
+                "retry": 2
             },
             "2nd": {
                 "order": 8
@@ -118,7 +137,9 @@
         "belonging": "渋渋理科部",
         "result": {
             "1st": {
-                "order": 9
+                "order": 9,
+                "contest": "TBYRRYYRR",
+                "remainTime": "0:00:00"
             },
             "2nd": {
                 "order": 9
@@ -132,7 +153,10 @@
         "belonging": "慶應義塾大学　ロボット技術研究会",
         "result": {
             "1st": {
-                "order": 10
+                "order": 10,
+                "contest": "T",
+                "remainTime": "0:24:09",
+                "retry": 3
             },
             "2nd": {
                 "order": 10
@@ -146,7 +170,10 @@
         "belonging": "渋渋理科部",
         "result": {
             "1st": {
-                "order": 11
+                "order": 11,
+                "contest": "T",
+                "remainTime": "0:58:23",
+                "retry": 3
             },
             "2nd": {
                 "order": 11
@@ -159,7 +186,10 @@
         "team": "八王子ツインズ",
         "result": {
             "1st": {
-                "order": 12
+                "order": 12,
+                "contest": "TyYBY",
+                "remainTime": "0:00:00",
+                "retry": 2
             },
             "2nd": {
                 "order": 12
@@ -173,7 +203,9 @@
         "belonging": "渋渋理科部",
         "result": {
             "1st": {
-                "order": 13
+                "order": 13,
+                "remainTime": "4:09:44",
+                "contest": "MMMM"
             },
             "2nd": {
                 "order": 13
