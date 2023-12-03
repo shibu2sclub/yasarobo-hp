@@ -119,7 +119,9 @@ const generateRecordRanking = generateNavBGOverlay.then(() => {
                                 recordRankingBtnA.innerText = scoreRule.name;
                                 recordRankingBtn.appendChild(recordRankingBtnA);
                                 recordRankingSelectMenuElement.appendChild(recordRankingBtn);
-                                const orderFactor = courseRobotList.length > 0 ? (courseRobotList[0].result[scoreRule.id] != undefined && courseRobotList[0].result[scoreRule.id].sumPoint != undefined) ? "sumPoint" : (courseRobotList[0].order != undefined ? "!order" : "!id") : "!id";   // コンテンツがない場合は空要素を入れるのでもうどうでもいい
+                                console.log(courseRobotList)
+                                const orderFactor = courseRobotList.length > 0 ? ((courseRobotList[0].result[scoreRule.id] != undefined && courseRobotList[0].result[scoreRule.id].sumPoint != undefined) ? "sumPoint" : (courseRobotList[0].result[scoreRule.id].order != undefined ? "!order" : "!id")) : "!id";   // コンテンツがない場合は空要素を入れるのでもうどうでもいい
+                                console.log(orderFactor)
                                 generateTableElement(courseRobotList, scoreRule.id, orderFactor);
                             });
                             document.getElementById(recordSetting.scoreList[0].id).classList.add("active");

@@ -170,7 +170,7 @@ function generateRobotListWithPoint(settings, recordJSON, courseID) {
                     const calculateType = scoreSetting.calculateType;
                     if (calculateType == "best") {
                         // リスト内での最高点算出
-                        let maxPoint = -1, maxPointContestPoint = 0, maxPointJudgePoint = 0, maxPointContestTime = "", maxPointSource = "", maxPointPointString = [], maxPointRetry = 0; // 合計点が最大の時の各得点
+                        let maxPoint = -1, maxPointContestPoint = -1, maxPointJudgePoint = -1, maxPointContestTime = "", maxPointSource = "", maxPointPointString = [], maxPointRetry = 0; // 合計点が最大の時の各得点
                         scoreSetting.list.forEach(calcScoreID => {
                             if (record.result[calcScoreID] == undefined) console.error("Error: Score of " + calcScoreID + " is not defined. robotID: " + robotID);
                             else {
@@ -189,13 +189,15 @@ function generateRobotListWithPoint(settings, recordJSON, courseID) {
                             }
                         });
                         record.result[scoreSetting.id] = {};
-                        record.result[scoreSetting.id].sumPoint = maxPoint;
-                        record.result[scoreSetting.id].source = maxPointSource;
-                        record.result[scoreSetting.id].contestPoint = maxPointContestPoint;
-                        record.result[scoreSetting.id].contestTime = maxPointContestTime;
-                        record.result[scoreSetting.id].contest = maxPointPointString;
-                        record.result[scoreSetting.id].retry = maxPointRetry;
-                        if (maxPointJudgePoint != undefined) record.result[scoreSetting.id].judgePoint = maxPointJudgePoint;
+                        if (maxPoint != -1) {
+                            record.result[scoreSetting.id].sumPoint = maxPoint;
+                            record.result[scoreSetting.id].source = maxPointSource;
+                            record.result[scoreSetting.id].contestPoint = maxPointContestPoint;
+                            record.result[scoreSetting.id].contestTime = maxPointContestTime;
+                            record.result[scoreSetting.id].contest = maxPointPointString;
+                            record.result[scoreSetting.id].retry = maxPointRetry;
+                            if (maxPointJudgePoint != undefined) record.result[scoreSetting.id].judgePoint = maxPointJudgePoint;
+                        }
                     }
                     else if (calculateType == "sum") {
                         // リスト内での合計点算出

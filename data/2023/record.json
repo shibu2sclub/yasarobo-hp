@@ -1,0 +1,183 @@
+[
+    {
+        "id": "C01",
+        "name": "みさきちゃんの",
+        "team": "-",
+        "belonging": "渋渋理科部",
+        "result": {
+            "1st": {
+                "order": 1
+            },
+            "2nd": {
+                "order": 1
+            }
+        }
+    },
+    {
+        "id": "C02",
+        "name": "まぶちこぶたくん",
+        "team": "-",
+        "belonging": "渋渋理科部",
+        "result": {
+            "1st": {
+                "order": 2
+            },
+            "2nd": {
+                "order": 2
+            }
+        }
+    },
+    {
+        "id": "C13",
+        "name": "もえるこぶたくん",
+        "team": "-",
+        "belonging": "渋渋理科部",
+        "result": {
+            "1st": {
+                "order": 3
+            },
+            "2nd": {
+                "order": 3
+            }
+        }
+    },
+    {
+        "id": "C03",
+        "name": "回旋",
+        "team": "-",
+        "belonging": "渋渋理科部",
+        "result": {
+            "1st": {
+                "order": 4
+            },
+            "2nd": {
+                "order": 4
+            }
+        }
+    },
+    {
+        "id": "Y04",
+        "name": "点Ｐ",
+        "team": "-",
+        "belonging": "渋渋理科部",
+        "result": {
+            "1st": {
+                "order": 5
+            },
+            "2nd": {
+                "order": 5
+            }
+        }
+    },
+    {
+        "id": "Y05",
+        "name": "点Ｒ",
+        "team": "-",
+        "belonging": "渋渋理科部",
+        "result": {
+            "1st": {
+                "order": 6
+            },
+            "2nd": {
+                "order": 6
+            }
+        }
+    },
+    {
+        "id": "C06",
+        "name": "Hirobo O",
+        "team": "-",
+        "belonging": "しぶまくOB",
+        "result": {
+            "1st": {
+                "order": 7
+            },
+            "2nd": {
+                "order": 7
+            }
+        }
+    },
+    {
+        "id": "C07",
+        "name": "それがし",
+        "team": "-",
+        "belonging": "渋渋理科部",
+        "result": {
+            "1st": {
+                "order": 8
+            },
+            "2nd": {
+                "order": 8
+            }
+        }
+    },
+    {
+        "id": "C08",
+        "name": "pleiades(プレアデス)",
+        "team": "-",
+        "belonging": "渋渋理科部",
+        "result": {
+            "1st": {
+                "order": 9
+            },
+            "2nd": {
+                "order": 9
+            }
+        }
+    },
+    {
+        "id": "C09",
+        "name": "きゅりJr.",
+        "team": "-",
+        "belonging": "慶應義塾大学　ロボット技術研究会",
+        "result": {
+            "1st": {
+                "order": 10
+            },
+            "2nd": {
+                "order": 10
+            }
+        }
+    },
+    {
+        "id": "C10",
+        "name": "露天掘り君",
+        "team": "-",
+        "belonging": "渋渋理科部",
+        "result": {
+            "1st": {
+                "order": 11
+            },
+            "2nd": {
+                "order": 11
+            }
+        }
+    },
+    {
+        "id": "C11",
+        "name": "ムササビJr.",
+        "team": "八王子ツインズ",
+        "result": {
+            "1st": {
+                "order": 12
+            },
+            "2nd": {
+                "order": 12
+            }
+        }
+    },
+    {
+        "id": "Y12",
+        "name": "おっけーもじもじ",
+        "team": "-",
+        "belonging": "渋渋理科部",
+        "result": {
+            "1st": {
+                "order": 13
+            },
+            "2nd": {
+                "order": 13
+            }
+        }
+    }
+]
