@@ -176,7 +176,7 @@ const generateRecordDetail = generateNavBGOverlay.then(() => {
                                         <dt>得点</dt><dd>-${scoreResult.judgePoint != undefined ? "（競技点：- / 審査点：" + scoreResult.judgePoint + "点）" : ""}</dd>
                                     </dl>
                                     <dl class = "robot-detail-table-row">
-                                        <dt>備考</dt><dd>${scoreResult.remark}</dd>
+                                        <dt>備考</dt><dd>${scoreResult.remark || "-"}</dd>
                                     </dl>
                                     `
                                 }
