@@ -145,10 +145,9 @@ function generateRobotListWithPoint(settings, recordJSON, courseID) {
         if ((courseID.length == 1 && robotID.charAt(0) == courseID) || (courseID.length > 1 && robotID == courseID)) {
             Object.keys(resultList).forEach(key => {
                 const contestResult = resultList[key];
-                const pointStringsArray = contestResult.contest;
+                const pointString = contestResult.contest;
 
-                if (pointStringsArray != undefined) {
-                    const pointString = pointStringsArray[pointStringsArray.length - 1];
+                if (pointString != undefined) {
                     const point = calculateScore(settings, robotID, pointString)[0];
 
                     record.result[key].contestPoint = point;

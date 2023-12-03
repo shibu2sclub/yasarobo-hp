@@ -21,18 +21,13 @@
         "result": {
             "1st": {
                 "order": 2,
-                "contest": [
-                    "TBYrrr",
-                    "TRRBBYYYYRRRBBB"
-                ],
+                "contest": "TRRBBYYYYRRRBBB",
                 "judgePoint": 12,
                 "remainTime": "1:20:15" 
             },
             "2nd": {
                 "order": 3,
-                "contest": [
-                    "TRRBBYYYYRRRBBBy"
-                ],
+                "contest": "TRRBBYYYYRRRBBBy",
                 "judgePoint": 12,
                 "remainTime": "1:10:38" 
             }
@@ -46,17 +41,13 @@
         "result": {
             "1st":{
                 "order": 1,
-                "contest": [
-                    "TRYYRRRYBBBByy"
-                ],
+                "contest": "TRYYRRRYBBBByy",
                 "judgePoint": 11,
                 "remainTime": "1:56:34"
             },
             "2nd":{
                 "order": 2,
-                "contest": [
-                    "TRYYRYBBBRBByyrR"
-                ],
+                "contest": "TRYYRYBBBRBByyrR",
                 "judgePoint": 11,
                 "remainTime": "1:55:32"
             }
@@ -70,17 +61,13 @@
         "result": {
             "1st":{
                 "order": 3,
-                "contest": [
-                    "TRYYRYBBBRBByyRR"
-                ],
+                "contest": "TRYYRYBBBRBByyRR",
                 "judgePoint": 10,
                 "remainTime": "2:02:11"
             },
             "2nd":{
                 "order": 1,
-                "contest": [
-                    "TRYYRRRBByy"
-                ],
+                "contest": "TRYYRRRBByy",
                 "judgePoint": 10,
                 "remainTime": "1:55:41"
             }
@@ -93,15 +80,11 @@
         "belonging": "渋谷中高理科部",
         "result": {
             "1st":{
-                "contest": [
-                    "TRBRBWASssM"
-                ],
+                "contest": "TRBRBWASssM",
                 "remainTime": "2:02:11"
             },
             "2nd":{
-                "contest": [
-                    "TRRBBrrRSSWM"
-                ],
+                "contest": "TRRBBrrRSSWM",
                 "remainTime": "1:55:41"
             }
         }
@@ -113,15 +96,11 @@
         "belonging": "渋谷中高理科部",
         "result": {
             "1st":{
-                "contest": [
-                    "TSsSARBRb"
-                ],
+                "contest": "TSsSARBRb",
                 "remainTime": "1:02:15"
             },
             "2nd":{
-                "contest": [
-                    "TSSSARRBB"
-                ],
+                "contest": "TSSSARRBB",
                 "remainTime": "0:58:29"
             }
         }
@@ -133,15 +112,11 @@
         "belonging": "渋谷中高理科部",
         "result": {
             "1st":{
-                "contest": [
-                    "SsRr"
-                ],
+                "contest": "SsRr",
                 "remainTime": "3:02:15"
             },
             "2nd":{
-                "contest": [
-                    "TSsWrrbbSM"
-                ],
+                "contest": "TSsWrrbbSM",
                 "remainTime": "0:00:00"
             }
         }
@@ -153,15 +128,11 @@
         "belonging": "渋谷中高理科部",
         "result": {
             "1st":{
-                "contest": [
-                    "ORrRRSSYYYybbbB"
-                ],
+                "contest": "ORrRRSSYYYybbbB",
                 "remainTime": "1:10:38"
             },
             "2nd":{
-                "contest": [
-                    "ORRrrSSYYYyBBBb"
-                ],
+                "contest": "ORRrrSSYYYyBBBb",
                 "remainTime": "0:10:32"
             }
         }
@@ -173,15 +144,11 @@
         "belonging": "渋谷中高理科部",
         "result": {
             "1st":{
-                "contest": [
-                    "MMMMMMMMMMMMSSS"
-                ],
+                "contest": "MMMMMMMMMMMMSSS",
                 "remainTime": "4:11:11"
             },
             "2nd":{
-                "contest": [
-                    "MMMMrryyBBSSS"
-                ],
+                "contest": "MMMMrryyBBSSS",
                 "remainTime": "2:33:15"
             }
         }
@@ -193,15 +160,11 @@
         "belonging": "渋谷中高理科部",
         "result": {
             "1st":{
-                "contest": [
-                    "OMMMMMMMMMSSSMMM"
-                ],
+                "contest": "OMMMMMMMMMSSSMMM",
                 "remainTime": "4:01:17"
             },
             "2nd":{
-                "contest": [
-                    "ORRRRSSSyyyybbbb"
-                ],
+                "contest": "ORRRRSSSyyyybbbb",
                 "remainTime": "3:54:55"
             }
         }
