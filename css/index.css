@@ -73,7 +73,7 @@ header > .title > .upper > .year {
     color: #fff;
 }
 
-header > .title > .upper > .format {
+header > .title > .upper > .highlight {
     text-align: center;
     font-weight: bold;
     height: 100%;
@@ -344,7 +344,7 @@ header > .detail > div.place::before {
         line-height: 1.2rem;
     }
 
-    header > .title > .upper > .format {
+    header > .title > .upper > .highlight {
         font-size: 1.0rem;
         line-height: 1.2rem;
         height: 1.2rem;

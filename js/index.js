@@ -107,8 +107,11 @@ const headerDataRewrite = generateVideoView.then(() => {
                 const dateObj = new Date(date[0], date[1] - 1, date[2]);
                 const headerElement = document.getElementsByTagName('header')[0];
 
-                const titleYear = headerElement.getElementsByClassName('title')[0].getElementsByClassName('upper')[0].getElementsByClassName('year')[0];
+                const headerUpperElement = headerElement.getElementsByClassName('title')[0].getElementsByClassName('upper')[0];
+                const titleYear = headerUpperElement.getElementsByClassName('year')[0];
+                const titleHighlightText = headerUpperElement.getElementsByClassName('highlight')[0];
                 titleYear.innerHTML = siteYear;
+                titleHighlightText.innerHTML = infoData["header-highlight-text"];
 
                 const dateElement = headerElement.getElementsByClassName('date')[0];
                 dateElement.getElementsByClassName('month')[0].innerHTML = dateObj.getMonth() + 1;
