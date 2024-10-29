@@ -1,0 +1,36 @@
+{
+    "date": "2024.12.22",
+    "time": "未定",
+    "header-highlight-text": "参加・観覧無料",
+    "timeDetail": "詳細なタイムスケジュールは決まり次第お知らせ並びにこちらのページでご案内いたします。",
+    "place": {
+        "name": "未定",
+        "name2": "",
+        "postCode": "",
+        "address": "",
+        "transportation": [
+            {
+                "place": "",
+                "detail": [
+                    ""
+                ]
+            }
+        ],
+        "googleMap": ""
+    },
+    "organizer": [
+        {
+            "name": "やさロボ運営委員会",
+            "link": "https://shibu2rikabu.mystrikingly.com/"
+        }
+    ],
+    "inquiry": {
+        "name": "やさロボ運営委員会",
+        "linkName": "yasarobo@googlegroups.com",
+        "link": "mailto:yasarobo@googlegroups.com"
+    },
+    "rule": {
+        "name": "（参考資料）ルール・開催要項（2023年度版・今後更新予定）",
+        "link": "https://drive.google.com/file/d/1f8vbpx1p_VoEAQCKo9FgvEAp0db_YkO-/view?usp=drive_link"
+    }
+}
