@@ -1,22 +1,30 @@
 {
     "date": "2024.12.22",
-    "time": "未定",
+    "time": "未定（昼ごろ開催）",
     "header-highlight-text": "参加・観覧無料",
     "timeDetail": "詳細なタイムスケジュールは決まり次第お知らせ並びにこちらのページでご案内いたします。",
     "place": {
-        "name": "未定",
+        "name": "慶應義塾大学 矢上キャンパス",
         "name2": "",
-        "postCode": "",
-        "address": "",
+        "postCode": "223-8522",
+        "address": "神奈川県横浜市港北区日吉3-14-1",
         "transportation": [
             {
-                "place": "",
+                "place": "日吉駅（東急・横浜市営地下鉄）",
                 "detail": [
-                    ""
+                    "徒歩15分（約1 km）",
+                    "東急東横線、東急目黒線、東急新横浜線／横浜市営地下鉄グリーンライン",
+                    "東急東横線の特急電車は日吉駅に停車しません。武蔵小杉駅か菊名駅でお乗り換えください。"
+                ]
+            },
+            {
+                "place": "新川崎駅（JR）",
+                "detail": [
+                    "タクシーで約10分（約2 km）"
                 ]
             }
         ],
-        "googleMap": ""
+        "googleMap": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12990.086541712317!2d139.622799!3d35.516105!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60185f9c5d6e11e5%3A0x2781d6958786ab3a!2z5oW25oeJ576p5aG-5aSn5a2mIOefouS4iuOCreODo-ODs-ODkeOCuQ!5e0!3m2!1sja!2sus!4v1730255279911!5m2!1sja!2sus"
     },
     "organizer": [
         {
@@ -30,7 +38,7 @@
         "link": "mailto:yasarobo@googlegroups.com"
     },
     "rule": {
-        "name": "（参考資料）ルール・開催要項（2023年度版・今後更新予定）",
+        "name": "（参考資料）ルール・開催要項（2023年度版）",
         "link": "https://drive.google.com/file/d/1f8vbpx1p_VoEAQCKo9FgvEAp0db_YkO-/view?usp=drive_link"
     }
 }
