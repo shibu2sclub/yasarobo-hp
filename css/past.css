@@ -3,6 +3,7 @@ ul.links-list {
     padding: 0;
 
     display: flex;
+    flex-wrap: wrap;
 }
 
 ul.links-list > li {
