@@ -29,7 +29,7 @@ header {
     background: linear-gradient(#4C834C, #264226);
     /*background: var(--theme-color);*/
     display: grid;
-    grid-template-columns: auto 4rem auto 1rem auto;
+    grid-template-columns: auto 3rem auto 1rem auto;
     grid-template-areas: "title . date . detail";
     padding: 0 4rem;
     align-content: center;
@@ -96,7 +96,24 @@ header > .date {
     position: relative;
 }
 
-header > .date > .month {
+header > .date {
+    display: flex;
+    align-items: flex-end;
+}
+
+header > .date > div:nth-child(1) {
+    width: 140px;
+    height: 92px;
+}
+
+header > .date > div:nth-child(2) {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+}
+
+header > .date > div > .month {
     font-size: 1.4rem;
     line-height: 1.4rem;
     position: absolute;
@@ -104,7 +121,7 @@ header > .date > .month {
     left: 0;
 }
 
-header > .date > .month::after {
+header > .date > div > .month::after {
     content: "/";
     font-size: 1.6rem;
     line-height: 1.6rem;
@@ -113,24 +130,21 @@ header > .date > .month::after {
     left: 1.7rem;
 }
 
-header > .date > .day {
+header > .date > div > .day {
     position: absolute;
     font-size: 2.8rem;
     line-height: 2.8rem;
     bottom: 0;
-    left: 2.8rem;
+    right: 1.5rem;
 }
 
-header > .date > .weekday {
+header > .date > div > .weekday {
     display: block;
-    position: absolute;
     text-align: center;
     bottom: 0.25rem;
     left: 5rem;
-    font-size: 1.2rem;
-    line-height: 1.5rem;
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 100%;
+    height: 100%;
     background-color: #fff;
     color: var(--theme-color);
 }
@@ -297,7 +311,7 @@ header > .detail > div.place::before {
 
 @media screen and (max-width: 1900px) {
     header {
-        grid-template-columns: auto 3rem auto;
+        grid-template-columns: auto 2rem auto;
         grid-template-areas:
         "title . date"
         "detail detail detail";
