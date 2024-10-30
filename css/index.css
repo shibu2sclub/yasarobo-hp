@@ -29,7 +29,7 @@ header {
     background: linear-gradient(#4C834C, #264226);
     /*background: var(--theme-color);*/
     display: grid;
-    grid-template-columns: auto 3rem auto 1rem auto;
+    grid-template-columns: auto 2rem auto 1rem auto;
     grid-template-areas: "title . date . detail";
     padding: 0 4rem;
     align-content: center;
@@ -104,6 +104,7 @@ header > .date {
 header > .date > div:nth-child(1) {
     width: 140px;
     height: 92px;
+    flex: 1;
 }
 
 header > .date > div:nth-child(2) {
@@ -139,6 +140,7 @@ header > .date > div > .day {
 }
 
 header > .date > div > .weekday {
+    margin-left: 0.5rem;
     display: block;
     text-align: center;
     bottom: 0.25rem;
@@ -311,7 +313,7 @@ header > .detail > div.place::before {
 
 @media screen and (max-width: 1900px) {
     header {
-        grid-template-columns: auto 2rem auto;
+        grid-template-columns: auto 1rem auto;
         grid-template-areas:
         "title . date"
         "detail detail detail";
